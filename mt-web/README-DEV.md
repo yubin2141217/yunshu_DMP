@@ -12,7 +12,7 @@ npm install
 npm run dev
 ```
 
-访问 `http://localhost:5174`，演示账号 `yunying` / `123456`。
+访问 `http://localhost:5174`，默认进入「供数方管理」（免登录）。
 
 ## 页面
 

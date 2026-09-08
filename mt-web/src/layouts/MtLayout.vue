@@ -21,11 +21,7 @@
             </div>
             <IconDown style="color: #5a7394; font-size: 12px" />
           </div>
-          <template #content>
-            <a-doption @click="onLogout">退出登录</a-doption>
-          </template>
         </a-dropdown>
-        <button type="button" class="mt-logout-btn" @click="onLogout">退出</button>
       </div>
     </header>
 
@@ -73,7 +69,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Modal } from '@arco-design/web-vue'
 import {
   IconDown,
   IconFile,
@@ -91,10 +86,12 @@ const userStore = useUserStore()
 const currentTitle = computed(() => (route.meta.title as string) || '')
 const userInitial = computed(() => (userStore.userInfo?.name || '运').slice(0, 1))
 const selectedKeys = computed(() => {
+  if (route.path.startsWith('/standard')) return ['/standard']
   if (route.path.startsWith('/metadata')) return ['/metadata']
   if (route.path.startsWith('/scheme')) return ['/scheme']
   if (route.path.startsWith('/whitelist')) return ['/whitelist']
   if (route.path.startsWith('/push')) return ['/push']
+  if (route.path.startsWith('/org-config')) return ['/org-config']
   return [route.path]
 })
 const openKeys = ref<string[]>(route.meta.group ? [String(route.meta.group)] : ['standardGroup'])
@@ -110,14 +107,4 @@ function onMenu(key: string) {
   router.push(key)
 }
 
-function onLogout() {
-  Modal.confirm({
-    title: '退出登录',
-    content: '确定要退出当前账号吗？',
-    onOk() {
-      userStore.logout()
-      router.push('/login')
-    },
-  })
-}
 </script>

@@ -36,5 +36,14 @@ export const useUserStore = defineStore('user', {
       localStorage.removeItem(TOKEN_KEY)
       localStorage.removeItem(USER_KEY)
     },
+    /** 演示环境免登录：无会话时写入默认运营账号 */
+    ensureDemoSession() {
+      if (this.token && this.userInfo) return
+      this.setSession('mt-demo-token', {
+        name: '王运营',
+        account: import.meta.env.VITE_DEMO_USER || 'yunying',
+        role: '平台运营',
+      })
+    },
   },
 })

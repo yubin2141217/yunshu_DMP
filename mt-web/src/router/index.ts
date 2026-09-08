@@ -1,21 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/store/user'
 
-function safeRedirect(raw: unknown, fallback: string) {
-  if (typeof raw !== 'string') return fallback
-  if (!raw.startsWith('/') || raw.startsWith('//') || raw.startsWith('/login')) return fallback
-  return raw
-}
-
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {
-      path: '/login',
-      name: 'Login',
-      component: () => import('@/views/auth/login.vue'),
-      meta: { public: true, title: '登录' },
-    },
     {
       path: '/',
       component: () => import('@/layouts/MtLayout.vue'),
@@ -35,16 +23,13 @@ const router = createRouter({
         { path: 'push', name: 'Push', component: () => import('@/views/Push/index.vue'), meta: { title: '数据推送管理' } },
       ],
     },
-    { path: '/:pathMatch(.*)*', redirect: '/' },
+    { path: '/login', redirect: '/suppliers' },
+    { path: '/:pathMatch(.*)*', redirect: '/suppliers' },
   ],
 })
 
 router.beforeEach((to) => {
-  const user = useUserStore()
-  if (!to.meta.public && !user.isLoggedIn) {
-    return { path: '/login', query: { redirect: safeRedirect(to.fullPath, '/suppliers') } }
-  }
-  if (to.path === '/login' && user.isLoggedIn) return { path: '/suppliers' }
+  useUserStore().ensureDemoSession()
   document.title = `${(to.meta.title as string) || '云数中台'} - ${import.meta.env.VITE_APP_TITLE}`
   return true
 })

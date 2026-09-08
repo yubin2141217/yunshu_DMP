@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-- 预览：云数中台运营端，演示账号 `yunying` / `123456`  
+- 预览：云数中台运营端，打开即为「供数方管理」（免登录）  
 - 机构端：`cd v8-web && npm install && npm run dev`（`jigou` / `123456`）
 
 ### AI Studio 说明

@@ -6,7 +6,6 @@ import App from './App.vue'
 import router from './router'
 import './styles/theme.scss'
 import './styles/global.scss'
-import './styles/login.scss'
 
 document.documentElement.classList.add('yunshu-mt')
 
