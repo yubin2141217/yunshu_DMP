@@ -2,15 +2,33 @@
   "name": "yunshu-dmp",
   "private": true,
   "version": "1.0.0",
-  "description": "云数中台 DMP · 运营端(mt-web) + 机构端(v8-web) Vue3 演示",
+  "type": "module",
+  "description": "云数中台 DMP · 默认启动运营端 mt-web（Vue3 + Vite + Arco）",
   "scripts": {
-    "dev": "npm run dev --prefix mt-web",
-    "build": "npm run build --prefix mt-web",
-    "preview": "npm run preview --prefix mt-web",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "dev:mt": "npm run dev --prefix mt-web",
     "dev:v8": "npm run dev --prefix v8-web",
     "build:v8": "npm run build --prefix v8-web",
     "install:all": "npm install --prefix mt-web && npm install --prefix v8-web"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.57.0",
+    "axios": "^1.12.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.21",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.5",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "sass": "^1.81.0",
+    "typescript": "~5.6.3",
+    "vite": "^7.1.5",
+    "vue-tsc": "~2.1.6"
   },
   "engines": {
     "node": ">=18"

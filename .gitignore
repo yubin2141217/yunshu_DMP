@@ -11,6 +11,10 @@ Thumbs.db
 .vite/
 coverage/
 
+# 非本仓库交付范围（本地可保留，不推送；避免 AI Studio 误启试用管理平台等）
+admin/
+mobile/
+
 # 编辑器 / 本地
 .idea/
 .vscode/
