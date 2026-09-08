@@ -1,0 +1,18 @@
+{
+  "name": "yunshu-dmp",
+  "private": true,
+  "version": "1.0.0",
+  "description": "云数中台 DMP · 运营端(mt-web) + 机构端(v8-web) Vue3 演示",
+  "scripts": {
+    "dev": "npm run dev --prefix mt-web",
+    "build": "npm run build --prefix mt-web",
+    "preview": "npm run preview --prefix mt-web",
+    "dev:mt": "npm run dev --prefix mt-web",
+    "dev:v8": "npm run dev --prefix v8-web",
+    "build:v8": "npm run build --prefix v8-web",
+    "install:all": "npm install --prefix mt-web && npm install --prefix v8-web"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
