@@ -1,0 +1,362 @@
+{
+  "frameworkId": "admin",
+  "theme": "arco",
+  "version": "1.1.0",
+  "syncedAt": "2026-08-07",
+  "description": "本框架 page-type → 样板文件映射。增页以本文件为准；跨框架统一 page-type id，路径由各库各自 catalog 定义。",
+  "reuse": {
+    "default": "copy-page-sample",
+    "rules": [
+      "scaffold 默认 lean：按本 catalog 从框架根目录整页复制 html + js + css（三件套）",
+      "必须继承样板已优化的 DOM 与 pro-* / general-card 类名；禁止丢开样板用裸 Arco（如 layout=inline 筛选）重写",
+      "在样板结构上按业务改：筛选字段、表格列、状态机、主/次操作、详情分区、mock；禁止只换文案的换皮",
+      "复用框架共享层：Shell（boot/shell/mountProPage）、css/pages-common.css、css/arco-theme-pro.css、js/charts/*",
+      "样板缺控件时，从 componentShowcases 指向的演示页抄用法与类名",
+      "禁止将 component-* 演示页直接改名作为业务交付页"
+    ],
+    "componentShowcases": {
+      "basic": "component-basic",
+      "extended": "component-extended",
+      "form": "component-form",
+      "formExtended": "component-form-extended",
+      "tableExtended": "component-table-extended",
+      "list": "component-list",
+      "chart": "component-chart",
+      "chartExtended": "component-chart-extended",
+      "richText": "component-rich-text",
+      "metricCard": "component-metric-card",
+      "chartPalette": "component-chart-palette"
+    }
+  },
+  "pages": {
+    "login": {
+      "label": "登录（封面背景）",
+      "html": "login-cover.html",
+      "js": "js/login-cover.js",
+      "css": "css/login-cover.css",
+      "notes": "无 Shell；默认鉴权入口；另需共享 css/login.css"
+    },
+    "login-banner": {
+      "label": "登录（侧栏 Banner）",
+      "html": "login-banner.html",
+      "js": "js/login-banner.js",
+      "css": "css/login-banner.css",
+      "notes": "无 Shell；另需共享 css/login.css"
+    },
+    "login-split": {
+      "label": "登录（分栏卡片）",
+      "html": "login-split.html",
+      "js": "js/login-split.js",
+      "css": "css/login-split.css",
+      "notes": "无 Shell；另需共享 css/login.css"
+    },
+    "dashboard": {
+      "label": "数据概览",
+      "html": "dashboard.html",
+      "js": "js/pages/workplace.js",
+      "css": "css/workplace.css",
+      "notes": "含图表"
+    },
+    "dashboard-ecommerce": {
+      "label": "电商运营",
+      "html": "dashboard-ecommerce.html",
+      "js": "js/pages/dashboard-ecommerce.js",
+      "css": "css/dashboard-ecommerce.css",
+      "notes": "KPI + 销售概览 + 订单表"
+    },
+    "dashboard-crm": {
+      "label": "客户关系",
+      "html": "dashboard-crm.html",
+      "js": "js/pages/dashboard-crm.js",
+      "css": "css/dashboard-crm.css",
+      "notes": "KPI + 管道 + 商机表"
+    },
+    "dashboard-academy": {
+      "label": "教育培训",
+      "html": "dashboard-academy.html",
+      "js": "js/pages/dashboard-academy.js",
+      "css": "css/dashboard-academy.css",
+      "notes": "KPI + 课表 + 作业状态"
+    },
+    "dashboard-finance": {
+      "label": "财务管理",
+      "html": "dashboard-finance.html",
+      "js": "js/pages/dashboard-finance.js",
+      "css": "css/dashboard-finance.css",
+      "notes": "KPI + 收支 + 账户分配"
+    },
+    "dashboard-analytics": {
+      "label": "经营分析",
+      "html": "dashboard-analytics.html",
+      "js": "js/pages/dashboard-analytics.js",
+      "css": "css/dashboard-analytics.css",
+      "notes": "KPI + 流量质量 + 热门页面"
+    },
+    "dashboard-customer": {
+      "label": "客户洞察",
+      "html": "dashboard-customer.html",
+      "js": "js/pages/dashboard-customer.js",
+      "css": "css/dashboard-customer.css",
+      "notes": "KPI + 客户活动 + 客户表"
+    },
+    "dashboard-productivity": {
+      "label": "效率协作",
+      "html": "dashboard-productivity.html",
+      "js": "js/pages/dashboard-productivity.js",
+      "css": "css/dashboard-productivity.css",
+      "notes": "任务 / 项目 / 日历"
+    },
+    "dashboard-banking": {
+      "label": "金融银行",
+      "html": "dashboard-banking.html",
+      "js": "js/pages/dashboard-banking.js",
+      "css": "css/dashboard-banking.css",
+      "notes": "账户 / 现金流 / 卡片"
+    },
+    "list": {
+      "label": "查询表格 / CRUD 列表",
+      "html": "list-search-table.html",
+      "js": "js/pages/list-search-table.js",
+      "css": "css/list-search-table.css",
+      "notes": "筛选 + 表格 + 分页"
+    },
+    "list-card": {
+      "label": "卡片列表",
+      "html": "list-card.html",
+      "js": "js/pages/list-card.js",
+      "css": "css/list-card.css"
+    },
+    "list-kanban": {
+      "label": "任务看板",
+      "html": "list-kanban.html",
+      "js": "js/pages/list-kanban.js",
+      "css": "css/list-kanban.css"
+    },
+    "list-tree-table": {
+      "label": "左树右表",
+      "html": "list-tree-table.html",
+      "js": "js/pages/list-tree-table.js",
+      "css": "css/list-tree-table.css",
+      "notes": "左侧分类树 + 右侧表格"
+    },
+    "list-filter-table": {
+      "label": "左筛右表",
+      "html": "list-filter-table.html",
+      "js": "js/pages/list-filter-table.js",
+      "css": "css/list-filter-table.css",
+      "notes": "侧栏筛选 + 表格"
+    },
+    "list-tag-filter": {
+      "label": "标签筛选",
+      "html": "list-tag-filter.html",
+      "js": "js/pages/list-tag-filter.js",
+      "css": "css/list-tag-filter.css",
+      "notes": "顶部平铺标签筛选 + 表格"
+    },
+    "list-master-detail": {
+      "label": "主从分栏",
+      "html": "list-master-detail.html",
+      "js": "js/pages/list-master-detail.js",
+      "css": "css/list-master-detail.css",
+      "notes": "左列表右详情"
+    },
+    "list-editable": {
+      "label": "行内编辑",
+      "html": "list-editable.html",
+      "js": "js/pages/list-editable.js",
+      "css": "css/list-editable.css",
+      "notes": "行内编辑 + 批量保存"
+    },
+    "list-calendar": {
+      "label": "日历 / 时间线",
+      "html": "list-calendar.html",
+      "js": "js/pages/list-calendar.js",
+      "css": "css/list-calendar.css",
+      "notes": "排期 / 活动 / 运维变更"
+    },
+    "list-media": {
+      "label": "文件 / 素材库",
+      "html": "list-media.html",
+      "js": "js/pages/list-media.js",
+      "css": "css/list-media.css",
+      "notes": "目录树 + 宫格/列表"
+    },
+    "list-import": {
+      "label": "导入向导",
+      "html": "list-import.html",
+      "js": "js/pages/list-import.js",
+      "css": "css/list-import.css",
+      "notes": "上传 → 校验 → 结果"
+    },
+    "form": {
+      "label": "分组表单",
+      "html": "form-group.html",
+      "js": "js/pages/form-group.js",
+      "css": "css/form.css"
+    },
+    "form-basic": {
+      "label": "基础表单",
+      "html": "form-basic.html",
+      "js": "js/pages/form-basic.js",
+      "css": "css/form.css"
+    },
+    "form-step": {
+      "label": "分步表单",
+      "html": "form-step.html",
+      "js": "js/pages/form-step.js",
+      "css": "css/form.css"
+    },
+    "form-step-vertical": {
+      "label": "纵向分步",
+      "html": "form-step-vertical.html",
+      "js": "js/pages/form-step-vertical.js",
+      "css": "css/form.css"
+    },
+    "detail": {
+      "label": "基础详情",
+      "html": "profile-basic.html",
+      "js": "js/pages/profile-basic.js",
+      "css": "css/profile.css"
+    },
+    "detail-advanced": {
+      "label": "高级详情",
+      "html": "profile-advanced.html",
+      "js": "js/pages/profile-advanced.js",
+      "css": "css/profile.css"
+    },
+    "result-success": {
+      "label": "成功结果页",
+      "html": "result-success.html",
+      "js": "js/pages/result-page.js",
+      "css": "css/result-exception.css",
+      "notes": "meta type=success"
+    },
+    "result-waiting": {
+      "label": "等待结果页",
+      "html": "result-waiting.html",
+      "js": "js/pages/result-page.js",
+      "css": "css/result-exception.css"
+    },
+    "result-warning": {
+      "label": "警告结果页",
+      "html": "result-warning.html",
+      "js": "js/pages/result-page.js",
+      "css": "css/result-exception.css"
+    },
+    "result-error": {
+      "label": "失败结果页",
+      "html": "result-error.html",
+      "js": "js/pages/result-page.js",
+      "css": "css/result-exception.css"
+    },
+    "exception-403": {
+      "label": "403",
+      "html": "exception-403.html",
+      "js": "js/pages/exception-page.js",
+      "css": "css/result-exception.css"
+    },
+    "exception-404": {
+      "label": "404",
+      "html": "exception-404.html",
+      "js": "js/pages/exception-page.js",
+      "css": "css/result-exception.css"
+    },
+    "exception-500": {
+      "label": "500",
+      "html": "exception-500.html",
+      "js": "js/pages/exception-page.js",
+      "css": "css/result-exception.css"
+    },
+    "user-home": {
+      "label": "个人主页",
+      "html": "user-home.html",
+      "js": "js/pages/user-home.js",
+      "css": "css/user.css",
+      "notes": "对齐 Arco Design Pro /user/info"
+    },
+    "user-setting": {
+      "label": "用户设置",
+      "html": "user-setting.html",
+      "js": "js/pages/user-setting.js",
+      "css": "css/user.css"
+    },
+    "user-message": {
+      "label": "消息管理",
+      "html": "message-list.html",
+      "js": "js/pages/message-list.js",
+      "css": "css/message-list.css",
+      "notes": "个人中心 · 消息/通知/待办列表 CRUD"
+    },
+    "component-basic": {
+      "label": "基础组件样板",
+      "html": "component-basic.html",
+      "js": "js/pages/component-basic.js",
+      "css": "css/component-showcase.css",
+      "notes": "演示用"
+    },
+    "component-extended": {
+      "label": "扩展组件样板",
+      "html": "component-extended.html",
+      "js": "js/pages/component-extended.js",
+      "css": "css/component-showcase.css"
+    },
+    "component-chart": {
+      "label": "图表组件样板",
+      "html": "component-chart.html",
+      "js": "js/pages/component-chart.js",
+      "css": "css/component-showcase.css"
+    },
+    "component-chart-extended": {
+      "label": "扩展图表演示",
+      "html": "component-chart-extended.html",
+      "js": "js/pages/component-chart-extended.js",
+      "css": "css/component-chart-extended.css",
+      "notes": "自 dashboard-ecommerce 迁入的业务图表"
+    },
+    "component-rich-text": {
+      "label": "富文本样板",
+      "html": "component-rich-text.html",
+      "js": "js/pages/component-rich-text.js",
+      "css": "css/component-showcase.css"
+    },
+    "component-metric-card": {
+      "label": "指标卡片样板",
+      "html": "component-metric-card.html",
+      "js": "js/pages/component-metric-card.js",
+      "css": "css/list-card.css"
+    },
+    "component-chart-palette": {
+      "label": "图表配色样板",
+      "html": "component-chart-palette.html",
+      "js": "js/pages/component-chart-palette.js",
+      "css": "css/component-chart-palette.css",
+      "notes": "方案 A/B/C 色板对比"
+    },
+    "component-form": {
+      "label": "表单组件样板",
+      "html": "component-form.html",
+      "js": "js/pages/component-form.js",
+      "css": "css/component-form.css"
+    },
+    "component-form-extended": {
+      "label": "扩展表单样板",
+      "html": "component-form-extended.html",
+      "js": "js/pages/component-form-extended.js",
+      "css": "css/component-form.css"
+    },
+    "component-table-extended": {
+      "label": "表格组件样板",
+      "html": "component-table-extended.html",
+      "js": "js/pages/component-table-extended.js",
+      "css": "css/component-showcase.css",
+      "notes": "演示用"
+    },
+    "component-list": {
+      "label": "列表组件样板",
+      "html": "component-list.html",
+      "js": "js/pages/component-list.js",
+      "css": "css/component-list.css",
+      "notes": "演示用；另依赖 component-showcase.css"
+    }
+  }
+}

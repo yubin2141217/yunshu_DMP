@@ -1,0 +1,45 @@
+﻿{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "node .agents/hooks/run.cjs session-start"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "node .agents/hooks/run.cjs config-protection",
+        "matcher": "Write|Edit|MultiEdit"
+      },
+      {
+        "command": "node .agents/hooks/run.cjs gateguard",
+        "matcher": "Write|Edit|MultiEdit"
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": "node .agents/hooks/run.cjs review-reminder",
+        "matcher": "Write|Edit|MultiEdit"
+      },
+      {
+        "command": "node .agents/hooks/run.cjs gateguard",
+        "matcher": "Read"
+      },
+      {
+        "command": "node .agents/hooks/run.cjs review-tracker",
+        "matcher": "Task"
+      }
+    ],
+    "preCompact": [
+      {
+        "command": "node .agents/hooks/run.cjs pre-compact"
+      }
+    ],
+    "stop": [
+      {
+        "command": "node .agents/hooks/run.cjs stop-quality-gate",
+        "timeout": 30
+      }
+    ]
+  }
+}

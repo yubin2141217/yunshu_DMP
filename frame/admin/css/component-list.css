@@ -1,0 +1,1934 @@
+/* 列表组件页专属样式（与看板页解耦） */
+
+.component-list-demo-row > .arco-col {
+  display: flex;
+}
+
+.component-list-demo-row .component-list-demo-card {
+  width: 100%;
+  height: 100%;
+}
+
+.component-list-demo-row .component-list-demo-card > .arco-card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.component-list-demo-row .component-showcase-group-title {
+  margin-bottom: 16px;
+}
+
+.component-list-demo-row .component-list-tag,
+.component-list-demo-row .component-list-agenda,
+.component-list-demo-row .component-list-day-tasks,
+.component-list-demo-row .component-list-strip-agenda,
+.component-list-demo-row .component-list-schedule,
+.component-list-demo-row .component-list-events,
+.component-list-demo-row .component-list-bill-list,
+.component-list-demo-row .component-list-page-list,
+.component-list-demo-row .component-list-task,
+.component-list-demo-row .component-list-ticket,
+.component-list-demo-row .component-list-rank-table,
+.component-list-demo-row .component-list-rank-progress,
+.component-list-demo-row .component-list-rank-store,
+.component-list-demo-row .arco-list {
+  flex: 1 1 auto;
+}
+
+.component-list-demo-row .component-list-tag-item {
+  gap: 8px;
+}
+
+.component-list-demo-row .component-list-tag-title {
+  font-size: 13px;
+}
+
+.component-list-demo-row .component-list-tag-time {
+  font-size: 12px;
+}
+
+.component-list-demo-row .component-list-meta .arco-list-item-meta-title,
+.component-list-demo-row .component-list-split .arco-list-item-meta-title {
+  white-space: normal;
+}
+
+.component-list-page-tag {
+  flex-shrink: 0;
+  padding: 0 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  line-height: 22px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.component-list-page-tag.is-primary {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.08);
+  border-color: rgba(var(--primary-6), 0.45);
+}
+
+.component-list-page-tag.is-success {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.08);
+  border-color: rgba(var(--success-6), 0.45);
+}
+
+.component-list-page-tag.is-warning {
+  color: rgb(var(--warning-6));
+  background: rgba(var(--warning-6), 0.1);
+  border-color: rgba(var(--warning-6), 0.45);
+}
+
+.component-list-page-tag.is-danger {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.08);
+  border-color: rgba(var(--danger-6), 0.45);
+}
+
+.component-list-page-tag.is-gray {
+  color: var(--color-text-3);
+  background: var(--color-fill-2);
+  border-color: var(--color-border-2);
+}
+
+.component-list-page-list {
+  flex: 1 1 auto;
+}
+
+.component-list-page-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.component-list-page-footer .arco-pagination {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.component-list-meta-avatar .pro-fa-icon {
+  font-size: 16px;
+  color: #fff;
+}
+
+/* 卡片标题区 */
+.component-list-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.component-list-card-title {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  color: var(--color-text-1) !important;
+}
+
+.component-list-card-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.component-list-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-3);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.component-list-card-link:hover {
+  color: var(--color-text-2);
+}
+
+.component-list-card-link .pro-fa-icon,
+.component-list-card-link .arco-icon {
+  font-size: 12px;
+}
+
+/* 课程表 */
+.component-list-schedule {
+  display: flex;
+  flex-direction: column;
+}
+
+.component-list-schedule-row {
+  display: grid;
+  grid-template-columns: minmax(0, 6.5rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-2);
+  transition: background 0.15s ease;
+}
+
+.component-list-schedule-row:last-child {
+  border-bottom: none;
+}
+
+.component-list-schedule-row:hover {
+  background: var(--color-fill-1);
+}
+
+.component-list-schedule-top {
+  display: contents;
+}
+
+.component-list-schedule-time-wrap {
+  display: flex;
+  min-width: 0;
+  gap: 8px;
+}
+
+.component-list-schedule-bar {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  align-self: stretch;
+  min-height: 28px;
+}
+
+.component-list-schedule-bar.is-active {
+  background: rgb(var(--success-6));
+}
+
+.component-list-schedule-bar.is-upcoming {
+  background: rgb(var(--warning-6));
+}
+
+.component-list-schedule-bar.is-cancelled {
+  background: rgb(var(--danger-6));
+}
+
+.component-list-schedule-time {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-1);
+  white-space: nowrap;
+}
+
+.component-list-schedule-date {
+  font-size: 12px;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.component-list-schedule-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.component-list-schedule-subject {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-list-schedule-location {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-list-schedule-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  flex-shrink: 0;
+  white-space: nowrap;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.component-list-schedule-status.is-active {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.08);
+  border-color: rgba(var(--success-6), 0.35);
+}
+
+.component-list-schedule-status.is-upcoming {
+  color: rgb(var(--warning-6));
+  background: rgba(var(--warning-6), 0.08);
+  border-color: rgba(var(--warning-6), 0.35);
+}
+
+.component-list-schedule-status.is-cancelled {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+  border-color: rgba(var(--danger-6), 0.35);
+}
+
+@media (max-width: 575px) {
+  .component-list-schedule-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .component-list-schedule-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .component-list-schedule-status {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .component-list-schedule-body {
+    padding-left: 12px;
+  }
+}
+
+/* 近期活动 */
+.component-list-events {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.component-list-event {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.component-list-event-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.component-list-event-date {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.component-list-event-month {
+  flex: 0 0 33%;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid var(--color-border-2);
+  background: var(--color-fill-2);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-2);
+}
+
+.component-list-event-day {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.component-list-event-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.component-list-event-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-list-event-time {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.component-list-event-type {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-2);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-2);
+  white-space: nowrap;
+}
+
+/* 待付账单 */
+.component-list-bill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.component-list-bill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.component-list-bill-item:hover {
+  background: var(--color-fill-1);
+}
+
+.component-list-bill-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-2);
+  background: var(--color-bg-1);
+  display: grid;
+  place-content: center;
+  color: var(--color-text-2);
+  flex-shrink: 0;
+}
+
+.component-list-bill-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.component-list-bill-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.component-list-bill-date {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.component-list-bill-chevron {
+  color: var(--color-text-3);
+  font-size: 12px;
+}
+
+/* 任务列表 */
+.component-list-task {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.component-list-task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border-radius: 8px;
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border-2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.component-list-task-bar {
+  width: 4px;
+  align-self: stretch;
+  flex-shrink: 0;
+  border-radius: 4px;
+  min-height: 36px;
+}
+
+.component-list-task-bar.is-cyan {
+  background: #0fc6c2;
+}
+
+.component-list-task-bar.is-warning {
+  background: rgb(var(--warning-6));
+}
+
+.component-list-task-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.component-list-task-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-list-task-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.component-list-task-time .pro-fa-icon {
+  font-size: 12px;
+}
+
+.component-list-task-user {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 48px;
+}
+
+.component-list-task-name {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+/* 工单列表 */
+.component-list-ticket {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.component-list-ticket-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--color-fill-1);
+}
+
+.component-list-ticket-tag {
+  flex-shrink: 0;
+  min-width: 40px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.component-list-ticket-tag.is-warning {
+  color: rgb(var(--warning-6));
+  background: rgba(var(--warning-6), 0.12);
+}
+
+.component-list-ticket-tag.is-primary {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.12);
+}
+
+.component-list-ticket-tag.is-cyan {
+  color: #0eb4b4;
+  background: rgba(14, 180, 180, 0.12);
+}
+
+.component-list-ticket-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.component-list-ticket-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-list-ticket-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.component-list-ticket-time .pro-fa-icon {
+  font-size: 12px;
+}
+
+.component-list-ticket-status {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.component-list-ticket-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.component-list-ticket-status.is-warning .component-list-ticket-dot {
+  background: rgb(var(--warning-6));
+}
+
+.component-list-ticket-status.is-danger .component-list-ticket-dot {
+  background: rgb(var(--danger-6));
+}
+
+.component-list-ticket-status.is-cyan .component-list-ticket-dot {
+  background: #0fc6c2;
+}
+
+/* 日程待办（本页独立样式，不依赖 dashboard-productivity） */
+.component-list-agenda {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.component-list-agenda-head {
+  margin-bottom: 12px;
+}
+
+.component-list-agenda-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.component-list-agenda-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.component-list-agenda-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.component-list-agenda-nav-group {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+.component-list-agenda-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid var(--color-border-2);
+  border-radius: 4px;
+  background: var(--color-bg-2);
+  color: var(--color-text-3);
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.component-list-agenda-nav-btn:hover {
+  background: var(--color-fill-2);
+  color: var(--color-text-1);
+  border-color: var(--color-border-3);
+}
+
+.component-list-agenda-label {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.component-list-agenda-weekdays,
+.component-list-agenda-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.component-list-agenda-weekdays {
+  margin-bottom: 4px;
+}
+
+.component-list-agenda-weekdays span {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.component-list-agenda-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text-1);
+}
+
+.component-list-agenda-day {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.component-list-agenda-cell.is-muted {
+  color: var(--color-text-4);
+}
+
+.component-list-agenda-cell.is-selected .component-list-agenda-day {
+  background: rgb(var(--primary-6));
+  color: #fff;
+  font-weight: 500;
+}
+
+.component-list-agenda-cell:not(.is-selected):hover .component-list-agenda-day {
+  background: var(--color-fill-2);
+}
+
+.component-list-agenda-cell.has-event::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: calc(50% - 12px);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgb(var(--primary-6));
+}
+
+.component-list-agenda-cell.is-selected.has-event::after {
+  background: #fff;
+}
+
+.component-list-agenda-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-2);
+}
+
+.component-list-agenda-list-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.component-list-agenda-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.component-list-agenda-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--primary-6));
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.component-list-agenda-link:hover {
+  opacity: 0.85;
+}
+
+.component-list-agenda-link .pro-fa-icon,
+.component-list-agenda-link .arco-icon {
+  font-size: 12px;
+}
+
+.component-list-agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.component-list-agenda-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  background: var(--color-fill-1);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.component-list-agenda-item:hover {
+  border-color: rgba(var(--primary-6), 0.35);
+  background: rgba(var(--primary-6), 0.04);
+}
+
+.component-list-agenda-tag {
+  flex-shrink: 0;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  line-height: 22px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.component-list-agenda-tag.is-work {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.1);
+  border-color: rgba(var(--primary-6), 0.3);
+}
+
+.component-list-agenda-tag.is-design {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.component-list-agenda-tag.is-admin {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+.component-list-agenda-tag.is-content {
+  color: #059669;
+  background: rgba(5, 150, 105, 0.1);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.component-list-agenda-tag.is-plan {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+.component-list-agenda-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.component-list-agenda-item-title {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.component-list-agenda-item-time {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.component-list-agenda-item-chevron {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-fill-2);
+  color: var(--color-text-3);
+  font-size: 10px;
+}
+
+.component-list-agenda-empty {
+  padding: 16px 8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+body[arco-theme='dark'] .component-list-agenda-tag.is-design,
+body.theme-dark .component-list-agenda-tag.is-design {
+  color: #a78bfa;
+}
+
+body[arco-theme='dark'] .component-list-agenda-tag.is-admin,
+body.theme-dark .component-list-agenda-tag.is-admin {
+  color: #fbbf24;
+}
+
+body[arco-theme='dark'] .component-list-agenda-tag.is-content,
+body.theme-dark .component-list-agenda-tag.is-content {
+  color: #34d399;
+}
+
+body[arco-theme='dark'] .component-list-agenda-tag.is-plan,
+body.theme-dark .component-list-agenda-tag.is-plan {
+  color: #38bdf8;
+}
+
+/* 任务列表（对齐 dashboard-productivity 勾选任务） */
+.component-list-day-tasks {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 0;
+}
+
+.component-list-day-tasks-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+
+.component-list-day-tasks-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.component-list-day-tasks-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.component-list-day-tasks-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+}
+
+.component-list-check-tasks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.component-list-check-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border-1);
+  border-radius: 0;
+  background: transparent;
+  transition: none;
+}
+
+.component-list-check-task:first-child {
+  padding-top: 0;
+}
+
+.component-list-check-task:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.component-list-check-task:hover {
+  background: transparent;
+}
+
+.component-list-check-task.is-done {
+  opacity: 0.72;
+}
+
+.component-list-check-task-box {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.component-list-check-task-box .arco-checkbox-icon {
+  border-radius: 4px;
+}
+
+.component-list-check-task-body {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.component-list-check-task-main {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.component-list-check-task-title {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.component-list-check-task.is-done .component-list-check-task-title {
+  color: var(--color-text-3);
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+.component-list-check-task-due {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.component-list-check-task-due .arco-icon,
+.component-list-check-task-due .pro-fa-icon {
+  font-size: 13px;
+  color: var(--color-text-4);
+}
+
+.component-list-check-task-tag {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.component-list-check-task-tag.is-work {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.1);
+  border-color: rgba(var(--primary-6), 0.18);
+}
+
+.component-list-check-task-tag.is-design {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.18);
+}
+
+.component-list-check-task-tag.is-admin {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.18);
+}
+
+.component-list-check-task-tag.is-content {
+  color: #059669;
+  background: rgba(5, 150, 105, 0.1);
+  border-color: rgba(5, 150, 105, 0.18);
+}
+
+.component-list-check-task-tag.is-plan {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+  border-color: rgba(2, 132, 199, 0.18);
+}
+
+.component-list-check-task-empty {
+  margin: 0;
+  padding: 28px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-3);
+  border-bottom: none;
+  background: transparent;
+}
+
+@media (max-width: 575px) {
+  .component-list-check-task {
+    align-items: flex-start;
+    padding: 12px 0;
+  }
+
+  .component-list-check-task-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .component-list-check-task-main {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .component-list-check-task-title {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+body[arco-theme='dark'] .component-list-check-task-tag.is-design,
+body.theme-dark .component-list-check-task-tag.is-design {
+  color: #a78bfa;
+}
+
+body[arco-theme='dark'] .component-list-check-task-tag.is-admin,
+body.theme-dark .component-list-check-task-tag.is-admin {
+  color: #fbbf24;
+}
+
+body[arco-theme='dark'] .component-list-check-task-tag.is-content,
+body.theme-dark .component-list-check-task-tag.is-content {
+  color: #34d399;
+}
+
+body[arco-theme='dark'] .component-list-check-task-tag.is-plan,
+body.theme-dark .component-list-check-task-tag.is-plan {
+  color: #38bdf8;
+}
+
+/* 待办日程：横向日期条 + 时间轴列表 */
+.component-list-strip-agenda {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.component-list-strip-agenda-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.component-list-strip-agenda-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.component-list-strip-agenda-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.component-list-strip-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.component-list-strip-nav {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-3);
+  cursor: pointer;
+}
+
+.component-list-strip-nav:hover {
+  color: var(--color-text-1);
+  background: var(--color-fill-2);
+}
+
+.component-list-strip-days {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.component-list-strip-day {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 18px 2px 8px;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--color-text-2);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.component-list-strip-today-label {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.component-list-strip-day-num {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.component-list-strip-day-week {
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--color-text-3);
+}
+
+.component-list-strip-day-dot {
+  width: 4px;
+  height: 4px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.component-list-strip-day.has-event .component-list-strip-day-dot {
+  background: rgba(var(--primary-6), 0.55);
+}
+
+.component-list-strip-day.is-selected {
+  background: rgb(var(--primary-6));
+  color: #fff;
+}
+
+.component-list-strip-day.is-selected .component-list-strip-today-label,
+.component-list-strip-day.is-selected .component-list-strip-day-week {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.component-list-strip-day.is-selected .component-list-strip-day-dot {
+  background: #fff;
+}
+
+.component-list-strip-day:not(.is-selected):hover {
+  background: var(--color-fill-2);
+}
+
+.component-list-strip-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 14px;
+}
+
+.component-list-strip-timeline::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 3px;
+  width: 1px;
+  background: var(--color-border-2);
+}
+
+.component-list-strip-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.component-list-strip-item-dot {
+  position: absolute;
+  top: 18px;
+  left: -14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(var(--primary-6));
+  box-shadow: 0 0 0 3px var(--color-bg-2);
+}
+
+.component-list-strip-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--color-fill-1);
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.component-list-strip-item:hover .component-list-strip-item-card {
+  border-color: rgba(var(--primary-6), 0.28);
+  background: rgba(var(--primary-6), 0.04);
+}
+
+.component-list-strip-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.component-list-strip-item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.component-list-strip-item-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.component-list-strip-item-time .arco-icon {
+  font-size: 12px;
+  color: var(--color-text-4);
+}
+
+.component-list-strip-item-card > .component-list-check-task-tag {
+  flex-shrink: 0;
+}
+
+.component-list-strip-empty {
+  padding: 24px 8px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+/* 排行列表：合同金额（方框名次 + 对比条） */
+.component-list-rank-table {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.component-list-rank-table-head,
+.component-list-rank-table-row {
+  display: grid;
+  grid-template-columns: 26px 48px minmax(56px, 1fr) 64px 44px;
+  align-items: center;
+  column-gap: 8px;
+  min-width: 0;
+}
+
+.component-list-rank-table-head {
+  padding: 0 0 10px;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--color-border-2);
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.component-list-rank-table-body.is-scroll,
+.component-list-rank-store-body.is-scroll {
+  --rank-row-h: 44px;
+  flex: 0 0 auto;
+  height: calc(var(--rank-row-h) * 6);
+  overflow: hidden;
+}
+
+.component-list-rank-scroll-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.component-list-rank-scroll-track.is-animating {
+  transition: transform 0.4s ease;
+}
+
+.component-list-rank-scroll-track.is-animating.is-resetting {
+  transition: transform 0.65s ease;
+}
+
+.component-list-rank-table-row {
+  height: var(--rank-row-h, auto);
+  padding: 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.component-list-rank-col.is-rank {
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.component-list-rank-col.is-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--color-text-1);
+}
+
+.component-list-rank-col.is-compare {
+  min-width: 0;
+}
+
+.component-list-rank-table-head .component-list-rank-col.is-compare,
+.component-list-rank-store-head .component-list-rank-col.is-compare {
+  text-align: left;
+}
+
+.component-list-rank-col.is-amount {
+  min-width: 0;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+  white-space: nowrap;
+}
+
+.component-list-rank-col.is-share {
+  min-width: 0;
+  text-align: right;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.component-list-rank-table-head .component-list-rank-col.is-amount,
+.component-list-rank-store-head .component-list-rank-col.is-amount,
+.component-list-rank-table-head .component-list-rank-col.is-share,
+.component-list-rank-store-head .component-list-rank-col.is-share {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-3);
+}
+
+.component-list-rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.component-list-rank-badge.is-square {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 12px;
+}
+
+.component-list-rank-badge.is-square.is-gold {
+  color: #d97706;
+  border-color: rgba(217, 119, 6, 0.55);
+  background: rgba(217, 119, 6, 0.08);
+}
+
+.component-list-rank-badge.is-square.is-silver {
+  color: #64748b;
+  border-color: rgba(100, 116, 139, 0.5);
+  background: rgba(100, 116, 139, 0.08);
+}
+
+.component-list-rank-badge.is-square.is-bronze {
+  color: #f59a23;
+  border-color: rgba(245, 154, 35, 0.55);
+  background: rgba(245, 154, 35, 0.08);
+}
+
+.component-list-rank-badge.is-square.is-normal {
+  color: #86909c;
+  border-color: #c9cdd4;
+  background: #f2f3f5;
+}
+
+.component-list-rank-badge.is-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--primary-6), 0.45);
+  background: rgba(var(--primary-6), 0.1);
+  color: rgb(var(--primary-6));
+  font-size: 12px;
+}
+
+.component-list-rank-badge.is-circle.is-gold {
+  color: #d97706;
+  border-color: rgba(217, 119, 6, 0.5);
+  background: rgba(217, 119, 6, 0.1);
+}
+
+.component-list-rank-badge.is-circle.is-silver {
+  color: #64748b;
+  border-color: rgba(100, 116, 139, 0.5);
+  background: rgba(100, 116, 139, 0.1);
+}
+
+.component-list-rank-badge.is-circle.is-bronze {
+  color: #f59a23;
+  border-color: rgba(245, 154, 35, 0.55);
+  background: rgba(245, 154, 35, 0.1);
+}
+
+.component-list-rank-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(var(--primary-6), 0.1);
+}
+
+.component-list-rank-bar.is-solid {
+  height: 8px;
+  border-radius: 999px;
+}
+
+.component-list-rank-bar.is-gradient {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(59, 110, 245, 0.12);
+}
+
+.component-list-rank-bar.is-pill {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-fill-3);
+}
+
+.component-list-rank-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  max-width: 100%;
+  transition: width 0.25s ease;
+}
+
+.component-list-rank-bar.is-solid .component-list-rank-bar-fill {
+  background: linear-gradient(90deg, rgb(var(--primary-5)) 0%, rgb(var(--primary-6)) 100%);
+}
+
+.component-list-rank-bar.is-gradient .component-list-rank-bar-fill {
+  background: linear-gradient(90deg, #4ecbff 0%, #3b6ef5 100%);
+}
+
+.component-list-rank-bar.is-pill .component-list-rank-bar-fill {
+  background: rgb(var(--primary-6));
+}
+
+/* 排行列表：渠道 / 品类（标签 + 数值 + 进度条） */
+.component-list-rank-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.component-list-rank-progress.is-scroll {
+  --rank-row-h: 36px;
+  --rank-row-gap: 14px;
+  flex: 0 0 auto;
+  gap: 0;
+  height: calc(var(--rank-row-h) * 6 + var(--rank-row-gap) * 5);
+  overflow: hidden;
+}
+
+.component-list-rank-progress-track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rank-row-gap, 14px);
+  will-change: transform;
+}
+
+.component-list-rank-progress-track.is-animating {
+  transition: transform 0.4s ease;
+}
+
+.component-list-rank-progress-track.is-animating.is-resetting {
+  transition: transform 0.65s ease;
+}
+
+.component-list-rank-progress-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.component-list-rank-progress.is-scroll .component-list-rank-progress-item {
+  height: var(--rank-row-h);
+}
+
+.component-list-rank-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+.component-list-rank-progress-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--color-text-1);
+}
+
+.component-list-rank-progress-label-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.component-list-rank-progress-label-wrap .component-list-rank-progress-label {
+  flex: 0 1 auto;
+}
+
+.component-list-rank-top {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+}
+
+.component-list-rank-top.is-hot {
+  color: #b3710d;
+  background: #fff7e8;
+  border-color: #edd4b0;
+}
+
+.component-list-rank-top.is-primary {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.1);
+  border-color: transparent;
+}
+
+.component-list-rank-progress-value {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: baseline;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.component-list-rank-progress-amount {
+  min-width: 44px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.component-list-rank-progress-share {
+  min-width: 42px;
+  text-align: right;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* 排行列表：门店成交（圆形名次） */
+.component-list-rank-store {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.component-list-rank-store-head,
+.component-list-rank-store-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 64px 44px;
+  align-items: center;
+  column-gap: 10px;
+  min-width: 0;
+}
+
+.component-list-rank-store-head {
+  padding: 0 0 10px;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--color-border-2);
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.component-list-rank-store-row {
+  height: var(--rank-row-h, auto);
+  padding: 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.component-list-rank-store-row .component-list-rank-col.is-name {
+  font-size: 13px;
+}
+
+@media (max-width: 575px) {
+  .component-list-rank-table-head,
+  .component-list-rank-table-row {
+    grid-template-columns: 24px 44px minmax(48px, 1fr) 56px 40px;
+    column-gap: 6px;
+  }
+
+  .component-list-rank-store-head,
+  .component-list-rank-store-row {
+    grid-template-columns: 28px minmax(0, 1fr) 56px 40px;
+    column-gap: 6px;
+  }
+
+  .component-list-rank-table-head,
+  .component-list-rank-store-head {
+    font-size: 12px;
+  }
+
+  .component-list-rank-col.is-name,
+  .component-list-rank-col.is-amount,
+  .component-list-rank-col.is-share,
+  .component-list-rank-progress-label,
+  .component-list-rank-progress-amount,
+  .component-list-rank-progress-share {
+    font-size: 12px;
+  }
+}
+
+body[arco-theme='dark'] .component-list-rank-bar,
+body.theme-dark .component-list-rank-bar {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body[arco-theme='dark'] .component-list-rank-bar.is-gradient,
+body.theme-dark .component-list-rank-bar.is-gradient {
+  background: rgba(92, 120, 209, 0.18);
+}
+
+body[arco-theme='dark'] .component-list-rank-bar.is-pill,
+body.theme-dark .component-list-rank-bar.is-pill {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body[arco-theme='dark'] .component-list-rank-badge.is-circle:not(.is-gold):not(.is-silver):not(.is-bronze),
+body.theme-dark .component-list-rank-badge.is-circle:not(.is-gold):not(.is-silver):not(.is-bronze) {
+  border-color: rgba(var(--primary-6), 0.45);
+  background: rgba(var(--primary-6), 0.16);
+  color: rgb(var(--primary-5));
+}
+
+body[arco-theme='dark'] .component-list-rank-badge.is-square.is-gold,
+body.theme-dark .component-list-rank-badge.is-square.is-gold,
+body[arco-theme='dark'] .component-list-rank-badge.is-circle.is-gold,
+body.theme-dark .component-list-rank-badge.is-circle.is-gold {
+  color: #fbbf24;
+}
+
+body[arco-theme='dark'] .component-list-rank-badge.is-square.is-silver,
+body.theme-dark .component-list-rank-badge.is-square.is-silver,
+body[arco-theme='dark'] .component-list-rank-badge.is-circle.is-silver,
+body.theme-dark .component-list-rank-badge.is-circle.is-silver {
+  color: #94a3b8;
+}
+
+body[arco-theme='dark'] .component-list-rank-badge.is-square.is-normal,
+body.theme-dark .component-list-rank-badge.is-square.is-normal {
+  color: #86909c;
+  border-color: rgba(134, 144, 156, 0.45);
+  background: rgba(134, 144, 156, 0.12);
+}
+
+body[arco-theme='dark'] .component-list-rank-top,
+body.theme-dark .component-list-rank-top {
+  background: var(--color-bg-2);
+  box-shadow: none;
+}
+
+body[arco-theme='dark'] .component-list-rank-top.is-hot,
+body.theme-dark .component-list-rank-top.is-hot {
+  color: #f0a73a;
+  background: rgba(179, 113, 13, 0.18);
+  border-color: rgba(237, 212, 176, 0.35);
+}
+
+body[arco-theme='dark'] .component-list-rank-top.is-primary,
+body.theme-dark .component-list-rank-top.is-primary {
+  color: rgb(var(--primary-5));
+  background: rgba(var(--primary-6), 0.16);
+  border-color: transparent;
+}
+
+body[arco-theme='dark'] .component-list-rank-top-inner,
+body.theme-dark .component-list-rank-top-inner {
+  color: inherit;
+  border-color: transparent;
+}

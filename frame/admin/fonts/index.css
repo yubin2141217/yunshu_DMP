@@ -1,0 +1,4 @@
+/* MarkPane local fonts bundle — re-export sub-family stylesheets */
+@import url('./inter/inter.css');
+@import url('./plus-jakarta-sans/plus-jakarta-sans.css');
+

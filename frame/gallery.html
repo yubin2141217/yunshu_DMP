@@ -1,0 +1,3639 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frame · 样板预览 Gallery</title>
+  <meta name="description" content="样板预览 Gallery - 浏览母版库中页面及组件样板与视觉主题，方便在生成原型时进行引用。" />
+  <meta name="keywords" content="VibePM,Frame,Gallery,样板预览,母版库,管理后台,WEB,APP,设备壳,视觉主题,STYLE,静态原型,组件样板">
+  <link rel="icon" href="https://www.vibepm.net/assets/image/favicon.ico" type="image/x-icon">
+  <script>
+    try {
+      var mode = localStorage.getItem('gallery-color-mode')
+      if (mode !== 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        document.documentElement.style.colorScheme = 'dark'
+      }
+    } catch (e) { /* ignore */ }
+  </script>
+  <link rel="stylesheet" href="./admin/vendor/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="./web/fonts/inter.css" />
+   <!--百度统计代码开始-->
+   <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c8286c119d7b1a411699d3c750aee9fd";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <!--百度统计代码结束-->
+  <style>
+    :root {
+      --brand-primary: #6c5ce7;
+      --brand-primary-rgb: 108, 92, 231;
+      --brand-primary-muted: rgba(108, 92, 231, 0.15);
+      --brand-primary-strong: #5a4bd1;
+      --text-primary: rgba(0, 0, 0, 0.95);
+      --text-body: #1a1a1a;
+      --text-secondary: #615d59;
+      --text-muted: #7a756f;
+      --text-on-primary: #ffffff;
+      --bg-page: #ffffff;
+      --surface-soft: rgba(246, 245, 244, 0.72);
+      --surface-card: #ffffff;
+      --border-default: rgba(0, 0, 0, 0.10);
+      --border-subtle: rgba(0, 0, 0, 0.06);
+      --divider-color: rgba(0, 0, 0, 0.06);
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.04);
+      --shadow-cta: 0 0 20px 2px rgba(108, 92, 231, 0.15);
+      --radius-sm: 6px;
+      --radius-lg: 12px;
+      --radius-card: 16px;
+      --radius-pill: 999px;
+      --font-display: "Inter", Arial, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      --font-sans: "Inter", Arial, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      --sidebar-w: 280px;
+      --sidebar-bg: rgba(255, 255, 255, 0.78);
+      --scrollbar-size: 8px;
+      --scrollbar-track: transparent;
+      --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+      --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+      --scrollbar-thumb-active: rgba(0, 0, 0, 0.36);
+    }
+    html { color-scheme: light; }
+    html[data-theme='dark'] {
+      color-scheme: dark;
+      --text-primary: rgba(255, 255, 255, 0.90);
+      --text-body: rgba(255, 255, 255, 0.88);
+      --text-secondary: rgba(255, 255, 255, 0.55);
+      --text-muted: rgba(255, 255, 255, 0.45);
+      --bg-page: #17171a;
+      --surface-soft: rgba(35, 35, 36, 0.72);
+      --surface-card: #232324;
+      --border-default: rgba(255, 255, 255, 0.10);
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --divider-color: rgba(255, 255, 255, 0.06);
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.32), 0 8px 24px rgba(0, 0, 0, 0.36);
+      --sidebar-bg: #232324;
+      --scrollbar-thumb: rgba(255, 255, 255, 0.14);
+      --scrollbar-thumb-hover: rgba(255, 255, 255, 0.26);
+      --scrollbar-thumb-active: rgba(255, 255, 255, 0.36);
+    }
+    html[data-theme='dark'] .sidebar {
+      background: #232324;
+      border-right-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 4px 0 18px rgba(0, 0, 0, 0.28);
+    }
+    html[data-theme='dark'] .main {
+      background: rgba(17, 17, 20, 0.72);
+    }
+    html[data-theme='dark'] .search-input,
+    html[data-theme='dark'] .shell-theme-menu,
+    html[data-theme='dark'] .end-switch,
+    html[data-theme='dark'] .panel-switch button,
+    html[data-theme='dark'] .preview-panel,
+    html[data-theme='dark'] .help-panel,
+    html[data-theme='dark'] .thumb-iframe-wrap:not(.is-phone) {
+      background: var(--surface-card);
+    }
+    html[data-theme='dark'] .thumb-iframe-wrap.is-phone {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+    html[data-theme='dark'] .card-thumb,
+    html[data-theme='dark'] .card-thumb.is-live {
+      background:
+        radial-gradient(130% 90% at 100% 0%, color-mix(in srgb, var(--brand-primary) 12%, transparent), transparent 58%),
+        radial-gradient(90% 70% at 0% 100%, color-mix(in srgb, var(--brand-primary) 8%, transparent), transparent 55%),
+        linear-gradient(165deg, #1c1c1f 0%, #232326 100%);
+    }
+    html[data-theme='dark'] .card-thumb.is-phone,
+    html[data-theme='dark'] .card-thumb.is-phone.is-live {
+      background: #fff;
+    }
+    html[data-theme='dark'] .nav-item .count {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    html[data-theme='dark'] .card-type {
+      background: rgba(255, 255, 255, 0.07);
+      color: rgba(255, 255, 255, 0.64);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+    html[data-theme='dark'] .thumb-badge {
+      background: rgba(28, 28, 32, 0.84);
+      backdrop-filter: blur(8px);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    }
+    html[data-theme='dark'] .thumb-badge.demo {
+      background: color-mix(in srgb, var(--brand-primary) 24%, rgba(28, 28, 32, 0.92));
+      border-color: color-mix(in srgb, var(--brand-primary) 48%, transparent);
+      color: color-mix(in srgb, var(--brand-primary) 72%, #ffffff);
+    }
+    html[data-theme='dark'] .card-meta {
+      color: rgba(255, 255, 255, 0.48);
+    }
+    html[data-theme='dark'] .btn-ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.62);
+    }
+    html[data-theme='dark'] .btn-ghost:hover {
+      background: color-mix(in srgb, var(--brand-primary) 18%, rgba(255, 255, 255, 0.06));
+      border-color: color-mix(in srgb, var(--brand-primary) 42%, transparent);
+      color: color-mix(in srgb, var(--brand-primary) 80%, #ffffff);
+    }
+    html[data-theme='dark'] .card-actions .btn-doc {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.62);
+    }
+    html[data-theme='dark'] .card-actions .btn-doc:hover {
+      background: color-mix(in srgb, var(--brand-primary) 18%, rgba(255, 255, 255, 0.06));
+      border-color: color-mix(in srgb, var(--brand-primary) 42%, transparent);
+      color: color-mix(in srgb, var(--brand-primary) 80%, #ffffff);
+    }
+    html[data-theme='dark'] .card-actions .btn-primary {
+      box-shadow: 0 0 14px 1px rgba(var(--brand-primary-rgb), 0.22);
+    }
+    html[data-theme='dark'] .card-actions .btn-primary:hover {
+      box-shadow: 0 0 18px 2px rgba(var(--brand-primary-rgb), 0.32);
+    }
+    html[data-theme='dark'] button.pill,
+    html[data-theme='dark'] a.pill,
+    html[data-theme='dark'] .meta-pills .pill {
+      background: color-mix(in srgb, var(--brand-primary) 12%, rgba(255, 255, 255, 0.04));
+      border-color: color-mix(in srgb, var(--brand-primary) 42%, transparent);
+      color: var(--brand-primary);
+    }
+    html[data-theme='dark'] button.pill:hover,
+    html[data-theme='dark'] a.pill:hover {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
+      color: var(--text-on-primary);
+    }
+    html[data-theme='dark'] button.pill i,
+    html[data-theme='dark'] a.pill i,
+    html[data-theme='dark'] .meta-pills .pill i {
+      color: var(--brand-primary);
+    }
+    html[data-theme='dark'] button.pill:hover i,
+    html[data-theme='dark'] a.pill:hover i {
+      color: var(--text-on-primary);
+    }
+
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); }
+    *::-webkit-scrollbar { width: var(--scrollbar-size); height: var(--scrollbar-size); }
+    *::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-thumb);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    *::-webkit-scrollbar-thumb:hover { background-color: var(--scrollbar-thumb-hover); }
+    *::-webkit-scrollbar-thumb:active { background-color: var(--scrollbar-thumb-active); }
+    *::-webkit-scrollbar-corner { background: transparent; }
+
+    html, body { margin: 0; padding: 0; min-height: 100%; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      --ambient-glow: var(--brand-primary-muted);
+      --ambient-tr-x: 8vw;
+      --ambient-tr-y: -12vw;
+      --ambient-tr-scale: 1;
+      --ambient-tr-opacity: 1;
+      --ambient-bl-x: -10vw;
+      --ambient-bl-y: 10vw;
+      --ambient-bl-scale: 1;
+      --ambient-bl-opacity: 0.7;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 48vw;
+      height: 48vw;
+      max-width: 560px;
+      max-height: 560px;
+      border-radius: 50%;
+      filter: blur(52px);
+      pointer-events: none;
+      z-index: 0;
+      background: var(--ambient-glow);
+      will-change: transform, opacity, background;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.7s ease,
+        background 0.55s ease;
+    }
+    body::before {
+      top: 0;
+      right: 0;
+      transform: translate(var(--ambient-tr-x), var(--ambient-tr-y)) scale(var(--ambient-tr-scale));
+      opacity: var(--ambient-tr-opacity);
+    }
+    body::after {
+      bottom: 0;
+      left: 0;
+      transform: translate(var(--ambient-bl-x), var(--ambient-bl-y)) scale(var(--ambient-bl-scale));
+      opacity: var(--ambient-bl-opacity);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+    }
+    button { cursor: pointer; border: none; background: none; }
+
+    .app {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      min-height: 100vh;
+    }
+
+    /* —— Left —— */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 20px 20px 24px;
+      border-right: 1px solid var(--border-subtle);
+      background: var(--sidebar-bg);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow: hidden;
+    }
+    #cat-block {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 4px;
+    }
+    .brand-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brand-primary);
+    }
+    .brand-kicker > i {
+      font-size: 11px;
+      line-height: 1;
+      opacity: 0.9;
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .brand-title em {
+      font-style: normal;
+      color: var(--brand-primary);
+    }
+    .brand-desc {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+    .search-wrap i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 13px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px 0 36px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--text-body);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 400;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .search-input:focus {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px var(--brand-primary-muted);
+    }
+    .search-input::placeholder {
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 1;
+    }
+
+    .nav-label {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      padding: 0 8px 6px;
+    }
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background 0.15s ease, color 0.15s ease;
+      text-align: left;
+    }
+    .nav-item:hover {
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+    }
+    .nav-item.is-active {
+      background: var(--brand-primary);
+      color: var(--text-on-primary);
+      font-weight: 600;
+      box-shadow: var(--shadow-cta);
+    }
+    .nav-item .count {
+      font-size: 11px;
+      font-weight: 600;
+      min-width: 22px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.06);
+      color: inherit;
+    }
+    .nav-item.is-active .count {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .sidebar-foot {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      flex-shrink: 0;
+      margin-top: auto;
+      padding: 12px;
+      border-radius: var(--radius-lg);
+      background: var(--brand-primary-muted);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .sidebar-foot > i {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--brand-primary);
+      font-size: 13px;
+      line-height: 1;
+    }
+    .sidebar-foot > span { min-width: 0; flex: 1; }
+    .sidebar-foot strong { color: var(--brand-primary); font-weight: 700; }
+
+    /* —— Right —— */
+    .main {
+      padding: 32px 40px 56px;
+      min-width: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      /* 仅比左侧略深一点，半透明以保留 body 紫雾渐变 */
+      background: rgba(246, 245, 244, 0.42);
+    }
+    .main-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .main-head h2 {
+      margin: 0 0 4px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .main-head h2 span { color: var(--brand-primary); }
+    .main-head p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 32px;
+      padding: 0 12px;
+      border: 1px solid color-mix(in srgb, var(--brand-primary) 45%, transparent);
+      border-radius: var(--radius-pill);
+      background: color-mix(in srgb, var(--brand-primary) 12%, transparent);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--brand-primary);
+      letter-spacing: 0;
+    }
+    .pill i { color: var(--brand-primary); font-size: 12px; }
+    button.pill,
+    a.pill {
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    button.pill:hover,
+    a.pill:hover {
+      color: var(--text-on-primary);
+      border-color: var(--brand-primary);
+      background: var(--brand-primary);
+      box-shadow: var(--shadow-cta);
+    }
+    button.pill:hover i,
+    a.pill:hover i { color: var(--text-on-primary); }
+    button.pill:active,
+    a.pill:active {
+      transform: scale(0.97);
+      background: var(--brand-primary-strong);
+      border-color: var(--brand-primary-strong);
+    }
+
+    /* —— Shell accent switcher (Gallery chrome only) —— */
+    .shell-theme-wrap {
+      position: relative;
+    }
+    .shell-theme-wrap .pill {
+      gap: 7px;
+    }
+    .shell-theme-wrap .pill .fa-chevron-down {
+      font-size: 10px;
+      opacity: 0.75;
+    }
+    .shell-theme-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      z-index: 40;
+      width: max-content;
+      min-width: 132px;
+      max-width: 156px;
+      padding: 5px;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #fff;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .shell-theme-menu[hidden] { display: none !important; }
+    .shell-theme-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px 8px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      text-align: left;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+    .shell-theme-item:hover {
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+    }
+    .shell-theme-item.is-active {
+      border-color: color-mix(in srgb, var(--brand-primary) 35%, transparent);
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+      font-weight: 700;
+    }
+    .shell-theme-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--swatch, #6c5ce7);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+    }
+    .shell-theme-sep {
+      height: 1px;
+      margin: 5px 6px;
+      background: var(--border-subtle);
+      border: 0;
+    }
+    .shell-theme-mode-icon {
+      width: 12px;
+      height: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .shell-theme-mode-toggle:hover .shell-theme-mode-icon {
+      color: var(--brand-primary);
+    }
+
+    /* #grid 作面板栈：各 .grid-pane 留在文档内 hidden 切换，避免挪走 iframe 导致重载 */
+    #grid {
+      width: 100%;
+      max-width: 1600px;
+      margin-inline: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    #grid > .grid-pane {
+      display: grid;
+      /* 按最小宽度自动增列，避免宽屏下固定 4 列把卡片拉得过宽 */
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+      gap: 28px;
+      width: 100%;
+    }
+    #grid > .grid-pane:has(> .empty.is-soon) {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+    #grid > .grid-pane[hidden] {
+      display: none !important;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-card);
+      background: var(--surface-card);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--brand-primary) 35%, transparent);
+      box-shadow: 0 2px 8px rgba(var(--brand-primary-rgb), 0.06), 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+    .card-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      height: auto;
+      background:
+        radial-gradient(130% 90% at 100% 0%, color-mix(in srgb, var(--brand-primary) 8%, transparent), transparent 58%),
+        radial-gradient(90% 70% at 0% 100%, color-mix(in srgb, var(--brand-primary) 4%, transparent), transparent 55%),
+        linear-gradient(165deg, color-mix(in srgb, var(--brand-primary) 2.5%, #f8f7f9) 0%, color-mix(in srgb, var(--brand-primary) 4%, #f2f1f3) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+    /* APP 设备壳：偏矮预览区，保持原先小尺寸手机壳；无装饰底色 */
+    .card-thumb.is-phone {
+      aspect-ratio: 5 / 4;
+      background: #fff;
+    }
+    .card-thumb.is-live {
+      background:
+        radial-gradient(130% 90% at 100% 0%, color-mix(in srgb, var(--brand-primary) 7%, transparent), transparent 55%),
+        radial-gradient(90% 70% at 0% 100%, color-mix(in srgb, var(--brand-primary) 3%, transparent), transparent 50%),
+        linear-gradient(165deg, color-mix(in srgb, var(--brand-primary) 2%, #f7f6f8) 0%, color-mix(in srgb, var(--brand-primary) 3.5%, #f0eef1) 100%);
+    }
+    .card-thumb.is-phone.is-live {
+      background: #fff;
+    }
+    .thumb-iframe-wrap {
+      position: absolute;
+      inset: 12px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--border-default);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      pointer-events: none;
+      --thumb-scale: 0.25;
+      --thumb-ox: 0px;
+      --thumb-oy: 0px;
+    }
+    .thumb-iframe-wrap.is-phone {
+      inset: 10px 14px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 12px;
+    }
+    .thumb-iframe-wrap.is-pending {
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+    html[data-theme='dark'] .thumb-iframe-wrap.is-pending:not(.is-phone) {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+    .thumb-iframe-wrap.is-pending .thumb-chip {
+      position: static;
+    }
+    .thumb-iframe-wrap iframe {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1280px;
+      height: 800px;
+      border: 0;
+      overflow: hidden;
+      transform: translate(var(--thumb-ox), var(--thumb-oy)) scale(var(--thumb-scale));
+      transform-origin: top left;
+      background: #fff;
+      /* 与 STYLE 主题缩略一致：默认弱化，悬停恢复原色 */
+      filter: saturate(0.28) contrast(0.92) brightness(1.05);
+      opacity: 0;
+      transition: opacity 0.25s ease, filter 0.28s ease;
+      /* 部分浏览器可藏掉 iframe 自身滚动条 */
+      scrollbar-width: none;
+    }
+    .thumb-iframe-wrap iframe::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+    .card:hover .thumb-iframe-wrap iframe,
+    .card:focus-within .thumb-iframe-wrap iframe {
+      filter: none;
+    }
+    .thumb-iframe-wrap.is-phone iframe {
+      background: transparent;
+    }
+    .thumb-iframe-wrap.is-ready iframe {
+      opacity: 1;
+    }
+    .thumb-iframe-wrap.is-ready .thumb-chip {
+      display: none;
+    }
+    .thumb-frame {
+      position: absolute;
+      inset: 14px 16px 10px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--border-default);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      display: grid;
+    }
+    .thumb-frame[data-layout="shell"] {
+      grid-template-columns: 28px 1fr;
+    }
+    .thumb-frame[data-layout="split"] {
+      grid-template-columns: 36% 1fr;
+    }
+    .thumb-frame[data-layout="center"] {
+      place-items: center;
+      background: #faf9f8;
+    }
+    .thumb-side {
+      background: rgba(0, 0, 0, 0.06);
+      border-right: 1px solid var(--border-subtle);
+    }
+    .thumb-body {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+    .thumb-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.08);
+      width: 42%;
+    }
+    .thumb-bar.wide { width: 72%; }
+    .thumb-bar.accent { background: rgba(0, 0, 0, 0.28); width: 28%; }
+    .thumb-row {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+    }
+    .thumb-block {
+      flex: 1;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.045);
+      border: 1px solid var(--border-subtle);
+    }
+    .thumb-block.tall { min-height: 36px; }
+    .thumb-chip {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--brand-primary-muted);
+      border: 1px solid color-mix(in srgb, var(--brand-primary) 25%, transparent);
+      display: grid;
+      place-items: center;
+      color: var(--brand-primary);
+      font-size: 16px;
+    }
+    .thumb-badge {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 1;
+      height: 22px;
+      padding: 0 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-default);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .thumb-badge.demo {
+      color: var(--brand-primary);
+      border-color: color-mix(in srgb, var(--brand-primary) 30%, transparent);
+      background: #fff;
+    }
+
+    .card-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+    .card-type {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-soft);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      max-width: 110px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .card-desc {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      /* 固定预留两行高度，短文案也占位 */
+      min-height: calc(13px * 1.45 * 2);
+      height: calc(13px * 1.45 * 2);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: ui-monospace, "SF Mono", Consolas, monospace;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: var(--radius-lg);
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-primary {
+      background: var(--brand-primary);
+      color: var(--text-on-primary);
+      box-shadow: var(--shadow-cta);
+    }
+    .btn-primary:hover {
+      background: var(--brand-primary-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px 2px rgba(var(--brand-primary-rgb), 0.28);
+    }
+    .btn-primary:active { transform: scale(0.96); }
+    /* 卡片内操作钮：实心主色，紧凑宽度 */
+    .card-actions .btn-primary {
+      height: 32px;
+      min-width: 0;
+      padding: 0 10px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 10px;
+      background: var(--brand-primary);
+      color: var(--text-on-primary);
+      box-shadow: var(--shadow-cta);
+      flex: 0 0 auto;
+      gap: 4px;
+    }
+    .card-actions .btn-primary:hover {
+      background: var(--brand-primary-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 0 16px 2px rgba(var(--brand-primary-rgb), 0.22);
+    }
+    .card-actions .btn-primary:active { transform: scale(0.97); }
+    /* 后台 / APP / WEB 样板卡：预览与复制略加宽（主题卡不动） */
+    .card[data-id] .card-actions .btn-primary {
+      padding: 0 14px;
+      min-width: 72px;
+    }
+    .card[data-id] .card-actions .btn-ghost {
+      width: 38px;
+      height: 34px;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border-default);
+      color: var(--text-secondary);
+      font-weight: 500;
+      width: 36px;
+      padding: 0;
+    }
+    .card-actions .btn-ghost {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .btn-ghost:hover {
+      color: var(--brand-primary);
+      border-color: color-mix(in srgb, var(--brand-primary) 40%, transparent);
+      background: var(--brand-primary-muted);
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 24px;
+      border: 1px dashed var(--border-default);
+      border-radius: var(--radius-card);
+      color: var(--text-secondary);
+      background:
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--brand-primary) 6%, transparent), transparent 55%),
+        #fff;
+    }
+    .empty.is-soon {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+      gap: 0;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+    .empty-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--brand-primary-muted);
+      border: 1px solid color-mix(in srgb, var(--brand-primary) 18%, transparent);
+      color: var(--brand-primary);
+      box-sizing: border-box;
+    }
+    .empty.is-soon .empty-icon {
+      display: block;
+      width: 400px;
+      height: auto;
+      aspect-ratio: 960 / 920;
+      margin: 0 auto 10px;
+      border: none;
+      background: transparent;
+      overflow: visible;
+    }
+    .empty.is-soon .empty-icon-svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      filter: grayscale(1) brightness(1.14) contrast(0.9);
+      opacity: 0.66;
+    }
+    html[data-theme='dark'] .empty.is-soon .empty-icon-svg {
+      filter: grayscale(1) brightness(1.22) contrast(0.88);
+      opacity: 0.58;
+    }
+    .empty i {
+      font-size: 28px;
+      color: var(--brand-primary);
+      opacity: 0.85;
+      margin: 0;
+    }
+    .empty-icon i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      margin: 0;
+      font-size: 30px;
+      opacity: 1;
+      line-height: 1;
+    }
+    .empty-icon i::before {
+      line-height: 1;
+    }
+    .empty.is-soon .empty-icon i {
+      font-size: 32px;
+    }
+    .empty h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+    .empty.is-soon h3 {
+      font-size: 20px;
+      margin-top: -100px;
+      margin-bottom: 8px;
+    }
+    .empty p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-muted, var(--text-secondary));
+    }
+    .empty.is-soon p {
+      font-size: 13.5px;
+      max-width: 420px;
+    }
+
+    /* —— End / Theme switchers —— */
+    .switch-block { display: flex; flex-direction: column; gap: 8px; }
+    .switch-block[hidden],
+    #page-search-wrap[hidden],
+    #cat-block[hidden],
+    [hidden] {
+      display: none !important;
+    }
+    .seg {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 4px;
+      border-radius: 14px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border-subtle);
+    }
+    .seg-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      min-height: 44px;
+      padding: 8px 2px;
+      border-radius: 11px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .seg-btn small {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      opacity: 0.75;
+    }
+    .seg-btn:hover:not(:disabled):not(.is-active) {
+      color: var(--brand-primary);
+      background: var(--brand-primary-muted);
+    }
+    .seg-btn.is-active {
+      background: var(--brand-primary);
+      color: var(--text-on-primary);
+      box-shadow: var(--shadow-cta);
+    }
+    .seg-btn.is-active small { opacity: 0.9; color: inherit; }
+    .seg-btn:disabled,
+    .seg-btn.is-soon {
+      opacity: 0.55;
+      cursor: not-allowed;
+      font-weight: 600;
+    }
+
+    .theme-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: visible;
+      padding-right: 2px;
+    }
+    /* 主题面板：块与列表占满侧栏剩余空间，列表内部滚动 */
+    #style-block:not([hidden]) {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+    #style-block:not([hidden]) .theme-list {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+    }
+    .theme-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      text-align: left;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      cursor: pointer;
+      background: transparent;
+      box-sizing: border-box;
+    }
+    .theme-item:hover {
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+    }
+    .theme-item.is-active {
+      border-color: color-mix(in srgb, var(--brand-primary) 35%, transparent);
+      background: var(--brand-primary-muted);
+      color: var(--brand-primary);
+      font-weight: 700;
+    }
+    .theme-item .theme-name {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .theme-item .theme-go {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--brand-primary);
+      opacity: 0.4;
+      cursor: pointer;
+      pointer-events: none;
+      transition: opacity 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+    .theme-item .theme-go i {
+      font-size: 14px;
+      line-height: 1;
+    }
+    .theme-item:hover .theme-go,
+    .theme-item.is-active .theme-go {
+      opacity: 1;
+    }
+    .theme-item .theme-go:hover {
+      background: color-mix(in srgb, var(--brand-primary) 12%, transparent);
+      transform: translateX(1px);
+    }
+    .theme-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--brand-primary);
+      opacity: 0.35;
+    }
+    .theme-item.is-active .theme-swatch { opacity: 1; }
+
+    /* —— Preview dialog —— */
+    .preview-dialog {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px;
+    }
+    .preview-dialog[hidden] { display: none !important; }
+    .preview-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(12px);
+      border: none;
+      cursor: pointer;
+    }
+    .preview-panel {
+      position: relative;
+      z-index: 1;
+      /* ≥约1778px 封顶 1600；更窄时统一 90vw */
+      width: min(1600px, 90vw);
+      height: 90vh;
+      max-width: calc(100vw - 48px);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 24px 64px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      animation: preview-in 0.22s ease;
+    }
+    @keyframes preview-in {
+      from { opacity: 0; transform: translateY(8px) scale(0.98); }
+      to { opacity: 1; transform: none; }
+    }
+    .preview-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+    .preview-head h3 {
+      margin: 0;
+      flex: 1;
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .preview-head h3 i {
+      flex-shrink: 0;
+      color: var(--brand-primary);
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .preview-head .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+      height: 28px;
+      padding: 0 10px;
+      width: auto;
+      font-size: 12px;
+      border-radius: 8px;
+    }
+    .preview-head .btn-primary {
+      font-weight: 500;
+    }
+    .preview-head .btn i {
+      font-size: 11px;
+      line-height: 1;
+    }
+    .preview-body {
+      flex: 1;
+      min-height: 0;
+      background: #f4f3f2;
+      position: relative;
+    }
+    .preview-body iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+    .preview-body iframe[hidden],
+    .preview-doc[hidden] {
+      display: none !important;
+    }
+    .preview-doc {
+      height: 100%;
+      overflow: auto;
+      background: #fff;
+      padding: 28px 36px 48px;
+      box-sizing: border-box;
+    }
+    .preview-doc-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-primary, #1f2937);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .preview-doc-inner h1 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .preview-doc-inner h2 {
+      margin: 28px 0 12px;
+      font-size: 18px;
+      font-weight: 700;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .preview-doc-inner h3 {
+      margin: 20px 0 8px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .preview-doc-inner p { margin: 0 0 12px; color: var(--text-secondary); }
+    .preview-doc-inner ul,
+    .preview-doc-inner ol {
+      margin: 0 0 14px;
+      padding-left: 1.35em;
+      color: var(--text-secondary);
+    }
+    .preview-doc-inner li { margin: 0 0 6px; }
+    .preview-doc-inner blockquote {
+      margin: 0 0 14px;
+      padding: 10px 14px;
+      border-left: 3px solid var(--brand-primary);
+      background: var(--brand-primary-muted);
+      border-radius: 0 10px 10px 0;
+      color: var(--text-secondary);
+    }
+    .preview-doc-inner code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12.5px;
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      background: var(--surface-soft, #f3f4f6);
+    }
+    .preview-doc-inner pre {
+      margin: 0 0 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #111827;
+      color: #e5e7eb;
+      overflow: auto;
+    }
+    .preview-doc-inner pre code {
+      padding: 0;
+      background: none;
+      color: inherit;
+      font-size: 12.5px;
+    }
+    .preview-doc-inner hr {
+      border: 0;
+      border-top: 1px solid var(--border-subtle);
+      margin: 24px 0;
+    }
+    .preview-doc-inner strong { color: var(--text-primary); font-weight: 700; }
+    .preview-doc-loading,
+    .preview-doc-error {
+      margin: 48px auto;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .preview-doc-error { color: #b42318; }
+    .preview-doc-status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-sizing: border-box;
+      width: min(360px, calc(100% - 48px));
+      margin: auto;
+      padding: 12px 16px;
+      text-align: center;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .preview-doc-status-icon {
+      display: grid;
+      place-items: center;
+      width: auto;
+      height: auto;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      font-size: 36px;
+      line-height: 1;
+      margin-bottom: 4px;
+      color: var(--brand-primary);
+    }
+    .preview-doc-status.is-loading .preview-doc-status-icon,
+    .preview-doc-status.is-error .preview-doc-status-icon {
+      color: var(--brand-primary);
+      background: transparent;
+    }
+    .preview-doc-status-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .preview-doc-status-desc {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      max-width: 280px;
+    }
+    .preview-doc-status .btn {
+      margin-top: 6px;
+      height: 32px;
+      padding: 0 14px;
+      width: auto;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      gap: 6px;
+    }
+    /* 规范文档弹窗：窄阅读栏，区别于页面全宽预览 */
+    .preview-panel.is-doc {
+      width: min(720px, 92vw);
+      height: min(86vh, 880px);
+      max-width: calc(100vw - 48px);
+      max-height: 86vh;
+    }
+    .preview-panel.is-doc .preview-body {
+      background:
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--brand-primary) 5%, transparent), transparent 55%),
+        #f6f5f4;
+    }
+    .preview-panel.is-doc .preview-doc {
+      padding: 0;
+      background: transparent;
+    }
+    .preview-panel.is-doc .preview-doc-inner {
+      max-width: none;
+      margin: 20px 24px 36px;
+      padding: 28px 32px 36px;
+      background: #fff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+      font-size: 14.5px;
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+    }
+    .preview-panel.is-doc .preview-doc-inner h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      color: var(--text-primary);
+    }
+    .preview-panel.is-doc .preview-doc-inner h1 + p {
+      margin-top: 4px;
+      margin-bottom: 18px;
+      font-size: 13.5px;
+      color: var(--text-muted, #94a3b8);
+    }
+    .preview-panel.is-doc .preview-doc-inner h2 {
+      margin: 32px 0 12px;
+      padding: 0 0 8px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 18%, var(--border-subtle));
+    }
+    .preview-panel.is-doc .preview-doc-inner h3 {
+      margin: 22px 0 8px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .preview-panel.is-doc .preview-doc-inner p {
+      margin: 0 0 12px;
+      color: var(--text-secondary);
+    }
+    .preview-panel.is-doc .preview-doc-inner ul,
+    .preview-panel.is-doc .preview-doc-inner ol {
+      margin: 0 0 14px;
+      padding-left: 1.25em;
+    }
+    .preview-panel.is-doc .preview-doc-inner li {
+      margin: 0 0 7px;
+      padding-left: 2px;
+    }
+    .preview-panel.is-doc .preview-doc-inner li::marker {
+      color: color-mix(in srgb, var(--brand-primary) 65%, #94a3b8);
+    }
+    .preview-panel.is-doc .preview-doc-inner a {
+      color: var(--brand-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .preview-panel.is-doc .preview-doc-inner a:hover {
+      color: var(--brand-primary-strong);
+    }
+    .preview-panel.is-doc .preview-doc-inner blockquote {
+      margin: 0 0 16px;
+      padding: 12px 16px;
+      border-left: 3px solid var(--brand-primary);
+      background: color-mix(in srgb, var(--brand-primary) 7%, #fff);
+      border-radius: 0 12px 12px 0;
+    }
+    .preview-panel.is-doc .preview-doc-inner blockquote p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+    .preview-panel.is-doc .preview-doc-inner code {
+      font-size: 12px;
+      padding: 0.12em 0.4em;
+      border-radius: 5px;
+      border: 1px solid var(--border-subtle);
+      background: #f4f5f7;
+      color: #334155;
+    }
+    .preview-panel.is-doc .preview-doc-inner pre {
+      margin: 0 0 16px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      background: #0f172a;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+    .preview-panel.is-doc .preview-doc-inner pre code {
+      border: 0;
+      background: none;
+      color: #e2e8f0;
+      padding: 0;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+    .preview-panel.is-doc .preview-doc-inner hr {
+      margin: 28px 0;
+      border-top-color: var(--border-subtle);
+    }
+    .preview-panel.is-doc .preview-doc {
+      display: flex;
+      flex-direction: column;
+    }
+    .preview-panel.is-doc .preview-doc-status {
+      margin: auto;
+    }
+    /* 规范文档为白底阅读区：Gallery 暗色模式下锁定浅色文稿 tokens，避免白字白底 */
+    html[data-theme='dark'] .preview-panel.is-doc {
+      --text-primary: rgba(15, 23, 42, 0.95);
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --border-default: rgba(15, 23, 42, 0.12);
+      --brand-primary-muted: color-mix(in srgb, var(--brand-primary) 12%, #ffffff);
+      color-scheme: light;
+    }
+    html[data-theme='dark'] .preview-panel.is-doc .preview-body {
+      background:
+        radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--brand-primary) 5%, transparent), transparent 55%),
+        #f6f5f4;
+    }
+    html[data-theme='dark'] .preview-panel.is-doc .preview-doc-inner {
+      background: #fff;
+      border-color: rgba(15, 23, 42, 0.08);
+      color: rgba(15, 23, 42, 0.95);
+    }
+    html[data-theme='dark'] .preview-panel.is-doc .preview-doc-inner blockquote {
+      background: color-mix(in srgb, var(--brand-primary) 7%, #fff);
+    }
+    /* APP 设备壳预览：背景铺满；缩放由壳页 ?galleryPreview=1 处理 */
+    .preview-panel.is-phone .preview-body {
+      background: #f3f5fe;
+    }
+    .preview-panel.is-phone .preview-body iframe {
+      background: #f3f5fe;
+    }
+    .card-actions .btn-doc {
+      width: auto;
+      min-width: 0;
+      height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid var(--border-default);
+      background: var(--surface-card);
+      color: var(--text-secondary);
+      box-shadow: none;
+      flex: 0 0 auto;
+    }
+    .card-actions .btn-doc:hover {
+      color: var(--brand-primary);
+      border-color: color-mix(in srgb, var(--brand-primary) 40%, transparent);
+      background: var(--brand-primary-muted);
+    }
+
+    /* —— Help dialog —— */
+    .help-dialog {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .help-dialog[hidden] { display: none !important; }
+    .help-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(10px);
+      border: none;
+      cursor: pointer;
+    }
+    .help-panel {
+      position: relative;
+      z-index: 1;
+      width: min(640px, calc(100vw - 32px));
+      max-height: min(80vh, 720px);
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 24px 64px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      animation: preview-in 0.22s ease;
+    }
+    .help-panel .preview-head { padding: 10px 14px; }
+    .help-body {
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+      padding: 8px 22px 28px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .help-body h4 {
+      margin: 18px 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary, #1f2937);
+    }
+    .help-body h4:first-child { margin-top: 8px; }
+    .help-body p { margin: 0 0 10px; }
+    .help-body ul {
+      margin: 0 0 10px;
+      padding-left: 1.15em;
+    }
+    .help-body li { margin: 0 0 6px; }
+    .help-body code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: var(--surface-soft, #f3f4f6);
+      color: var(--brand-primary);
+    }
+    .help-body .help-path {
+      display: block;
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--text-muted, #94a3b8);
+    }
+
+    @media (max-width: 1400px) {
+      #grid > .grid-pane { gap: 24px; }
+    }
+    @media (max-width: 1100px) {
+      #grid > .grid-pane { gap: 20px; }
+      .preview-dialog { padding: 16px; }
+      .preview-panel { max-width: calc(100vw - 32px); }
+      .preview-panel.is-doc { max-width: calc(100vw - 32px); }
+    }
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+      .nav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .nav-item { width: auto; }
+      .sidebar-foot { display: none; }
+      .main { padding: 20px 16px 40px; }
+      #grid > .grid-pane { gap: 18px; }
+      .preview-dialog { padding: 8px; }
+      .preview-panel.is-doc {
+        width: calc(100vw - 16px);
+        height: min(90vh, 880px);
+      }
+      .preview-panel.is-doc .preview-doc-inner {
+        margin: 12px 12px 24px;
+        padding: 22px 20px 28px;
+      }
+      .preview-panel {
+        width: calc(100vw - 16px);
+        max-width: calc(100vw - 16px);
+        height: calc(100vh - 16px);
+        max-height: calc(100vh - 16px);
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-kicker">
+          <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+          <span id="brand-kicker">frame · admin</span>
+        </div>
+        <h1 class="brand-title">样板预览 <em>Gallery</em></h1>
+        <p class="brand-desc">浏览母版库中页面及组件样板与视觉主题，方便在生成原型时进行引用。</p>
+      </div>
+
+      <div class="switch-block" id="end-switch-block">
+        <div class="nav-label">浏览</div>
+        <div class="seg" id="end-seg" role="tablist" aria-label="端与主题切换"></div>
+      </div>
+
+      <div class="switch-block" id="style-block" hidden>
+        <div class="nav-label">STYLE 主题 <span id="style-count" style="font-weight:600;text-transform:none;letter-spacing:0"></span></div>
+        <div class="search-wrap" style="margin-bottom:4px">
+          <i class="fa-solid fa-filter" aria-hidden="true"></i>
+          <input id="style-search" class="search-input" type="search" placeholder="筛选主题名称…" autocomplete="off" />
+        </div>
+        <div class="theme-list" id="theme-list" role="listbox" aria-label="STYLE 主题列表"></div>
+      </div>
+
+      <div class="search-wrap" id="page-search-wrap">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input
+          id="search"
+          class="search-input"
+          type="search"
+          placeholder="搜索名称、类型或文件名…"
+          autocomplete="off"
+        />
+      </div>
+
+      <div id="cat-block">
+        <div class="nav-label">分类</div>
+        <ul class="nav-list" id="nav"></ul>
+      </div>
+
+      <div class="sidebar-foot" id="sidebar-foot">
+        <i class="fa-regular fa-folder" aria-hidden="true"></i>
+        <span id="sidebar-foot-text">打开本页即可浏览；交付项目时请复制样板到对应目录。</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="main-head">
+        <div>
+          <h2 id="section-title">全部 <span>页面</span></h2>
+          <p id="section-desc">全部页面及组件列表，可预览或复制名称。</p>
+        </div>
+        <div class="meta-pills">
+          <span class="pill"><i class="fa-solid fa-layer-group"></i><span id="stat-total">0</span> 页</span>
+          <button type="button" class="pill" id="help-open" aria-haspopup="dialog">
+            <i class="fa-regular fa-circle-question" aria-hidden="true"></i>使用说明
+          </button>
+          <div class="shell-theme-wrap">
+            <button type="button" class="pill" id="shell-theme-open" aria-haspopup="listbox" aria-expanded="false" title="主题（壳配色与明暗）">
+              <i class="fa-solid fa-palette" aria-hidden="true"></i>
+              <span id="shell-theme-label">主题</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="shell-theme-menu" id="shell-theme-menu" hidden role="listbox" aria-label="主题"></div>
+          </div>
+          <a class="pill" href="https://www.vibepm.net/" target="_blank" rel="noopener noreferrer" title="打开 VibePM 官网">
+            <i class="fa-solid fa-house" aria-hidden="true"></i>官网
+          </a>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </main>
+  </div>
+
+  <div class="preview-dialog" id="preview-dialog" hidden>
+    <button type="button" class="preview-scrim" id="preview-scrim" aria-label="关闭预览"></button>
+    <div class="preview-panel" role="dialog" aria-modal="true" aria-labelledby="preview-title">
+      <div class="preview-head">
+        <h3 id="preview-title">主题预览</h3>
+        <a class="btn btn-ghost" id="preview-open-tab" href="#" target="_blank" rel="noopener" style="text-decoration:none"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>新窗口</a>
+        <button type="button" class="btn btn-primary" id="preview-close"><i class="fa-solid fa-xmark" aria-hidden="true"></i>关闭</button>
+      </div>
+      <div class="preview-body">
+        <iframe id="preview-frame" title="视觉主题预览"></iframe>
+        <div id="preview-doc" class="preview-doc" hidden></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="help-dialog" id="help-dialog" hidden>
+    <button type="button" class="help-scrim" id="help-scrim" aria-label="关闭使用说明"></button>
+    <div class="help-panel" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <div class="preview-head">
+        <h3 id="help-title"><i class="fa-regular fa-circle-question" aria-hidden="true"></i>使用说明</h3>
+        <button type="button" class="btn btn-primary" id="help-close"><i class="fa-solid fa-xmark" aria-hidden="true"></i>关闭</button>
+      </div>
+      <div class="help-body">
+        <h4>本页做什么</h4>
+        <p>浏览各个终端母版样板与视觉主题，方便在生成原型时进行引用和对照效果。在产出原型时，在对话里让 Agent 按原型技能生成到项目里。</p>
+
+        <h4>页面</h4>
+        <p>说清要做哪一端（WEB / 后台 / APP）和哪些页面。可点开样板页对照，让 Agent「参考某某页」来实现或增页。</p>
+
+        <h4>组件</h4>
+        <p>不只整页能参考：左侧「组件演示」里的基础控件、表单、图表等也可点开对照。做业务页时，可以说「交互参考某某组件样板」，Agent 会按现有组件风格落到页面里。</p>
+
+        <h4>主题</h4>
+        <p>WEB 和 APP 创建时先选好视觉主题（左侧「主题」）；后台默认用母版配色，只有明确要改颜色时再提。选定后增页会沿用，一般不用反复说明。</p>
+
+        <h4>可以这样说</h4>
+        <ul>
+          <li>「做一个用户管理后台，列表参考样板里的『查询表格』。」</li>
+          <li>「表单校验和提交反馈，参考『表单组件』那页的交互。」</li>
+          <li>「做 WEB 落地页，主题用『亮色科技蓝』，要有价格区和 FAQ。」</li>
+          <li>「现有后台别改结构，只把主色换成我们的品牌蓝。」</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <template id="gallery-empty-icon"><svg class="empty-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="30 90 960 920" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><defs>
+        <radialGradient id="radialGradient-1" gradientTransform="translate(0.500000,0.024678),scale(0.663286,1.000000),rotate(91.510162),translate(-0.500000,-0.024678)" r="70.7270258%" fy="2.46779654%" fx="50%" cy="2.46779654%" cx="50%">
+            <stop offset="0%" stop-opacity="0.151561817" stop-color="#0052D9"></stop>
+            <stop offset="100%" stop-opacity="0" stop-color="#0052D9"></stop>
+        </radialGradient>
+        <linearGradient id="linearGradient-2" y2="71.072554%" x2="62.3079607%" y1="15.2043272%" x1="21.1773101%">
+            <stop offset="0%" stop-opacity="0.68862851" stop-color="#9BC0FF"></stop>
+            <stop offset="100%" stop-opacity="0" stop-color="#A2C5FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-3" y2="72.1696675%" x2="0.106068924%" y1="62.3429835%" x1="38.3317301%">
+            <stop offset="1.42318619%" stop-color="#92BAFF"></stop>
+            <stop offset="62.8132224%" stop-color="#5293FF"></stop>
+            <stop offset="71.5238035%" stop-color="#4A8FFF"></stop>
+            <stop offset="100%" stop-color="#A5C7FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-4" y2="37.6460135%" x2="31.7580834%" y1="20.2502161%" x1="65.5091371%">
+            <stop offset="0%" stop-color="#4789F3"></stop>
+            <stop offset="100%" stop-color="#EDF4FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-5" y2="50%" x2="0%" y1="10.5557469%" x1="75.0692129%">
+            <stop offset="0%" stop-color="#97BEFF"></stop>
+            <stop offset="100%" stop-color="#8EB8FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-6" y2="73.6212671%" x2="20.9576398%" y1="-0.106294415%" x1="77.7874172%">
+            <stop offset="0%" stop-color="#A3C5FF"></stop>
+            <stop offset="100%" stop-color="#81B0FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-7" y2="73.7206598%" x2="86.7900509%" y1="34.7766051%" x1="27.1414159%">
+            <stop offset="0%" stop-color="#A6C7FF"></stop>
+            <stop offset="97.9268534%" stop-color="#5493FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-8" y2="73.9484429%" x2="87.1379625%" y1="34.1699064%" x1="26.211194%">
+            <stop offset="0%" stop-color="#BAD4FF"></stop>
+            <stop offset="100%" stop-color="#A3C6FF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-9" y2="100%" x2="50%" y1="0%" x1="50%">
+            <stop offset="0%" stop-color="#72A0E8"></stop>
+            <stop offset="99.3995506%" stop-color="#3981F7"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-10" y2="100%" x2="50%" y1="0%" x1="50%">
+            <stop offset="1.27618963%" stop-color="#B7D2FF"></stop>
+            <stop offset="100%" stop-color="#93BBFF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-11" y2="100%" x2="50%" y1="0%" x1="50%">
+            <stop offset="0%" stop-color="#72A0E8"></stop>
+            <stop offset="99.3995506%" stop-color="#3981F7"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-12" y2="100%" x2="50%" y1="0%" x1="50%">
+            <stop offset="1.27618963%" stop-color="#B7D2FF"></stop>
+            <stop offset="100%" stop-color="#93BBFF"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-13" y2="100%" x2="50%" y1="0%" x1="50%">
+            <stop offset="0%" stop-color="#72A0E8"></stop>
+            <stop offset="99.3995506%" stop-color="#3981F7"></stop>
+        </linearGradient>
+        <linearGradient id="linearGradient-14" y2="100%" x2="50%" y1="0%" x1="50%">
+            <stop offset="1.27618963%" stop-color="#B7D2FF"></stop>
+            <stop offset="100%" stop-color="#93BBFF"></stop>
+        </linearGradient>
+        <radialGradient id="radialGradient-15" r="66.1694452%" fy="50%" fx="24.0423068%" cy="50%" cx="24.0423068%">
+            <stop offset="0%" stop-color="#F2F7FF"></stop>
+            <stop offset="100%" stop-color="#99C0FF"></stop>
+        </radialGradient>
+    </defs>
+    <g fill-rule="evenodd" fill="none" stroke-width="1" stroke="none" id="08">
+        <ellipse ry="279" rx="420.633028" cy="719" cx="512" fill-rule="nonzero" fill="url(#radialGradient-1)" id="椭圆形"></ellipse>
+        <g transform="translate(367.000000, 198.000000)" id="火箭">
+            <path fill="url(#linearGradient-2)" id="路径" d="M224.954018,261 L325,352.833216 C305.41075,376.858643 278.648444,395.968705 244.527525,406.3907 C224.66329,412.45811 204.990306,415.515934 185.786236,416 L150,306.887799 L182.397155,273.986306 L224.954018,261 Z"></path>
+            <g>
+                <polygon points="102.535656 267.937961 102.535656 298.89125 129.405749 347 145.398534 298.89125" fill="#9EC2FF" id="路径"></polygon>
+                <polygon points="213.248056 203.325485 239.909145 213.009641 268 261.755012 218.297981 250.693435" fill="url(#linearGradient-3)" id="路径"></polygon>
+                <path fill="url(#linearGradient-4)" id="路径" d="M24.3621707,2.70413061 C60.3742296,-12.6454777 200.025083,32.6162775 224.962676,261.583758 C177.090194,273.772194 151.895948,306.535526 151.895948,306.535526 C-33.4140403,192.792753 -11.649955,18.0537322 24.3621707,2.70413061 Z"></path>
+                <path fill="url(#linearGradient-5)" id="路径" d="M46.7925508,210.511514 C26.0799435,181.001804 13.4176027,151.269 6.5777823,123.85892 L133.676429,45.0103931 C153.054302,63.4668683 171.925559,88.4291787 187.6815,121.367703 L46.7925508,210.511514 Z"></path>
+                <ellipse ry="33.4975993" rx="33.4620499" cy="124.241018" cx="93.0362694" fill-rule="nonzero" fill="#C2D9FF" id="椭圆形"></ellipse>
+                <path fill="url(#linearGradient-6)" id="路径" d="M53.4137488,1.15524851 L6.57992918,27.5538188 C11.0778979,14.4476821 17.4581739,5.64682436 24.3621644,2.70413061 C30.9895911,-0.120710549 41.1271533,-0.892747808 53.4137488,1.15524851 Z"></path>
+                <polygon points="208.369917 266.701883 156.614164 231.730055 185.242889 278.724842" fill="url(#linearGradient-7)" id="路径"></polygon>
+                <path fill-rule="nonzero" fill="url(#linearGradient-8)" id="路径" d="M157.447292,233.09925 C158.145164,232.665656 159.037693,232.808449 159.569646,233.397524 L159.751141,233.639095 L201.866825,301.568877 C202.354033,302.354731 202.112771,303.387127 201.327417,303.874852 C200.629733,304.308646 199.7373,304.165946 199.205254,303.576723 L199.023555,303.335205 L156.90802,235.405548 C156.420744,234.619607 156.662185,233.587044 157.447292,233.09925 Z"></path>
+            </g>
+        </g>
+        <g transform="translate(209.000000, 507.000000)" id="编组">
+            <path fill-rule="nonzero" fill="#3F78D6" id="路径" d="M20.7692308,30 C20.7692308,30 20.7692308,30 20.7692308,30 L31.1538462,30 C31.1538462,30 31.1538462,30 31.1538462,30 L31.1538462,84.6666667 C31.1538462,87.6121853 28.8291708,90 25.9615385,90 L25.9615385,90 C23.0939061,90 20.7692308,87.6121853 20.7692308,84.6666667 L20.7692308,30 Z"></path>
+            <polygon points="20.7692308 0 45 63.3333333 20.7692308 80" fill="url(#linearGradient-9)" id="路径"></polygon>
+            <g id="路径" fill="url(#linearGradient-10)" transform="translate(10.384615, 40.000000) scale(-1, 1) translate(-10.384615, -40.000000)">
+                <polygon points="0 0 20.7692308 70 0 80"></polygon>
+            </g>
+        </g>
+        <g transform="translate(791.000000, 472.000000)" id="编组备份-2">
+            <path fill-rule="nonzero" fill="#3F78D6" id="路径" d="M16,23 C16,23 16,23 16,23 L24,23 C24,23 24,23 24,23 L24,65.8222222 C24,68.1295452 22.209139,70 20,70 L20,70 C17.790861,70 16,68.1295452 16,65.8222222 L16,23 Z"></path>
+            <polygon points="16 0 35 49.0833333 16 62" fill="url(#linearGradient-11)" id="路径"></polygon>
+            <g fill="url(#linearGradient-12)" transform="translate(8.000000, 31.000000) scale(-1, 1) translate(-8.000000, -31.000000)" id="编组">
+                <polygon points="0 0 16 54.25 0 62" id="路径"></polygon>
+            </g>
+        </g>
+        <g transform="translate(265.000000, 440.000000)" id="编组备份">
+            <path fill-rule="nonzero" fill="#3F78D6" id="路径" d="M16,23 C16,23 16,23 16,23 L24,23 C24,23 24,23 24,23 L24,64 C24,66.209139 22.209139,68 20,68 L20,68 C17.790861,68 16,66.209139 16,64 L16,23 Z"></path>
+            <polygon points="16 0 34 47.5 16 60" fill="url(#linearGradient-13)" id="路径"></polygon>
+            <g fill="url(#linearGradient-14)" transform="translate(8.000000, 30.000000) scale(-1, 1) translate(-8.000000, -30.000000)" id="编组">
+                <polygon points="0 0 16 52.5 0 60" id="路径"></polygon>
+            </g>
+        </g>
+        <circle r="29.5" cy="273.5" cx="635.5" fill-rule="nonzero" fill="url(#radialGradient-15)" id="椭圆形"></circle>
+        <circle r="19.5" cy="584.5" cx="458.5" opacity="0.562533424" fill-rule="nonzero" fill="url(#radialGradient-15)" id="椭圆形备份"></circle>
+    </g>
+</svg></template>
+
+  <script>
+    (function () {
+      const STORAGE_END = 'frame-gallery-end'
+      const STORAGE_PANEL = 'frame-gallery-panel'
+      const STORAGE_STYLE = 'frame-gallery-style'
+      const STORAGE_SHELL = 'frame-gallery-theme'
+      const STYLE_BASE = './.style/'
+
+      /* URL 参数说明见 <body> 顶部 HTML 注释 */
+      function parseGalleryQuery() {
+        const params = new URLSearchParams(location.search)
+        const truthy = (v) => v === '1' || v === 'true' || v === 'yes'
+        return {
+          hideEnds:
+            truthy(params.get('hideEnds')) ||
+            truthy(params.get('hideBrowse')) ||
+            truthy(params.get('noEnds')),
+          end: (params.get('end') || '').toLowerCase(),
+          panel: (params.get('panel') || '').toLowerCase(),
+        }
+      }
+
+      function emptySoonIconMarkup() {
+        const tpl = document.getElementById('gallery-empty-icon')
+        const inner = tpl ? tpl.innerHTML.trim() : ''
+        return '<div class="empty-icon">' + inner + '</div>'
+      }
+
+      const SHELL_THEMES = [
+        {
+          id: 'mist-purple',
+          label: '紫雾轻写',
+          swatch: '#6c5ce7',
+          vars: {
+            '--brand-primary': '#6c5ce7',
+            '--brand-primary-rgb': '108, 92, 231',
+            '--brand-primary-muted': 'rgba(108, 92, 231, 0.15)',
+            '--brand-primary-strong': '#5a4bd1',
+            '--shadow-cta': '0 0 20px 2px rgba(108, 92, 231, 0.15)',
+          },
+        },
+        {
+          id: 'mist-green',
+          label: '翠绿轻写',
+          swatch: '#27ae60',
+          vars: {
+            '--brand-primary': '#27ae60',
+            '--brand-primary-rgb': '39, 174, 96',
+            '--brand-primary-muted': 'rgba(39, 174, 96, 0.15)',
+            '--brand-primary-strong': '#1e8449',
+            '--shadow-cta': '0 0 20px 2px rgba(39, 174, 96, 0.15)',
+          },
+        },
+        {
+          id: 'mist-coral',
+          label: '绯雾轻写',
+          swatch: '#e74c3c',
+          vars: {
+            '--brand-primary': '#e74c3c',
+            '--brand-primary-rgb': '231, 76, 60',
+            '--brand-primary-muted': 'rgba(231, 76, 60, 0.15)',
+            '--brand-primary-strong': '#c0392b',
+            '--shadow-cta': '0 0 20px 2px rgba(231, 76, 60, 0.15)',
+          },
+        },
+        {
+          id: 'tech-blue',
+          label: '亮色科技蓝',
+          swatch: '#4C75F2',
+          vars: {
+            '--brand-primary': '#4C75F2',
+            '--brand-primary-rgb': '76, 117, 242',
+            '--brand-primary-muted': 'rgba(76, 117, 242, 0.15)',
+            '--brand-primary-strong': '#3A5CCC',
+            '--shadow-cta': '0 0 20px 2px rgba(76, 117, 242, 0.18)',
+          },
+        },
+        {
+          id: 'sage-paper',
+          label: '鼠尾草暖纸',
+          swatch: '#487265',
+          vars: {
+            '--brand-primary': '#487265',
+            '--brand-primary-rgb': '72, 114, 101',
+            '--brand-primary-muted': 'rgba(72, 114, 101, 0.15)',
+            '--brand-primary-strong': '#3D6357',
+            '--shadow-cta': '0 0 20px 2px rgba(72, 114, 101, 0.18)',
+          },
+        },
+      ]
+
+      const ENDS = [
+        { id: 'admin', label: 'Admin', hint: '后台', ready: true, base: './admin/', foot: '后台母版源文件目录： <strong>admin/</strong> ' },
+        { id: 'web', label: 'WEB', hint: '即将', ready: false, base: './web/', foot: '相关内容即将接入，敬请期待。' },
+        { id: 'app', label: 'APP', hint: '设备壳', ready: true, base: './app/', foot: 'APP 设备壳源文件目录： <strong>app/</strong> ' },
+      ]
+
+      const TABS = [
+        ...ENDS.map((e) => ({ ...e, kind: 'end' })),
+        { id: 'styles', label: 'STYLE', hint: '主题', kind: 'styles', ready: true },
+      ]
+
+      /* 来自 frame/.style（*-style.md + *-preview.html），供浏览选型；Gallery 壳色只跟 SHELL_THEMES */
+      const STYLE_CATALOG = [
+        { id: '亮色现代极简', label: '亮色现代极简', preview: true, swatch: '#2563EB' },
+        { id: '亮色电光蓝', label: '亮色电光蓝', preview: true, swatch: '#38BDF8' },
+        { id: '亮色科技蓝', label: '亮色科技蓝', preview: true, swatch: '#4C75F2' },
+        { id: '绯雾轻写', label: '绯雾轻写', preview: true, swatch: '#E74C3C' },
+        { id: 'SemiDesign', label: 'SemiDesign', preview: true, swatch: '#0064FA' },
+        { id: '暗粉霓虹潮', label: '暗粉霓虹潮', preview: true, swatch: '#F472B6' },
+        { id: '暗紫色科技感', label: '暗紫色科技感', preview: true, swatch: '#8B5CF6' },
+        { id: '暗色低饱和黑灰', label: '暗色低饱和黑灰', preview: true, swatch: '#64748B' },
+        { id: '暗黑亮青发光', label: '暗黑亮青发光', preview: true, swatch: '#22D3EE' },
+        { id: '暗黑荧光绿', label: '暗黑荧光绿', preview: true, swatch: '#D9FF00' },
+        { id: '电光玻璃', label: '电光玻璃', preview: true, swatch: '#A855F7' },
+        { id: '焦糖暗艺', label: '焦糖暗艺', preview: true, swatch: '#F0833F' },
+      ]
+
+      /* 氛围光斑预设：相邻切换差异足够明显 */
+      const AMBIENT_PRESETS = [
+        { trX: '4vw', trY: '-16vw', trS: 1.05, trO: 1, blX: '-14vw', blY: '6vw', blS: 0.95, blO: 0.7 },
+        { trX: '18vw', trY: '-6vw', trS: 1.35, trO: 0.95, blX: '-6vw', blY: '16vw', blS: 1.15, blO: 0.55 },
+        { trX: '10vw', trY: '-20vw', trS: 0.85, trO: 0.85, blX: '-18vw', blY: '2vw', blS: 1.3, blO: 0.75 },
+        { trX: '22vw', trY: '-12vw', trS: 1.2, trO: 1, blX: '-10vw', blY: '12vw', blS: 0.8, blO: 0.5 },
+        { trX: '6vw', trY: '-4vw', trS: 1.45, trO: 0.9, blX: '-20vw', blY: '10vw', blS: 1.1, blO: 0.65 },
+        { trX: '14vw', trY: '-18vw', trS: 1.0, trO: 1, blX: '-4vw', blY: '18vw', blS: 1.25, blO: 0.6 },
+      ]
+      let ambientTick = 0
+
+      const ADMIN_CATEGORIES = [
+        { id: 'all', label: '全部', desc: '全部页面及组件列表，可预览或复制名称。' },
+        { id: 'login', label: '登录页面', desc: '登录封面、Banner 与分栏等鉴权入口页。' },
+        { id: 'dashboard', label: '数据看板', desc: '数据概览与行业看板：电商、CRM、财务、分析等。' },
+        { id: 'component', label: '常用组件', desc: '控件用法参考，不作为业务页直接交付。' },
+        { id: 'chart', label: '图表组件', desc: '图表、指标卡与配色方案演示。' },
+        { id: 'list', label: '页面模板', desc: '查询表、看板、导入等列表类页面模板。' },
+        { id: 'form', label: '表单页面', desc: '基础、分组与分步填写类页面。' },
+        { id: 'profile', label: '详情页面', desc: '基础详情、高级详情与分栏详情。' },
+        { id: 'result', label: '结果页面', desc: '成功、等待、警告与失败结果页。' },
+        { id: 'exception', label: '异常页面', desc: '403、404、500 等异常状态页。' },
+        { id: 'user', label: '个人中心', desc: '个人主页、设置与消息管理。' },
+      ]
+
+      const APP_CATEGORIES = [
+        { id: 'all', label: '全部', desc: '全部设备壳模板，可预览或复制文件名。' },
+        { id: 'ios', label: 'iOS 壳', desc: 'iPhone 设备框：纯内容、标题栏、Tab、完整导航。' },
+        { id: 'wechat', label: '微信壳', desc: '微信小程序设备框：纯内容、标题栏、Tab、完整导航。' },
+      ]
+
+      /* 与 frame/admin/_meta/pages.catalog.json 对齐；html 必须存在于 admin/ 根目录 */
+      const ADMIN_PAGES = [
+        { id: 'login', cat: 'login', label: '登录 · 封面', html: 'login-cover.html', type: 'login', desc: '全屏封面背景 + 居中登录卡；默认鉴权入口。', layout: 'center', badge: '默认' },
+        { id: 'login-banner', cat: 'login', label: '登录 · Banner', html: 'login-banner.html', type: 'login-banner', desc: '左侧 Banner + 右侧表单。', layout: 'center', badge: '无壳' },
+        { id: 'login-split', cat: 'login', label: '登录 · 分栏', html: 'login-split.html', type: 'login-split', desc: '居中双栏卡片登录。', layout: 'center', badge: '无壳' },
+        { id: 'dashboard', cat: 'dashboard', label: '数据概览', html: 'dashboard.html', type: 'dashboard', desc: '默认业务首页样板，含指标与图表区。', layout: 'shell', badge: '首页' },
+
+        { id: 'dashboard-ecommerce', cat: 'dashboard', label: '电商运营', html: 'dashboard-ecommerce.html', type: 'dashboard-ecommerce', desc: 'KPI + 销售概览 + 订单表。', layout: 'shell' },
+        { id: 'dashboard-crm', cat: 'dashboard', label: '客户关系', html: 'dashboard-crm.html', type: 'dashboard-crm', desc: 'KPI + 管道 + 商机表。', layout: 'shell' },
+        { id: 'dashboard-academy', cat: 'dashboard', label: '教育培训', html: 'dashboard-academy.html', type: 'dashboard-academy', desc: 'KPI + 课表 + 作业状态。', layout: 'shell' },
+        { id: 'dashboard-finance', cat: 'dashboard', label: '财务管理', html: 'dashboard-finance.html', type: 'dashboard-finance', desc: 'KPI + 收支 + 账户分配。', layout: 'shell' },
+        { id: 'dashboard-analytics', cat: 'dashboard', label: '经营分析', html: 'dashboard-analytics.html', type: 'dashboard-analytics', desc: 'KPI + 流量质量 + 热门页面。', layout: 'shell' },
+        { id: 'dashboard-customer', cat: 'dashboard', label: '客户洞察', html: 'dashboard-customer.html', type: 'dashboard-customer', desc: 'KPI + 客户活动 + 客户表。', layout: 'shell' },
+        { id: 'dashboard-productivity', cat: 'dashboard', label: '效率协作', html: 'dashboard-productivity.html', type: 'dashboard-productivity', desc: '任务 / 项目 / 日历。', layout: 'shell' },
+        { id: 'dashboard-banking', cat: 'dashboard', label: '金融银行', html: 'dashboard-banking.html', type: 'dashboard-banking', desc: '账户 / 现金流 / 卡片。', layout: 'shell' },
+
+        { id: 'list', cat: 'list', label: '数据列表', html: 'list-search-table.html', type: 'list', desc: '筛选面板 + 表格 + 分页，CRUD 主范式。', layout: 'shell', badge: '常用' },
+        { id: 'list-card', cat: 'list', label: '卡片列表', html: 'list-card.html', type: 'list-card', desc: '卡片网格列表，适合内容/资源浏览。', layout: 'shell' },
+        { id: 'list-kanban', cat: 'list', label: '任务看板', html: 'list-kanban.html', type: 'list-kanban', desc: '列式看板，拖拽/状态流转示意。', layout: 'shell' },
+        { id: 'list-tree-table', cat: 'list', label: '左树右表', html: 'list-tree-table.html', type: 'list-tree-table', desc: '左侧分类树 + 右侧表格。', layout: 'split' },
+        { id: 'list-filter-table', cat: 'list', label: '左筛右表', html: 'list-filter-table.html', type: 'list-filter-table', desc: '侧栏筛选 + 主表。', layout: 'split' },
+        { id: 'list-tag-filter', cat: 'list', label: '标签筛选', html: 'list-tag-filter.html', type: 'list-tag-filter', desc: '顶部平铺标签筛选 + 表格。', layout: 'shell' },
+        { id: 'list-master-detail', cat: 'profile', label: '分栏详情页', html: 'list-master-detail.html', type: 'list-master-detail', desc: '左列表右详情，适合工单/会话。', layout: 'split' },
+        { id: 'list-editable', cat: 'list', label: '行内编辑', html: 'list-editable.html', type: 'list-editable', desc: '行内编辑与批量保存。', layout: 'shell' },
+        { id: 'list-calendar', cat: 'list', label: '日历页面', html: 'list-calendar.html', type: 'list-calendar', desc: '排期、活动、运维变更视角。', layout: 'shell' },
+        { id: 'list-media', cat: 'list', label: '文件管理', html: 'list-media.html', type: 'list-media', desc: '目录树 + 宫格/列表素材浏览。', layout: 'split' },
+        { id: 'list-import', cat: 'list', label: '导入向导', html: 'list-import.html', type: 'list-import', desc: '上传 → 校验 → 结果三步导入。', layout: 'shell' },
+
+        { id: 'form-basic', cat: 'form', label: '基础表单', html: 'form-basic.html', type: 'form-basic', desc: '单区基础字段表单。', layout: 'shell' },
+        { id: 'form', cat: 'form', label: '分组表单', html: 'form-group.html', type: 'form', desc: '多分组字段布局。', layout: 'shell' },
+        { id: 'form-step', cat: 'form', label: '分步表单', html: 'form-step.html', type: 'form-step', desc: '横向步骤条引导填写。', layout: 'shell' },
+        { id: 'form-step-vertical', cat: 'form', label: '纵向分布', html: 'form-step-vertical.html', type: 'form-step-vertical', desc: '侧向步骤 + 内容区。', layout: 'split' },
+
+        { id: 'detail', cat: 'profile', label: '基础详情页', html: 'profile-basic.html', type: 'detail', desc: '基础信息展示详情。', layout: 'shell' },
+        { id: 'detail-advanced', cat: 'profile', label: '高级详情页', html: 'profile-advanced.html', type: 'detail-advanced', desc: '多分区 / Tab 高级详情。', layout: 'shell' },
+
+        { id: 'result-success', cat: 'result', label: '成功页面', html: 'result-success.html', type: 'result-success', desc: '操作成功反馈页。', layout: 'center' },
+        { id: 'result-waiting', cat: 'result', label: '等待页面', html: 'result-waiting.html', type: 'result-waiting', desc: '处理中 / 等待态结果页。', layout: 'center' },
+        { id: 'result-warning', cat: 'result', label: '警告页面', html: 'result-warning.html', type: 'result-warning', desc: '需关注的警告结果。', layout: 'center' },
+        { id: 'result-error', cat: 'result', label: '失败页面', html: 'result-error.html', type: 'result-error', desc: '失败与重试引导。', layout: 'center' },
+
+        { id: 'exception-403', cat: 'exception', label: '403', html: 'exception-403.html', type: 'exception-403', desc: '无权限异常页。', layout: 'center' },
+        { id: 'exception-404', cat: 'exception', label: '404', html: 'exception-404.html', type: 'exception-404', desc: '页面不存在。', layout: 'center' },
+        { id: 'exception-500', cat: 'exception', label: '500', html: 'exception-500.html', type: 'exception-500', desc: '服务异常。', layout: 'center' },
+
+        { id: 'user-home', cat: 'user', label: '个人主页', html: 'user-home.html', type: 'user-home', desc: '个人主页（项目 / 动态 / 团队）。', layout: 'shell' },
+        { id: 'user-setting', cat: 'user', label: '用户设置', html: 'user-setting.html', type: 'user-setting', desc: '偏好与账号设置。', layout: 'shell' },
+        { id: 'user-message', cat: 'user', label: '消息管理', html: 'message-list.html', type: 'user-message', desc: '消息 / 通知 / 待办列表与读写管理。', layout: 'shell' },
+
+        { id: 'component-basic', cat: 'component', label: '基础组件', html: 'component-basic.html', type: 'component-basic', desc: '按钮、标签、反馈等基础控件演示。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-extended', cat: 'component', label: '扩展组件', html: 'component-extended.html', type: 'component-extended', desc: '扩展杂项组件演示。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-form', cat: 'component', label: '表单组件', html: 'component-form.html', type: 'component-form', desc: '表单控件组合参考。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-form-extended', cat: 'component', label: '扩展表单', html: 'component-form-extended.html', type: 'component-form-extended', desc: '扩展表单控件演示。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-table-extended', cat: 'component', label: '表格组件', html: 'component-table-extended.html', type: 'component-table-extended', desc: '表格控件用法演示。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-list', cat: 'component', label: '列表组件', html: 'component-list.html', type: 'component-list', desc: '列表控件用法演示。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-chart', cat: 'chart', label: '常用图表', html: 'component-chart.html', type: 'component-chart', desc: '图表组件用法样板。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-chart-extended', cat: 'chart', label: '扩展图表', html: 'component-chart-extended.html', type: 'component-chart-extended', desc: '业务图表组合演示。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-rich-text', cat: 'component', label: '富文本组件', html: 'component-rich-text.html', type: 'component-rich-text', desc: '富文本编辑示意。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-metric-card', cat: 'chart', label: '指标卡片', html: 'component-metric-card.html', type: 'component-metric-card', desc: '指标卡布局参考。', layout: 'shell', badge: '演示', demo: true },
+        { id: 'component-chart-palette', cat: 'chart', label: '图表配色', html: 'component-chart-palette.html', type: 'component-chart-palette', desc: '方案 A/B/C 色板对比。', layout: 'shell', badge: '演示', demo: true },
+      ]
+
+      // 全部样板接入 iframe 分步预览
+      ADMIN_PAGES.forEach(function (p) {
+        p.live = true
+      })
+
+      const APP_PAGES = [
+        // thumbW>768：避免窄 iframe 去壳；视口偏大 + 0.88 contain = 原先小尺寸手机壳
+        { id: 'ios-frame', cat: 'ios', label: 'iOS 纯内容', html: 'ios_frame.html', type: 'ios-content', desc: '无标题栏、无 Tab 的 iPhone 壳，适合沉浸内容页。', layout: 'phone', badge: 'iOS', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'ios-header', cat: 'ios', label: 'iOS 标题栏', html: 'ios_frame_header.html', type: 'ios-header', desc: '仅顶栏标题，适合二级页。', layout: 'phone', badge: 'iOS', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'ios-tabs', cat: 'ios', label: 'iOS 底部 Tab', html: 'ios_frame_tabs.html', type: 'ios-tabs', desc: '仅底部标签栏，适合主 Tab 首页。', layout: 'phone', badge: 'iOS', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'ios-nav', cat: 'ios', label: 'iOS 完整导航', html: 'ios_frame_nav.html', type: 'ios-nav', desc: '标题栏 + 底部 Tab，常规 App 主结构。', layout: 'phone', badge: '常用', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'wechat-frame', cat: 'wechat', label: '微信纯内容', html: 'wechat-frame.html', type: 'wechat-content', desc: '胶囊 + 隐藏标题栏，适合沉浸小程序页。', layout: 'phone', badge: '微信', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'wechat-header', cat: 'wechat', label: '微信标题栏', html: 'wechat-frame_header.html', type: 'wechat-header', desc: '仅顶栏标题 + 胶囊。', layout: 'phone', badge: '微信', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'wechat-tabs', cat: 'wechat', label: '微信底部 Tab', html: 'wechat-frame-tabs.html', type: 'wechat-tabs', desc: '仅底部标签栏 + 胶囊。', layout: 'phone', badge: '微信', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+        { id: 'wechat-nav', cat: 'wechat', label: '微信完整导航', html: 'wechat-frame-nav.html', type: 'wechat-nav', desc: '标题栏 + 底部 Tab + 胶囊，小程序主结构。', layout: 'phone', badge: '常用', live: true, thumbW: 860, thumbH: 1000, thumbFit: 'contain' },
+      ]
+
+      const PAGES_BY_END = {
+        admin: ADMIN_PAGES,
+        web: [],
+        app: APP_PAGES,
+      }
+
+      let activePanel = 'admin'
+      let activeEnd = 'admin'
+      let activeStyle = '亮色科技蓝'
+      let activeShellTheme = 'mist-purple'
+      let styleQuery = ''
+      let activeCat = 'all'
+      let query = ''
+
+      try {
+        const savedEnd = localStorage.getItem(STORAGE_END)
+        if (ENDS.some((e) => e.id === savedEnd)) activeEnd = savedEnd
+        const savedPanel = localStorage.getItem(STORAGE_PANEL)
+        if (TABS.some((t) => t.id === savedPanel)) activePanel = savedPanel
+        else activePanel = activeEnd
+        const savedStyle = localStorage.getItem(STORAGE_STYLE)
+        if (STYLE_CATALOG.some((t) => t.id === savedStyle)) activeStyle = savedStyle
+        const savedShell = localStorage.getItem(STORAGE_SHELL)
+        if (SHELL_THEMES.some((t) => t.id === savedShell)) activeShellTheme = savedShell
+      } catch (_) {
+        /* ignore */
+      }
+
+      const galleryQuery = parseGalleryQuery()
+      if (galleryQuery.end && ENDS.some((e) => e.id === galleryQuery.end)) {
+        activeEnd = galleryQuery.end
+        activePanel = galleryQuery.end
+      }
+      if (galleryQuery.panel === 'styles') {
+        activePanel = 'styles'
+      } else if (galleryQuery.panel && ENDS.some((e) => e.id === galleryQuery.panel)) {
+        activeEnd = galleryQuery.panel
+        activePanel = galleryQuery.panel
+      }
+
+      const navEl = document.getElementById('nav')
+      const gridEl = document.getElementById('grid')
+      const searchEl = document.getElementById('search')
+      const styleSearchEl = document.getElementById('style-search')
+      const titleEl = document.getElementById('section-title')
+      const descEl = document.getElementById('section-desc')
+      const totalEl = document.getElementById('stat-total')
+      const styleCountEl = document.getElementById('style-count')
+      const endSegEl = document.getElementById('end-seg')
+      const endSwitchBlockEl = document.getElementById('end-switch-block')
+      const themeListEl = document.getElementById('theme-list')
+      const brandKickerEl = document.getElementById('brand-kicker')
+      const footTextEl = document.getElementById('sidebar-foot-text')
+      const catBlockEl = document.getElementById('cat-block')
+      const styleBlockEl = document.getElementById('style-block')
+      const pageSearchWrapEl = document.getElementById('page-search-wrap')
+      const previewDialogEl = document.getElementById('preview-dialog')
+      const previewPanelEl = previewDialogEl.querySelector('.preview-panel')
+      const previewFrameEl = document.getElementById('preview-frame')
+      const previewDocEl = document.getElementById('preview-doc')
+      const previewTitleEl = document.getElementById('preview-title')
+      const previewOpenTabEl = document.getElementById('preview-open-tab')
+      const previewCloseEl = document.getElementById('preview-close')
+      const previewScrimEl = document.getElementById('preview-scrim')
+      const helpDialogEl = document.getElementById('help-dialog')
+      const helpOpenEl = document.getElementById('help-open')
+      const helpCloseEl = document.getElementById('help-close')
+      const helpScrimEl = document.getElementById('help-scrim')
+      const shellThemeOpenEl = document.getElementById('shell-theme-open')
+      const shellThemeMenuEl = document.getElementById('shell-theme-menu')
+      const shellThemeLabelEl = document.getElementById('shell-theme-label')
+      /** Gallery 外壳明暗，与 admin 母版 `arco-pro-theme-mode` 互不影响 */
+      const GALLERY_COLOR_MODE_KEY = 'gallery-color-mode'
+
+      function readGalleryDark() {
+        try {
+          return localStorage.getItem(GALLERY_COLOR_MODE_KEY) !== 'light'
+        } catch (_) {
+          return true
+        }
+      }
+
+      function isGalleryDark() {
+        return document.documentElement.getAttribute('data-theme') === 'dark'
+      }
+
+      function applyGalleryColorMode(dark, opts) {
+        const persist = !opts || opts.persist !== false
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+        if (typeof renderShellThemes === 'function') renderShellThemes()
+        if (persist) {
+          try {
+            localStorage.setItem(GALLERY_COLOR_MODE_KEY, dark ? 'dark' : 'light')
+          } catch (_) {
+            /* ignore */
+          }
+        }
+      }
+
+      function stylePreviewHref(id) {
+        return STYLE_BASE + encodeURIComponent(id) + '-preview.html'
+      }
+
+      function styleDocHref(id) {
+        return STYLE_BASE + encodeURIComponent(id) + '-style.md'
+      }
+
+      /** Gallery 是否经 http(s) 服务打开（file:// 下 fetch 本地 .md 会被浏览器拦截） */
+      function isServedOverHttp() {
+        return location.protocol === 'http:' || location.protocol === 'https:'
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+      }
+
+      function inlineMarkdown(s) {
+        return escapeHtml(s)
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      }
+
+      function renderMarkdown(md) {
+        const lines = String(md || '').replace(/\r\n/g, '\n').split('\n')
+        const out = []
+        let i = 0
+        let inCode = false
+        let codeBuf = []
+        let listType = null
+
+        function closeList() {
+          if (!listType) return
+          out.push(listType === 'ol' ? '</ol>' : '</ul>')
+          listType = null
+        }
+
+        while (i < lines.length) {
+          const line = lines[i]
+          if (line.trim().startsWith('```')) {
+            if (inCode) {
+              out.push('<pre><code>' + escapeHtml(codeBuf.join('\n')) + '</code></pre>')
+              codeBuf = []
+              inCode = false
+            } else {
+              closeList()
+              inCode = true
+            }
+            i += 1
+            continue
+          }
+          if (inCode) {
+            codeBuf.push(line)
+            i += 1
+            continue
+          }
+          if (/^\s*$/.test(line)) {
+            closeList()
+            i += 1
+            continue
+          }
+          if (/^---+\s*$/.test(line)) {
+            closeList()
+            out.push('<hr />')
+            i += 1
+            continue
+          }
+          const h = /^(#{1,3})\s+(.*)$/.exec(line)
+          if (h) {
+            closeList()
+            const level = h[1].length
+            out.push('<h' + level + '>' + inlineMarkdown(h[2]) + '</h' + level + '>')
+            i += 1
+            continue
+          }
+          if (/^>\s?/.test(line)) {
+            closeList()
+            const quote = []
+            while (i < lines.length && /^>\s?/.test(lines[i])) {
+              quote.push(lines[i].replace(/^>\s?/, ''))
+              i += 1
+            }
+            out.push('<blockquote><p>' + inlineMarkdown(quote.join(' ')) + '</p></blockquote>')
+            continue
+          }
+          const ul = /^[-*]\s+(.*)$/.exec(line)
+          if (ul) {
+            if (listType !== 'ul') {
+              closeList()
+              out.push('<ul>')
+              listType = 'ul'
+            }
+            out.push('<li>' + inlineMarkdown(ul[1]) + '</li>')
+            i += 1
+            continue
+          }
+          const ol = /^\d+\.\s+(.*)$/.exec(line)
+          if (ol) {
+            if (listType !== 'ol') {
+              closeList()
+              out.push('<ol>')
+              listType = 'ol'
+            }
+            out.push('<li>' + inlineMarkdown(ol[1]) + '</li>')
+            i += 1
+            continue
+          }
+          closeList()
+          out.push('<p>' + inlineMarkdown(line) + '</p>')
+          i += 1
+        }
+        if (inCode) out.push('<pre><code>' + escapeHtml(codeBuf.join('\n')) + '</code></pre>')
+        closeList()
+        return out.join('\n')
+      }
+
+      function showPreviewFrame() {
+        if (previewDocEl) {
+          previewDocEl.hidden = true
+          previewDocEl.innerHTML = ''
+        }
+        previewFrameEl.hidden = false
+      }
+
+      function showPreviewDoc() {
+        previewFrameEl.hidden = true
+        previewFrameEl.removeAttribute('srcdoc')
+        previewFrameEl.src = 'about:blank'
+        if (previewDocEl) previewDocEl.hidden = false
+      }
+
+      function isAdminGallerySrc(src) {
+        return /(?:^|\/)admin\/[^/?#]+\.html/i.test(String(src || ''))
+      }
+
+      /** 不改母版：在预览 HTML 里于 auth.js 之后覆盖鉴权，避免登录态把样板页踢走 */
+      function patchAdminHtmlForGallery(html, pageAbsHref) {
+        const base = new URL('./', pageAbsHref).href
+        let out = String(html)
+        const previewFlag =
+          '<script>window.__GALLERY_ADMIN_PREVIEW__=1;</' + 'script>'
+        if (!/__GALLERY_ADMIN_PREVIEW__/.test(out)) {
+          out = out.replace(/<head[^>]*>/i, function (m) {
+            return m + previewFlag
+          })
+        }
+        if (!/<base\s/i.test(out)) {
+          out = out.replace(/<head[^>]*>/i, function (m) {
+            return m + '<base href="' + base.replace(/"/g, '') + '">'
+          })
+        }
+        const close = '<' + '/script>'
+        const hook =
+          '<script>(function(){var A=window.AdminAuth;if(!A)return;A.isLoggedIn=function(){return false};A.requireAuth=function(){return true};A.login=function(){};A.logout=function(){}})();' +
+          close
+        const authRe = new RegExp(
+          '(<script[^>]*src="[^"]*js/auth\\.js[^"]*"[^>]*>)' + close.replace('/', '\\/'),
+          'i'
+        )
+        if (/js\/auth\.js/i.test(out)) {
+          out = out.replace(authRe, '$1' + close + hook)
+        } else {
+          out = out.replace(/<\/head>/i, hook + '</head>')
+        }
+        return out
+      }
+
+      function fillAdminGalleryFrame(iframe, href) {
+        const fallback = function () {
+          iframe.removeAttribute('srcdoc')
+          iframe.src = href
+        }
+        if (!iframe || !href) return
+        if (!isAdminGallerySrc(href) || !isServedOverHttp()) {
+          fallback()
+          return
+        }
+        const abs = new URL(String(href).split('#')[0], location.href)
+        fetch(abs.origin + abs.pathname, { credentials: 'same-origin' })
+          .then(function (res) {
+            if (!res.ok) throw new Error(String(res.status))
+            return res.text()
+          })
+          .then(function (html) {
+            iframe.removeAttribute('src')
+            iframe.srcdoc = patchAdminHtmlForGallery(html, abs.origin + abs.pathname)
+          })
+          .catch(fallback)
+      }
+
+      function openPreviewFrame(href, title, opts) {
+        if (!href) return
+        const phone =
+          !!(opts && opts.phone) ||
+          /(?:^|\/)app\/|ios_frame|wechat-frame/i.test(String(href))
+        const panel =
+          previewPanelEl || document.querySelector('#preview-dialog .preview-panel')
+        if (panel) {
+          panel.classList.remove('is-doc')
+          panel.classList.toggle('is-phone', phone)
+        }
+        showPreviewFrame()
+        previewTitleEl.textContent = title || '预览'
+        // 新窗口用原尺寸；弹窗可用带 galleryPreview 的地址
+        previewOpenTabEl.href = (opts && opts.openTabHref) || href
+        fillAdminGalleryFrame(previewFrameEl, href)
+        previewDialogEl.hidden = false
+        document.body.style.overflow = 'hidden'
+      }
+
+      function openStylePreview(id) {
+        const style = STYLE_CATALOG.find((t) => t.id === id)
+        if (!style || !style.preview) return
+        selectStyle(id)
+        openPreviewFrame(stylePreviewHref(id), style.label + ' · 预览')
+      }
+
+      async function openStyleDoc(id) {
+        const style = STYLE_CATALOG.find((t) => t.id === id)
+        if (!style) return
+        selectStyle(id)
+        const href = styleDocHref(id)
+
+        // file://：无法内嵌 fetch .md，直接新窗口打开源文件
+        if (!isServedOverHttp()) {
+          window.open(href, '_blank', 'noopener')
+          return
+        }
+
+        const panel =
+          previewPanelEl || document.querySelector('#preview-dialog .preview-panel')
+        if (panel) {
+          panel.classList.remove('is-phone')
+          panel.classList.add('is-doc')
+        }
+        showPreviewDoc()
+        previewTitleEl.textContent = style.label + ' · 规范'
+        previewOpenTabEl.href = href
+        previewDocEl.innerHTML =
+          '<div class="preview-doc-status is-loading" role="status">' +
+          '<div class="preview-doc-status-icon" aria-hidden="true"><i class="fa-solid fa-spinner fa-spin"></i></div>' +
+          '<p class="preview-doc-status-title">正在加载规范</p>' +
+          '<p class="preview-doc-status-desc">请稍候…</p>' +
+          '</div>'
+        previewDialogEl.hidden = false
+        document.body.style.overflow = 'hidden'
+        try {
+          const res = await fetch(href)
+          if (!res.ok) throw new Error(String(res.status))
+          const text = await res.text()
+          previewDocEl.innerHTML =
+            '<div class="preview-doc-inner">' + renderMarkdown(text) + '</div>'
+        } catch (_) {
+          previewDocEl.innerHTML =
+            '<div class="preview-doc-status is-error" role="alert">' +
+            '<div class="preview-doc-status-icon" aria-hidden="true"><i class="fa-regular fa-circle-exclamation"></i></div>' +
+            '<p class="preview-doc-status-title">无法加载规范文档</p>' +
+            '<p class="preview-doc-status-desc">弹窗内读取失败，可在新窗口打开源文件查看。</p>' +
+            '<a class="btn btn-primary" href="' +
+            href +
+            '" target="_blank" rel="noopener">' +
+            '<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>新窗口打开</a>' +
+            '</div>'
+        }
+      }
+
+      function openPagePreview(pageId) {
+        const page = pages().find((p) => p.id === pageId)
+        if (!page) return
+        const phone = page.layout === 'phone' || activeEnd === 'app'
+        const openTabHref = pageHref(Object.assign({}, page, { live: true }))
+        let href = openTabHref
+        // 弹窗内缩小设备壳；新窗口仍打开原尺寸（hash 避免 cleanUrl 丢参）
+        if (phone) {
+          const clean = href.split('#')[0]
+          href = clean + '#galleryPreview=1'
+        }
+        openPreviewFrame(href, page.label + ' · 预览', { phone: phone, openTabHref: openTabHref })
+      }
+
+      function closeStylePreview() {
+        if (previewPanelEl) {
+          previewPanelEl.classList.remove('is-phone', 'is-doc')
+        }
+        showPreviewFrame()
+        previewDialogEl.hidden = true
+        previewFrameEl.removeAttribute('srcdoc')
+        previewFrameEl.src = 'about:blank'
+        document.body.style.overflow = ''
+      }
+
+      function currentShellTheme() {
+        return SHELL_THEMES.find((t) => t.id === activeShellTheme) || SHELL_THEMES[0]
+      }
+
+      /** 氛围光斑：切换 / 刷新时只动位置与强弱；颜色始终跟壳主题 */
+      function nudgeAmbient(mode) {
+        ambientTick += 1
+        const idx =
+          mode === 'refresh'
+            ? Math.floor(Math.random() * AMBIENT_PRESETS.length)
+            : ambientTick % AMBIENT_PRESETS.length
+        const p = AMBIENT_PRESETS[idx]
+        const root = document.body
+        root.style.setProperty('--ambient-tr-x', p.trX)
+        root.style.setProperty('--ambient-tr-y', p.trY)
+        root.style.setProperty('--ambient-tr-scale', String(p.trS))
+        root.style.setProperty('--ambient-tr-opacity', String(p.trO))
+        root.style.setProperty('--ambient-bl-x', p.blX)
+        root.style.setProperty('--ambient-bl-y', p.blY)
+        root.style.setProperty('--ambient-bl-scale', String(p.blS))
+        root.style.setProperty('--ambient-bl-opacity', String(p.blO))
+        root.style.setProperty('--ambient-glow', 'var(--brand-primary-muted)')
+      }
+
+      function renderShellThemes() {
+        if (!shellThemeMenuEl) return
+        const dark = isGalleryDark()
+        const colorHtml = SHELL_THEMES.map((t) => {
+          const active = t.id === activeShellTheme
+          return (
+            '<button type="button" class="shell-theme-item' +
+            (active ? ' is-active' : '') +
+            '" data-shell-theme="' +
+            t.id +
+            '" role="option" aria-selected="' +
+            active +
+            '">' +
+            '<span class="shell-theme-swatch" style="--swatch:' +
+            t.swatch +
+            '"></span>' +
+            '<span>' +
+            t.label +
+            '</span>' +
+            '</button>'
+          )
+        }).join('')
+        const modeHtml =
+          '<button type="button" class="shell-theme-item shell-theme-mode-toggle" data-color-mode-toggle role="menuitem">' +
+          '<span class="shell-theme-mode-icon"><i class="fa-solid ' +
+          (dark ? 'fa-sun' : 'fa-moon') +
+          '" aria-hidden="true"></i></span>' +
+          '<span>' +
+          (dark ? '切换亮色' : '切换暗色') +
+          '</span>' +
+          '</button>'
+        shellThemeMenuEl.innerHTML =
+          colorHtml + '<div class="shell-theme-sep" role="separator"></div>' + modeHtml
+      }
+
+      function applyShellTheme(id) {
+        const theme = SHELL_THEMES.find((t) => t.id === id) || SHELL_THEMES[0]
+        const changed = activeShellTheme !== theme.id
+        activeShellTheme = theme.id
+        const root = document.documentElement
+        Object.keys(theme.vars).forEach((k) => root.style.setProperty(k, theme.vars[k]))
+        root.style.setProperty('--text-on-primary', '#ffffff')
+        if (shellThemeLabelEl) shellThemeLabelEl.textContent = '主题'
+        try {
+          localStorage.setItem(STORAGE_SHELL, theme.id)
+        } catch (_) {
+          /* ignore */
+        }
+        renderShellThemes()
+        if (changed) nudgeAmbient('shell')
+        else document.body.style.setProperty('--ambient-glow', 'var(--brand-primary-muted)')
+      }
+
+      function openShellThemeMenu() {
+        renderShellThemes()
+        shellThemeMenuEl.hidden = false
+        shellThemeOpenEl.setAttribute('aria-expanded', 'true')
+      }
+
+      function closeShellThemeMenu() {
+        shellThemeMenuEl.hidden = true
+        shellThemeOpenEl.setAttribute('aria-expanded', 'false')
+      }
+
+      function toggleShellThemeMenu() {
+        if (shellThemeMenuEl.hidden) openShellThemeMenu()
+        else closeShellThemeMenu()
+      }
+
+      function isStylesPanel() {
+        return activePanel === 'styles'
+      }
+
+      function currentEnd() {
+        return ENDS.find((e) => e.id === activeEnd) || ENDS[0]
+      }
+
+      function pages() {
+        return PAGES_BY_END[activeEnd] || []
+      }
+
+      function categories() {
+        return activeEnd === 'app' ? APP_CATEGORIES : ADMIN_CATEGORIES
+      }
+
+      function filteredStyles() {
+        const q = styleQuery.trim().toLowerCase()
+        return STYLE_CATALOG.filter((t) => !q || t.label.toLowerCase().includes(q))
+      }
+
+      function syncStyleCardSelection() {
+        if (!isStylesPanel() || !gridEl) return
+        // 同步所有已缓存 STYLE 面板上的「选中」角标
+        gridEl.querySelectorAll('[data-style-card]').forEach((card) => {
+          const selected = card.getAttribute('data-style-card') === activeStyle
+          const thumb = card.querySelector('.card-thumb')
+          if (!thumb) return
+          let badge = thumb.querySelector('.thumb-badge.demo')
+          if (selected) {
+            if (!badge) {
+              badge = document.createElement('span')
+              badge.className = 'thumb-badge demo'
+              badge.textContent = '选中'
+              thumb.appendChild(badge)
+            }
+          } else if (badge) {
+            badge.remove()
+          }
+        })
+      }
+
+      function selectStyle(id) {
+        const style = STYLE_CATALOG.find((t) => t.id === id)
+        if (!style) return
+        const changed = activeStyle !== style.id
+        activeStyle = style.id
+        try {
+          localStorage.setItem(STORAGE_STYLE, style.id)
+        } catch (_) {
+          /* ignore */
+        }
+        // 只更新左侧列表与「选中」角标，避免重绘卡片导致缩略 iframe 整页重载
+        renderStyles()
+        if (changed) {
+          syncStyleCardSelection()
+          nudgeAmbient('style')
+        }
+      }
+
+      function updateChrome() {
+        if (isStylesPanel()) {
+          brandKickerEl.textContent = 'frame · styles'
+          footTextEl.innerHTML = '预置视觉主题文件目录：<strong>.style/</strong>'
+          document.title = '视觉主题 · 样板预览 Gallery'
+          styleBlockEl.hidden = false
+          pageSearchWrapEl.hidden = true
+          catBlockEl.hidden = true
+          searchEl.disabled = true
+          return
+        }
+        const end = currentEnd()
+        brandKickerEl.textContent = 'frame · ' + end.id
+        footTextEl.innerHTML = end.foot
+        document.title = end.label + ' · 样板预览 Gallery'
+        styleBlockEl.hidden = true
+        pageSearchWrapEl.hidden = false
+        catBlockEl.hidden = !end.ready
+        searchEl.disabled = !end.ready
+      }
+
+      function setPanel(id) {
+        const tab = TABS.find((t) => t.id === id)
+        if (!tab) return
+        if (tab.id === activePanel && activeGridPane()) {
+          renderEnds()
+          renderThemes()
+          renderNav()
+          updateChrome()
+          return
+        }
+        activePanel = tab.id
+        if (tab.kind === 'end') {
+          activeEnd = tab.id
+          activeCat = 'all'
+          try {
+            localStorage.setItem(STORAGE_END, activeEnd)
+          } catch (_) {
+            /* ignore */
+          }
+        }
+        try {
+          localStorage.setItem(STORAGE_PANEL, activePanel)
+        } catch (_) {
+          /* ignore */
+        }
+        updateChrome()
+        renderEnds()
+        renderThemes()
+        renderNav()
+        showOrRenderGrid()
+        nudgeAmbient('panel')
+      }
+
+      function countByCat(catId) {
+        const list = pages()
+        if (catId === 'all') return list.length
+        return list.filter((p) => p.cat === catId).length
+      }
+
+      function pageHref(page) {
+        const base = currentEnd().base
+        // Admin 缩略/弹窗一律带 galleryPreview：未登录可看业务页，已登录仍可看登录页
+        if (page.live && activeEnd === 'admin') {
+          return base + page.html + '?galleryPreview=1'
+        }
+        return base + page.html
+      }
+
+      function openHref(page) {
+        return currentEnd().base + page.html
+      }
+
+      /**
+       * APP 缩略：带 galleryPreview（hash 优先，避免 cleanUrl 丢掉 ?query）
+       * 同时 iframe 宽度须 >768，否则会走真机去壳样式
+       */
+      function thumbHref(page) {
+        const base = pageHref(page)
+        const phone = page.layout === 'phone' || activeEnd === 'app'
+        if (!phone) return base
+        const clean = base.split('#')[0]
+        return clean + '#galleryPreview=1&galleryScale=1'
+      }
+
+      function thumbHtml(page) {
+        if (page.live) {
+          const src = thumbHref(page)
+          const thumbW = page.thumbW || THUMB_VIEW_W
+          const thumbH = page.thumbH || THUMB_VIEW_H
+          const isPhone = page.layout === 'phone'
+          const fit = page.thumbFit || (isPhone ? 'contain' : 'cover')
+          return (
+            '<div class="thumb-iframe-wrap is-pending' +
+            (isPhone ? ' is-phone' : '') +
+            '" data-live-src="' +
+            src +
+            '" data-live-title="' +
+            page.label +
+            ' 预览" data-thumb-w="' +
+            thumbW +
+            '" data-thumb-h="' +
+            thumbH +
+            '" data-thumb-fit="' +
+            fit +
+            '">' +
+            '<div class="thumb-chip"><i class="fa-solid fa-spinner fa-spin"></i></div>' +
+            '</div>'
+          )
+        }
+        // 无线框 iframe 的样板：统一加载中图标占位
+        return (
+          '<div class="thumb-frame" data-layout="center">' +
+          '<div class="thumb-chip"><i class="fa-solid fa-spinner fa-spin"></i></div>' +
+          '</div>'
+        )
+      }
+
+      const LIVE_LOAD_CONCURRENCY = 3
+      let liveLoadObserver = null
+      let thumbFitObserver = null
+      let liveLoadActive = 0
+      const liveLoadQueue = []
+      const THUMB_VIEW_W = 1280
+      const THUMB_VIEW_H = 800
+
+      function isThumbInActivePane(wrap) {
+        const pane = activeGridPane()
+        return !!(wrap && pane && pane.contains(wrap))
+      }
+      /**
+       * 网格面板缓存：各 pane 留在 #grid 内用 hidden 切换。
+       * 勿把 iframe 挪出文档（换父节点会触发重载）。
+       */
+      const gridPanes = new Map()
+      let gridCacheKey = null
+
+      function currentGridCacheKey() {
+        if (isStylesPanel()) return 'styles|' + styleQuery
+        return [activePanel, activeEnd, activeCat, query].join('|')
+      }
+
+      function activeGridPane() {
+        return gridEl.querySelector(':scope > .grid-pane:not([hidden])')
+      }
+
+      function hideAllGridPanes() {
+        gridPanes.forEach((entry) => {
+          entry.pane.hidden = true
+        })
+      }
+
+      function rememberGridPaneMeta(key) {
+        const entry = gridPanes.get(key)
+        if (!entry) return
+        entry.title = titleEl.innerHTML
+        entry.desc = descEl.textContent
+        entry.total = totalEl.textContent
+      }
+
+      /** 显示已缓存面板；成功则 true（不重建、不重载 iframe） */
+      function activateGridPane(key) {
+        const entry = gridPanes.get(key)
+        if (!entry || !entry.pane.childNodes.length) return false
+        hideAllGridPanes()
+        entry.pane.hidden = false
+        titleEl.innerHTML = entry.title
+        descEl.textContent = entry.desc
+        totalEl.textContent = entry.total
+        gridCacheKey = key
+        setupLiveThumbLoader({ resume: true })
+        return true
+      }
+
+      function ensureGridPane(key) {
+        let entry = gridPanes.get(key)
+        if (entry) return entry
+        const pane = document.createElement('div')
+        pane.className = 'grid-pane'
+        pane.dataset.gridKey = key
+        pane.hidden = true
+        gridEl.appendChild(pane)
+        entry = { pane: pane, title: '', desc: '', total: '0' }
+        gridPanes.set(key, entry)
+        return entry
+      }
+
+      function showOrRenderGrid() {
+        const key = currentGridCacheKey()
+        if (activateGridPane(key)) return
+        renderGrid()
+      }
+
+      function fitThumbIframe(wrap) {
+        if (!wrap) return
+        const w = wrap.clientWidth
+        const h = wrap.clientHeight
+        if (!w || !h) return
+        const viewW = Number(wrap.getAttribute('data-thumb-w')) || THUMB_VIEW_W
+        const viewH = Number(wrap.getAttribute('data-thumb-h')) || THUMB_VIEW_H
+        const fit = wrap.getAttribute('data-thumb-fit') || 'cover'
+        let scale
+        let ox
+        let oy
+        if (fit === 'contain') {
+          // 完整装入；手机壳尽量铺满预览区（不再预留装饰底边）
+          // 完整装入；手机壳沿用原先 0.88，不额外放大
+          scale = Math.min(w / viewW, h / viewH) * 0.88
+          ox = (w - viewW * scale) / 2
+          oy = (h - viewH * scale) / 2
+        } else {
+          // cover：铺满预览框；顶对齐，避免裁切页头
+          scale = Math.max(w / viewW, h / viewH)
+          ox = (w - viewW * scale) / 2
+          oy = 0
+        }
+        wrap.style.setProperty('--thumb-scale', String(scale))
+        wrap.style.setProperty('--thumb-ox', ox + 'px')
+        wrap.style.setProperty('--thumb-oy', oy + 'px')
+      }
+
+      function setupThumbFit() {
+        if (thumbFitObserver) {
+          thumbFitObserver.disconnect()
+          thumbFitObserver = null
+        }
+        const root = activeGridPane()
+        if (!root) return
+        const wraps = root.querySelectorAll('.thumb-iframe-wrap')
+        if (!wraps.length) return
+        if ('ResizeObserver' in window) {
+          thumbFitObserver = new ResizeObserver((entries) => {
+            entries.forEach((entry) => fitThumbIframe(entry.target))
+          })
+          wraps.forEach((wrap) => {
+            thumbFitObserver.observe(wrap)
+            fitThumbIframe(wrap)
+          })
+        } else {
+          wraps.forEach((wrap) => fitThumbIframe(wrap))
+        }
+      }
+
+      function pumpLiveLoadQueue() {
+        while (liveLoadActive < LIVE_LOAD_CONCURRENCY && liveLoadQueue.length) {
+          const wrap = liveLoadQueue.shift()
+          if (!wrap || !wrap.isConnected || wrap.dataset.liveLoaded === '1') continue
+          // 已切走的面板不再占并发
+          if (!isThumbInActivePane(wrap)) {
+            wrap.dataset.liveQueued = '0'
+            continue
+          }
+          loadLiveThumb(wrap)
+        }
+      }
+
+      function enqueueLiveThumb(wrap, opts) {
+        if (!wrap || wrap.dataset.liveQueued === '1' || wrap.dataset.liveLoaded === '1') return
+        if (!isThumbInActivePane(wrap)) return
+        wrap.dataset.liveQueued = '1'
+        if (opts && opts.priority) liveLoadQueue.unshift(wrap)
+        else liveLoadQueue.push(wrap)
+        pumpLiveLoadQueue()
+      }
+
+      function releaseLiveSlot(wrap) {
+        if (!wrap || wrap.dataset.liveSlotDone === '1') return
+        wrap.dataset.liveSlotDone = '1'
+        liveLoadActive = Math.max(0, liveLoadActive - 1)
+        pumpLiveLoadQueue()
+      }
+
+      function patchPhoneThumbFrame(iframe) {
+        try {
+          const doc = iframe.contentDocument
+          if (!doc || !doc.documentElement) return
+          // 与 file 模式一致：不改壳的 padding/圆角/阴影，只补预览标记
+          doc.documentElement.classList.add('gallery-preview', 'gallery-preview-1x')
+        } catch (_) {
+          /* file:// 等跨域无法注入，本身即走母版原样 */
+        }
+      }
+
+      /** 缩略图不展示内部滚动条（同域可注入；跨域则仅靠 scrolling=no） */
+      function patchThumbNoScrollbar(iframe) {
+        try {
+          const doc = iframe.contentDocument
+          if (!doc || !doc.documentElement) return
+          if (doc.getElementById('gallery-thumb-no-scroll')) return
+          const style = doc.createElement('style')
+          style.id = 'gallery-thumb-no-scroll'
+          style.textContent =
+            'html,body{overflow:hidden!important;scrollbar-width:none!important;-ms-overflow-style:none!important}' +
+            '*::-webkit-scrollbar{width:0!important;height:0!important;display:none!important}'
+          ;(doc.head || doc.documentElement).appendChild(style)
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      function loadLiveThumb(wrap) {
+        const src = wrap.getAttribute('data-live-src')
+        if (!src) return
+        wrap.dataset.liveLoaded = '1'
+        wrap.dataset.liveSlotDone = '0'
+        liveLoadActive += 1
+        fitThumbIframe(wrap)
+        const viewW = Number(wrap.getAttribute('data-thumb-w')) || THUMB_VIEW_W
+        const viewH = Number(wrap.getAttribute('data-thumb-h')) || THUMB_VIEW_H
+        const iframe = document.createElement('iframe')
+        iframe.title = wrap.getAttribute('data-live-title') || '预览'
+        iframe.tabIndex = -1
+        iframe.setAttribute('scrolling', 'no')
+        iframe.style.width = viewW + 'px'
+        iframe.style.height = viewH + 'px'
+        const onThumbReady = function () {
+          if (wrap.dataset.liveReady === '1') return
+          wrap.dataset.liveReady = '1'
+          if (wrap.classList.contains('is-phone')) patchPhoneThumbFrame(iframe)
+          patchThumbNoScrollbar(iframe)
+          wrap.classList.remove('is-pending')
+          wrap.classList.add('is-ready')
+          fitThumbIframe(wrap)
+          releaseLiveSlot(wrap)
+        }
+        iframe.addEventListener('load', function () {
+          if (!iframe.getAttribute('src') && !iframe.getAttribute('srcdoc')) return
+          onThumbReady()
+        })
+        iframe.addEventListener(
+          'error',
+          () => {
+            wrap.classList.remove('is-pending')
+            wrap.classList.add('is-ready')
+            releaseLiveSlot(wrap)
+          },
+          { once: true }
+        )
+        // 超时兜底：仅在尚未释放槽位时释放，避免成功 load 后再扣一次并发
+        window.setTimeout(() => {
+          if (!wrap.classList.contains('is-ready')) {
+            wrap.classList.remove('is-pending')
+            wrap.classList.add('is-ready')
+          }
+          releaseLiveSlot(wrap)
+        }, 10000)
+        wrap.appendChild(iframe)
+        fillAdminGalleryFrame(iframe, src)
+      }
+
+      function setupLiveThumbLoader(opts) {
+        const resume = !!(opts && opts.resume)
+        if (liveLoadObserver) {
+          liveLoadObserver.disconnect()
+          liveLoadObserver = null
+        }
+        // 切面板时丢掉其它面板的排队，把并发留给当前可见区
+        for (let i = liveLoadQueue.length - 1; i >= 0; i--) {
+          const w = liveLoadQueue[i]
+          if (!w || !w.isConnected || w.dataset.liveLoaded === '1' || !isThumbInActivePane(w)) {
+            if (w && w.dataset.liveLoaded !== '1') w.dataset.liveQueued = '0'
+            liveLoadQueue.splice(i, 1)
+          }
+        }
+        if (!resume) {
+          liveLoadActive = Math.min(liveLoadActive, LIVE_LOAD_CONCURRENCY)
+        }
+
+        const root = activeGridPane()
+        if (!root) return
+        const all = root.querySelectorAll('.thumb-iframe-wrap[data-live-src]')
+        const targets = resume
+          ? Array.prototype.filter.call(all, (el) => el.dataset.liveLoaded !== '1')
+          : Array.prototype.slice.call(all)
+        setupThumbFit()
+        if (!targets.length) {
+          pumpLiveLoadQueue()
+          return
+        }
+
+        if (!('IntersectionObserver' in window)) {
+          targets.forEach((el) => enqueueLiveThumb(el, { priority: true }))
+          return
+        }
+
+        liveLoadObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return
+              liveLoadObserver.unobserve(entry.target)
+              // 视口内优先插队
+              enqueueLiveThumb(entry.target, { priority: true })
+            })
+          },
+          { root: null, rootMargin: '180px 0px', threshold: 0.01 }
+        )
+        targets.forEach((el) => liveLoadObserver.observe(el))
+        pumpLiveLoadQueue()
+      }
+
+      function filtered() {
+        const q = query.trim().toLowerCase()
+        return pages().filter((p) => {
+          if (activeCat !== 'all' && p.cat !== activeCat) return false
+          if (!q) return true
+          const hay = [p.label, p.type, p.html, p.desc, p.id].join(' ').toLowerCase()
+          return hay.includes(q)
+        })
+      }
+
+      function renderEnds() {
+        endSegEl.innerHTML = TABS.map((t) => {
+          const active = t.id === activePanel ? ' is-active' : ''
+          const soon = t.ready ? '' : ' is-soon'
+          return (
+            '<button type="button" class="seg-btn' +
+            active +
+            soon +
+            '" data-panel="' +
+            t.id +
+            '" role="tab" aria-selected="' +
+            (t.id === activePanel) +
+            '">' +
+            '<span>' +
+            t.label +
+            '</span>' +
+            '<small>' +
+            t.hint +
+            '</small>' +
+            '</button>'
+          )
+        }).join('')
+      }
+
+      function renderStyles() {
+        const list = filteredStyles()
+        styleCountEl.textContent = '(' + list.length + '/' + STYLE_CATALOG.length + ')'
+        if (!list.length) {
+          themeListEl.innerHTML =
+            '<div style="padding:12px 8px;font-size:12px;color:var(--text-muted)">无匹配主题</div>'
+          return
+        }
+        themeListEl.innerHTML = list
+          .map((t) => {
+            const active = t.id === activeStyle ? ' is-active' : ''
+            const goBtn = t.preview
+              ? '<button type="button" class="theme-go" data-preview="' +
+                t.id +
+                '" title="预览" aria-label="预览 ' +
+                t.label +
+                '"><i class="fa-regular fa-circle-arrow-right" aria-hidden="true"></i></button>'
+              : ''
+            return (
+              '<div class="theme-item' +
+              active +
+              '" data-style="' +
+              t.id +
+              '" role="option" tabindex="0" aria-selected="' +
+              (t.id === activeStyle) +
+              '">' +
+              '<span class="theme-swatch" style="background:' +
+              (t.swatch || 'var(--brand-primary)') +
+              ';opacity:1"></span>' +
+              '<span class="theme-name" title="' +
+              t.label +
+              '">' +
+              t.label +
+              '</span>' +
+              goBtn +
+              '</div>'
+            )
+          })
+          .join('')
+      }
+
+      function renderThemes() {
+        if (isStylesPanel()) renderStyles()
+      }
+
+      function renderNav() {
+        if (isStylesPanel() || !currentEnd().ready) {
+          navEl.innerHTML = ''
+          return
+        }
+        navEl.innerHTML = categories().map((c) => {
+          const active = c.id === activeCat ? ' is-active' : ''
+          return (
+            '<li><button type="button" class="nav-item' +
+            active +
+            '" data-cat="' +
+            c.id +
+            '">' +
+            '<span>' +
+            c.label +
+            '</span>' +
+            '<span class="count">' +
+            countByCat(c.id) +
+            '</span>' +
+            '</button></li>'
+          )
+        }).join('')
+      }
+
+      function styleThumbHtml(t) {
+        if (!t.preview) {
+          return (
+            '<div class="thumb-frame" data-layout="center">' +
+            '<div class="thumb-chip"><i class="fa-regular fa-image"></i></div>' +
+            '</div>'
+          )
+        }
+        return (
+          '<div class="thumb-iframe-wrap is-pending" data-live-src="' +
+          stylePreviewHref(t.id) +
+          '" data-live-title="' +
+          t.label +
+          ' 预览" data-thumb-w="' +
+          THUMB_VIEW_W +
+          '" data-thumb-h="' +
+          THUMB_VIEW_H +
+          '">' +
+          '<div class="thumb-chip"><i class="fa-solid fa-spinner fa-spin"></i></div>' +
+          '</div>'
+        )
+      }
+
+      function renderStyleGrid(pane) {
+        const list = filteredStyles()
+        totalEl.textContent = String(list.length)
+        titleEl.innerHTML = '全部 <span>主题</span>'
+        descEl.textContent = '预置视觉主题列表，可预览效果或复制规范名。'
+
+        if (!list.length) {
+          pane.innerHTML =
+            '<div class="empty">' +
+            '<div><i class="fa-regular fa-folder-open"></i></div>' +
+            '<h3>没有匹配的主题</h3>' +
+            '<p>试试清空左侧筛选。</p>' +
+            '</div>'
+          return
+        }
+
+        pane.innerHTML = list
+          .map((t) => {
+            const selected = t.id === activeStyle
+            const file = t.id + '-style.md'
+            return (
+              '<article class="card" data-style-card="' +
+              t.id +
+              '">' +
+              '<div class="card-thumb is-live">' +
+              (selected ? '<span class="thumb-badge demo">选中</span>' : '') +
+              styleThumbHtml(t) +
+              '</div>' +
+              '<div class="card-body">' +
+              '<div class="card-top">' +
+              '<h3 class="card-title">' +
+              t.label +
+              '</h3>' +
+              '<span class="card-type" title="style">style</span>' +
+              '</div>' +
+              '<p class="card-desc">预置视觉规范，可预览效果或查看说明文档。</p>' +
+              '<div class="card-foot">' +
+              '<div class="card-meta" title="' +
+              file +
+              '">' +
+              file +
+              '</div>' +
+              '<div class="card-actions">' +
+              (t.preview
+                ? '<button type="button" class="btn btn-primary" data-preview="' +
+                  t.id +
+                  '" title="预览"><i class="fa-regular fa-eye" aria-hidden="true"></i>预览</button>'
+                : '') +
+              '<button type="button" class="btn btn-doc" data-style-doc="' +
+              t.id +
+              '" title="查看规范"><i class="fa-regular fa-file-lines" aria-hidden="true"></i>规范</button>' +
+              '<button type="button" class="btn btn-ghost" data-copy="' +
+              file +
+              '" title="复制文件名">' +
+              '<i class="fa-regular fa-copy"></i>' +
+              '</button>' +
+              '</div></div></div></article>'
+            )
+          })
+          .join('')
+      }
+
+      function renderGrid() {
+        const key = currentGridCacheKey()
+        hideAllGridPanes()
+        const entry = ensureGridPane(key)
+        entry.pane.hidden = false
+        gridCacheKey = key
+        const pane = entry.pane
+
+        if (isStylesPanel()) {
+          renderStyleGrid(pane)
+          rememberGridPaneMeta(key)
+          setupLiveThumbLoader()
+          return
+        }
+
+        const end = currentEnd()
+        totalEl.textContent = String(pages().length)
+        const items = filtered()
+
+        if (!end.ready) {
+          titleEl.innerHTML = '即将 <span>接入</span>'
+          descEl.textContent = '母版库尚未接入，可先浏览其它母版库。'
+          pane.innerHTML =
+            '<div class="empty is-soon">' +
+            emptySoonIconMarkup() +
+            '<h3>相关内容正在规划中</h3>' +
+            '<p>左侧可切换其它母版库，或到「主题」选型视觉规范。</p>' +
+            '</div>'
+          rememberGridPaneMeta(key)
+          setupLiveThumbLoader()
+          return
+        }
+
+        const cats = categories()
+        const cat = cats.find((c) => c.id === activeCat) || cats[0]
+        const unit = activeEnd === 'app' ? '外壳' : '页面'
+        if (activeCat === 'all') {
+          titleEl.innerHTML = '全部 <span>' + unit + '</span>'
+        } else {
+          titleEl.innerHTML = cat.label + (activeEnd === 'app' ? '' : ' <span>页面</span>')
+        }
+        descEl.textContent = cat.desc
+
+        if (!items.length) {
+          pane.innerHTML =
+            '<div class="empty">' +
+            '<div><i class="fa-regular fa-folder-open"></i></div>' +
+            '<h3>没有找到匹配内容</h3>' +
+            '<p>试试清空搜索，或换一个分类看看。</p>' +
+            '</div>'
+          rememberGridPaneMeta(key)
+          setupLiveThumbLoader()
+          return
+        }
+
+        pane.innerHTML = items
+          .map((p) => {
+            const badgeClass = p.demo ? ' thumb-badge demo' : ' thumb-badge'
+            const badge = p.badge
+              ? '<span class="' + badgeClass.trim() + '">' + p.badge + '</span>'
+              : ''
+            return (
+              '<article class="card" data-id="' +
+              p.id +
+              '">' +
+              '<div class="card-thumb' +
+              (p.live ? ' is-live' : '') +
+              (p.layout === 'phone' ? ' is-phone' : '') +
+              '">' +
+              badge +
+              thumbHtml(p) +
+              '</div>' +
+              '<div class="card-body">' +
+              '<div class="card-top">' +
+              '<h3 class="card-title">' +
+              p.label +
+              '</h3>' +
+              '<span class="card-type" title="' +
+              p.type +
+              '">' +
+              p.type +
+              '</span>' +
+              '</div>' +
+              '<p class="card-desc">' +
+              p.desc +
+              '</p>' +
+              '<div class="card-foot">' +
+              '<div class="card-meta" title="' +
+              p.html +
+              '">' +
+              p.html +
+              '</div>' +
+              '<div class="card-actions">' +
+              '<button type="button" class="btn btn-primary" data-open-page="' +
+              p.id +
+              '">' +
+              '<i class="fa-regular fa-circle-arrow-right" style="font-size:12px" aria-hidden="true"></i>预览' +
+              '</button>' +
+              '<button type="button" class="btn btn-ghost" data-copy="' +
+              p.html +
+              '" title="复制文件名">' +
+              '<i class="fa-regular fa-copy"></i>' +
+              '</button>' +
+              '</div></div></div></article>'
+            )
+          })
+          .join('')
+        rememberGridPaneMeta(key)
+        setupLiveThumbLoader()
+      }
+
+      function render() {
+        renderEnds()
+        renderThemes()
+        renderNav()
+        showOrRenderGrid()
+      }
+
+      endSegEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-panel]')
+        if (!btn) return
+        setPanel(btn.getAttribute('data-panel'))
+      })
+
+      themeListEl.addEventListener('click', (e) => {
+        if (e.target.closest('[data-doc]')) return
+        // 整行点击打开预览（箭头仅作示意）
+        const btn = e.target.closest('[data-style]')
+        if (!btn || !themeListEl.contains(btn)) return
+        openStylePreview(btn.getAttribute('data-style'))
+      })
+
+      styleSearchEl.addEventListener('input', () => {
+        styleQuery = styleSearchEl.value
+        renderStyles()
+        if (isStylesPanel()) showOrRenderGrid()
+      })
+
+      gridEl.addEventListener('click', (e) => {
+        const openBtn = e.target.closest('[data-open-page]')
+        if (openBtn) {
+          e.preventDefault()
+          openPagePreview(openBtn.getAttribute('data-open-page'))
+          return
+        }
+        const previewBtn = e.target.closest('[data-preview]')
+        if (previewBtn) {
+          e.preventDefault()
+          openStylePreview(previewBtn.getAttribute('data-preview'))
+          return
+        }
+        const docBtn = e.target.closest('[data-style-doc]')
+        if (docBtn) {
+          e.preventDefault()
+          openStyleDoc(docBtn.getAttribute('data-style-doc'))
+          return
+        }
+        const card = e.target.closest('[data-style-card]')
+        if (!card) return
+        if (e.target.closest('a, button')) return
+        openStylePreview(card.getAttribute('data-style-card'))
+      })
+
+      function openHelp() {
+        helpDialogEl.hidden = false
+        document.body.style.overflow = 'hidden'
+      }
+
+      function closeHelp() {
+        helpDialogEl.hidden = true
+        if (previewDialogEl.hidden) document.body.style.overflow = ''
+      }
+
+      previewCloseEl.addEventListener('click', closeStylePreview)
+      previewScrimEl.addEventListener('click', closeStylePreview)
+      helpOpenEl.addEventListener('click', openHelp)
+      helpCloseEl.addEventListener('click', closeHelp)
+      helpScrimEl.addEventListener('click', closeHelp)
+      shellThemeOpenEl.addEventListener('click', (e) => {
+        e.stopPropagation()
+        toggleShellThemeMenu()
+      })
+      shellThemeMenuEl.addEventListener('click', (e) => {
+        e.stopPropagation()
+        const modeBtn = e.target.closest('[data-color-mode-toggle]')
+        if (modeBtn) {
+          applyGalleryColorMode(!isGalleryDark())
+          return
+        }
+        const btn = e.target.closest('[data-shell-theme]')
+        if (!btn) return
+        applyShellTheme(btn.getAttribute('data-shell-theme'))
+        closeShellThemeMenu()
+      })
+      document.addEventListener('click', (e) => {
+        if (!shellThemeMenuEl.hidden && !e.target.closest('.shell-theme-wrap')) {
+          closeShellThemeMenu()
+        }
+      })
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return
+        if (!shellThemeMenuEl.hidden) {
+          closeShellThemeMenu()
+          return
+        }
+        if (!helpDialogEl.hidden) {
+          closeHelp()
+          return
+        }
+        if (!previewDialogEl.hidden) closeStylePreview()
+      })
+
+      navEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-cat]')
+        if (!btn) return
+        const next = btn.getAttribute('data-cat')
+        const changed = next !== activeCat
+        activeCat = next
+        renderNav()
+        showOrRenderGrid()
+        if (changed) nudgeAmbient('cat')
+      })
+
+      searchEl.addEventListener('input', () => {
+        query = searchEl.value
+        showOrRenderGrid()
+      })
+
+      gridEl.addEventListener('click', async (e) => {
+        const btn = e.target.closest('[data-copy]')
+        if (!btn) return
+        const name = btn.getAttribute('data-copy')
+        try {
+          await navigator.clipboard.writeText(name)
+          btn.innerHTML = '<i class="fa-solid fa-check"></i>'
+          setTimeout(() => {
+            btn.innerHTML = '<i class="fa-regular fa-copy"></i>'
+          }, 1200)
+        } catch (_) {
+          /* ignore */
+        }
+      })
+
+
+      applyGalleryColorMode(readGalleryDark(), { persist: false })
+      window.addEventListener('storage', (e) => {
+        if (e.key !== GALLERY_COLOR_MODE_KEY) return
+        applyGalleryColorMode(e.newValue === 'dark', { persist: false })
+      })
+
+      if (galleryQuery.hideEnds && endSwitchBlockEl) {
+        endSwitchBlockEl.hidden = true
+      }
+
+      applyShellTheme(activeShellTheme)
+      selectStyle(activeStyle)
+      setPanel(activePanel)
+      nudgeAmbient('refresh')
+    })()
+  </script>
+</body>
+</html>
+  <!--
+    Gallery URL 查询参数（parseGalleryQuery）
+
+    hideEnds | hideBrowse | noEnds
+      隐藏左侧「浏览」端切换区（Admin / WEB / APP / STYLE）。
+      取值：1、true、yes（三者等价，任写其一即可）。
+
+    end
+      锁定初始端，覆盖 localStorage 中的端记忆。
+      取值：admin（后台）、web（WEB，未接入时显示占位）、app（设备壳）。
+
+    panel
+      锁定初始面板，覆盖 localStorage 中的面板记忆。
+      取值：admin | web | app（同 end）；styles（直接进入 STYLE 视觉主题列表）。
+
+    未传参时沿用本页 localStorage（frame-gallery-end / frame-gallery-panel）。
+
+    示例：
+      gallery.html?end=admin&hideEnds=1
+      gallery.html?panel=styles&hideEnds=1
+      gallery.html?end=app&hideBrowse=true
+  -->

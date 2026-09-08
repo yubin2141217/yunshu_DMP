@@ -1,0 +1,989 @@
+/* 电商仪表盘（对齐 shadcn /dashboard/ecommerce） */
+
+.ecom-page {
+  --ecom-border: var(--color-border-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ecom-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 992px) {
+  .ecom-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.ecom-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecom-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-text-1);
+}
+
+.ecom-desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-3);
+}
+
+.ecom-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ecom-header-actions .ecom-refresh-btn {
+  width: 28px;
+  padding: 0;
+}
+
+.ecom-header-actions .ecom-refresh-btn .arco-btn-icon {
+  margin-right: 0;
+}
+
+.ecom-chart-motion {
+  animation: ecom-chart-in 0.45s ease both;
+}
+
+@keyframes ecom-chart-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecom-chart-motion {
+    animation: none;
+  }
+}
+
+/* 与顶部 KPI/销售概览条一致的描边卡片 */
+.ecom-page .arco-card.ecom-card.general-card,
+.ecom-card {
+  border-radius: 12px;
+  border: 1px solid var(--ecom-border);
+  background: var(--color-bg-2);
+  box-shadow: none;
+}
+
+.ecom-card .arco-card-body {
+  padding: 16px 20px;
+}
+
+.ecom-card--stack.arco-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ecom-card--stack .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  gap: 12px;
+}
+
+.ecom-card--stack .ecom-card-head {
+  margin-bottom: 0;
+}
+
+.ecom-equal-row.arco-row {
+  align-items: stretch;
+}
+
+.ecom-equal-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+}
+
+.ecom-equal-row > .arco-col > .ecom-card {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.ecom-card-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.ecom-card-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.ecom-card-metric {
+  margin: 4px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.ecom-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ecom-card-head-main {
+  min-width: 0;
+}
+
+.ecom-card-head-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ecom-card-action {
+  color: var(--color-text-3);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* KPI strip: 6 metrics + sales overview */
+.ecom-kpi-strip {
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--color-bg-2);
+  border: 1px solid var(--ecom-border);
+}
+
+.ecom-kpi-strip-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.ecom-kpi-strip-inner > * {
+  min-width: 0;
+}
+
+@media (min-width: 1200px) {
+  .ecom-kpi-strip-inner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+}
+
+.ecom-kpi-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 768px) {
+  .ecom-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .ecom-kpi-grid {
+    border-right: 1px solid var(--ecom-border);
+  }
+}
+
+.ecom-kpi-cell {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--ecom-border);
+}
+
+@media (min-width: 768px) {
+  .ecom-kpi-cell:nth-child(odd) {
+    border-right: 1px solid var(--ecom-border);
+  }
+
+  .ecom-kpi-cell:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .ecom-kpi-cell:last-child {
+    border-bottom: none;
+  }
+}
+
+.ecom-kpi-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ecom-kpi-label {
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.ecom-kpi-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: var(--color-fill-2);
+  color: var(--color-text-1);
+  flex-shrink: 0;
+}
+
+.ecom-kpi-icon-box .pro-fa-icon {
+  font-size: 13px;
+}
+
+.ecom-kpi-value {
+  margin-top: 4px;
+  font-family: var(--font-metric);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.ecom-kpi-compare {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-3);
+}
+
+.ecom-kpi-trend--up {
+  font-weight: 500;
+  color: rgb(var(--success-6));
+}
+
+.ecom-kpi-trend--down {
+  font-weight: 500;
+  color: rgb(var(--danger-6));
+}
+
+.ecom-sales-panel {
+  padding: 20px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.ecom-sales-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.ecom-sales-head-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ecom-sales-chart {
+  width: 100%;
+  height: 280px;
+  min-height: 280px;
+  flex: 0 0 280px;
+}
+
+.ecom-sales-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ecom-border);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .ecom-sales-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.ecom-sales-stat-label {
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.2;
+}
+
+.ecom-sales-stat-value {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+  line-height: 1.25;
+}
+
+.ecom-sales-stat-value--sm {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ecom-traffic-chart {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 260px;
+  align-self: stretch;
+}
+
+.ecom-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-chart-legend--inline {
+  margin-bottom: 0;
+}
+
+.ecom-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ecom-chart-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.ecom-chart-legend-bar {
+  width: 8px;
+  height: 10px;
+  border-radius: 1px;
+  display: inline-block;
+}
+
+/* Traffic sources bars */
+.ecom-source-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.ecom-source-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 10px;
+}
+
+.ecom-card-foot-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--ecom-border);
+  flex-shrink: 0;
+}
+
+.ecom-foot-stat-label {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-foot-stat-value {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-1);
+  line-height: 1.35;
+}
+
+.ecom-card-tip {
+  margin-top: 24px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--color-fill-2);
+  flex-shrink: 0;
+}
+
+.ecom-card-tip-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.ecom-card-tip-desc {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-text-3);
+}
+
+.ecom-card-footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ecom-border);
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-source-meta {
+  min-width: 0;
+}
+
+.ecom-source-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-1);
+  line-height: 1.2;
+}
+
+.ecom-source-visits {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-source-track {
+  height: 28px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-fill-2);
+  /* 斜线底纹，对齐 shadcn 流量来源条轨 */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3.5px,
+    color-mix(in srgb, var(--color-text-1) 7%, transparent) 3.5px,
+    color-mix(in srgb, var(--color-text-1) 7%, transparent) 4.5px
+  );
+}
+
+.ecom-source-fill {
+  height: 100%;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--chart-1) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--chart-1) 12%, transparent);
+}
+
+.ecom-source-change {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.ecom-source-change.is-up {
+  color: rgb(var(--success-6));
+}
+
+.ecom-source-change.is-down {
+  color: rgb(var(--danger-6));
+}
+
+/* Top products */
+.ecom-cat-bar {
+  display: flex;
+  height: 8px;
+  gap: 4px;
+  overflow: hidden;
+  background: var(--color-fill-2);
+  border-radius: 4px;
+}
+
+.ecom-cat-seg {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.ecom-cat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.ecom-cat-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.ecom-divider {
+  height: 1px;
+  background: var(--ecom-border);
+  margin: 14px 0;
+  flex-shrink: 0;
+}
+
+.ecom-product-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px 16px;
+  font-size: 13px;
+}
+
+.ecom-product-head {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-product-name {
+  font-weight: 500;
+  color: var(--color-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ecom-product-cat {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-product-share {
+  align-self: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-3);
+}
+
+.ecom-product-sales {
+  align-self: center;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+/* Inventory：环图随卡片剩余高度放大；中心字号对齐 workplace / index 来源渠道圆环 */
+.ecom-inv-chart.shadcn-chart-host,
+.ecom-inv-chart {
+  width: 100%;
+  max-width: 280px;
+  min-height: 180px;
+  height: auto;
+  max-height: none;
+  margin: 0 auto;
+  flex: 1 1 auto;
+  align-self: stretch;
+  --vis-donut-central-label-font-size: 26px;
+  --vis-donut-central-label-font-weight: 700;
+  --vis-donut-central-label-font-family: var(--font-metric);
+  --vis-donut-central-label-text-color: var(--color-text-1, #1d2129);
+  --vis-donut-central-sub-label-font-size: 14px;
+  --vis-donut-central-sub-label-font-weight: 400;
+  --vis-donut-central-sub-label-font-family: var(--font-global);
+  --vis-donut-central-sub-label-text-color: var(--color-text-3, #86909c);
+}
+
+.ecom-inv-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+.ecom-inv-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.ecom-inv-item + .ecom-inv-item {
+  border-left: 1px solid var(--ecom-border);
+}
+
+.ecom-inv-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-fill-2);
+  color: var(--color-text-3);
+}
+
+.ecom-inv-icon--ok {
+  background: color-mix(in srgb, var(--chart-1) 16%, transparent);
+  color: var(--chart-1);
+}
+
+.ecom-inv-icon--warn {
+  background: color-mix(in srgb, var(--chart-2) 16%, transparent);
+  color: var(--chart-2);
+}
+
+.ecom-inv-icon--danger {
+  background: rgba(var(--danger-6), 0.12);
+  color: rgb(var(--danger-6));
+}
+
+.ecom-inv-icon .pro-fa-icon {
+  font-size: 14px;
+}
+
+.ecom-inv-label {
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1;
+}
+
+.ecom-inv-value {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+/* Reviews */
+.ecom-review-quote {
+  border-radius: 8px;
+  background: var(--color-fill-2);
+  padding: 14px;
+}
+
+.ecom-review-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ecom-stars {
+  display: flex;
+  gap: 2px;
+  color: var(--color-text-1);
+  margin-bottom: 8px;
+}
+
+.ecom-stars .pro-fa-icon {
+  font-size: 13px;
+}
+
+.ecom-review-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.ecom-review-text {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ecom-review-nav {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ecom-rating-block {
+  margin-top: 12px;
+}
+
+.ecom-rating-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-2);
+}
+
+.ecom-rating-positive {
+  font-weight: 500;
+  color: rgb(var(--success-6));
+}
+
+.ecom-rating-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ecom-rating-row:last-child {
+  margin-bottom: 0;
+}
+
+.ecom-rating-star {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.ecom-rating-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-fill-2);
+  overflow: hidden;
+}
+
+.ecom-rating-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--chart-1);
+}
+
+.ecom-rating-pct {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--color-text-3);
+}
+
+.ecom-review-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid var(--ecom-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+
+/* 洞察三卡：同行等高；库存环图吃掉中间剩余高度 */
+.ecom-insight-row.arco-row {
+  align-items: stretch !important;
+}
+
+.ecom-insight-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch !important;
+}
+
+.ecom-insight-row > .arco-col > .ecom-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+}
+
+.ecom-insight-row .ecom-card--stack.arco-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ecom-insight-row .ecom-card--stack .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.ecom-insight-row .ecom-card-footer-link,
+.ecom-insight-row .ecom-review-summary {
+  margin-top: auto;
+}
+
+.ecom-review-summary-text {
+  min-width: 0;
+}
+
+.ecom-review-summary-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.ecom-review-summary-desc {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-text-3);
+  line-height: 1.4;
+}
+
+.ecom-avatar-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ecom-avatar-group .arco-avatar {
+  border: 2px solid var(--color-bg-2);
+  margin-left: -8px;
+}
+
+.ecom-avatar-group .arco-avatar:first-child {
+  margin-left: 0;
+}
+
+.ecom-avatar-more {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-left: -8px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--color-fill-2);
+  color: var(--color-text-2);
+  border: 2px solid var(--color-bg-2);
+}
+
+/* Orders */
+.ecom-orders-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.ecom-orders-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ecom-order-id {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--color-text-1);
+}
+
+.ecom-order-items {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* 时间列单行展示，避免被挤换行 */
+.ecom-page .arco-table-td:nth-child(6) .arco-table-cell {
+  white-space: nowrap;
+}
+
+.ecom-status-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.ecom-pay-tag,
+.ecom-ful-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ecom-pay-tag .ecom-dot,
+.ecom-ful-tag .ecom-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ecom-orders-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ecom-orders-count {
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+/* 勾选列锁宽见 pages-common.css；列宽由 JS width / minWidth 控制 */
+
+/* 暗色：区块外框与内部分割统一用弱线，覆盖全局卡片「无边框」以免与 KPI 条不同步 */
+body[arco-theme='dark'] .ecom-page,
+body.theme-dark .ecom-page {
+  --ecom-border: var(--pro-line-muted);
+}
+
+body[arco-theme='dark'] .ecom-page .arco-card.ecom-card.general-card,
+body[arco-theme='dark'] .ecom-page .ecom-card,
+body[arco-theme='dark'] .ecom-page .ecom-kpi-strip,
+body.theme-dark .ecom-page .arco-card.ecom-card.general-card,
+body.theme-dark .ecom-page .ecom-card,
+body.theme-dark .ecom-page .ecom-kpi-strip {
+  border: 1px solid var(--ecom-border) !important;
+  box-shadow: none !important;
+}

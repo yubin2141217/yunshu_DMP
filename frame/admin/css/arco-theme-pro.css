@@ -1,0 +1,1331 @@
+/**
+ * Arco Design Pro 主题 tokens（色板由 js/arco-theme.js 动态写入）
+ */
+:root {
+  --shell-menu-width: 220px;
+  --shell-logo-width: 220px;
+  --shell-navbar-height: 60px;
+  /* 与 body 一致；圆环中心中文等勿再单独开字体栈 */
+  --font-global: Inter, '-apple-system', BlinkMacSystemFont, 'PingFang SC',
+    'Hiragino Sans GB', 'noto sans', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  --pro-theme-color: rgb(var(--primary-6));
+  --pro-theme-color-soft: rgba(var(--primary-6), 0.12);
+  --pro-theme-color-mid: rgba(var(--primary-6), 0.35);
+  --chart-1: rgb(var(--primary-6, var(--arcoblue-6)));
+  --chart-2: rgb(var(--primary-5, var(--arcoblue-5)));
+  --chart-3: rgb(var(--primary-4, var(--arcoblue-4)));
+  --chart-4: rgb(var(--primary-3, var(--arcoblue-3)));
+  --chart-5: rgb(var(--primary-2, var(--arcoblue-2)));
+  --chart-6: rgb(var(--primary-6, var(--arcoblue-6)));
+  --chart-7: rgb(var(--primary-5, var(--arcoblue-5)));
+  --chart-8: rgb(var(--primary-4, var(--arcoblue-4)));
+  --chart-9: rgb(var(--primary-3, var(--arcoblue-3)));
+  --chart-10: rgb(var(--primary-2, var(--arcoblue-2)));
+  /* arcoblue 由 arco-theme.js 写入；--chart-* 正式值由 chart-palette.js 覆盖 */
+  /* 对齐 Arco Pro 官方 Layout Sider / Card 层次 */
+  --pro-shadow-sider: 0 2px 5px 0 rgba(0, 0, 0, 0.08);
+  --pro-shadow-sider-dark: 0 2px 5px 0 rgba(255, 255, 255, 0.08);
+  --pro-card-border: var(--color-neutral-3, var(--color-border-2, #e5e6eb));
+  /* 区块标题分隔线：弱化、全站统一（卡片头 / 表单头 / Divider） */
+  --pro-divider: var(--color-border-1, #f2f3f5);
+  /* 全局滚动条：细窄、无箭头，随主题切换 */
+  --pro-scrollbar-size: 4px;
+  --pro-scrollbar-track: transparent;
+  --pro-scrollbar-thumb: rgba(0, 0, 0, 0.16);
+  --pro-scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+  /* 指标主数字字体（KPI / 指标卡 / 圆环中心等） */
+  --font-metric: 'Plus Jakarta Sans', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--pro-scrollbar-thumb) var(--pro-scrollbar-track);
+}
+
+/* WebKit / Blink（Chrome、Edge、Safari） */
+*::-webkit-scrollbar {
+  width: var(--pro-scrollbar-size);
+  height: var(--pro-scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--pro-scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--pro-scrollbar-thumb);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--pro-scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 移除 Windows 经典滚动条上下箭头 */
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Arco 自定义滚动条（下拉 / 表格等）收窄 */
+.arco-scrollbar-track-direction-vertical {
+  width: 8px !important;
+}
+
+.arco-scrollbar-track-direction-horizontal {
+  height: 8px !important;
+}
+
+.arco-scrollbar-thumb-direction-vertical .arco-scrollbar-thumb-bar {
+  width: 4px !important;
+  margin: 0 2px !important;
+  border-radius: 4px !important;
+}
+
+.arco-scrollbar-thumb-direction-horizontal .arco-scrollbar-thumb-bar {
+  height: 4px !important;
+  margin: 2px 0 !important;
+  border-radius: 4px !important;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  font-family: var(--font-global);
+  background-color: var(--color-bg-1);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 业务页卡片：对齐 Arco Pro general-card（无边框、bg-2 浮于 fill-2 画布） */
+.pro-content-wrapper .arco-card {
+  border-radius: 4px;
+  border: none;
+  background: var(--color-bg-2);
+  box-shadow: none !important;
+}
+
+.pro-content-wrapper .arco-card.arco-card-hoverable:hover {
+  box-shadow: none !important;
+}
+
+/* 卡片标题分隔线：弱化 + 闭合（与 form-basic-header / Arco Card Header 统一） */
+.pro-content-wrapper .arco-card-header {
+  border-bottom: 1px solid var(--pro-divider);
+}
+
+.pro-content-wrapper .arco-divider-horizontal {
+  border-bottom-color: var(--pro-divider);
+}
+
+.pro-content-wrapper .arco-divider-vertical {
+  border-left-color: var(--pro-divider);
+}
+
+/* 弹窗 / 抽屉头尾分隔线：与全局 --pro-divider 统一 */
+.arco-modal-header,
+.arco-drawer-header {
+  border-bottom: 1px solid var(--pro-divider);
+}
+
+.arco-modal-footer,
+.arco-drawer-footer {
+  border-top: 1px solid var(--pro-divider);
+}
+
+/* Logo mark（Shell + Login 共用） */
+.pro-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--primary-4)) 0%,
+    rgb(var(--primary-5)) 50%,
+    rgb(var(--primary-6)) 100%
+  );
+  box-shadow: 0 2px 8px var(--pro-theme-color-soft);
+  overflow: hidden;
+}
+
+.pro-logo-mark-icon.pro-fa-icon {
+  --fa-width: 1em;
+  --fa-family: var(--fa-family-classic, 'Font Awesome 7 Pro');
+  --fa-style: 900;
+  font-size: 15px;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+}
+
+/* 品牌色头像 / 标记（随主题色切换） */
+.pro-avatar-brand.arco-avatar {
+  background-color: var(--pro-theme-color) !important;
+}
+
+/* 主按钮：悬停/按下加深（Arco 默认 hover 用 primary-5 会变浅） */
+.arco-btn-primary.arco-btn-status-normal:hover,
+.arco-btn-primary.arco-btn-status-normal[type='button']:hover,
+.arco-btn-primary.arco-btn-status-normal[type='submit']:hover {
+  background-color: rgb(var(--primary-7));
+  border-color: transparent;
+}
+
+.arco-btn-primary.arco-btn-status-normal:active,
+.arco-btn-primary.arco-btn-status-normal[type='button']:active,
+.arco-btn-primary.arco-btn-status-normal[type='submit']:active {
+  background-color: rgb(var(--primary-8));
+  border-color: transparent;
+}
+
+/* 气泡卡片标题 */
+.arco-popover-title {
+  font-size: 14px;
+}
+
+/* 警告提示：多行时图标 / 关闭按钮与首行文字对齐（Arco 默认垂直居中） */
+.arco-alert:not(.arco-alert-with-title) {
+  align-items: flex-start;
+}
+
+.arco-alert:not(.arco-alert-with-title) .arco-alert-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: calc(1em * 1.5715);
+  line-height: 1;
+}
+
+.arco-alert:not(.arco-alert-with-title) .arco-alert-icon .arco-icon,
+.arco-alert:not(.arco-alert-with-title) .arco-alert-icon .pro-fa-icon,
+.arco-alert:not(.arco-alert-with-title) .arco-alert-icon svg {
+  display: block;
+  vertical-align: unset;
+}
+
+.arco-alert:not(.arco-alert-with-title) .arco-alert-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: calc(1em * 1.5715);
+  margin-top: 0;
+}
+
+/* 带标题：图标与标题行对齐 */
+.arco-alert-with-title .arco-alert-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: calc(16px * 1.5);
+  line-height: 1;
+}
+
+.arco-alert-with-title .arco-alert-icon .arco-icon,
+.arco-alert-with-title .arco-alert-icon .pro-fa-icon,
+.arco-alert-with-title .arco-alert-icon svg {
+  display: block;
+  vertical-align: unset;
+}
+
+.arco-alert-with-title .arco-alert-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: calc(16px * 1.5);
+  margin-top: 0;
+  top: auto;
+}
+
+/* ── 居中统一：徽标 / 头像 / 纯图标按钮（覆盖 Arco 仅 translateX、图标缺 align-items 等） ── */
+
+/* 数字徽标：10px / 16px，grid 居中（含顶栏） */
+.arco-badge-number {
+  display: inline-grid !important;
+  place-items: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 5px;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.arco-badge-number > span {
+  display: block;
+  line-height: 1;
+  /* 数字字形视觉重心略偏上，光学下移 0.5px（不用 transform，避免被 overflow 裁切观感） */
+  margin-top: 0.5px;
+}
+
+/* 状态点 + 文案 */
+.arco-badge-status-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.arco-badge-status-wrapper .arco-badge-status-dot {
+  flex-shrink: 0;
+}
+
+/* 头像文字/图标：双轴居中（Arco 默认仅 translateX(-50%)，FA 图标易偏） */
+.arco-avatar .arco-avatar-text {
+  inset: 0;
+  left: 0 !important;
+  top: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  transform: none !important;
+  transform-origin: center center;
+}
+
+.arco-avatar .arco-avatar-text .pro-fa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* 纯图标 / 圆形按钮：内容居中，去掉「图标+文字」间距 */
+.arco-btn-only-icon,
+.arco-btn-shape-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arco-btn-only-icon .arco-btn-icon,
+.arco-btn-shape-circle .arco-btn-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.arco-btn-only-icon .pro-fa-icon,
+.arco-btn-shape-circle .pro-fa-icon {
+  margin: 0;
+}
+
+/* 描边按钮：半透明主色底；悬停/按下加深（覆盖 Arco 默认变浅的 primary-5） */
+.arco-btn-outline.arco-btn-status-normal,
+.arco-btn-outline.arco-btn-status-normal[type='button'],
+.arco-btn-outline.arco-btn-status-normal[type='submit'] {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border-color: rgb(var(--primary-6));
+}
+
+.arco-btn-outline.arco-btn-status-normal:hover,
+.arco-btn-outline.arco-btn-status-normal[type='button']:hover,
+.arco-btn-outline.arco-btn-status-normal[type='submit']:hover,
+.arco-btn-outline.arco-btn-status-normal:focus-visible,
+.arco-btn-outline.arco-btn-status-normal[type='button']:focus-visible,
+.arco-btn-outline.arco-btn-status-normal[type='submit']:focus-visible {
+  color: rgb(var(--primary-7));
+  background-color: var(--pro-theme-color-mid);
+  border-color: rgb(var(--primary-7));
+}
+
+.arco-btn-outline.arco-btn-status-normal:active,
+.arco-btn-outline.arco-btn-status-normal[type='button']:active,
+.arco-btn-outline.arco-btn-status-normal[type='submit']:active {
+  color: rgb(var(--primary-8));
+  background-color: color-mix(in srgb, var(--pro-theme-color) 45%, transparent);
+  border-color: rgb(var(--primary-8));
+}
+
+/* 描边按钮：成功 / 警告 / 错误 — 与主色描边同款半透明底 */
+.arco-btn-outline.arco-btn-status-success,
+.arco-btn-outline.arco-btn-status-success[type='button'],
+.arco-btn-outline.arco-btn-status-success[type='submit'] {
+  color: rgb(var(--success-6));
+  background-color: rgba(var(--success-6), 0.12);
+  border-color: rgb(var(--success-6));
+}
+
+.arco-btn-outline.arco-btn-status-success:hover,
+.arco-btn-outline.arco-btn-status-success[type='button']:hover,
+.arco-btn-outline.arco-btn-status-success[type='submit']:hover,
+.arco-btn-outline.arco-btn-status-success:focus-visible,
+.arco-btn-outline.arco-btn-status-success[type='button']:focus-visible,
+.arco-btn-outline.arco-btn-status-success[type='submit']:focus-visible {
+  color: rgb(var(--success-7));
+  background-color: rgba(var(--success-6), 0.35);
+  border-color: rgb(var(--success-7));
+}
+
+.arco-btn-outline.arco-btn-status-success:active,
+.arco-btn-outline.arco-btn-status-success[type='button']:active,
+.arco-btn-outline.arco-btn-status-success[type='submit']:active {
+  color: rgb(var(--success-8));
+  background-color: rgba(var(--success-6), 0.45);
+  border-color: rgb(var(--success-8));
+}
+
+.arco-btn-outline.arco-btn-status-warning,
+.arco-btn-outline.arco-btn-status-warning[type='button'],
+.arco-btn-outline.arco-btn-status-warning[type='submit'] {
+  color: rgb(var(--warning-6));
+  background-color: rgba(var(--warning-6), 0.12);
+  border-color: rgb(var(--warning-6));
+}
+
+.arco-btn-outline.arco-btn-status-warning:hover,
+.arco-btn-outline.arco-btn-status-warning[type='button']:hover,
+.arco-btn-outline.arco-btn-status-warning[type='submit']:hover,
+.arco-btn-outline.arco-btn-status-warning:focus-visible,
+.arco-btn-outline.arco-btn-status-warning[type='button']:focus-visible,
+.arco-btn-outline.arco-btn-status-warning[type='submit']:focus-visible {
+  color: rgb(var(--warning-7));
+  background-color: rgba(var(--warning-6), 0.35);
+  border-color: rgb(var(--warning-7));
+}
+
+.arco-btn-outline.arco-btn-status-warning:active,
+.arco-btn-outline.arco-btn-status-warning[type='button']:active,
+.arco-btn-outline.arco-btn-status-warning[type='submit']:active {
+  color: rgb(var(--warning-8));
+  background-color: rgba(var(--warning-6), 0.45);
+  border-color: rgb(var(--warning-8));
+}
+
+.arco-btn-outline.arco-btn-status-danger,
+.arco-btn-outline.arco-btn-status-danger[type='button'],
+.arco-btn-outline.arco-btn-status-danger[type='submit'] {
+  color: rgb(var(--danger-6));
+  background-color: rgba(var(--danger-6), 0.12);
+  border-color: rgb(var(--danger-6));
+}
+
+.arco-btn-outline.arco-btn-status-danger:hover,
+.arco-btn-outline.arco-btn-status-danger[type='button']:hover,
+.arco-btn-outline.arco-btn-status-danger[type='submit']:hover,
+.arco-btn-outline.arco-btn-status-danger:focus-visible,
+.arco-btn-outline.arco-btn-status-danger[type='button']:focus-visible,
+.arco-btn-outline.arco-btn-status-danger[type='submit']:focus-visible {
+  color: rgb(var(--danger-7));
+  background-color: rgba(var(--danger-6), 0.35);
+  border-color: rgb(var(--danger-7));
+}
+
+.arco-btn-outline.arco-btn-status-danger:active,
+.arco-btn-outline.arco-btn-status-danger[type='button']:active,
+.arco-btn-outline.arco-btn-status-danger[type='submit']:active {
+  color: rgb(var(--danger-8));
+  background-color: rgba(var(--danger-6), 0.45);
+  border-color: rgb(var(--danger-8));
+}
+
+/* 全局默认头像：品牌色底 + 实心人物剪影（居中见上方「居中统一」） */
+.pro-avatar-default.arco-avatar {
+  color: #fff;
+}
+
+.pro-avatar-default.arco-avatar .pro-fa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55em;
+  width: 1em;
+  height: 1em;
+  /* FA user 字形视觉重心略偏下，微调上移 */
+  transform: translateY(-5%);
+}
+
+.pro-navbar-user .pro-avatar-default.arco-avatar {
+  /* 与基础组件尺寸示例第 3 档（32px）一致 */
+  font-size: 16px !important;
+}
+
+.pro-navbar-user .pro-avatar-default.arco-avatar .pro-fa-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* ── 暗色模式：对齐 Arco Pro 官方（react-pro.arco.design） ── */
+body[arco-theme='dark'],
+body.theme-dark {
+  --pro-scrollbar-thumb: rgba(255, 255, 255, 0.14);
+  --pro-scrollbar-thumb-hover: rgba(255, 255, 255, 0.26);
+  --pro-card-border: transparent;
+  /* 内容画布：与页面底色一致，卡片间隙不再偏亮 */
+  --pro-content-bg: var(--color-bg-1);
+  /* 暗色装饰线：弱化分隔 / 表格 / 图表网格 */
+  --pro-line-muted: rgba(255, 255, 255, 0.06);
+  --pro-line-chart: rgba(255, 255, 255, 0.05);
+  --pro-divider: var(--pro-line-muted);
+  background-color: var(--color-bg-1);
+}
+
+/* 外壳：bg-1（上下布局 stage 等） */
+body[arco-theme='dark'] .pro-layout-root,
+body[arco-theme='dark'] .pro-layout,
+body[arco-theme='dark'] .pro-body,
+body[arco-theme='dark'] .pro-layout--top .pro-stage,
+body.theme-dark .pro-layout-root,
+body.theme-dark .pro-layout,
+body.theme-dark .pro-body,
+body.theme-dark .pro-layout--top .pro-stage {
+  background: var(--color-bg-1);
+}
+
+/* 左右布局：主栏统一内容画布色，顶栏透明时与内容区同色 */
+body[arco-theme='dark'] .pro-layout--side .pro-main,
+body.theme-dark .pro-layout--side .pro-main {
+  background: var(--pro-content-bg);
+}
+
+body[arco-theme='dark'] .pro-layout--side .pro-content,
+body.theme-dark .pro-layout--side .pro-content {
+  background: transparent;
+}
+
+/* 上下布局：内容画布 */
+body[arco-theme='dark'] .pro-layout--top .pro-content,
+body.theme-dark .pro-layout--top .pro-content {
+  background: var(--pro-content-bg);
+}
+
+/* 卡片：bg-2 无边框 */
+body[arco-theme='dark'] .pro-content-wrapper .arco-card,
+body[arco-theme='dark'] .pro-content-wrapper .arco-card.general-card,
+body.theme-dark .pro-content-wrapper .arco-card,
+body.theme-dark .pro-content-wrapper .arco-card.general-card {
+  border: none !important;
+  background: var(--color-bg-2);
+  box-shadow: none !important;
+}
+
+/* 上下布局：通栏顶栏统一 bg-2 + 底边框（弱化） */
+body[arco-theme='dark'] .pro-layout--top .pro-navbar--global,
+body.theme-dark .pro-layout--top .pro-navbar--global {
+  background: var(--color-bg-2) !important;
+  border-bottom: 1px solid var(--pro-line-muted) !important;
+}
+
+body[arco-theme='dark'] .pro-layout--top .pro-navbar-left,
+body.theme-dark .pro-layout--top .pro-navbar-left {
+  background: transparent !important;
+}
+
+/* 左右布局：顶栏默认透明；滚动后沿用亮色毛玻璃（layout.css） */
+body[arco-theme='dark'] .pro-layout--side .pro-navbar--embedded.is-scrolled,
+body.theme-dark .pro-layout--side .pro-navbar--embedded.is-scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
+}
+
+/* 侧栏：bg-2 无边框 */
+body[arco-theme='dark'] .pro-layout--side .pro-sider,
+body[arco-theme='dark'] .pro-sider-brand,
+body.theme-dark .pro-layout--side .pro-sider,
+body.theme-dark .pro-sider-brand {
+  border: none;
+  box-shadow: none !important;
+  background: var(--color-bg-2) !important;
+}
+
+body[arco-theme='dark'] .pro-layout--side .pro-sider,
+body.theme-dark .pro-layout--side .pro-sider {
+  border-right: none;
+}
+
+/* 面包屑 / 页标题 */
+body[arco-theme='dark'] .pro-breadcrumb,
+body.theme-dark .pro-breadcrumb {
+  color: var(--color-text-2);
+}
+
+body[arco-theme='dark'] .pro-breadcrumb .arco-breadcrumb-item,
+body.theme-dark .pro-breadcrumb .arco-breadcrumb-item {
+  color: var(--color-text-3);
+}
+
+body[arco-theme='dark'] .pro-breadcrumb .arco-breadcrumb-item a,
+body.theme-dark .pro-breadcrumb .arco-breadcrumb-item a {
+  color: var(--color-text-2);
+}
+
+body[arco-theme='dark'] .pro-page-title,
+body.theme-dark .pro-page-title {
+  color: var(--color-text-1);
+}
+
+/* 亮色：表格分隔线调淡 */
+.pro-content-wrapper .arco-table-th,
+.pro-content-wrapper .arco-table-td,
+.pro-content-wrapper .arco-table .arco-table-tr .arco-table-th,
+.pro-content-wrapper .arco-table .arco-table-tr .arco-table-td {
+  border-color: var(--color-neutral-2, #f2f3f5) !important;
+}
+
+/* 表格：弱化行线 / 列线 */
+body[arco-theme='dark'] .pro-content-wrapper .arco-table-container,
+body.theme-dark .pro-content-wrapper .arco-table-container {
+  border: none;
+  background: transparent;
+}
+
+body[arco-theme='dark'] .pro-content-wrapper .arco-table,
+body.theme-dark .pro-content-wrapper .arco-table {
+  background: transparent;
+}
+
+body[arco-theme='dark'] .pro-content-wrapper .arco-table-th,
+body[arco-theme='dark'] .pro-content-wrapper .arco-table-td,
+body[arco-theme='dark'] .pro-content-wrapper .arco-table .arco-table-tr .arco-table-th,
+body[arco-theme='dark'] .pro-content-wrapper .arco-table .arco-table-tr .arco-table-td,
+body.theme-dark .pro-content-wrapper .arco-table-th,
+body.theme-dark .pro-content-wrapper .arco-table-td,
+body.theme-dark .pro-content-wrapper .arco-table .arco-table-tr .arco-table-th,
+body.theme-dark .pro-content-wrapper .arco-table .arco-table-tr .arco-table-td {
+  border-color: var(--pro-line-muted) !important;
+}
+
+/* 分隔线（概览竖线 / 区块横线等） */
+body[arco-theme='dark'] .pro-content-wrapper .arco-divider,
+body.theme-dark .pro-content-wrapper .arco-divider {
+  border-color: var(--pro-line-muted) !important;
+}
+
+/* Tabs 底部分割线 */
+body[arco-theme='dark'] .pro-content-wrapper .arco-tabs-nav::before,
+body.theme-dark .pro-content-wrapper .arco-tabs-nav::before {
+  background-color: var(--pro-line-muted) !important;
+}
+
+/* 图表网格 / 十字线；轴刻度色同步暗色（含柱线组合右侧 HTML 叠层） */
+body[arco-theme='dark'] .shadcn-chart-host,
+body.theme-dark .shadcn-chart-host {
+  --vis-axis-grid-color: var(--pro-line-chart);
+  --vis-axis-tick-label-color: var(--vis-dark-axis-tick-label-color, var(--color-text-3));
+  --vis-axis-label-color: var(--vis-dark-axis-label-color, var(--color-text-2));
+  --vis-crosshair-line-stroke-color: var(--pro-line-chart);
+  --vis-crosshair-line-stroke-opacity: 0.45;
+}
+
+/* 仅网格/辅助线；勿覆盖 K 线影线等业务色 stroke */
+body[arco-theme='dark'] .shadcn-chart-host svg line:not(.shadcn-candlestick-wick):not(.shadcn-percent-track-domain),
+body.theme-dark .shadcn-chart-host svg line:not(.shadcn-candlestick-wick):not(.shadcn-percent-track-domain) {
+  stroke: var(--pro-line-chart) !important;
+  stroke-opacity: 0.35;
+}
+
+body[arco-theme='dark'] .shadcn-chart-host [class*='grid'] line,
+body.theme-dark .shadcn-chart-host [class*='grid'] line,
+body[arco-theme='dark'] .shadcn-chart-host line[class*='grid'],
+body.theme-dark .shadcn-chart-host line[class*='grid'] {
+  stroke-opacity: 0.3;
+}
+
+/* 列表页工具栏 */
+body[arco-theme='dark'] .pro-toolbar,
+body.theme-dark .pro-toolbar {
+  border: none;
+}
+
+/* 工作台等列表分隔 */
+body[arco-theme='dark'] .announcement-list li,
+body[arco-theme='dark'] .docs-list li,
+body.theme-dark .announcement-list li,
+body.theme-dark .docs-list li {
+  border-color: transparent;
+}
+
+body[arco-theme='dark'] .list-card-item,
+body.theme-dark .list-card-item {
+  border-top-color: transparent;
+}
+
+/* 文字按钮 / 链接：悬停仅变色，不加背景块 */
+.arco-link:hover,
+.arco-link:active {
+  background-color: transparent !important;
+}
+
+.arco-link:hover {
+  color: rgb(var(--link-5));
+}
+
+.arco-link:active {
+  color: rgb(var(--link-7));
+}
+
+.arco-link-status-success:hover {
+  color: rgb(var(--success-5));
+}
+
+.arco-link-status-success:active {
+  color: rgb(var(--success-7));
+}
+
+.arco-link-status-warning:hover {
+  color: rgb(var(--warning-5));
+}
+
+.arco-link-status-warning:active {
+  color: rgb(var(--warning-7));
+}
+
+.arco-link-status-danger:hover {
+  color: rgb(var(--danger-5));
+}
+
+.arco-link-status-danger:active {
+  color: rgb(var(--danger-7));
+}
+
+.arco-btn-text:hover,
+.arco-btn-text[type='button']:hover,
+.arco-btn-text[type='submit']:hover,
+.arco-btn-text:active,
+.arco-btn-text[type='button']:active,
+.arco-btn-text[type='submit']:active {
+  background-color: transparent !important;
+  border-color: transparent;
+}
+
+.arco-btn-text:hover,
+.arco-btn-text[type='button']:hover,
+.arco-btn-text[type='submit']:hover {
+  color: rgb(var(--primary-5));
+}
+
+.arco-btn-text:active,
+.arco-btn-text[type='button']:active,
+.arco-btn-text[type='submit']:active {
+  color: rgb(var(--primary-7));
+}
+
+.arco-btn-text.arco-btn-status-warning:hover {
+  color: rgb(var(--warning-5));
+  background-color: transparent !important;
+}
+
+.arco-btn-text.arco-btn-status-warning:active {
+  color: rgb(var(--warning-7));
+  background-color: transparent !important;
+}
+
+.arco-btn-text.arco-btn-status-danger:hover {
+  color: rgb(var(--danger-5));
+  background-color: transparent !important;
+}
+
+.arco-btn-text.arco-btn-status-danger:active {
+  color: rgb(var(--danger-7));
+  background-color: transparent !important;
+}
+
+.arco-btn-text.arco-btn-status-success:hover {
+  color: rgb(var(--success-5));
+  background-color: transparent !important;
+}
+
+.arco-btn-text.arco-btn-status-success:active {
+  color: rgb(var(--success-7));
+  background-color: transparent !important;
+}
+
+/* ── 全局复选框 / 单选框 ──
+ * 16px、1px 描边、柔和边框色；单选内圆点居中；去掉悬停灰底光晕
+ */
+.arco-checkbox-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px !important;
+  border-width: 1px !important;
+  border-color: var(--color-neutral-4, #c9cdd4) !important;
+}
+
+.arco-checkbox-icon-hover::before {
+  border-radius: 2px !important;
+  background-color: transparent !important;
+}
+
+.arco-checkbox:hover .arco-checkbox-icon-hover::before,
+.arco-checkbox:not(.arco-checkbox-disabled):not(.arco-checkbox-checked):hover .arco-checkbox-icon-hover::before,
+.arco-checkbox > input[type='checkbox']:focus + .arco-checkbox-icon-hover::before {
+  background-color: transparent !important;
+}
+
+.arco-checkbox:hover .arco-checkbox-icon {
+  border-color: var(--color-neutral-6, #86909c) !important;
+}
+
+.arco-checkbox-checked .arco-checkbox-icon,
+.arco-checkbox-indeterminate .arco-checkbox-icon {
+  border-radius: 2px !important;
+  border-color: rgb(var(--primary-6)) !important;
+}
+
+.arco-radio-icon {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-width: 1px !important;
+  border-color: var(--color-neutral-4, #c9cdd4) !important;
+}
+
+.arco-radio-icon::after {
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.arco-radio-checked .arco-radio-icon::after {
+  background-color: var(--color-white);
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
+.arco-radio:hover .arco-radio-icon {
+  border-color: var(--color-neutral-6, #86909c) !important;
+}
+
+.arco-radio-checked .arco-radio-icon,
+.arco-radio-checked:hover .arco-radio-icon {
+  border-color: rgb(var(--primary-6)) !important;
+}
+
+.arco-radio-icon-hover::before,
+.arco-radio:hover .arco-radio-icon-hover::before,
+.arco-radio:not(.arco-radio-disabled):not(.arco-radio-checked):hover .arco-radio-icon-hover::before,
+.arco-radio > input[type='radio']:focus + .arco-radio-icon-hover::before {
+  background-color: transparent !important;
+}
+
+/* 按钮单选：保留 Arco 轨道结构与半透明选中；轨道对齐输入框浅底描边 */
+.arco-radio-group-button {
+  background-color: var(--color-fill-1, #f7f8fa) !important;
+  border: 1px solid #eaebef !important;
+}
+
+.arco-radio-button.arco-radio-checked {
+  color: rgb(var(--primary-6)) !important;
+  background-color: rgba(var(--primary-6), 0.12) !important;
+}
+
+.arco-radio-button.arco-radio-checked:hover {
+  color: rgb(var(--primary-6)) !important;
+  background-color: rgba(var(--primary-6), 0.18) !important;
+}
+
+.arco-radio-button.arco-radio-disabled.arco-radio-checked {
+  color: rgb(var(--primary-3)) !important;
+  background-color: rgba(var(--primary-6), 0.08) !important;
+}
+
+body[arco-theme='dark'] .arco-radio-group-button {
+  background-color: var(--color-fill-1, #2a2a2b) !important;
+  border-color: var(--color-neutral-3, #484849) !important;
+}
+
+body[arco-theme='dark'] .arco-radio-button.arco-radio-checked {
+  color: rgb(var(--primary-5)) !important;
+  background-color: rgba(var(--primary-6), 0.2) !important;
+}
+
+body[arco-theme='dark'] .arco-radio-button.arco-radio-checked:hover {
+  color: rgb(var(--primary-5)) !important;
+  background-color: rgba(var(--primary-6), 0.28) !important;
+}
+
+/* ── 输入 / 选择控件描边与浅底 ── */
+.arco-input-wrapper,
+.arco-textarea-wrapper,
+.arco-input-tag,
+.arco-select-view-single,
+.arco-select-view-multiple,
+.arco-cascader-view,
+.arco-tree-select-view,
+.arco-picker.arco-picker-size-mini,
+.arco-picker.arco-picker-size-small,
+.arco-picker.arco-picker-size-medium,
+.arco-picker.arco-picker-size-large,
+.arco-input-number,
+.arco-mention,
+.arco-auto-complete {
+  border: 1px solid #eaebef !important;
+  background-color: var(--color-fill-1, #f7f8fa) !important;
+}
+
+.arco-input-wrapper:hover,
+.arco-textarea-wrapper:hover,
+.arco-input-tag:hover,
+.arco-select-view-single:hover,
+.arco-select-view-multiple:hover,
+.arco-cascader-view:hover,
+.arco-tree-select-view:hover,
+.arco-picker.arco-picker-size-mini:hover,
+.arco-picker.arco-picker-size-small:hover,
+.arco-picker.arco-picker-size-medium:hover,
+.arco-picker.arco-picker-size-large:hover {
+  border-color: #dde0e5 !important;
+  background-color: var(--color-fill-1, #f7f8fa) !important;
+}
+
+.arco-input-wrapper.arco-input-focus,
+.arco-input-wrapper:focus-within,
+.arco-textarea-wrapper.arco-textarea-focus,
+.arco-textarea-wrapper:focus-within,
+.arco-input-tag.arco-input-tag-focus,
+.arco-select-view-single.arco-select-view-focus,
+.arco-select-view-multiple.arco-select-view-focus,
+.arco-cascader-view.arco-cascader-view-focus,
+.arco-tree-select-view.arco-tree-select-view-focus,
+.arco-picker.arco-picker-focused {
+  border-color: rgb(var(--primary-6)) !important;
+  background-color: var(--color-bg-2, #ffffff) !important;
+}
+
+/* 日期面板保持白底，避免被输入框浅灰底样式影响 */
+.arco-picker-container,
+.arco-picker-range-container {
+  background-color: var(--color-bg-popup, #ffffff) !important;
+}
+
+.arco-picker-panel-wrapper,
+.arco-panel-date,
+.arco-panel-date-inner,
+.arco-picker-header,
+.arco-picker-body,
+.arco-picker-week-list {
+  background-color: transparent !important;
+}
+
+.arco-picker-header-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  background-color: transparent !important;
+  border: 1px solid #eaebef !important;
+  border-radius: 4px !important;
+}
+
+.arco-picker-header-icon .pro-fa-icon,
+.arco-picker-header-icon .arco-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+.arco-picker-header-icon .pro-fa-icon::before {
+  line-height: 1 !important;
+}
+
+.arco-picker-header-icon:not(.arco-picker-header-icon-hidden):hover {
+  background-color: transparent !important;
+  border-color: #dde0e5 !important;
+  color: var(--color-text-1);
+}
+
+.arco-picker-header-icon-hidden {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  pointer-events: none;
+}
+
+/* 日期选择：固定 suffix 尺寸，悬停切换清除/日历图标时不抖动 */
+.arco-picker-suffix {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  min-width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* 清除图标叠在日历位置；显隐交给 Arco 的 display 切换，避免透明层挡点击 */
+.arco-picker .arco-picker-clear-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
+
+.arco-picker-suffix > .arco-picker-suffix-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 时间列：始终可滚并预留槽位；默认隐藏滑块，悬停再显示，避免抖动 */
+.arco-timepicker-column,
+.arco-timepicker-column:hover {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.arco-timepicker-column:hover {
+  scrollbar-color: var(--pro-scrollbar-thumb) transparent;
+}
+
+.arco-timepicker-column::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.arco-timepicker-column:hover::-webkit-scrollbar-thumb {
+  background-color: var(--pro-scrollbar-thumb);
+}
+
+.arco-timepicker-column::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 去掉时间列底部大段空白占位（Arco 默认 ul::after 192/244px） */
+.arco-timepicker-column ul::after,
+.arco-panel-date-timepicker .arco-timepicker ul::after {
+  height: 0;
+}
+
+body[arco-theme='dark'] .arco-input-wrapper,
+body[arco-theme='dark'] .arco-textarea-wrapper,
+body[arco-theme='dark'] .arco-input-tag,
+body[arco-theme='dark'] .arco-select-view-single,
+body[arco-theme='dark'] .arco-select-view-multiple,
+body[arco-theme='dark'] .arco-cascader-view,
+body[arco-theme='dark'] .arco-tree-select-view,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-mini,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-small,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-medium,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-large {
+  border-color: var(--color-neutral-3, #484849) !important;
+  background-color: var(--color-fill-1, #2a2a2b) !important;
+}
+
+body[arco-theme='dark'] .arco-input-wrapper:hover,
+body[arco-theme='dark'] .arco-textarea-wrapper:hover,
+body[arco-theme='dark'] .arco-input-tag:hover,
+body[arco-theme='dark'] .arco-select-view-single:hover,
+body[arco-theme='dark'] .arco-select-view-multiple:hover,
+body[arco-theme='dark'] .arco-cascader-view:hover,
+body[arco-theme='dark'] .arco-tree-select-view:hover,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-mini:hover,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-small:hover,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-medium:hover,
+body[arco-theme='dark'] .arco-picker.arco-picker-size-large:hover {
+  border-color: var(--color-neutral-4, #5f5f60) !important;
+  background-color: var(--color-fill-2, #313132) !important;
+}
+
+body[arco-theme='dark'] .arco-input-wrapper.arco-input-focus,
+body[arco-theme='dark'] .arco-input-wrapper:focus-within,
+body[arco-theme='dark'] .arco-textarea-wrapper.arco-textarea-focus,
+body[arco-theme='dark'] .arco-textarea-wrapper:focus-within,
+body[arco-theme='dark'] .arco-input-tag.arco-input-tag-focus,
+body[arco-theme='dark'] .arco-select-view-single.arco-select-view-focus,
+body[arco-theme='dark'] .arco-select-view-multiple.arco-select-view-focus,
+body[arco-theme='dark'] .arco-cascader-view.arco-cascader-view-focus,
+body[arco-theme='dark'] .arco-tree-select-view.arco-tree-select-view-focus,
+body[arco-theme='dark'] .arco-picker.arco-picker-focused {
+  border-color: rgb(var(--primary-6)) !important;
+  background-color: var(--color-bg-2, #232324) !important;
+}
+
+body[arco-theme='dark'] .arco-picker-container,
+body[arco-theme='dark'] .arco-picker-range-container {
+  background-color: var(--color-bg-popup, #373739) !important;
+}
+
+body[arco-theme='dark'] .arco-picker-header-icon {
+  border-color: var(--color-neutral-3, #484849) !important;
+}
+
+body[arco-theme='dark'] .arco-picker-header-icon:not(.arco-picker-header-icon-hidden):hover {
+  border-color: var(--color-neutral-4, #5f5f60) !important;
+}
+
+body[arco-theme='dark'] .arco-picker-header-icon-hidden {
+  border-color: transparent !important;
+}
+
+/* 带前后缀的输入：整体描边与浅底统一 */
+.arco-input-outer {
+  border: 1px solid #eaebef !important;
+  border-radius: var(--border-radius-small, 2px);
+  background-color: var(--color-fill-1, #f7f8fa) !important;
+  overflow: hidden;
+}
+
+.arco-input-outer > .arco-input-wrapper {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.arco-input-outer:hover {
+  border-color: #dde0e5 !important;
+}
+
+.arco-input-outer:focus-within {
+  border-color: rgb(var(--primary-6)) !important;
+  background-color: var(--color-bg-2, #ffffff) !important;
+}
+
+.arco-input-append,
+.arco-input-prepend {
+  background-color: transparent !important;
+  border-color: #eaebef !important;
+  color: var(--color-text-2);
+}
+
+.arco-input-append {
+  border-left: 1px solid #eaebef !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+
+.arco-input-prepend {
+  border-right: 1px solid #eaebef !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
+}
+
+body[arco-theme='dark'] .arco-input-outer {
+  border-color: var(--color-neutral-3, #484849) !important;
+  background-color: var(--color-fill-1, #2a2a2b) !important;
+}
+
+body[arco-theme='dark'] .arco-input-outer:hover {
+  border-color: var(--color-neutral-4, #5f5f60) !important;
+  background-color: var(--color-fill-2, #313132) !important;
+}
+
+body[arco-theme='dark'] .arco-input-outer:focus-within {
+  border-color: rgb(var(--primary-6)) !important;
+  background-color: var(--color-bg-2, #232324) !important;
+}
+
+body[arco-theme='dark'] .arco-input-append,
+body[arco-theme='dark'] .arco-input-prepend {
+  border-color: var(--color-neutral-3, #484849) !important;
+}
+
+/* ── 错误反馈：淡红底 + 红描边；:not(:focus-within) 避免被更高优先级盖住获焦清除 ── */
+.arco-input-wrapper.arco-input-error:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+.arco-textarea-wrapper.arco-textarea-error:not(:focus-within):not(.arco-textarea-focus),
+.arco-input-tag.arco-input-tag-error:not(:focus-within):not(.arco-input-tag-focus),
+.arco-select-view-single.arco-select-view-error:not(.arco-select-view-focus),
+.arco-select-view-multiple.arco-select-view-error:not(.arco-select-view-focus),
+.arco-cascader-view.arco-cascader-view-error:not(.arco-cascader-view-focus),
+.arco-tree-select-view.arco-tree-select-view-error:not(.arco-tree-select-view-focus),
+.arco-picker.arco-picker-error:not(.arco-picker-focused),
+.arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+.arco-form-item-status-error .arco-textarea-wrapper:not(.arco-textarea-disabled):not(:focus-within):not(.arco-textarea-focus),
+.arco-form-item-status-error .arco-input-tag:not(.arco-input-tag-disabled):not(:focus-within):not(.arco-input-tag-focus),
+.arco-form-item-status-error .arco-select-view-single:not(.arco-select-view-focus),
+.arco-form-item-status-error .arco-select-view-multiple:not(.arco-select-view-focus),
+.arco-form-item-status-error .arco-cascader-view:not(.arco-cascader-view-focus),
+.arco-form-item-status-error .arco-tree-select-view:not(.arco-tree-select-view-focus),
+.arco-form-item-status-error .arco-picker:not(.arco-picker-focused),
+.arco-form-item-status-error .arco-input-outer:not(:focus-within) {
+  border-color: rgb(var(--danger-6)) !important;
+  background-color: rgba(var(--danger-6), 0.04) !important;
+}
+
+.arco-input-wrapper.arco-input-error:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover,
+.arco-textarea-wrapper.arco-textarea-error:not(:focus-within):not(.arco-textarea-focus):hover,
+.arco-input-tag.arco-input-tag-error:not(:focus-within):not(.arco-input-tag-focus):hover,
+.arco-select-view-single.arco-select-view-error:not(.arco-select-view-focus):hover,
+.arco-select-view-multiple.arco-select-view-error:not(.arco-select-view-focus):hover,
+.arco-cascader-view.arco-cascader-view-error:not(.arco-cascader-view-focus):hover,
+.arco-picker.arco-picker-error:not(.arco-picker-focused):hover,
+.arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover,
+.arco-form-item-status-error .arco-textarea-wrapper:not(.arco-textarea-disabled):not(:focus-within):not(.arco-textarea-focus):hover,
+.arco-form-item-status-error .arco-select-view-single:not(.arco-select-view-focus):hover,
+.arco-form-item-status-error .arco-select-view-multiple:not(.arco-select-view-focus):hover,
+.arco-form-item-status-error .arco-cascader-view:not(.arco-cascader-view-focus):hover,
+.arco-form-item-status-error .arco-picker:not(.arco-picker-focused):hover,
+.arco-form-item-status-error .arco-input-outer:not(:focus-within):hover {
+  border-color: rgb(var(--danger-5)) !important;
+  background-color: rgba(var(--danger-6), 0.06) !important;
+}
+
+/* 获焦：强制恢复正常焦点态（含 error 类仍在时） */
+.arco-input-wrapper.arco-input-error.arco-input-focus,
+.arco-input-wrapper.arco-input-error.arco-input-wrapper-focus,
+.arco-input-wrapper.arco-input-error:focus-within,
+.arco-textarea-wrapper.arco-textarea-error.arco-textarea-focus,
+.arco-textarea-wrapper.arco-textarea-error:focus-within,
+.arco-input-tag.arco-input-tag-error.arco-input-tag-focus,
+.arco-input-tag.arco-input-tag-error:focus-within,
+.arco-select-view-single.arco-select-view-error.arco-select-view-focus,
+.arco-select-view-multiple.arco-select-view-error.arco-select-view-focus,
+.arco-cascader-view.arco-cascader-view-error.arco-cascader-view-focus,
+.arco-picker.arco-picker-error.arco-picker-focused,
+.arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):focus-within,
+.arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled).arco-input-focus,
+.arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled).arco-input-wrapper-focus,
+.arco-form-item-status-error .arco-textarea-wrapper:not(.arco-textarea-disabled):focus-within,
+.arco-form-item-status-error .arco-select-view-single.arco-select-view-focus,
+.arco-form-item-status-error .arco-select-view-multiple.arco-select-view-focus,
+.arco-form-item-status-error .arco-picker.arco-picker-focused,
+.arco-form-item-status-error .arco-input-outer:focus-within {
+  border-color: rgb(var(--primary-6)) !important;
+  background-color: var(--color-bg-2, #ffffff) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.arco-form-item-status-error:focus-within .arco-form-item-message,
+.arco-form-item-status-error:focus-within .arco-form-item-message-help {
+  visibility: hidden;
+  height: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.arco-form-item-status-error .arco-input-outer > .arco-input-wrapper {
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.arco-form-item-status-error .arco-form-item-message,
+.arco-form-item-status-error .arco-form-item-message-help {
+  color: rgb(var(--danger-6));
+}
+
+body[arco-theme='dark'] .arco-input-wrapper.arco-input-error:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+body[arco-theme='dark'] .arco-textarea-wrapper.arco-textarea-error:not(:focus-within):not(.arco-textarea-focus),
+body[arco-theme='dark'] .arco-input-tag.arco-input-tag-error:not(:focus-within):not(.arco-input-tag-focus),
+body[arco-theme='dark'] .arco-select-view-single.arco-select-view-error:not(.arco-select-view-focus),
+body[arco-theme='dark'] .arco-select-view-multiple.arco-select-view-error:not(.arco-select-view-focus),
+body[arco-theme='dark'] .arco-cascader-view.arco-cascader-view-error:not(.arco-cascader-view-focus),
+body[arco-theme='dark'] .arco-picker.arco-picker-error:not(.arco-picker-focused),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-textarea-wrapper:not(.arco-textarea-disabled):not(:focus-within):not(.arco-textarea-focus),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-select-view-single:not(.arco-select-view-focus),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-select-view-multiple:not(.arco-select-view-focus),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-cascader-view:not(.arco-cascader-view-focus),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-picker:not(.arco-picker-focused),
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-outer:not(:focus-within),
+body.theme-dark .arco-input-wrapper.arco-input-error:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+body.theme-dark .arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+body.theme-dark .arco-form-item-status-error .arco-select-view-single:not(.arco-select-view-focus),
+body.theme-dark .arco-form-item-status-error .arco-input-outer:not(:focus-within) {
+  border-color: rgb(var(--danger-6)) !important;
+  background-color: rgba(var(--danger-6), 0.08) !important;
+}
+
+body[arco-theme='dark'] .arco-input-wrapper.arco-input-error:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-wrapper:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-select-view-single:not(.arco-select-view-focus):hover,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-outer:not(:focus-within):hover,
+body.theme-dark .arco-input-wrapper.arco-input-error:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover,
+body.theme-dark .arco-form-item-status-error .arco-input-wrapper:not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover {
+  border-color: rgb(var(--danger-5)) !important;
+  background-color: rgba(var(--danger-6), 0.12) !important;
+}
+
+body[arco-theme='dark'] .arco-input-wrapper.arco-input-error.arco-input-focus,
+body[arco-theme='dark'] .arco-input-wrapper.arco-input-error.arco-input-wrapper-focus,
+body[arco-theme='dark'] .arco-input-wrapper.arco-input-error:focus-within,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):focus-within,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled).arco-input-focus,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled).arco-input-wrapper-focus,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-select-view-single.arco-select-view-focus,
+body[arco-theme='dark'] .arco-form-item-status-error .arco-input-outer:focus-within,
+body.theme-dark .arco-input-wrapper.arco-input-error:focus-within,
+body.theme-dark .arco-form-item-status-error .arco-input-wrapper:not(.arco-input-disabled):focus-within {
+  border-color: rgb(var(--primary-6)) !important;
+  background-color: var(--color-bg-2, #232324) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* ── 全局分页 ──
+ * 页码加边框与圆角；去掉默认/悬停/激活浅底；前往输入框加描边、去灰底
+ */
+.arco-pagination-item {
+  border: 1px solid var(--color-neutral-3, #e5e6eb) !important;
+  border-radius: 4px !important;
+  background-color: transparent !important;
+  line-height: 30px;
+}
+
+.arco-pagination-item:hover {
+  color: var(--color-text-1);
+  background-color: transparent !important;
+  border-color: var(--color-neutral-4, #c9cdd4) !important;
+}
+
+.arco-pagination-item-active,
+.arco-pagination-item-active:hover {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft) !important;
+  border-color: rgb(var(--primary-6)) !important;
+}
+
+.arco-pagination-item-disabled,
+.arco-pagination-item-disabled:hover {
+  color: var(--color-text-4);
+  background-color: transparent !important;
+  border-color: var(--color-neutral-3, #e5e6eb) !important;
+  cursor: not-allowed;
+}
+
+.arco-pagination-jumper .arco-pagination-jumper-input.arco-input-wrapper,
+.arco-pagination-jumper .arco-pagination-jumper-input .arco-input-wrapper {
+  background-color: transparent !important;
+  border: 1px solid var(--color-neutral-3, #e5e6eb) !important;
+  border-radius: 4px !important;
+}
+
+.arco-pagination-jumper .arco-pagination-jumper-input.arco-input-wrapper:hover,
+.arco-pagination-jumper .arco-pagination-jumper-input .arco-input-wrapper:hover {
+  background-color: transparent !important;
+  border-color: var(--color-neutral-4, #c9cdd4) !important;
+}
+
+.arco-pagination-jumper .arco-pagination-jumper-input.arco-input-wrapper:focus-within,
+.arco-pagination-jumper .arco-pagination-jumper-input.arco-input-focus,
+.arco-pagination-jumper .arco-pagination-jumper-input .arco-input-wrapper:focus-within,
+.arco-pagination-jumper .arco-pagination-jumper-input .arco-input-wrapper.arco-input-focus {
+  background-color: transparent !important;
+  border-color: rgb(var(--primary-6)) !important;
+}

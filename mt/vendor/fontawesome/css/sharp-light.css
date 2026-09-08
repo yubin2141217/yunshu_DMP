@@ -1,0 +1,69 @@
+/*!
+ * Font Awesome Pro 7.2.0 — Sharp 字族（webfonts/fa-sharp-*.woff2）
+ * all.min.css 仅含 Classic；本文件补 Sharp @font-face。
+ * 当前 icon 映射使用 fa-sharp fa-light（weight 300）；折叠按钮见 fa-icons.js。
+ */
+:host,
+:root {
+  --fa-family-sharp: 'Font Awesome 7 Sharp';
+  --fa-font-sharp-thin: normal 100 1em/1 var(--fa-family-sharp);
+  --fa-font-sharp-light: normal 300 1em/1 var(--fa-family-sharp);
+  --fa-font-sharp-regular: normal 400 1em/1 var(--fa-family-sharp);
+  --fa-font-sharp-solid: normal 900 1em/1 var(--fa-family-sharp);
+}
+
+@font-face {
+  font-family: 'Font Awesome 7 Sharp';
+  font-style: normal;
+  font-weight: 100;
+  font-display: block;
+  src: url(../webfonts/fa-sharp-thin-100.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 7 Sharp';
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url(../webfonts/fa-sharp-light-300.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 7 Sharp';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../webfonts/fa-sharp-regular-400.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 7 Sharp';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(../webfonts/fa-sharp-solid-900.woff2) format('woff2');
+}
+
+.fa-sharp.fa-thin,
+.fast {
+  --fa-family: var(--fa-family-sharp);
+  --fa-style: 100;
+}
+
+.fa-sharp.fa-light,
+.fasl {
+  --fa-family: var(--fa-family-sharp);
+  --fa-style: 300;
+}
+
+.fa-sharp.fa-regular,
+.fasr {
+  --fa-family: var(--fa-family-sharp);
+  --fa-style: 400;
+}
+
+.fa-sharp.fa-solid,
+.fass {
+  --fa-family: var(--fa-family-sharp);
+  --fa-style: 900;
+}

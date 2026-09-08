@@ -1,0 +1,212 @@
+// 申请管理工单详情公共样式
+
+.apply-ticket-detail {
+  .detail-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 4px 0 2px;
+
+    :deep(.el-button) {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--el-text-color-primary, #1f2a44);
+      padding: 0;
+      height: auto;
+
+      .el-icon {
+        color: inherit;
+      }
+    }
+
+    &__title {
+      font-size: 16px;
+      font-weight: 650;
+      color: var(--el-text-color-primary, #1f2a44);
+      line-height: 1.4;
+    }
+  }
+
+  .detail-section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 20px 20px;
+    box-shadow: 0 1px 2px rgba(31, 42, 68, 0.04);
+  }
+
+  .section-title {
+    position: relative;
+    padding-left: 12px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 650;
+    color: #1f2a44;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 3px;
+      bottom: 3px;
+      width: 4px;
+      border-radius: 2px;
+      background: var(--el-color-primary);
+    }
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px 24px;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    min-width: 0;
+
+    &.full {
+      grid-column: 1 / -1;
+    }
+
+    .k {
+      flex-shrink: 0;
+      width: 72px;
+      color: #909399;
+    }
+
+    .v {
+      color: #303133;
+      font-weight: 500;
+      word-break: break-all;
+    }
+  }
+
+  .plan-panel {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 16px;
+    min-height: 180px;
+  }
+
+  .plan-summary {
+    background: #f3f7ff;
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .kv {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+
+    .k {
+      width: 64px;
+      flex-shrink: 0;
+      color: #909399;
+    }
+
+    .v {
+      color: #303133;
+      font-weight: 500;
+      word-break: break-all;
+    }
+  }
+
+  .plan-tabs {
+    border: 1px solid #eef0f5;
+    border-radius: 10px;
+    padding: 4px 16px 12px;
+    background: #fff;
+
+    :deep(.el-tabs__header) {
+      margin-bottom: 8px;
+    }
+  }
+
+  .tab-body {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #606266;
+    white-space: pre-wrap;
+    min-height: 100px;
+  }
+
+  .timeline-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+
+    .who {
+      font-size: 14px;
+      color: #303133;
+      font-weight: 500;
+    }
+
+    .status-text {
+      font-size: 13px;
+      font-weight: 600;
+
+      &.is-success {
+        color: var(--el-color-success);
+      }
+
+      &.is-danger {
+        color: var(--el-color-danger);
+      }
+
+      &.is-warning {
+        color: var(--el-color-warning);
+      }
+
+      &.is-primary {
+        color: var(--el-color-primary);
+      }
+
+      &.is-info {
+        color: var(--el-color-info);
+      }
+    }
+  }
+
+  .timeline-remark {
+    margin-top: 4px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #f4f4f5;
+    color: #606266;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .action-section {
+    display: flex;
+    gap: 12px;
+  }
+
+  .audit-tip {
+    margin-top: 0;
+  }
+
+  .setup-form {
+    max-width: 520px;
+  }
+
+  @media (max-width: 1100px) {
+    .info-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .plan-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+}

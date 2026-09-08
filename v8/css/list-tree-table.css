@@ -1,0 +1,219 @@
+/* 左树右表 */
+
+.list-tree-table-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.list-tree-table-page .list-split-layout {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  min-width: 0;
+  min-height: calc(100vh - 200px);
+}
+
+.list-tree-table-page .list-split-side {
+  flex: 0 0 260px;
+  width: 260px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-tree-table-page .list-split-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* 与数据列表一致：仅用 .pro-page-card 的 margin-bottom，不用 flex gap */
+}
+
+.list-tree-table-page .list-split-side > .arco-card,
+.list-tree-table-page .list-split-main > .arco-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.list-tree-table-page .list-split-side > .arco-card {
+  flex: 1 1 auto;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.list-tree-table-page .list-split-side > .arco-card > .arco-card-body,
+.list-tree-table-page .list-split-main > .arco-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.list-tree-table-page .list-split-side > .arco-card > .arco-card-body {
+  flex: 1 1 auto;
+}
+
+/* 筛选卡片按内容高度，避免与表格卡片平分纵向空间 */
+.list-tree-table-page .list-split-main > .arco-card.pro-page-card {
+  flex: 0 0 auto;
+}
+
+.list-tree-table-page .list-split-main > .arco-card.pro-page-card > .arco-card-body {
+  flex: 0 0 auto;
+}
+
+.list-tree-table-page .list-split-main > .arco-card:not(.pro-page-card) {
+  flex: 1 1 auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.list-tree-table-page .list-split-main > .arco-card:not(.pro-page-card) > .arco-card-body {
+  flex: 1 1 auto;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 仅需要横向滚动时，隐藏 Arco 自定义纵向滚动条（scroll.x + fixed 列会触发 both） */
+.list-tree-table-page .list-split-main .arco-table-container,
+.list-tree-table-page .list-split-main .arco-table-content,
+.list-tree-table-page .list-split-main .arco-table-body {
+  overflow-y: hidden !important;
+}
+
+.list-tree-table-page .list-split-main .arco-scrollbar-track-direction-vertical {
+  display: none !important;
+}
+
+.list-tree-table-page .list-tree-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.list-tree-table-page .list-tree-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* 默认标题样式：与表单/详情页卡片标题一致 */
+.list-tree-table-page .list-tree-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.list-tree-table-page .list-tree-panel-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.list-tree-table-page .list-tree-search {
+  margin-bottom: 12px;
+}
+
+.list-tree-table-page .list-tree-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 4px 0;
+}
+
+.list-tree-table-page .list-tree {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* 悬停/选中通栏：与扩展树型一致 */
+.list-tree-table-page .list-tree .arco-tree-node {
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: var(--border-radius-medium, 4px);
+}
+
+.list-tree-table-page .list-tree .arco-tree-node:hover {
+  background-color: var(--color-fill-1);
+}
+
+.list-tree-table-page .list-tree .arco-tree-node-selected,
+.list-tree-table-page .list-tree .arco-tree-node-selected:hover {
+  background-color: rgba(var(--primary-6), 0.06);
+}
+
+/* 箭头/文字间距、缩进、箭头色 */
+.list-tree-table-page .list-tree .arco-tree-node-switcher {
+  margin-left: 4px;
+  margin-right: 0;
+  color: var(--color-text-3);
+}
+
+.list-tree-table-page .list-tree .arco-tree-node-indent-block {
+  width: 10px;
+  margin-right: 4px;
+}
+
+.list-tree-table-page .list-tree .arco-checkbox {
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+.list-tree-table-page .list-tree .arco-tree-node-title {
+  margin-left: 6px;
+  padding-left: 0;
+  border-radius: 0;
+}
+
+.list-tree-table-page .list-tree .arco-tree-node-selected .arco-tree-node-title {
+  color: rgb(var(--primary-6));
+}
+
+.list-tree-table-page .list-tree .arco-tree-node-title:hover,
+.list-tree-table-page .list-tree .arco-tree-node:hover .arco-tree-node-title,
+.list-tree-table-page .list-tree .arco-tree-node-selected .arco-tree-node-title {
+  background-color: transparent;
+}
+
+.list-tree-table-page .list-tree .arco-tree-node-title-block {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.list-tree-table-page .list-tree-table-toolbar {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 992px) {
+  .list-tree-table-page .list-split-layout {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .list-tree-table-page .list-split-side {
+    flex: none;
+    width: 100%;
+  }
+
+  .list-tree-table-page .list-tree-body {
+    max-height: 240px;
+  }
+}

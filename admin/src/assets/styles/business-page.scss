@@ -1,0 +1,351 @@
+// 业务列表/详情页统一视觉（对齐试用管理设计稿）
+// 页面结构：标题 → Tabs → 筛选白卡 → 彩色统计卡 → 表格白卡
+
+.biz-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+
+.biz-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.biz-page-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1f2a44;
+  letter-spacing: 0.02em;
+}
+
+.biz-tabs {
+  :deep(.el-tabs__header) {
+    margin: 0;
+  }
+
+  :deep(.el-tabs__nav-wrap::after) {
+    height: 1px;
+    background-color: rgba(var(--art-gray-300-rgb), 0.8);
+  }
+
+  :deep(.el-tabs__item) {
+    font-size: 14px;
+    color: var(--art-gray-600);
+    height: 40px;
+  }
+
+  :deep(.el-tabs__item.is-active) {
+    color: var(--el-color-primary);
+    font-weight: 600;
+  }
+
+  :deep(.el-tabs__active-bar) {
+    height: 3px;
+    border-radius: 2px;
+  }
+}
+
+.biz-filter-card {
+  border: none !important;
+  border-radius: 10px !important;
+  background: var(--art-main-bg-color);
+  box-shadow: 0 1px 2px rgba(31, 42, 68, 0.04);
+
+  .el-card__body {
+    padding: 16px 20px 8px !important;
+  }
+
+  .biz-filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 8px;
+
+    .el-form-item {
+      margin-right: 12px;
+      margin-bottom: 12px;
+    }
+
+    .el-form-item__label {
+      color: #4b5675;
+      font-weight: 500;
+    }
+  }
+
+  .biz-filter-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 4px 0 12px;
+    margin: 0;
+
+    .el-form-item__content {
+      margin-left: 0 !important;
+    }
+  }
+}
+
+.biz-stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  flex-shrink: 0;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.biz-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(31, 42, 68, 0.04);
+  min-height: 84px;
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: #78829d;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  &__value {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    color: #1f2a44;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &.is-primary {
+    background: linear-gradient(135deg, #eef4ff 0%, #f7faff 100%);
+
+    .biz-stat-card__icon {
+      background: linear-gradient(145deg, #5b8ff9, #3d6ef5);
+    }
+  }
+
+  &.is-success,
+  &.is-amber {
+    background: linear-gradient(135deg, #fff8e8 0%, #fffdf8 100%);
+
+    .biz-stat-card__icon {
+      background: linear-gradient(145deg, #f5b942, #e89a1c);
+    }
+  }
+
+  &.is-warning {
+    background: linear-gradient(135deg, #fff1e8 0%, #fffaf6 100%);
+
+    .biz-stat-card__icon {
+      background: linear-gradient(145deg, #f08a4b, #e56b2c);
+    }
+  }
+
+  &.is-danger {
+    background: linear-gradient(135deg, #ffecec 0%, #fff8f8 100%);
+
+    .biz-stat-card__icon {
+      background: linear-gradient(145deg, #f56c6c, #e84a4a);
+    }
+  }
+
+  &.is-info {
+    background: linear-gradient(135deg, #f0f3f8 0%, #f8fafc 100%);
+
+    .biz-stat-card__icon {
+      background: linear-gradient(145deg, #8b9bb4, #6b7c95);
+    }
+  }
+}
+
+.biz-table-card {
+  flex: 1;
+  min-height: 0;
+  border: none !important;
+  border-radius: 10px !important;
+  background: var(--art-main-bg-color);
+  box-shadow: 0 1px 2px rgba(31, 42, 68, 0.04);
+  display: flex;
+  flex-direction: column;
+
+  > .el-card__body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 16px 20px !important;
+  }
+
+  .biz-table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+  }
+
+  .biz-table-container {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .biz-pagination {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+
+  :deep(.el-table) {
+    --el-table-header-bg-color: #f5f7fb;
+    --el-table-header-text-color: #4b5675;
+    --el-table-row-hover-bg-color: #f7f9fc;
+    --el-table-border-color: #eef0f5;
+
+    th.el-table__cell {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    td.el-table__cell {
+      color: #303133;
+      font-size: 13px;
+    }
+  }
+}
+
+.biz-cell-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.35;
+  padding: 2px 0;
+}
+
+.biz-cell-main {
+  color: #303133;
+  font-weight: 500;
+}
+
+.biz-cell-sub {
+  color: #909399;
+  font-size: 12px;
+}
+
+.biz-ext-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+
+  &__text {
+    font-size: 13px;
+    color: #303133;
+  }
+
+  &__bar {
+    width: 72px;
+    height: 4px;
+    border-radius: 2px;
+    background: #ebeef5;
+    overflow: hidden;
+
+    > i {
+      display: block;
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #67c23a, #95d475);
+    }
+  }
+}
+
+.biz-detail-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.biz-breadcrumb-card,
+.biz-section-card {
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgba(31, 42, 68, 0.04);
+
+  .el-card__body {
+    padding: 16px 20px !important;
+  }
+
+  .el-card__header {
+    border-bottom: 1px solid #eef0f5;
+    padding: 14px 20px !important;
+  }
+}
+
+.biz-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .title {
+    font-size: 18px;
+    font-weight: 650;
+    color: #1f2a44;
+  }
+}
+
+.biz-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #1f2a44;
+}
+
+html.dark {
+  .biz-page-title {
+    color: var(--art-text-gray-200);
+  }
+
+  .biz-stat-card {
+    background: var(--art-main-bg-color) !important;
+
+    &__value {
+      color: var(--art-text-gray-200);
+    }
+  }
+
+  .biz-filter-card,
+  .biz-table-card,
+  .biz-breadcrumb-card,
+  .biz-section-card {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,344 @@
+/**
+ * 云数中台 V8 · 对齐机构端数据概览截图
+ * 白顶栏 + 蓝横导航 + 面包屑 + 页头在卡片外 + 独立指标卡
+ * 仅覆盖交付目录，不改 frame/admin
+ */
+html.yunshu-v8 {
+  --v8-chrome-top: 52px;
+  --v8-nav-bar: 44px;
+  --v8-nav-blue: #1890ff;
+  --v8-nav-selected: rgba(0, 0, 0, 0.18);
+  --shell-navbar-height: calc(var(--v8-chrome-top) + var(--v8-nav-bar));
+}
+
+html.yunshu-v8 body,
+html.yunshu-v8 .pro-layout,
+html.yunshu-v8 .pro-content {
+  background: #f5f6f8;
+}
+
+@media (max-width: 768px) {
+  html.yunshu-v8 {
+    --shell-navbar-height: var(--v8-chrome-top);
+  }
+}
+
+/* ── 双行顶栏 ── */
+html.yunshu-v8 .pro-layout--top .pro-navbar--global.pro-navbar {
+  height: var(--shell-navbar-height);
+  min-height: var(--shell-navbar-height);
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  background: #fff;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+html.yunshu-v8 .v8-chrome-top {
+  height: var(--v8-chrome-top);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 24px 0 20px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+
+html.yunshu-v8 .v8-chrome-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+html.yunshu-v8 .v8-chrome-top .pro-navbar-left,
+html.yunshu-v8 .pro-layout--top .v8-chrome-top .pro-navbar-left {
+  width: auto;
+  min-width: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  margin-right: 8px;
+}
+
+html.yunshu-v8 .v8-chrome-top .pro-logo-text {
+  display: inline;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d2129;
+}
+
+html.yunshu-v8 .v8-chrome-brand .arco-tag {
+  border: none;
+}
+
+html.yunshu-v8 .v8-chrome-nav {
+  height: var(--v8-nav-bar);
+  display: flex;
+  align-items: stretch;
+  background: var(--v8-nav-blue);
+  padding: 0 12px;
+}
+
+html.yunshu-v8 .v8-top-nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  min-width: 0;
+  height: 100%;
+}
+
+html.yunshu-v8 .v8-top-menu.arco-menu-horizontal {
+  height: 100%;
+  background: transparent;
+  border-bottom: none;
+}
+
+html.yunshu-v8 .v8-top-menu .arco-menu-inner {
+  overflow: visible;
+  height: 100%;
+}
+
+html.yunshu-v8 .v8-top-menu .arco-menu-item {
+  margin: 0;
+  padding: 0 20px;
+  height: var(--v8-nav-bar) !important;
+  line-height: var(--v8-nav-bar) !important;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+  border-radius: 0;
+}
+
+html.yunshu-v8 .v8-top-menu .arco-menu-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+html.yunshu-v8 .v8-top-menu .arco-menu-selected,
+html.yunshu-v8 .v8-top-menu .arco-menu-item.arco-menu-selected {
+  color: #fff;
+  font-weight: 500;
+  background: var(--v8-nav-selected);
+  border-radius: 0;
+}
+
+html.yunshu-v8 .v8-top-menu .arco-menu-selected::after,
+html.yunshu-v8 .v8-top-menu .arco-menu-item.arco-menu-selected::after,
+html.yunshu-v8 .v8-top-menu .arco-menu-item::after {
+  display: none !important;
+}
+
+html.yunshu-v8 .v8-chrome-hide {
+  display: none !important;
+}
+
+html.yunshu-v8 .v8-chrome-top .pro-navbar-right {
+  margin-left: auto;
+}
+
+html.yunshu-v8 .v8-chrome-top .pro-navbar-user {
+  gap: 8px;
+  border-radius: 4px;
+  padding-right: 2px;
+}
+
+html.yunshu-v8 .v8-navbar-user-name {
+  font-size: 14px;
+  color: #1d2129;
+  max-width: 88px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.yunshu-v8 .pro-nav-layout-toggle {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  html.yunshu-v8 .pro-layout--top .pro-sider {
+    display: none;
+  }
+  html.yunshu-v8 .pro-layout--top .pro-stage {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  html.yunshu-v8 .v8-chrome-nav {
+    display: none;
+  }
+  html.yunshu-v8 .v8-chrome-brand .arco-tag,
+  html.yunshu-v8 .v8-navbar-user-name {
+    display: none;
+  }
+}
+
+/* ── 面包屑：我的工作台 — 当前页 ── */
+html.yunshu-v8 .pro-breadcrumb {
+  display: flex;
+  margin: 0 0 16px;
+}
+
+html.yunshu-v8 .pro-breadcrumb-icon {
+  display: none;
+}
+
+html.yunshu-v8 .pro-breadcrumb .arco-breadcrumb-item,
+html.yunshu-v8 .pro-breadcrumb .arco-breadcrumb-item > span {
+  font-size: 13px;
+  color: #86909c;
+}
+
+html.yunshu-v8 .pro-breadcrumb .arco-breadcrumb-item-separator::after {
+  content: '—';
+  color: #c9cdd4;
+}
+
+html.yunshu-v8 .pro-content-wrapper {
+  padding: 16px 24px 28px;
+}
+
+/* ── 页头在卡片外 ── */
+html.yunshu-v8 .workplace-page {
+  gap: 16px;
+}
+
+html.yunshu-v8 .workplace-header {
+  align-items: flex-start;
+  margin-bottom: 0;
+}
+
+html.yunshu-v8 .workplace-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1d2129;
+}
+
+html.yunshu-v8 .workplace-desc {
+  font-size: 13px;
+  color: #86909c;
+}
+
+html.yunshu-v8 .v8-summary-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 20px;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+html.yunshu-v8 .v8-summary-stats span {
+  font-size: 13px;
+  color: #86909c;
+  white-space: nowrap;
+}
+
+html.yunshu-v8 .v8-summary-stats strong {
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d2129;
+}
+
+/* ── 独立白卡片（指标 / 表格 / 快捷进入）── */
+html.yunshu-v8 .pro-content-wrapper .v8-kpi-card.arco-card.general-card,
+html.yunshu-v8 .pro-content-wrapper .workplace-kpi-card.arco-card.general-card,
+html.yunshu-v8 .pro-content-wrapper .v8-content-card.arco-card.general-card,
+html.yunshu-v8 .pro-content-wrapper .v8-quick-card.arco-card.general-card {
+  border: 1px solid #e5e6eb;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: none;
+}
+
+html.yunshu-v8 .workplace-kpi-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: var(--kpi-accent, #1890ff);
+}
+
+html.yunshu-v8 .workplace-kpi-icon-box,
+html.yunshu-v8 .workplace-kpi-icon,
+html.yunshu-v8 .workplace-kpi-icon.pro-fa-icon {
+  color: #fff;
+}
+
+html.yunshu-v8 .workplace-kpi-title {
+  color: #86909c;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+html.yunshu-v8 .workplace-kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1d2129;
+}
+
+html.yunshu-v8 .v8-quick-card > .arco-card-body {
+  padding: 16px 20px 20px;
+}
+
+html.yunshu-v8 .v8-section-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d2129;
+}
+
+html.yunshu-v8 .v8-page-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+html.yunshu-v8 .v8-page-search .arco-input-wrapper {
+  max-width: 320px;
+}
+
+html.yunshu-v8 .v8-page-search .arco-select {
+  width: 200px;
+}
+
+html.yunshu-v8 .v8-toolbar-mini {
+  margin-left: auto;
+}
+
+html.yunshu-v8 .arco-table-th {
+  background: #fafafa !important;
+  font-weight: 600;
+  color: #1d2129;
+}
+
+html.yunshu-v8 .v8-table-footer {
+  margin-top: 16px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  html.yunshu-v8 .v8-page-search .arco-input-wrapper,
+  html.yunshu-v8 .v8-page-search .arco-select {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+html.yunshu-v8 .login-container--cover {
+  --login-bg-hue: -40deg;
+  background-color: #e8f3ff;
+}
+
+html.yunshu-v8 .login-logo-text {
+  font-weight: 700;
+}

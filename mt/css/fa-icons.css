@@ -1,0 +1,260 @@
+/**
+ * Font Awesome 在 Arco Pro Shell 中的尺寸/颜色对齐
+ * FA 默认 --fa-width 为 1.25em，视觉上比 Arco SVG 偏大，统一压至 1em 并略减字号。
+ */
+.pro-fa-icon {
+  --fa-width: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+  color: inherit;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.pro-fa-icon::before {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sharp Light 字库缺失时回退 Classic Light，避免方块 */
+.pro-fa-icon.fa-sharp.fa-light {
+  --fa-family: 'Font Awesome 7 Sharp', 'Font Awesome 7 Pro';
+  --fa-style: 300;
+}
+
+.pro-menu-collapse-icon.pro-fa-icon.fa-sharp.fa-regular {
+  --fa-family: 'Font Awesome 7 Sharp', 'Font Awesome 7 Pro';
+  --fa-style: 400;
+}
+
+.pro-menu-wrapper .pro-fa-icon {
+  font-size: 16px;
+}
+
+.pro-menu-wrapper .pro-menu-collapse-icon.pro-fa-icon {
+  --fa-width: 1em;
+  font-size: 14px;
+  color: var(--color-text-4);
+}
+
+.pro-menu-wrapper .pro-menu-arrow-icon.pro-fa-icon {
+  --fa-width: 1em;
+  font-size: 10px;
+  color: var(--color-text-4);
+}
+
+/* 侧栏一级菜单图标：与 14px 文案同尺，由 flex 槽位垂直居中 */
+.pro-menu-item-icon.pro-fa-icon {
+  --fa-width: 1em;
+  --fa-display: inline-flex;
+  vertical-align: unset;
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  transform: none;
+}
+
+.pro-menu-item-icon.pro-fa-icon::before {
+  line-height: 1;
+}
+
+/* 侧栏「个人中心」：与表单前缀同一套 SVG；viewBox 留白多于 FA，光学放大至 18px */
+.pro-menu-item-icon.pro-avatar-user-icon {
+  flex-shrink: 0;
+  width: 18px !important;
+  height: 18px !important;
+  color: inherit;
+}
+
+.pro-menu-item-icon.pro-avatar-user-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pro-menu-wrapper .arco-menu:not(.arco-menu-collapsed) .arco-menu-inline-header .pro-fa-icon,
+.pro-menu-wrapper .arco-menu:not(.arco-menu-collapsed) .arco-menu-item .pro-fa-icon {
+  font-size: 14px;
+}
+
+.pro-sider.is-collapsed .pro-menu-wrapper .arco-menu-pop-header .pro-menu-item-icon.pro-fa-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.pro-sider.is-collapsed .pro-menu-wrapper .arco-menu-pop-header .pro-menu-item-icon.pro-avatar-user-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.pro-sider.is-collapsed .pro-menu-wrapper .arco-menu-pop-header .pro-fa-icon {
+  margin: 0;
+  font-size: 16px;
+}
+
+.pro-nav-icon.pro-fa-icon,
+.pro-nav-icon-btn .pro-fa-icon {
+  font-size: 16px;
+}
+
+/* 顶栏圆形按钮悬停：Sharp Light → Sharp Solid */
+.pro-nav-icon-btn:hover .pro-fa-icon.fa-sharp.fa-light {
+  --fa-style: 900;
+}
+
+.pro-dropdown-icon.pro-fa-icon {
+  font-size: 14px;
+  vertical-align: unset;
+  margin-right: 8px;
+}
+
+.pro-navbar-search .arco-input-prefix .pro-fa-icon {
+  color: var(--color-text-3);
+  font-size: 12px;
+}
+
+.overview-icon .pro-fa-icon {
+  font-size: 18px;
+}
+
+.shortcut-icon.pro-fa-icon {
+  font-size: 16px;
+  color: var(--color-text-2);
+}
+
+.recent-icon.pro-fa-icon {
+  font-size: 12px;
+  color: var(--color-text-2);
+}
+
+/* ── 图标槽位：按钮 / 链接 / 标签等 flex 垂直居中（Arco 默认 btn-icon 缺 align-items） ── */
+.arco-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.arco-btn .pro-fa-icon,
+.arco-link .pro-fa-icon,
+.arco-dropdown-option .pro-fa-icon,
+.arco-tag .pro-fa-icon,
+.arco-input-prefix .pro-fa-icon,
+.arco-input-suffix .pro-fa-icon,
+.arco-breadcrumb-item .pro-fa-icon,
+.arco-alert .pro-fa-icon,
+.arco-tabs-nav-tab .pro-fa-icon,
+.arco-pagination-item .pro-fa-icon,
+.arco-avatar .pro-fa-icon {
+  vertical-align: unset;
+  margin: 0;
+  font-size: inherit;
+}
+
+/* 图标+文字组合按钮内：勿清掉光学微调以外的 transform；纯图标见 theme 居中统一 */
+.arco-btn:not(.arco-btn-only-icon):not(.arco-btn-shape-circle) .pro-fa-icon {
+  transform: none;
+}
+
+.arco-btn .pro-fa-icon {
+  font-size: 14px;
+}
+
+.arco-btn-size-mini .pro-fa-icon,
+.arco-btn-size-mini.arco-btn .pro-fa-icon {
+  font-size: 12px;
+}
+
+.arco-btn-size-small .pro-fa-icon,
+.arco-btn-size-small.arco-btn .pro-fa-icon,
+.arco-btn-size-large .pro-fa-icon,
+.arco-btn-size-large.arco-btn .pro-fa-icon {
+  font-size: 14px;
+}
+
+.arco-link .pro-fa-icon {
+  font-size: 12px;
+}
+
+.trend-up .pro-fa-icon,
+.trend-down .pro-fa-icon {
+  font-size: inherit;
+  width: auto;
+  height: auto;
+}
+
+/* Arco 内置清除 SVG → 全局 FA Sharp Light（与 icon-close 一致） */
+.arco-input-clear-btn > .arco-icon-close,
+.arco-select-view-clear-btn > .arco-icon-close,
+.arco-input-tag-clear-btn > .arco-icon-close,
+.arco-textarea-clear-btn > .arco-icon-close,
+.arco-picker-clear-icon > .arco-icon-close,
+.arco-input-label-clear-btn > .arco-icon-close,
+.arco-transfer-view-header-clear-btn > .arco-icon-close {
+  display: none !important;
+}
+
+.arco-input-clear-btn::after,
+.arco-select-view-clear-btn::after,
+.arco-input-tag-clear-btn::after,
+.arco-textarea-clear-btn::after,
+.arco-picker-clear-icon::after,
+.arco-input-label-clear-btn::after,
+.arco-transfer-view-header-clear-btn::after {
+  --fa-family: 'Font Awesome 7 Sharp', 'Font Awesome 7 Pro';
+  --fa-style: 300;
+  --fa-width: 1em;
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  font-family: var(--fa-family);
+  font-weight: var(--fa-style);
+  font-size: 10px;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-align: center;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  pointer-events: none;
+  content: '\f00d';
+}
+
+/* 清除按钮悬停圆 18px，内部图标 10px；背景略加强 */
+.arco-input-clear-btn.arco-icon-hover::before,
+.arco-select-view-clear-btn.arco-icon-hover::before,
+.arco-input-tag-clear-btn.arco-icon-hover::before,
+.arco-textarea-clear-btn.arco-icon-hover::before,
+.arco-picker-clear-icon.arco-icon-hover::before,
+.arco-input-label-clear-btn.arco-icon-hover::before,
+.arco-transfer-view-header-clear-btn.arco-icon-hover::before,
+.component-form-picker-clear.arco-icon-hover::before {
+  width: 18px;
+  height: 18px;
+}
+
+.arco-input-clear-btn.arco-icon-hover:hover::before,
+.arco-select-view-clear-btn.arco-icon-hover:hover::before,
+.arco-input-tag-clear-btn.arco-icon-hover:hover::before,
+.arco-textarea-clear-btn.arco-icon-hover:hover::before,
+.arco-picker-clear-icon.arco-icon-hover:hover::before,
+.arco-input-label-clear-btn.arco-icon-hover:hover::before,
+.arco-transfer-view-header-clear-btn.arco-icon-hover:hover::before,
+.component-form-picker-clear.arco-icon-hover:hover::before,
+.arco-input-wrapper:not(.arco-input-focus) .arco-input-clear-btn.arco-input-icon-hover:hover::before,
+.arco-select-view:not(.arco-select-view-focus) .arco-select-view-clear-btn:hover::before,
+.arco-input-tag:not(.arco-input-tag-focus) .arco-input-tag-clear-btn:hover::before {
+  background-color: var(--color-fill-3);
+}

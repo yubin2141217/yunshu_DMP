@@ -1,0 +1,30 @@
+/* 消息管理：横向滚动时操作列固定 */
+
+.message-list-page {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.message-list-page > .arco-card {
+  max-width: 100%;
+}
+
+.message-list-page > .arco-card:not(.pro-page-card) {
+  overflow: hidden;
+}
+
+.message-list-page > .arco-card:not(.pro-page-card) > .arco-card-body {
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.message-list-page .arco-table-container,
+.message-list-page .arco-table-content,
+.message-list-page .arco-table-body {
+  overflow-y: hidden !important;
+}
+
+.message-list-page .arco-scrollbar-track-direction-vertical {
+  display: none !important;
+}

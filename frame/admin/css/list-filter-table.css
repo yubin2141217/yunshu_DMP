@@ -1,0 +1,215 @@
+/* 左筛右表 */
+
+/*
+ * 窄屏下 layout 会给 .pro-content-wrapper 加 overflow-x:auto，
+ * 浏览器会连带把 overflow-y 算成 auto，导致左侧 sticky 吸顶失效。
+ * 本页列表宽度已在内部约束，无需外层横向滚动。
+ */
+.pro-content-wrapper:has(.list-filter-table-page) {
+  overflow: visible;
+}
+
+.list-filter-table-page {
+  --list-filter-sticky-top: calc(var(--shell-navbar-height, 60px) + 16px);
+  --list-filter-bottom-gap: 10px;
+  --list-filter-panel-max-height: calc(
+    100dvh - var(--list-filter-sticky-top) - var(--list-filter-bottom-gap) - 28px
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.list-filter-table-page .list-split-layout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.list-filter-table-page .list-split-side {
+  flex: 0 0 280px;
+  width: 280px;
+  min-width: 0;
+  position: sticky;
+  top: var(--list-filter-sticky-top);
+  z-index: 10;
+  align-self: flex-start;
+  margin-bottom: var(--list-filter-bottom-gap);
+}
+
+.list-filter-table-page .list-split-side > .arco-card {
+  margin-bottom: 0;
+}
+
+.list-filter-table-page .list-split-side > .arco-card > .arco-card-body {
+  padding-top: 16px;
+  padding-bottom: 12px;
+}
+
+.list-filter-table-page .list-split-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.list-filter-table-page .list-split-main > .arco-card {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.list-filter-table-page .list-split-main > .arco-card > .arco-card-body {
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 仅需要横向滚动时，隐藏 Arco 自定义纵向滚动条（scroll.x + fixed 列会触发 both） */
+.list-filter-table-page .list-split-main .arco-table-container,
+.list-filter-table-page .list-split-main .arco-table-content,
+.list-filter-table-page .list-split-main .arco-table-body {
+  overflow-y: hidden !important;
+}
+
+.list-filter-table-page .list-split-main .arco-scrollbar-track-direction-vertical {
+  display: none !important;
+}
+
+.list-filter-table-page .list-filter-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-height: var(--list-filter-panel-max-height);
+  overflow: hidden;
+}
+
+.list-filter-table-page .list-filter-panel-header {
+  margin-bottom: 16px;
+}
+
+.list-filter-table-page .list-filter-panel-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.list-filter-table-page .list-filter-panel-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.list-filter-table-page .list-filter-body {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.list-filter-table-page .list-filter-form .arco-form-item {
+  margin-bottom: 16px;
+}
+
+.list-filter-table-page .list-filter-form .arco-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.list-filter-table-page .list-filter-form .arco-form-item-label {
+  font-size: 13px;
+}
+
+.list-filter-table-page .list-filter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--color-border-2);
+}
+
+.list-filter-table-page .contract-type-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.list-filter-table-page .contract-type-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.list-filter-table-page .contract-type-dot--0 {
+  background: rgb(var(--arcoblue-6));
+}
+
+.list-filter-table-page .contract-type-dot--1 {
+  background: rgb(var(--green-6));
+}
+
+.list-filter-table-page .contract-type-dot--2 {
+  background: rgb(var(--orange-6));
+}
+
+.list-filter-table-page .contract-type-dot--3 {
+  background: rgb(var(--purple-6));
+}
+
+.list-filter-table-page .contract-amount {
+  font-variant-numeric: tabular-nums;
+}
+
+.list-filter-table-page .contract-signed-at {
+  display: inline-block;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 992px) {
+  .list-filter-table-page .list-split-layout {
+    flex-direction: column;
+  }
+
+  .list-filter-table-page .list-split-side {
+    position: static;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    z-index: auto;
+  }
+
+  .list-filter-table-page .list-split-main {
+    width: 100%;
+    flex: none;
+  }
+
+  .list-filter-table-page .list-filter-panel {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .list-filter-table-page .list-filter-body {
+    overflow: visible;
+  }
+
+  .list-filter-table-page .list-filter-actions {
+    flex-direction: row;
+  }
+
+  .list-filter-table-page .list-filter-actions .arco-btn {
+    flex: 1;
+  }
+}

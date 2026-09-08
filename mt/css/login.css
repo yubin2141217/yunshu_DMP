@@ -1,0 +1,439 @@
+/* Arco Pro 登录页共享样式（表单 / 弹窗）；变体见 login-banner|split|cover.css */
+.login-container {
+  display: flex;
+  height: 100vh;
+  background: var(--color-bg-1);
+}
+
+.login-logo {
+  position: fixed;
+  top: 24px;
+  left: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.login-logo-text {
+  font-size: 20px;
+  color: var(--color-fill-1);
+  font-weight: 500;
+}
+
+/* Banner 侧始终深色渐变：暗色模式下仍用浅色字，避免 fill-1 变深后不可见 */
+body[arco-theme='dark'] .login-banner .login-carousel-title,
+body.theme-dark .login-banner .login-carousel-title,
+body[arco-theme='dark'] .login-container:not(.login-container--cover):not(.login-container--split) > .login-logo .login-logo-text,
+body.theme-dark .login-container:not(.login-container--cover):not(.login-container--split) > .login-logo .login-logo-text {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+body[arco-theme='dark'] .login-banner .login-carousel-sub-title,
+body.theme-dark .login-banner .login-carousel-sub-title {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.login-content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.login-form-wrapper {
+  width: 400px;
+}
+
+.login-form-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-text-1);
+  line-height: 34px;
+}
+
+.login-form-sub-title {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-text-3);
+  margin-top: 6px;
+  margin-bottom: 24px;
+}
+
+.login-form-field {
+  width: 100%;
+}
+
+.login-form-field-error {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(var(--red-6));
+}
+
+/* 浅灰圆角胶囊输入（登录主表单 + 弹窗表单） */
+.login-form-fields .arco-input-wrapper,
+.login-form-fields .arco-input-password,
+.login-auth-form .arco-input-wrapper,
+.login-auth-form .arco-input-password {
+  height: 45px;
+  padding: 0 15px;
+  border: 1px solid transparent !important;
+  border-radius: 10px;
+  background: var(--color-fill-2) !important;
+  box-shadow: none !important;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-form-fields .arco-input-wrapper:not(.arco-input-focus):hover,
+.login-form-fields .arco-input-password:not(.arco-input-focus):hover,
+.login-auth-form .arco-input-wrapper:not(.arco-input-focus):hover,
+.login-auth-form .arco-input-password:not(.arco-input-focus):hover {
+  background: var(--color-fill-3) !important;
+  border-color: var(--color-border-2) !important;
+  box-shadow: none !important;
+}
+
+.login-form-fields .arco-input-wrapper:not(.arco-input-focus):hover .arco-input-prefix,
+.login-form-fields .arco-input-password:not(.arco-input-focus):hover .arco-input-prefix,
+.login-form-fields .arco-input-wrapper:not(.arco-input-focus):hover .arco-input-suffix,
+.login-form-fields .arco-input-password:not(.arco-input-focus):hover .arco-input-suffix {
+  color: var(--color-text-2);
+}
+
+.login-form-fields .arco-input-wrapper.arco-input-focus,
+.login-form-fields .arco-input-password.arco-input-focus,
+.login-auth-form .arco-input-wrapper.arco-input-focus,
+.login-auth-form .arco-input-password.arco-input-focus {
+  background: var(--color-bg-2) !important;
+  border: 1px solid rgb(var(--primary-6)) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary-6), 0.14) !important;
+}
+
+.login-form-fields .arco-input-wrapper.arco-input-focus .arco-input-prefix,
+.login-form-fields .arco-input-password.arco-input-focus .arco-input-prefix,
+.login-form-fields .arco-input-wrapper.arco-input-focus .arco-input-suffix,
+.login-form-fields .arco-input-password.arco-input-focus .arco-input-suffix {
+  color: rgb(var(--primary-6));
+}
+
+.login-form-field.is-error .arco-input-wrapper,
+.login-form-field.is-error .arco-input-password,
+.login-form-fields .arco-input-wrapper.arco-input-error,
+.login-form-fields .arco-input-password.arco-input-error {
+  border-color: rgb(var(--red-6)) !important;
+  background: rgba(var(--red-6), 0.06) !important;
+  box-shadow: none !important;
+}
+
+/* 聚焦时恢复主题色选中态，覆盖错误描边 */
+.login-form-field.is-error .arco-input-wrapper.arco-input-focus,
+.login-form-field.is-error .arco-input-password.arco-input-focus,
+.login-form-fields .arco-input-wrapper.arco-input-error.arco-input-focus,
+.login-form-fields .arco-input-password.arco-input-error.arco-input-focus {
+  background: var(--color-bg-2) !important;
+  border-color: rgb(var(--primary-6)) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary-6), 0.14) !important;
+}
+
+.login-form-field.is-error .arco-input-prefix {
+  color: rgb(var(--red-6));
+}
+
+.login-form-field.is-error .arco-input-wrapper.arco-input-focus .arco-input-prefix,
+.login-form-field.is-error .arco-input-password.arco-input-focus .arco-input-prefix,
+.login-form-field.is-error .arco-input-wrapper.arco-input-focus .arco-input-suffix,
+.login-form-field.is-error .arco-input-password.arco-input-focus .arco-input-suffix {
+  color: rgb(var(--primary-6));
+}
+
+.login-form-fields .arco-input-wrapper .arco-input,
+.login-form-fields .arco-input-password .arco-input,
+.login-auth-form .arco-input-wrapper .arco-input,
+.login-auth-form .arco-input-password .arco-input {
+  height: 100%;
+  padding: 0;
+  font-size: 14px;
+  line-height: 43px;
+  color: var(--color-text-1);
+  background: transparent;
+}
+
+.login-form-fields .arco-input-wrapper .arco-input::placeholder,
+.login-form-fields .arco-input-password .arco-input::placeholder,
+.login-auth-form .arco-input-wrapper .arco-input::placeholder,
+.login-auth-form .arco-input-password .arco-input::placeholder {
+  font-size: 14px;
+  color: var(--color-text-3);
+}
+
+.login-form-fields .arco-input-prefix,
+.login-form-fields .arco-input-suffix,
+.login-auth-form .arco-input-prefix,
+.login-auth-form .arco-input-suffix {
+  padding: 0;
+  color: var(--color-text-3);
+  transition: color 0.2s ease;
+}
+
+.login-form-fields .arco-input-prefix {
+  margin-right: 10px;
+}
+
+.login-form-fields .arco-input-suffix {
+  margin-left: 10px;
+}
+
+.login-form-field--user {
+  margin-bottom: 24px;
+}
+
+.login-form-field--password {
+  margin-bottom: 20px;
+}
+
+.login-form-field--user.is-error,
+.login-form-field--password.is-error {
+  margin-bottom: 16px;
+}
+
+.login-form-submit {
+  margin-top: 20px;
+  height: 45px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.login-form-password-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.login-forget {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text-2) !important;
+  transition: color 0.2s ease;
+}
+
+.login-forget:hover {
+  color: rgb(var(--primary-6)) !important;
+}
+
+.login-form-register-btn {
+  color: var(--color-text-2) !important;
+  margin-top: 16px;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.login-form-register-btn:hover,
+.login-form-register-btn.arco-btn-text:hover {
+  color: rgb(var(--primary-6)) !important;
+}
+
+.login-form-demo-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-text-4);
+}
+
+.login-form-demo-hint-icon {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--color-text-4);
+}
+
+.login-form-demo-hint .login-form-demo-hint-icon svg {
+  color: var(--color-text-4);
+}
+
+.login-auth-form .arco-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.login-auth-form .arco-form-item-message {
+  min-height: 0;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(var(--red-6));
+}
+
+/* 普通字段错误态（不含验证码胶囊内的 input） */
+.login-auth-form .arco-form-item-status-error > .arco-form-item-wrapper .arco-input-wrapper,
+.login-auth-form .arco-form-item-status-error > .arco-form-item-content > .arco-input-wrapper,
+.login-auth-form .arco-form-item-status-error > .arco-form-item-wrapper .arco-input-password,
+.login-auth-form .arco-form-item-status-error > .arco-form-item-content > .arco-input-password {
+  border-color: rgb(var(--red-6)) !important;
+  background: rgba(var(--red-6), 0.06) !important;
+  background-color: rgba(var(--red-6), 0.06) !important;
+  box-shadow: none !important;
+}
+
+.login-auth-form .arco-form-item-status-error > .arco-form-item-wrapper .arco-input-wrapper.arco-input-focus,
+.login-auth-form .arco-form-item-status-error > .arco-form-item-content > .arco-input-wrapper.arco-input-focus,
+.login-auth-form .arco-form-item-status-error > .arco-form-item-wrapper .arco-input-password.arco-input-focus,
+.login-auth-form .arco-form-item-status-error > .arco-form-item-content > .arco-input-password.arco-input-focus {
+  background: var(--color-bg-2) !important;
+  background-color: var(--color-bg-2) !important;
+  border-color: rgb(var(--primary-6)) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary-6), 0.14) !important;
+}
+
+/* 验证码：一体灰底胶囊，右侧发送/倒计时 */
+.login-auth-code {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  padding: 0 5px 0 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: var(--color-fill-2);
+  background-color: var(--color-fill-2);
+  box-sizing: border-box;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-auth-code:not(:focus-within):not(.is-error):hover {
+  background: var(--color-fill-3);
+  background-color: var(--color-fill-3);
+  border-color: var(--color-border-2);
+  box-shadow: none;
+}
+
+.login-auth-code:focus-within {
+  background: var(--color-bg-2);
+  background-color: var(--color-bg-2);
+  border: 1px solid rgb(var(--primary-6));
+  box-shadow: 0 0 0 3px rgba(var(--primary-6), 0.14);
+}
+
+.login-auth-code.is-error {
+  border-color: rgb(var(--red-6));
+  background: rgba(var(--red-6), 0.06);
+  background-color: rgba(var(--red-6), 0.06);
+  box-shadow: none;
+}
+
+.login-auth-code.is-error:not(:focus-within):hover {
+  border-color: rgb(var(--red-6));
+  background: rgba(var(--red-6), 0.08);
+  background-color: rgba(var(--red-6), 0.08);
+}
+
+.login-auth-code.is-error:focus-within {
+  background: var(--color-bg-2);
+  background-color: var(--color-bg-2);
+  border-color: rgb(var(--primary-6));
+  box-shadow: 0 0 0 3px rgba(var(--primary-6), 0.14);
+}
+
+/*
+ * 压过 arco-theme-pro 全局错误底色，避免验证码行「内外双层粉底」重叠
+ * 选择器需覆盖 :not(...) 组合的优先级
+ */
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper,
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper:hover,
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper.arco-input-error,
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper.arco-input-focus,
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper.arco-input-wrapper-focus,
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper:focus-within,
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+.login-auth-form .arco-form-item-status-error .login-auth-code .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover,
+.login-auth-code .arco-input-wrapper,
+.login-auth-code .arco-input-wrapper:hover,
+.login-auth-code .arco-input-wrapper.arco-input-error,
+.login-auth-code .arco-input-wrapper.arco-input-focus,
+.login-auth-code .arco-input-wrapper.arco-input-wrapper-focus,
+.login-auth-code .arco-input-wrapper:focus-within,
+.login-auth-code .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus),
+.login-auth-code .arco-input-wrapper:not(.arco-input-disabled):not(:focus-within):not(.arco-input-focus):not(.arco-input-wrapper-focus):hover {
+  flex: 1;
+  min-width: 0;
+  height: 100% !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.login-auth-code .arco-input-wrapper .arco-input {
+  height: 100%;
+  font-size: 14px;
+  line-height: 43px;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.login-auth-code .arco-input-wrapper .arco-input::placeholder {
+  font-size: 14px;
+}
+
+.login-auth-code .arco-btn {
+  flex-shrink: 0;
+  min-width: auto;
+  height: 36px;
+  padding: 0 12px;
+  border: none !important;
+  border-radius: 8px;
+  color: var(--color-text-2) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.2s ease;
+}
+
+.login-auth-code .arco-btn:hover,
+.login-auth-code .arco-btn:not(:disabled):hover {
+  color: rgb(var(--primary-6)) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.login-auth-code .arco-btn:disabled {
+  color: var(--color-text-3) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  cursor: default;
+}
+
+.login-footer.pro-footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  margin: 0 0 24px;
+  padding-top: 8px;
+  box-sizing: content-box;
+  font-size: 12px;
+  color: var(--color-text-4);
+  background: transparent;
+}
+

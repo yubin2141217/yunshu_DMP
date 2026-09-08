@@ -1,0 +1,20 @@
+{
+  "id": "app",
+  "end": "app",
+  "label": "APP 设备壳资源包",
+  "version": "1.0.0",
+  "capability": "shells-and-vendor",
+  "runtimeDir": "..",
+  "status": "ready",
+  "shells": [
+    "ios_frame.html",
+    "ios_frame_header.html",
+    "ios_frame_tabs.html",
+    "ios_frame_nav.html",
+    "wechat-frame.html",
+    "wechat-frame_header.html",
+    "wechat-frame-tabs.html",
+    "wechat-frame-nav.html"
+  ],
+  "includes": ["css", "js", "fonts", "images", "vendor"]
+}

@@ -1,0 +1,669 @@
+/* 分析仪表盘（对齐 shadcn /dashboard/analytics） */
+
+.anl-page {
+  --anl-border: var(--color-border-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.anl-tabs-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 992px) {
+  .anl-tabs-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* 对齐财务管理：选中胶囊 + 悬停无背景色 */
+.anl-tabs {
+  flex: 1;
+  min-width: 0;
+}
+
+.anl-tabs .arco-tabs-nav {
+  margin-bottom: 0;
+}
+
+.anl-tabs .arco-tabs-nav::before {
+  display: none;
+}
+
+.anl-tabs .arco-tabs-nav-tab {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.anl-tabs .arco-tabs-nav-tab-list {
+  padding-left: 0;
+}
+
+.anl-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:first-child {
+  margin-left: 0;
+}
+
+.anl-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab {
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.anl-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:hover {
+  color: rgb(var(--primary-6));
+  background-color: transparent;
+}
+
+.anl-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active,
+.anl-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active:hover {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border-color: rgb(var(--primary-6));
+}
+
+.anl-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active .arco-tabs-tab-title {
+  color: inherit;
+}
+
+.anl-tabs .arco-tabs-nav-ink {
+  display: none;
+}
+
+.anl-tabs .arco-tabs-content {
+  display: none;
+}
+
+.anl-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.anl-toolbar .anl-refresh-btn {
+  width: 28px;
+  padding: 0;
+}
+
+.anl-toolbar .anl-refresh-btn .arco-btn-icon {
+  margin-right: 0;
+}
+
+.anl-dropdown-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.anl-dropdown-divider {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--color-border-2);
+}
+
+.anl-page .arco-card.anl-card.general-card,
+.anl-card {
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--anl-border);
+  background: var(--color-bg-2);
+  box-shadow: none;
+}
+
+.anl-card .arco-card-body {
+  padding: 16px 20px;
+}
+
+.anl-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.anl-card-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.anl-card-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.anl-card-action {
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.anl-section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-3);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.anl-section-link:hover {
+  color: var(--color-text-2);
+}
+
+.anl-section-link .pro-fa-icon,
+.anl-section-link .arco-icon {
+  font-size: 12px;
+}
+
+/* KPI 条：连体五格 */
+.anl-kpi-strip {
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-bg-2);
+  border: 1px solid var(--anl-border);
+}
+
+.anl-kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.anl-kpi-cell {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--anl-border);
+  min-width: 0;
+}
+
+.anl-kpi-cell:last-child {
+  border-bottom: none;
+}
+
+.anl-kpi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.anl-kpi-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-1);
+}
+
+.anl-kpi-icon,
+.anl-kpi-icon.pro-fa-icon {
+  font-size: 14px;
+  color: var(--color-text-3) !important;
+  --fa-primary-color: var(--color-text-3);
+  --fa-secondary-color: var(--color-text-3);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.anl-kpi-icon.pro-fa-icon::before {
+  color: var(--color-text-3);
+}
+
+.anl-kpi-value-row {
+  margin-bottom: 12px;
+}
+
+.anl-kpi-value {
+  font-family: var(--font-metric);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.anl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  height: 22px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.anl-badge .pro-fa-icon {
+  font-size: 11px;
+}
+
+.anl-badge--up {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.1);
+}
+
+.anl-badge--down {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+}
+
+.anl-kpi-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.anl-kpi-compare {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.anl-kpi-meta .anl-badge {
+  flex-shrink: 0;
+}
+
+.anl-kpi-dot {
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .anl-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .anl-kpi-cell {
+    border-right: 1px solid var(--anl-border);
+  }
+
+  .anl-kpi-cell:nth-child(2n) {
+    border-right: none;
+  }
+
+  .anl-kpi-cell:nth-child(n + 5) {
+    border-bottom: none;
+  }
+
+  .anl-kpi-cell:nth-child(4) {
+    border-bottom: 1px solid var(--anl-border);
+  }
+}
+
+@media (min-width: 1200px) {
+  .anl-kpi-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .anl-kpi-cell {
+    border-bottom: none;
+    border-right: 1px solid var(--anl-border);
+  }
+
+  .anl-kpi-cell:nth-child(2n) {
+    border-right: 1px solid var(--anl-border);
+  }
+
+  .anl-kpi-cell:last-child {
+    border-right: none;
+  }
+
+  .anl-kpi-cell:nth-child(4) {
+    border-bottom: none;
+  }
+}
+
+/* 对齐财务 fin-line-chart：高度与全局 .shadcn-chart-host min-height 一致，底轴紧贴图例 */
+.shadcn-chart-host.anl-quality-chart {
+  width: 100%;
+  min-height: 280px;
+  height: 280px;
+  overflow: visible;
+}
+
+.shadcn-chart-host.anl-quality-chart svg {
+  overflow: visible;
+}
+
+.anl-chart-motion {
+  animation: anl-chart-in 0.45s ease both;
+}
+
+@keyframes anl-chart-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anl-chart-motion {
+    animation: none;
+  }
+}
+
+/* 与流量质量同高，底图例走全局 .shadcn-chart-legend */
+.anl-realtime-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  /* 与数值 24px 行高一致，便于右侧图表按 280-32 对齐左侧 */
+  min-height: 24px;
+}
+
+.anl-realtime-value {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.anl-realtime-value strong {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.anl-realtime-value span {
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.anl-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.anl-live-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+}
+
+.anl-live-dot::before,
+.anl-live-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgb(var(--success-6));
+}
+
+.anl-live-dot::before {
+  animation: anl-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.55;
+}
+
+@keyframes anl-ping {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* 280 - (数值行 24 + 底边距 8) = 248，与左侧流量质量卡片总高对齐 */
+.shadcn-chart-host.anl-realtime-chart {
+  width: 100%;
+  min-height: 248px;
+  height: 248px;
+  overflow: visible;
+}
+
+.shadcn-chart-host.anl-realtime-chart svg {
+  overflow: visible;
+}
+
+/* 同行左右卡片等高拉伸 */
+.anl-charts-row > .arco-col {
+  display: flex;
+}
+
+.anl-charts-row .anl-card {
+  width: 100%;
+  height: 100%;
+}
+
+.anl-pages-table {
+  margin: 0 -4px;
+}
+
+.anl-pages-table .arco-table-th {
+  font-weight: 400;
+  color: var(--color-text-3);
+}
+
+.anl-pages-table .arco-table-td {
+  font-variant-numeric: tabular-nums;
+}
+
+.anl-path-cell {
+  font-weight: 500;
+  color: var(--color-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.anl-source-tabs .arco-tabs-nav {
+  margin-bottom: 12px;
+}
+
+.anl-source-tabs .arco-tabs-nav::before {
+  background: var(--color-border-2);
+}
+
+.anl-source-tabs .arco-tabs-tab {
+  margin: 0 4px;
+  padding: 8px 12px;
+  font-weight: 400;
+  background: transparent !important;
+  background-color: transparent !important;
+  transition: color 0.15s ease;
+}
+
+/* Arco line 型页签悬停灰底画在 .arco-tabs-tab-title::before 上 */
+.anl-source-tabs .arco-tabs-tab:hover,
+.anl-source-tabs .arco-tabs-tab:hover .arco-tabs-tab-title,
+.anl-source-tabs .arco-tabs-tab-active:hover,
+.anl-source-tabs .arco-tabs-tab-active:hover .arco-tabs-tab-title {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: rgb(var(--primary-6));
+}
+
+.anl-source-tabs .arco-tabs-tab .arco-tabs-tab-title::before,
+.anl-source-tabs .arco-tabs-tab:hover .arco-tabs-tab-title::before,
+.anl-source-tabs .arco-tabs-nav-type-line .arco-tabs-tab .arco-tabs-tab-title::before,
+.anl-source-tabs .arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before,
+.anl-source-tabs .arco-tabs-nav-type-line .arco-tabs-tab-active .arco-tabs-tab-title::before,
+.anl-source-tabs .arco-tabs-nav-type-line .arco-tabs-tab-active:hover .arco-tabs-tab-title::before {
+  background-color: transparent !important;
+}
+
+.anl-source-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* 移动端：随内容撑开，避免 flex:1 + min-height:0 把条高压扁 */
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  min-height: auto;
+}
+
+.anl-source-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 44px;
+  flex: 0 0 auto;
+  padding: 0 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-fill-1);
+}
+
+.anl-source-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--chart-1, rgb(var(--primary-6))) 50%, transparent);
+  pointer-events: none;
+  transform-origin: left center;
+  animation: anl-source-fill-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anl-source-row:nth-child(1) .anl-source-fill { animation-delay: 0.02s; }
+.anl-source-row:nth-child(2) .anl-source-fill { animation-delay: 0.07s; }
+.anl-source-row:nth-child(3) .anl-source-fill { animation-delay: 0.12s; }
+.anl-source-row:nth-child(4) .anl-source-fill { animation-delay: 0.17s; }
+.anl-source-row:nth-child(5) .anl-source-fill { animation-delay: 0.22s; }
+
+@keyframes anl-source-fill-in {
+  from {
+    transform: scaleX(0);
+    opacity: 0.55;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anl-source-fill {
+    animation: none;
+  }
+}
+
+.anl-source-name,
+.anl-source-value {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.anl-source-name {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.anl-source-value {
+  flex-shrink: 0;
+}
+
+/* 页面表现 / 流量来源：同行等高（对齐 academy equal-row） */
+.anl-bottom-row.arco-row {
+  align-items: stretch;
+}
+
+.anl-bottom-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.anl-bottom-row > .arco-col > .anl-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.anl-bottom-row > .arco-col > .anl-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.anl-bottom-row .anl-source-tabs {
+  flex-shrink: 0;
+}
+
+/* ≥xl：与左侧表格等高时再拉开条形间距 */
+@media (min-width: 1200px) {
+  .anl-bottom-row .anl-source-list {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    min-height: 0;
+  }
+
+  .anl-bottom-row .anl-source-row {
+    flex: 1 1 auto;
+    min-height: 40px;
+    max-height: 52px;
+  }
+}
+
+.anl-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 256px;
+  border-radius: 12px;
+  border: 1px dashed var(--color-border-2);
+  color: var(--color-text-3);
+  font-size: 14px;
+  background: var(--color-bg-1);
+}
+
+/* 暗色：区块外框与 KPI 内部分割统一弱线（对齐财务管理） */
+body[arco-theme='dark'] .anl-page,
+body.theme-dark .anl-page {
+  --anl-border: var(--pro-line-muted);
+}
+
+body[arco-theme='dark'] .anl-page .arco-card.anl-card.general-card,
+body[arco-theme='dark'] .anl-page .anl-card,
+body[arco-theme='dark'] .anl-page .anl-kpi-strip,
+body.theme-dark .anl-page .arco-card.anl-card.general-card,
+body.theme-dark .anl-page .anl-card,
+body.theme-dark .anl-page .anl-kpi-strip {
+  border: 1px solid var(--anl-border) !important;
+  box-shadow: none !important;
+}
+

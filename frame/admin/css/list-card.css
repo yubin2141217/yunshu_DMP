@@ -1,0 +1,1708 @@
+﻿.list-card-page .list-card-tabs {
+  margin-bottom: 16px;
+}
+
+.list-card-page .list-card-tabs .arco-tabs-content {
+  display: none;
+}
+
+.list-card-page .list-card-tabs .arco-tabs-nav-tab {
+  margin-bottom: 0;
+}
+
+.list-card-page .list-card-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab {
+  margin: 0 4px;
+  padding: 4px 16px;
+  line-height: 24px;
+  color: var(--color-text-2);
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.list-card-page .list-card-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:hover {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+}
+
+.list-card-page .list-card-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active,
+.list-card-page .list-card-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active:hover {
+  color: var(--color-white);
+  background-color: rgb(var(--primary-6));
+}
+
+.list-card-page .list-card-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active .arco-tabs-tab-title {
+  color: inherit;
+  font-weight: 500;
+}
+
+.list-card-pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 4px;
+}
+
+.list-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.list-card-title-row .list-card-title {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.list-card-title-tag,
+.list-card-title-date {
+  flex-shrink: 0;
+}
+
+.list-card-title {
+  margin-bottom: 8px !important;
+  font-weight: 500;
+}
+
+.list-card-desc {
+  margin-bottom: 0 !important;
+}
+
+.list-card-desc--compact {
+  margin-bottom: 0 !important;
+}
+
+.list-card-meta {
+  font-size: 12px;
+}
+
+/* 鏍囧噯 / 妯増 / 灏侀潰锛氭爣棰?1 琛屻€佹弿杩?2 琛?*/
+.list-card-item .list-card-title,
+.list-card-item--horizontal .list-card-title,
+.list-card-item--cover .list-card-title {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.list-card-item .list-card-desc,
+.list-card-item--horizontal .list-card-desc,
+.list-card-item--cover .list-card-desc {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+  line-height: 1.5715;
+  max-height: calc(1.5715em * 2);
+}
+
+.list-card-item:not(.list-card-item--horizontal) .list-card-desc,
+.list-card-item--cover .list-card-desc {
+  min-height: calc(1.5715em * 2);
+  height: calc(1.5715em * 2);
+}
+
+.list-card-item .list-card-cover {
+  height: 120px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--pro-theme-color-soft), rgba(var(--primary-6), 0.05));
+}
+
+.list-card-item .list-card-cover.tone-a {
+  background: linear-gradient(135deg, rgba(var(--primary-6), 0.18), rgba(var(--primary-6), 0.04));
+}
+
+.list-card-item .list-card-cover.tone-b {
+  background: linear-gradient(135deg, rgba(var(--success-6), 0.16), rgba(var(--success-6), 0.04));
+}
+
+.list-card-item .list-card-cover.tone-c {
+  background: linear-gradient(135deg, rgba(var(--warning-6), 0.16), rgba(var(--warning-6), 0.04));
+}
+
+.list-card-item .list-card-cover.tone-d {
+  background: linear-gradient(135deg, rgba(var(--danger-6), 0.14), rgba(var(--danger-6), 0.04));
+}
+
+.list-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-1);
+}
+
+.list-card-footer .pro-avatar-default.arco-avatar {
+  font-size: 12px !important;
+}
+
+.list-card-footer .pro-avatar-default.arco-avatar .pro-fa-icon {
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
+}
+
+.list-card-footer-right {
+  flex-shrink: 0;
+  gap: 16px !important;
+}
+
+.list-card-footer--flush {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* 妯増鍗＄墖 */
+.list-card-item--horizontal .arco-card-body {
+  padding: 12px;
+}
+
+.list-card-horizontal {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.list-card-item--horizontal .list-card-cover.list-card-cover--side {
+  width: 120px;
+  min-width: 120px;
+  height: auto;
+  min-height: 100%;
+  margin-bottom: 0;
+  align-self: stretch;
+}
+
+.list-card-horizontal-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 120px;
+}
+
+.list-card-horizontal-body .list-card-title-row {
+  margin-bottom: 6px;
+}
+
+.list-card-horizontal-body .list-card-desc--compact {
+  margin-bottom: 0 !important;
+  flex: 1 1 auto;
+}
+
+.list-card-item--horizontal .list-card-footer--flush {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+/* 灏侀潰鍗＄墖 */
+.list-card-item--cover {
+  overflow: hidden;
+}
+
+.list-card-item--cover .arco-card-body {
+  padding: 12px 16px 16px;
+}
+
+.list-card-item--cover .list-card-cover.list-card-cover--tall {
+  position: relative;
+  height: 160px;
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.list-card-cover-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.list-card-item--cover .list-card-title-row {
+  margin-bottom: 8px;
+}
+
+.list-card-item--cover .list-card-footer {
+  margin-top: 12px;
+}
+
+/* 鏈嶅姟鍗＄墖 */
+.list-card-service-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.list-card-service-head .list-card-title {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.list-card-service-meta {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: 4px;
+  background: var(--color-fill-1);
+}
+
+.list-card-service-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--color-text-1);
+}
+
+.list-card-service-label {
+  color: var(--color-text-3);
+}
+
+.list-card-service-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-1);
+}
+
+.list-card-service-actions .arco-divider-vertical {
+  margin: 0 4px;
+  height: 14px;
+}
+
+/* 指标卡片 */
+.list-card-metric-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 主数字：统一走 --font-metric */
+.list-card-metric-stat-value,
+.list-card-metric-value,
+.list-card-metric-type-num,
+.list-card-metric-status-value,
+.list-card-metric-trend-num,
+.list-card-metric-icon-bar-value,
+.list-card-metric-spark-num,
+.list-card-metric-spark-kpi-value,
+.list-card-metric-flip-comma,
+.list-card-metric-flip-strip > span {
+  font-family: var(--font-metric);
+}
+
+.list-card-metric-group-title {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.list-card-item--metric .arco-card-body {
+  padding: 16px 20px;
+}
+
+/* 鏁板瓧鎸囨爣锛堢嫭绔嬫牱寮忥紝涓嶄笌宸ヤ綔鍙?KPI 鑱斿姩锛?*/
+.list-card-item--metric-stat .arco-card-body {
+  padding: 16px 20px;
+}
+
+.list-card-item--metric-stat-solid .arco-card-body,
+.list-card-item--metric-stat-soft .arco-card-body {
+  padding: 14px 16px;
+}
+
+.list-card-metric--stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card-metric--stat-solid {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.list-card-metric-stat-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.list-card-metric-stat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.list-card-metric--stat-solid .list-card-metric-stat-head,
+.list-card-metric--stat-soft .list-card-metric-stat-head {
+  margin-bottom: 4px;
+}
+
+.list-card-metric-stat-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.list-card-metric-stat-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 14px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.list-card-metric--stat-solid .list-card-metric-stat-head {
+  justify-content: flex-start;
+}
+
+.list-card-metric--stat-solid .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric--stat-soft .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric--progress .list-card-metric-stat-title::before,
+.list-card-metric--progress-line .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric--status .list-card-metric-stat-title::before,
+.list-card-metric--trend .list-card-metric-stat-title::before,
+.list-card-metric-type-cell .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric-stat-icon,
+.list-card-metric-stat-icon.pro-fa-icon {
+  font-size: 16px;
+  color: var(--color-text-3);
+  flex-shrink: 0;
+}
+
+.list-card-metric-stat-icon-text {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--color-text-3);
+}
+
+.list-card-metric-stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-1);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.list-card-metric-stat-delta {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.list-card-metric--stat-solid .list-card-metric-stat-delta {
+  margin-top: 2px;
+}
+
+.list-card-metric-stat-delta-label {
+  color: var(--color-text-3);
+}
+
+.list-card-metric-stat-delta-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.list-card-metric-stat-delta-value.is-up {
+  color: rgb(var(--success-6));
+}
+
+.list-card-metric-stat-delta-value.is-down {
+  color: rgb(var(--danger-6));
+}
+
+.list-card-metric-stat-foot {
+  margin-top: 6px;
+}
+
+/* 鑹插潡鏁板瓧鎸囨爣锛氱櫧鍥炬爣 + 澶氳壊鍦嗚鑹插潡锛屽彸渚у瀭鐩村眳涓?*/
+.list-card-metric-stat-block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.list-card-metric-stat-block .pro-fa-icon,
+.list-card-metric-stat-block .arco-icon {
+  color: #fff !important;
+}
+
+.list-card-metric-stat-block.is-primary {
+  background: var(--chart-1);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--chart-1) 22%, transparent);
+}
+
+.list-card-metric-stat-block.is-success {
+  background: var(--chart-2);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--chart-2) 22%, transparent);
+}
+
+.list-card-metric-stat-block.is-warning {
+  background: var(--chart-3);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--chart-3) 22%, transparent);
+}
+
+.list-card-metric-stat-block.is-danger {
+  background: var(--chart-4);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--chart-4) 22%, transparent);
+}
+
+/* 娴呰壊鏁板瓧鎸囨爣锛氬崐閫忔槑鑹插簳 + 褰╄壊鍥炬爣锛堝昂瀵镐笌鑹插潡缁勪竴鑷达級 */
+.list-card-metric-stat-soft-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.list-card-metric-stat-soft-icon.is-primary {
+  color: var(--chart-1);
+  background: color-mix(in srgb, var(--chart-1) 12%, transparent);
+}
+
+.list-card-metric-stat-soft-icon.is-success {
+  color: var(--chart-2);
+  background: color-mix(in srgb, var(--chart-2) 12%, transparent);
+}
+
+.list-card-metric-stat-soft-icon.is-warning {
+  color: var(--chart-3);
+  background: color-mix(in srgb, var(--chart-3) 12%, transparent);
+}
+
+.list-card-metric-stat-soft-icon.is-danger {
+  color: var(--chart-4);
+  background: color-mix(in srgb, var(--chart-4) 12%, transparent);
+}
+
+.list-card-metric-value {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.list-card-metric-value--sm {
+  font-size: 18px;
+}
+
+.list-card-metric-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 4px;
+  height: 20px;
+  margin-top: 0;
+  padding: 0 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.list-card-metric-badge .pro-fa-icon {
+  font-size: 11px;
+}
+
+.list-card-metric-badge--up {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.1);
+  border-color: rgba(var(--success-6), 0.22);
+}
+
+.list-card-metric-badge--down {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+  border-color: rgba(var(--danger-6), 0.22);
+}
+
+.list-card-metric-delta {
+  font-size: 12px;
+}
+
+.list-card-metric-tip {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* 杩涘害鎸囨爣 */
+.list-card-metric--progress {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card-metric-progress-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.list-card-metric-progress-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.list-card-metric--progress .list-card-metric-value {
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+/* 圆环数字指标：与趋势图指标同源 SVG 描边生长 */
+.list-card-metric-progress-ring-wrap {
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+}
+
+.list-card-metric-progress-ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.list-card-metric-progress-ring-track {
+  stroke-linecap: round;
+}
+
+/* 杩涘害鏉℃寚鏍?*/
+.list-card-metric--progress-line {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-card-metric-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.list-card-metric-value--sm {
+  font-size: 18px;
+}
+
+.list-card-metric-progress-bar.arco-progress {
+  width: 100%;
+}
+
+.list-card-metric-progress-bar .arco-progress-line-wrapper {
+  width: 100%;
+}
+
+.list-card-metric-progress-bar .arco-progress-line {
+  width: 100%;
+}
+
+.list-card-metric-progress-bar .arco-progress-line-bar,
+.list-card-metric-progress-bar .arco-progress-line-bar-buffer {
+  border-radius: 999px;
+}
+
+/* 绫诲瀷鎸囨爣锛氭笭閬撳崰姣?/ 鍒嗙被鍨嬮噾棰濓紙鐙珛鏍峰紡锛?*/
+.list-card-item--metric-type .arco-card-body {
+  padding: 8px 12px;
+}
+
+.list-card-metric-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.list-card-metric-type-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border-2);
+  border-right: 1px solid var(--color-border-2);
+}
+
+.list-card-metric-type-cell:nth-child(3n) {
+  border-right: none;
+}
+
+.list-card-metric-type-cell:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+
+.list-card-metric-type-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.list-card-metric-type-title {
+  min-width: 0;
+}
+
+.list-card-metric-type-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.list-card-metric-type-delta .pro-fa-icon {
+  font-size: 11px;
+}
+
+.list-card-metric-type-delta.is-up {
+  color: rgb(var(--success-6));
+}
+
+.list-card-metric-type-delta.is-down {
+  color: rgb(var(--danger-6));
+}
+
+.list-card-metric-type-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+}
+
+.list-card-metric-type-num {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.list-card-metric-type-unit {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-text-3);
+}
+
+.list-card-metric-type-segments {
+  display: flex;
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.list-card-metric-type-segment {
+  display: block;
+  min-width: 0;
+  height: 100%;
+}
+
+.list-card-metric-type-bar {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-fill-3);
+}
+
+.list-card-metric-type-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+@media (max-width: 767px) {
+  .list-card-metric-type-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .list-card-metric-type-cell {
+    padding: 16px 12px;
+    border-right: 1px solid var(--color-border-2);
+  }
+
+  .list-card-metric-type-cell:nth-child(3n) {
+    border-right: 1px solid var(--color-border-2);
+  }
+
+  .list-card-metric-type-cell:nth-child(2n) {
+    border-right: none;
+  }
+
+  .list-card-metric-type-cell:nth-last-child(-n + 3) {
+    border-bottom: 1px solid var(--color-border-2);
+  }
+
+  .list-card-metric-type-cell:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .list-card-metric-type-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-card-metric-type-cell,
+  .list-card-metric-type-cell:nth-child(odd),
+  .list-card-metric-type-cell:nth-child(even),
+  .list-card-metric-type-cell:nth-child(2n),
+  .list-card-metric-type-cell:nth-child(3n) {
+    padding: 16px 4px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-2);
+  }
+
+  .list-card-metric-type-cell:nth-last-child(-n + 3),
+  .list-card-metric-type-cell:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--color-border-2);
+  }
+
+  .list-card-metric-type-cell:last-child {
+    border-bottom: none;
+  }
+}
+
+/* 鐘舵€佽繘搴︽寚鏍?*/
+.list-card-item--metric-status {
+  border-top: 2px solid rgb(var(--primary-6));
+}
+
+.list-card-item--metric-status .arco-card-body {
+  padding: 16px 20px;
+}
+
+.list-card-metric--status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-card-metric-status-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.list-card-metric-status-value {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.list-card-metric-status-bar {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-fill-3);
+}
+
+.list-card-metric-status-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+.list-card-metric-status-bar.is-pending .list-card-metric-status-bar-fill {
+  background: rgb(var(--warning-6));
+}
+
+.list-card-metric-status-bar.is-done .list-card-metric-status-bar-fill {
+  background: rgb(var(--success-6));
+}
+
+.list-card-metric-status-label {
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.list-card-metric-status-label.is-pending {
+  color: rgb(var(--warning-6));
+}
+
+.list-card-metric-status-label.is-done {
+  color: rgb(var(--success-6));
+}
+
+/* 趋势数值指标 */
+.list-card-item--metric-trend .arco-card-body {
+  padding: 16px 18px;
+}
+
+.list-card-metric--trend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.list-card-metric-trend-title {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-card-metric-trend-mid {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+.list-card-metric-trend-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+
+.list-card-metric-trend-num {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+  white-space: nowrap;
+}
+
+.list-card-metric-trend-unit {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.list-card-metric-trend-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.list-card-metric-trend-delta-label {
+  color: var(--color-text-3);
+}
+
+.list-card-metric-trend-delta .pro-fa-icon {
+  font-size: 11px;
+}
+
+.list-card-metric-trend-delta-val {
+  font-weight: 500;
+}
+
+/* 对齐参考稿：红涨绿跌 */
+.list-card-metric-trend-delta.is-up,
+.list-card-metric-trend-delta.is-up .list-card-metric-trend-delta-val {
+  color: rgb(var(--danger-6));
+}
+
+.list-card-metric-trend-delta.is-down,
+.list-card-metric-trend-delta.is-down .list-card-metric-trend-delta-val {
+  color: rgb(var(--success-6));
+}
+
+.list-card-metric-trend-bar {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  overflow: visible;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--chart-1) 12%, transparent);
+}
+
+.list-card-metric-trend-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--chart-1);
+}
+
+.list-card-metric-trend-bar-marker {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--color-text-4);
+  pointer-events: none;
+}
+
+.list-card-metric-trend-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.list-card-metric-trend-foot > span {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-card-metric-trend-foot > span:last-child {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* 鍥炬爣杩涘害鎸囨爣 */
+.list-card-item--metric-icon-bar .arco-card-body {
+  padding: 16px 20px;
+}
+
+.list-card-metric--icon-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.list-card-metric-icon-bar-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.list-card-metric-icon-bar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.list-card-metric-icon-bar-icon.is-success {
+  color: var(--chart-2);
+  background: color-mix(in srgb, var(--chart-2) 12%, transparent);
+}
+
+.list-card-metric-icon-bar-icon.is-primary {
+  color: var(--chart-1);
+  background: color-mix(in srgb, var(--chart-1) 12%, transparent);
+}
+
+.list-card-metric-icon-bar-icon.is-danger {
+  color: var(--chart-4);
+  background: color-mix(in srgb, var(--chart-4) 12%, transparent);
+}
+
+.list-card-metric-icon-bar-icon.is-info {
+  color: var(--chart-5);
+  background: color-mix(in srgb, var(--chart-5) 12%, transparent);
+}
+
+.list-card-metric-icon-bar-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  min-width: 0;
+  text-align: right;
+}
+
+.list-card-metric-icon-bar-value {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.list-card-metric--icon-bar .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric-icon-bar-track {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-fill-3);
+}
+
+.list-card-metric-icon-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+.list-card-metric-icon-bar-track.is-success .list-card-metric-icon-bar-fill {
+  background: var(--chart-2);
+}
+
+.list-card-metric-icon-bar-track.is-primary .list-card-metric-icon-bar-fill {
+  background: var(--chart-1);
+}
+
+.list-card-metric-icon-bar-track.is-danger .list-card-metric-icon-bar-fill {
+  background: var(--chart-4);
+}
+
+.list-card-metric-icon-bar-track.is-info .list-card-metric-icon-bar-fill {
+  background: var(--chart-5);
+}
+
+/* 瓒嬪娍鍥炬寚鏍?*/
+.list-card-item--metric-spark {
+  container-type: inline-size;
+  container-name: metric-spark;
+}
+
+.list-card-item--metric-spark .arco-card-body {
+  padding: 16px 18px;
+}
+
+.list-card-metric--spark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 100px;
+  min-width: 0;
+}
+
+.list-card-metric-spark-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.list-card-metric-spark-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+}
+
+.list-card-metric-spark-title .list-card-metric-stat-title {
+  white-space: nowrap;
+}
+
+.list-card-metric-spark-title .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric-spark-help-wrap {
+  display: inline-flex;
+  align-items: center;
+  cursor: help;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.list-card-metric-spark-help {
+  color: var(--color-text-4);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.list-card-metric-spark-value {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  max-width: 100%;
+}
+
+.list-card-metric-spark-num {
+  font-size: clamp(20px, 11cqi, 28px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text-1);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.list-card-metric-spark-unit {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.list-card-metric-spark-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.list-card-metric-spark-tag .pro-fa-icon {
+  font-size: 10px;
+}
+
+/* 閲戣瀺绾㈡定缁胯穼锛屽榻愬弬鑰冪 */
+.list-card-metric-spark-tag.is-up {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+}
+
+.list-card-metric-spark-tag.is-down {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.1);
+}
+
+.list-card-metric-spark-chart {
+  width: clamp(72px, 36%, 148px);
+  height: 52px;
+  flex: 0 1 148px;
+  min-width: 64px;
+  max-width: 148px;
+  align-self: flex-end;
+  overflow: visible;
+}
+
+.list-card-metric-spark-chart--bar {
+  max-width: 136px;
+}
+
+.list-card-metric-spark-line {
+  vector-effect: non-scaling-stroke;
+}
+
+.list-card-metric-spark-ring-wrap {
+  position: relative;
+  width: clamp(48px, 22cqi, 72px);
+  height: clamp(48px, 22cqi, 72px);
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.list-card-metric-spark-chart--ring {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+}
+
+.list-card-metric-spark-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(11px, 4cqi, 13px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-text-2);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+@container metric-spark (max-width: 260px) {
+  .list-card-item--metric-spark .arco-card-body {
+    padding: 14px;
+  }
+
+  .list-card-metric--spark {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    min-height: 0;
+  }
+
+  .list-card-metric-spark-chart,
+  .list-card-metric-spark-chart--bar {
+    width: 100%;
+    max-width: none;
+    height: 44px;
+    align-self: stretch;
+    flex: 0 0 auto;
+  }
+
+  .list-card-metric-spark-ring-wrap {
+    width: 56px;
+    height: 56px;
+    align-self: flex-end;
+  }
+
+  .list-card-metric-spark-num {
+    font-size: 22px;
+  }
+}
+
+/* 鍥炬爣瓒嬪娍鎸囨爣 */
+.list-card-item--metric-spark-kpi {
+  container-type: inline-size;
+  container-name: metric-spark-kpi;
+}
+
+.list-card-item--metric-spark-kpi .arco-card-body {
+  padding: 16px 18px;
+}
+
+.list-card-metric--spark-kpi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 100px;
+  min-width: 0;
+}
+
+.list-card-metric-spark-kpi-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.list-card-metric-spark-kpi-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.list-card-metric-spark-kpi-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: var(--chart-1);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.list-card-metric-spark-kpi-icon .pro-fa-icon {
+  font-size: 12px;
+  color: #fff;
+}
+
+.list-card-metric-spark-kpi-name {
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--color-text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-card-metric-spark-kpi-value {
+  font-size: clamp(20px, 11cqi, 28px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text-1);
+  font-variant-numeric: tabular-nums;
+  /* 涓庢爣棰樻枃瀛楀乏瀵归綈锛氬浘鏍?22px + gap 8px */
+  margin-left: 30px;
+  white-space: nowrap;
+}
+
+.list-card-metric-spark-kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1;
+  margin-left: 30px;
+  white-space: nowrap;
+}
+
+.list-card-metric-spark-kpi-trend-label {
+  color: var(--color-text-3);
+}
+
+.list-card-metric-spark-kpi-trend-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.list-card-metric-spark-kpi-trend.is-up .list-card-metric-spark-kpi-trend-icon,
+.list-card-metric-spark-kpi-trend.is-up .list-card-metric-spark-kpi-delta {
+  color: rgb(var(--danger-6));
+}
+
+.list-card-metric-spark-kpi-trend.is-down .list-card-metric-spark-kpi-trend-icon,
+.list-card-metric-spark-kpi-trend.is-down .list-card-metric-spark-kpi-delta {
+  color: rgb(var(--success-6));
+}
+
+.list-card-metric-spark-kpi-delta {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.list-card-metric-spark-kpi-chart {
+  width: clamp(72px, 36%, 148px);
+  height: 52px;
+  flex: 0 1 148px;
+  min-width: 64px;
+  max-width: 148px;
+  align-self: flex-end;
+  overflow: visible;
+}
+
+.list-card-metric-spark-kpi-chart .list-card-metric-spark-line,
+.list-card-metric-spark-kpi-chart path[stroke] {
+  vector-effect: non-scaling-stroke;
+}
+
+@container metric-spark-kpi (max-width: 260px) {
+  .list-card-item--metric-spark-kpi .arco-card-body {
+    padding: 14px;
+  }
+
+  .list-card-metric--spark-kpi {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    min-height: 0;
+  }
+
+  .list-card-metric-spark-kpi-chart {
+    width: 100%;
+    max-width: none;
+    height: 44px;
+    align-self: stretch;
+    flex: 0 0 auto;
+  }
+
+  .list-card-metric-spark-kpi-value,
+  .list-card-metric-spark-kpi-trend {
+    margin-left: 30px;
+  }
+
+  .list-card-metric-spark-kpi-value {
+    font-size: 22px;
+  }
+}
+
+/* 翻牌数字指标 */
+.list-card-item--metric-flip {
+  container-type: inline-size;
+  container-name: metric-flip;
+}
+
+.list-card-item--metric-flip .arco-card-body {
+  padding: 8px 8px 12px;
+}
+
+.list-card-metric-flip-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.list-card-metric-flip-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 12px;
+  border-right: 1px solid var(--color-border-2);
+  min-width: 0;
+  container-type: inline-size;
+  container-name: flip-row;
+}
+
+.list-card-metric-flip-row:last-child {
+  border-right: none;
+}
+
+.list-card-metric-flip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.list-card-metric-flip-head .list-card-metric-stat-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-card-metric-flip-row .list-card-metric-stat-title::before {
+  display: none;
+}
+
+.list-card-metric-flip-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.list-card-metric-flip-delta .pro-fa-icon {
+  font-size: 11px;
+}
+
+.list-card-metric-flip-delta.is-up {
+  color: rgb(var(--success-6));
+}
+
+.list-card-metric-flip-delta.is-down {
+  color: rgb(var(--danger-6));
+}
+
+.list-card-metric-flip-board {
+  --flip-digit-w: clamp(20px, 10cqi, 38px);
+  --flip-digit-h: clamp(30px, 14cqi, 52px);
+  --flip-digit-fs: clamp(16px, 8.5cqi, 30px);
+  --flip-gap: clamp(2px, 1.2cqi, 6px);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--flip-gap);
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.list-card-metric-flip-comma {
+  font-size: var(--flip-digit-fs);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.list-card-metric-flip-digit {
+  display: inline-block;
+  width: var(--flip-digit-w);
+  height: var(--flip-digit-h);
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-card-metric-flip-strip {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.list-card-metric-flip-strip > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--flip-digit-h);
+  font-size: var(--flip-digit-fs);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.list-card-metric-flip-row.is-success .list-card-metric-flip-digit {
+  color: var(--chart-2);
+  border-color: color-mix(in srgb, var(--chart-2) 45%, transparent);
+  background: color-mix(in srgb, var(--chart-2) 10%, transparent);
+}
+
+.list-card-metric-flip-row.is-success .list-card-metric-flip-comma {
+  color: var(--chart-2);
+}
+
+.list-card-metric-flip-row.is-info .list-card-metric-flip-digit {
+  color: var(--chart-5);
+  border-color: color-mix(in srgb, var(--chart-5) 45%, transparent);
+  background: color-mix(in srgb, var(--chart-5) 10%, transparent);
+}
+
+.list-card-metric-flip-row.is-info .list-card-metric-flip-comma {
+  color: var(--chart-5);
+}
+
+.list-card-metric-flip-row.is-warning .list-card-metric-flip-digit {
+  color: var(--chart-3);
+  border-color: color-mix(in srgb, var(--chart-3) 45%, transparent);
+  background: color-mix(in srgb, var(--chart-3) 12%, transparent);
+}
+
+.list-card-metric-flip-row.is-warning .list-card-metric-flip-comma {
+  color: var(--chart-3);
+}
+
+@container metric-flip (max-width: 860px) {
+  .list-card-metric-flip-list {
+    grid-template-columns: 1fr;
+  }
+
+  .list-card-metric-flip-row {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-2);
+    padding: 16px;
+  }
+
+  .list-card-metric-flip-row:last-child {
+    border-bottom: none;
+  }
+
+  .list-card-metric-flip-board {
+    --flip-digit-w: 34px;
+    --flip-digit-h: 46px;
+    --flip-digit-fs: 26px;
+    --flip-gap: 5px;
+  }
+}
+
+@media (max-width: 575px) {
+  .list-card-metric-flip-board {
+    --flip-digit-w: 26px;
+    --flip-digit-h: 38px;
+    --flip-digit-fs: 20px;
+    --flip-gap: 3px;
+  }
+}
+
+
+/* 主题单色：同组指标卡统一主题色，不按 tone 换色；多系列图表仍用 --chart-N 阶梯 */
+[data-chart-palette='theme'] .list-card-metric-stat-block.is-success,
+[data-chart-palette='theme'] .list-card-metric-stat-block.is-warning,
+[data-chart-palette='theme'] .list-card-metric-stat-block.is-danger {
+  background: var(--chart-1);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--chart-1) 22%, transparent);
+}
+
+[data-chart-palette='theme'] .list-card-metric-stat-soft-icon.is-success,
+[data-chart-palette='theme'] .list-card-metric-stat-soft-icon.is-warning,
+[data-chart-palette='theme'] .list-card-metric-stat-soft-icon.is-danger {
+  color: var(--chart-1);
+  background: color-mix(in srgb, var(--chart-1) 12%, transparent);
+}
+
+[data-chart-palette='theme'] .list-card-metric-icon-bar-icon.is-success,
+[data-chart-palette='theme'] .list-card-metric-icon-bar-icon.is-danger,
+[data-chart-palette='theme'] .list-card-metric-icon-bar-icon.is-info {
+  color: var(--chart-1);
+  background: color-mix(in srgb, var(--chart-1) 12%, transparent);
+}
+
+[data-chart-palette='theme'] .list-card-metric-icon-bar-track.is-success .list-card-metric-icon-bar-fill,
+[data-chart-palette='theme'] .list-card-metric-icon-bar-track.is-danger .list-card-metric-icon-bar-fill,
+[data-chart-palette='theme'] .list-card-metric-icon-bar-track.is-info .list-card-metric-icon-bar-fill {
+  background: var(--chart-1);
+}
+
+[data-chart-palette='theme'] .list-card-metric-flip-row.is-success .list-card-metric-flip-digit,
+[data-chart-palette='theme'] .list-card-metric-flip-row.is-info .list-card-metric-flip-digit,
+[data-chart-palette='theme'] .list-card-metric-flip-row.is-warning .list-card-metric-flip-digit {
+  color: var(--chart-1);
+  border-color: color-mix(in srgb, var(--chart-1) 45%, transparent);
+  background: color-mix(in srgb, var(--chart-1) 10%, transparent);
+}
+
+[data-chart-palette='theme'] .list-card-metric-flip-row.is-success .list-card-metric-flip-comma,
+[data-chart-palette='theme'] .list-card-metric-flip-row.is-info .list-card-metric-flip-comma,
+[data-chart-palette='theme'] .list-card-metric-flip-row.is-warning .list-card-metric-flip-comma {
+  color: var(--chart-1);
+}

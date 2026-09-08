@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'PingFang SC',
+    'Helvetica Neue',
+    sans-serif;
+  background: #f5f6f8;
+  color: #323233;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  min-height: 100%;
+  padding-bottom: 16px;
+}
+
+.page-with-tab {
+  /* 预留底部 Tab 高度，避免内容被挡 */
+  padding-bottom: calc(50px + env(safe-area-inset-bottom));
+}
+
+.section-card {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2a44;
+}
+
+.required-mark {
+  margin-right: 2px;
+  color: #ee0a24;
+  font-weight: 600;
+}
+
+.muted {
+  color: #969799;
+  font-size: 12px;
+}
+
+.ellipsis-10 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.04);
+  z-index: 20;
+}
+
+/* 带底部 Tab 的页面：操作栏抬到 Tab 上方，避免遮挡 */
+.page-with-tab .bottom-bar {
+  bottom: calc(50px + env(safe-area-inset-bottom));
+  padding-bottom: 10px;
+}
+
+.page-bottom-space {
+  height: 72px;
+}
+
+.page-with-tab .page-bottom-space {
+  /* 操作栏 + Tab 栏 */
+  height: calc(72px + 50px + env(safe-area-inset-bottom));
+}
+
+.status-tag {
+  flex-shrink: 0;
+}
+
+/* Toast 基于 Popup：保证深色底 + 白字，避免被 .van-popup 白底覆盖 */
+.van-toast.van-popup {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+.plan-occupy-toast {
+  max-width: 78vw;
+  padding: 10px 14px;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: break-word;
+}

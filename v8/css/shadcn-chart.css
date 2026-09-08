@@ -1,0 +1,1352 @@
+/**
+ * shadcn/vue Chart 主题 tokens（Unovis 底层）
+ * @see https://www.shadcn-vue.com/docs/components/chart
+ */
+:root {
+  --chart-1: rgb(var(--primary-6, var(--arcoblue-6)));
+  --chart-2: rgb(var(--primary-5, var(--arcoblue-5)));
+  --chart-3: rgb(var(--primary-4, var(--arcoblue-4)));
+  --chart-4: rgb(var(--primary-3, var(--arcoblue-3)));
+  --chart-5: rgb(var(--primary-2, var(--arcoblue-2)));
+  --chart-6: rgb(var(--primary-6, var(--arcoblue-6)));
+  --chart-7: rgb(var(--primary-5, var(--arcoblue-5)));
+  --chart-8: rgb(var(--primary-4, var(--arcoblue-4)));
+  --chart-9: rgb(var(--primary-3, var(--arcoblue-3)));
+  --chart-10: rgb(var(--primary-2, var(--arcoblue-2)));
+  /* 多环径向：仅「主题单色」配色用主色深浅阶；非主题方案见下方覆盖为多色。
+     本主题 primary/arcoblue 的 9/10 常为空；全程用主题色混黑，保证单调过渡。 */
+  --chart-radial-theme: rgb(var(--primary-6, var(--arcoblue-6)));
+  --chart-radial-1: var(--chart-radial-theme);
+  --chart-radial-2: color-mix(in srgb, var(--chart-radial-theme) 82%, #0b1020 18%);
+  --chart-radial-3: color-mix(in srgb, var(--chart-radial-theme) 64%, #0b1020 36%);
+  --chart-radial-4: color-mix(in srgb, var(--chart-radial-theme) 50%, #0b1020 50%);
+  --chart-radial-5: color-mix(in srgb, var(--chart-radial-theme) 36%, #0b1020 64%);
+
+  --vis-font-family: var(--font-global, Inter, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif);
+  --vis-donut-central-label-font-family: var(--font-metric);
+  --vis-color0: var(--chart-1);
+  --vis-color1: var(--chart-2);
+  --vis-color2: var(--chart-3);
+  --vis-color3: var(--chart-4);
+  --vis-color4: var(--chart-5);
+  --vis-axis-tick-label-color: var(--color-text-3, #86909c);
+  --vis-axis-label-color: var(--color-text-2, #4e5969);
+  --vis-axis-grid-color: rgba(29, 33, 41, 0.08);
+  --vis-tooltip-background-color: transparent;
+  --vis-tooltip-border-color: transparent;
+  --vis-tooltip-text-color: var(--color-text-1, #1d2129);
+}
+
+/* 多彩 / 柔和等非主题方案：径向环与分类色板一致，不再强制主色阶梯 */
+html[data-chart-palette]:not([data-chart-palette='theme']),
+body[data-chart-palette]:not([data-chart-palette='theme']) {
+  --chart-radial-1: var(--chart-1);
+  --chart-radial-2: var(--chart-2);
+  --chart-radial-3: var(--chart-3);
+  --chart-radial-4: var(--chart-4);
+  --chart-radial-5: var(--chart-5);
+}
+
+.shadcn-chart-host {
+  width: 100%;
+  min-height: 280px;
+  position: relative;
+  overflow: visible;
+  --vis-grouped-bar-cursor: pointer;
+  --vis-tooltip-padding: 0;
+  --vis-tooltip-background-color: transparent;
+  --vis-tooltip-border-color: transparent;
+  --vis-tooltip-box-shadow: none;
+  --vis-tooltip-border-radius: 0;
+  --vis-tooltip-backdrop-filter: none;
+  --vis-crosshair-line-stroke-color: var(--vis-axis-grid-color, #e5e6eb);
+  --vis-crosshair-line-stroke-opacity: 0.75;
+  --vis-crosshair-line-stroke-width: 1px;
+  --vis-crosshair-circle-stroke-color: var(--color-bg-2, #fff);
+  --vis-crosshair-circle-stroke-width: 2px;
+}
+
+/*
+ * 对齐 shadcn ui/chart.tsx：
+ * [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted
+ *
+ * 实测 shadcn 交互柱图：
+ * - 元素是 path.recharts-tooltip-cursor（不是 Crosshair 圆点）
+ * - fill 计算值为 oklch(0.97 0 0)（--muted）
+ * - 层级 cursor=200、柱=300，灰带在柱后
+ *
+ * Unovis Crosshair 含圆点且始终叠在顶层，仅用于吸附/tooltip；视觉灰带改由 SVG rect 插入柱组最前。
+ */
+.shadcn-chart-host--tooltip-cursor {
+  --vis-crosshair-line-stroke-color: transparent;
+  --vis-crosshair-line-stroke-opacity: 0;
+  --vis-crosshair-line-stroke-width: 0px;
+  --vis-crosshair-circle-stroke-color: transparent;
+  --vis-crosshair-circle-stroke-width: 0;
+  --vis-crosshair-circle-stroke-opacity: 0;
+}
+
+.shadcn-chart-host--tooltip-cursor .vis-crosshair,
+.shadcn-chart-host--tooltip-cursor [class*='vis-crosshair'],
+.shadcn-chart-host--tooltip-cursor [class*='crosshair'] line,
+.shadcn-chart-host--tooltip-cursor [class*='crosshair'] circle {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.shadcn-chart-host--tooltip-cursor rect.shadcn-tooltip-cursor-band {
+  /* 对齐 shadcn --muted: oklch(0.97 0 0)；无 oklch 时回退 fill-2 */
+  fill: var(--color-fill-2, #f2f3f5);
+  fill: oklch(0.97 0 0);
+  pointer-events: none;
+}
+
+.shadcn-chart-host--tooltip-cursor .unovis-tooltip,
+.shadcn-chart-host--tooltip-cursor .shadcn-chart-tooltip-root {
+  z-index: 6;
+  background: var(--color-bg-popup, var(--color-bg-2, #fff)) !important;
+}
+
+/* 柱线组合：右侧百分比轴叠层（Unovis 无原生双轴） */
+.shadcn-chart-yaxis-right {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.shadcn-chart-yaxis-right-tick {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 12px;
+  line-height: 1;
+  /* 直接用主题文本色：勿依赖 :root 上解析死的 --vis-axis-tick-label-color（暗色下仍是浅色态灰） */
+  color: var(--color-text-3, #86909c);
+  white-space: nowrap;
+  padding-right: 2px;
+}
+
+/* 与 Unovis 左轴暗色刻度对齐（body.theme-dark 时 SVG 用 --vis-dark-axis-tick-label-color） */
+body[arco-theme='dark'] .shadcn-chart-yaxis-right-tick,
+body.theme-dark .shadcn-chart-yaxis-right-tick {
+  color: var(--vis-dark-axis-tick-label-color, var(--color-text-3));
+}
+
+.shadcn-chart-host--sm {
+  min-height: 220px;
+}
+
+/* 与 component-showcase-card / form 卡片内边距对齐；左右等宽避免右侧多一截空白 */
+.shadcn-chart-card.component-showcase-card .arco-card-body,
+.component-chart-grid .shadcn-chart-card .arco-card-body {
+  padding: 20px;
+}
+
+/* 底部图例：全局规范（项间距 16px，轴下 20px）——详见 charts.md */
+.shadcn-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--color-text-2);
+}
+
+.shadcn-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.shadcn-chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: var(--legend-color);
+}
+
+/* 柱状图宿主淡入（与 Unovis 柱高动画叠加） */
+.shadcn-chart-host--bar {
+  animation: pro-donut-in 0.45s ease both;
+}
+
+/* 圆环 / 饼图宿主：默认无 opacity 淡入（顺时针揭示见 --donut-cw） */
+.shadcn-chart-host--donut {
+  min-height: 280px;
+  position: relative;
+  /* 中心文案默认 token；字号上限，实际由 mountDonutChart 动态写入 inline */
+  --vis-donut-central-label-font-size: 26px;
+  --vis-donut-central-label-font-weight: 700;
+  --vis-donut-central-label-font-family: var(--font-metric);
+  --vis-donut-central-label-text-color: var(--color-text-1, #1d2129);
+  --vis-donut-central-sub-label-font-size: 14px;
+  --vis-donut-central-sub-label-font-weight: 400;
+  /* 勿用 inherit：自定义属性的 inherit 不会变成 font-family:inherit，会回退到 Inter */
+  --vis-donut-central-sub-label-font-family: var(--font-global);
+  --vis-donut-central-sub-label-text-color: var(--color-text-3, #86909c);
+}
+
+.shadcn-chart-host--donut.shadcn-chart-host--sm {
+  min-height: 220px;
+}
+
+/* 可选：仅淡入（enterAnimation: 'fade'） */
+.shadcn-chart-host--donut-fade {
+  animation: pro-donut-in 0.55s ease both;
+}
+
+@keyframes pro-donut-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * 圆环默认载入：自顶部（CSS conic 0deg = 12 点）顺时针揭示
+ * veil 层 conic-gradient，避免对 SVG 做 transform / mask
+ * 由 mountDonutChart 默认启用（enterAnimation 默认 'clockwise'）
+ */
+@property --pro-donut-reveal {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes pro-donut-cw-reveal {
+  from {
+    --pro-donut-reveal: 0deg;
+  }
+  to {
+    --pro-donut-reveal: 360deg;
+  }
+}
+
+.shadcn-chart-host--donut-cw {
+  position: relative;
+}
+
+.shadcn-chart-host--donut-cw .shadcn-donut-cw-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;
+  --pro-donut-reveal: 0deg;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent var(--pro-donut-reveal),
+    var(--color-bg-2, #fff) var(--pro-donut-reveal)
+  );
+}
+
+.shadcn-chart-host--donut-cw.is-donut-cw-playing .shadcn-donut-cw-veil {
+  animation: pro-donut-cw-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.shadcn-chart-host--donut-cw text {
+  opacity: 0;
+  animation: pro-donut-in 0.35s ease 0.45s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadcn-chart-host--bar,
+  .shadcn-chart-host--donut-fade {
+    animation: none;
+  }
+
+  .shadcn-chart-host--donut-cw.is-donut-cw-playing .shadcn-donut-cw-veil,
+  .shadcn-chart-host--donut-cw text {
+    animation: none;
+  }
+
+  .shadcn-chart-host--donut-cw .shadcn-donut-cw-veil {
+    display: none;
+  }
+
+  .shadcn-chart-host--donut-cw text {
+    opacity: 1;
+  }
+}
+
+/*
+ * 圆环 + 右侧图例（全局布局）
+ * 样板：component-chart.html 基础圆环图 / 基础漏斗图
+ * 规范见 charts.md（圆环布局）
+ */
+.shadcn-donut-card {
+  container-type: inline-size;
+  container-name: shadcn-donut;
+}
+
+.shadcn-donut-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 0;
+  padding-bottom: 8px;
+}
+
+.shadcn-donut-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 100%;
+  height: 200px;
+}
+
+.shadcn-donut-host.shadcn-chart-host,
+.shadcn-donut-host.shadcn-chart-host--donut,
+.shadcn-donut-host {
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 200px;
+  min-height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.shadcn-donut-host > * {
+  grid-area: 1 / 1;
+}
+
+.shadcn-donut-host svg {
+  display: block;
+}
+
+.shadcn-donut-legend-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding-right: 10px;
+}
+
+.shadcn-donut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 默认：文案在上、数值在下；百分比与数值底对齐，金额与占比留出间距 */
+.shadcn-donut-legend-item {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+}
+
+.shadcn-donut-legend-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.shadcn-donut-legend-name-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.shadcn-donut-legend-dot {
+  width: 4px;
+  height: 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: var(--legend-color, var(--chart-1));
+}
+
+.shadcn-donut-legend-label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shadcn-donut-legend-value {
+  display: block;
+  margin: 4px 0 0;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+  white-space: nowrap;
+}
+
+.shadcn-donut-legend-pct {
+  flex-shrink: 0;
+  min-width: 52px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+  white-space: nowrap;
+}
+
+/* 可选：单行图例（名称左 / 数值+占比右）；叠排（无此修饰）见财务账户分配 */
+.shadcn-donut-legend--inline {
+  gap: 0;
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-item {
+  align-items: center;
+  min-height: 40px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-name-row {
+  gap: 8px;
+  flex: 1 1 auto;
+  color: var(--color-text-1);
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-label {
+  font-size: 13px;
+  color: var(--color-text-1);
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-meta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-value {
+  display: inline;
+  margin: 0;
+  padding-left: 0;
+  min-width: 36px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.shadcn-donut-legend--inline .shadcn-donut-legend-pct {
+  /* xx.xx% 比漏斗短占比更宽，加宽列宽以保留与漏斗相当的数字/百分比间距 */
+  min-width: 64px;
+  text-align: right;
+  color: var(--color-text-3);
+  font-weight: 400;
+}
+
+/* 宽卡片：圆环左 / 图例右；图表在剩余空白区水平居中；图例随内容贴右（右间距见 charts.md） */
+@container shadcn-donut (min-width: 520px) {
+  .shadcn-donut-layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding-right: 0;
+    padding-bottom: 12px;
+  }
+
+  .shadcn-donut-chart {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 200px;
+    height: 200px;
+    align-self: center;
+    justify-content: center;
+  }
+
+  .shadcn-donut-legend-wrap {
+    width: auto;
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 10px;
+    align-self: center;
+  }
+
+  .shadcn-donut-legend--inline .shadcn-donut-legend-item {
+    justify-content: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .shadcn-donut-legend--inline .shadcn-donut-legend-name-row {
+    flex: 0 0 7em;
+    width: 7em;
+  }
+
+  .shadcn-donut-legend--inline .shadcn-donut-legend-meta {
+    margin-left: 0;
+  }
+}
+
+/* shadcn ChartTooltip：Unovis 外层即卡片，避免双层边框 */
+.shadcn-chart-host .shadcn-chart-tooltip-root,
+.shadcn-radar-tooltip.shadcn-chart-tooltip-root,
+.shadcn-radial-tooltip.shadcn-chart-tooltip-root,
+.shadcn-gauge-tooltip.shadcn-chart-tooltip-root,
+.shadcn-candlestick-tooltip.shadcn-chart-tooltip-root {
+  min-width: 140px;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--color-border-2, #e5e6eb) !important;
+  background: var(--color-bg-popup, var(--color-bg-2, #fff)) !important;
+  box-shadow: 0 4px 16px rgba(29, 33, 41, 0.12) !important;
+  backdrop-filter: none !important;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-1, #1d2129);
+}
+
+.shadcn-chart-host .unovis-tooltip:not(.shadcn-chart-tooltip-root) {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.shadcn-chart-tooltip-title {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-text-2, #4e5969);
+}
+
+.shadcn-chart-tooltip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shadcn-chart-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.shadcn-chart-tooltip-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-2, #4e5969);
+}
+
+.shadcn-chart-tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: var(--legend-color);
+}
+
+.shadcn-chart-tooltip-value {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1, #1d2129);
+}
+
+.shadcn-chart-host svg line:not(.shadcn-candlestick-wick) {
+  pointer-events: none;
+}
+
+/* Y 轴网格线弱化（Unovis：父级带 grid；K 线：line 自身带 grid class） */
+.shadcn-chart-host [class*='grid'] line,
+.shadcn-chart-host line[class*='grid'] {
+  stroke-opacity: 0.45;
+}
+
+.shadcn-chart-host svg circle {
+  transition: none !important;
+}
+
+/* —— 雷达图（SVG mountRadarChart） —— */
+.shadcn-chart-host--radar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  height: 250px;
+  overflow: visible;
+}
+
+/* 入场仅作用于系列色块层，网格 / 轴 / 标签保持静止 */
+.shadcn-chart-host--radar.is-radar-enter .shadcn-radar-plot {
+  animation: pro-radar-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shadcn-chart-host--radar.is-radar-enter-fade .shadcn-radar-plot {
+  animation: pro-donut-in 0.45s ease both;
+}
+
+.shadcn-chart-host--radar.is-radar-enter .shadcn-radar-dot {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pro-radar-dot-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+@keyframes pro-radar-in {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pro-radar-dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadcn-chart-host--radar.is-radar-enter .shadcn-radar-plot,
+  .shadcn-chart-host--radar.is-radar-enter-fade .shadcn-radar-plot,
+  .shadcn-chart-host--radar.is-radar-enter .shadcn-radar-dot {
+    animation: none;
+  }
+}
+
+.shadcn-radar-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.shadcn-radar-plot {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.shadcn-radar-label {
+  font-family: inherit;
+  pointer-events: none;
+  user-select: none;
+}
+
+.shadcn-radar-series {
+  pointer-events: none;
+}
+
+.shadcn-radar-dot {
+  pointer-events: none;
+}
+
+.shadcn-radar-hit {
+  cursor: pointer;
+}
+
+/* fixed，避免被 arco-card overflow 裁切；与 Unovis tip 同视觉 */
+.shadcn-radar-tooltip {
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.shadcn-radar-tooltip.is-open {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+/* 图表卡片副标题 / 适用场景（暗色用 text-2，避免 text-3 过暗） */
+.component-chart-card-desc,
+.component-chart-radar-desc {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-2, #4e5969);
+}
+
+/* 径向图（SVG） */
+.shadcn-chart-host--radial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 250px;
+  overflow: visible;
+  /* 中心文案与圆环图对齐；覆盖 Unovis :root 默认（#5b5f6d / 12px / 500） */
+  --vis-donut-central-label-font-size: 26px;
+  --vis-donut-central-label-font-weight: 700;
+  --vis-donut-central-label-font-family: var(--font-metric);
+  --vis-donut-central-label-text-color: var(--color-text-1, #1d2129);
+  --vis-donut-central-sub-label-font-size: 14px;
+  --vis-donut-central-sub-label-font-weight: 400;
+  --vis-donut-central-sub-label-font-family: var(--font-global);
+  --vis-donut-central-sub-label-text-color: var(--color-text-3, #86909c);
+}
+
+.shadcn-radial-host {
+  width: 250px;
+  height: 250px;
+  min-height: 250px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.shadcn-radial-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.shadcn-radial-arc,
+.shadcn-radial-sector {
+  cursor: pointer;
+}
+
+.shadcn-radial-arc-label {
+  font-family: var(--font-global);
+  fill: #fff;
+  font-size: 11px;
+  text-transform: capitalize;
+  mix-blend-mode: luminosity;
+  dominant-baseline: central;
+  pointer-events: none;
+  user-select: none;
+}
+
+.shadcn-radial-plot {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+.shadcn-chart-host--radial.is-radial-enter-fade .shadcn-radial-plot {
+  animation: pro-donut-in 0.45s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadcn-chart-host--radial.is-radial-enter-fade .shadcn-radial-plot {
+    animation: none;
+  }
+}
+
+.shadcn-radial-central-label {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--vis-donut-central-label-font-family, var(--font-metric));
+  font-weight: var(--vis-donut-central-label-font-weight, 700);
+  fill: var(--vis-donut-central-label-text-color, var(--color-text-1, #1d2129)) !important;
+}
+
+.shadcn-radial-central-sub {
+  font-family: var(--font-global);
+  font-size: var(--vis-donut-central-sub-label-font-size, 14px);
+  font-weight: var(--vis-donut-central-sub-label-font-weight, 400);
+  fill: var(--vis-donut-central-sub-label-text-color, var(--color-text-3, #86909c)) !important;
+}
+
+.shadcn-radial-tooltip {
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.shadcn-radial-tooltip.is-open {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+/* 仪表盘图（蹄形描边弧） */
+.shadcn-chart-host--gauge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 250px;
+  overflow: visible;
+}
+
+.shadcn-gauge-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.shadcn-gauge-central-label {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-metric, var(--font-global));
+  font-size: 28px;
+  font-weight: 700;
+  fill: var(--color-text-1, #1d2129);
+}
+
+.shadcn-gauge-central-sub {
+  font-family: var(--font-global);
+  font-size: 14px;
+  font-weight: 400;
+  fill: var(--color-text-3, #86909c);
+}
+
+.shadcn-gauge-central-footer {
+  font-family: var(--font-global);
+  font-size: 12px;
+  font-weight: 400;
+  fill: var(--color-text-3, #86909c);
+}
+
+.shadcn-gauge-needle-blade,
+.shadcn-gauge-needle-hub {
+  transition: transform 0.2s ease;
+}
+
+.shadcn-gauge-tooltip {
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.shadcn-gauge-tooltip.is-open {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+/* 水球图（简化波浪填充） */
+.shadcn-chart-host--liquid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 250px;
+  overflow: visible;
+}
+
+.shadcn-liquid-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 8px 14px color-mix(in srgb, var(--chart-1) 22%, transparent));
+}
+
+.shadcn-liquid-highlight,
+.shadcn-liquid-inner-rim {
+  pointer-events: none;
+}
+
+.shadcn-liquid-central-label {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-metric, var(--font-global));
+  font-size: 28px;
+  font-weight: 700;
+  paint-order: stroke fill;
+  stroke: rgba(0, 0, 0, 0.12);
+  stroke-width: 0.6px;
+}
+
+.shadcn-liquid-central-sub {
+  font-family: var(--font-global);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.shadcn-chart-host--candlestick {
+  min-height: 220px;
+}
+
+.shadcn-candlestick-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* 与 Unovis 轴网格一致：颜色 + 透明度均走同一套规则 */
+.shadcn-candlestick-grid {
+  stroke: var(--vis-axis-grid-color, rgba(29, 33, 41, 0.08));
+  stroke-width: 1px;
+  stroke-opacity: 0.45;
+}
+
+.shadcn-candlestick-y-tick,
+.shadcn-candlestick-x-tick {
+  fill: var(--color-text-3, #86909c);
+  font-size: 12px;
+  font-family: var(--vis-font-family, inherit);
+}
+
+body[arco-theme='dark'] .shadcn-candlestick-y-tick,
+body.theme-dark .shadcn-candlestick-y-tick,
+body[arco-theme='dark'] .shadcn-candlestick-x-tick,
+body.theme-dark .shadcn-candlestick-x-tick {
+  fill: var(--vis-dark-axis-tick-label-color, var(--color-text-3));
+}
+
+.shadcn-candlestick-tooltip {
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-sizing: border-box;
+  min-width: 168px;
+  padding: 10px 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--color-border-2, #e5e6eb) !important;
+  background: var(--color-bg-popup, var(--color-bg-2, #fff)) !important;
+  box-shadow: 0 6px 20px rgba(29, 33, 41, 0.14) !important;
+  backdrop-filter: none !important;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-1, #1d2129);
+}
+
+.shadcn-candlestick-tooltip.is-open {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+.shadcn-candlestick-tooltip .shadcn-chart-tooltip-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border-2, #e5e6eb);
+}
+
+.shadcn-candlestick-tooltip .cce-candle-tip-side {
+  flex: none;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.shadcn-candlestick-tooltip .cce-candle-tip-side.is-up {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.12);
+}
+
+.shadcn-candlestick-tooltip .cce-candle-tip-side.is-down {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.12);
+}
+
+.shadcn-candlestick-tooltip .shadcn-chart-tooltip-rows {
+  gap: 8px;
+}
+
+.shadcn-candlestick-tooltip .shadcn-chart-tooltip-row {
+  gap: 20px;
+  min-height: 18px;
+}
+
+.shadcn-candlestick-tooltip .shadcn-chart-tooltip-left {
+  gap: 8px;
+}
+
+.shadcn-candlestick-tooltip .shadcn-chart-tooltip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.shadcn-candlestick-tooltip .shadcn-chart-tooltip-value {
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* —— 对比散点 / 百分比对比柱（SVG） —— */
+.shadcn-chart-host--scatter,
+.shadcn-chart-host--percent-track {
+  min-height: 220px;
+}
+
+.shadcn-scatter-svg,
+.shadcn-percent-track-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.shadcn-scatter-grid,
+.shadcn-percent-track-grid {
+  stroke: var(--vis-axis-grid-color, rgba(29, 33, 41, 0.08));
+  stroke-width: 1px;
+  stroke-opacity: 0.45;
+}
+
+.shadcn-scatter-y-tick,
+.shadcn-scatter-x-tick,
+.shadcn-percent-track-y-tick,
+.shadcn-percent-track-x-tick {
+  fill: var(--color-text-3, #86909c);
+  font-size: 12px;
+  font-family: var(--vis-font-family, inherit);
+}
+
+.shadcn-percent-track-x-tick {
+  font-size: 11px;
+}
+
+body[arco-theme='dark'] .shadcn-scatter-y-tick,
+body.theme-dark .shadcn-scatter-y-tick,
+body[arco-theme='dark'] .shadcn-scatter-x-tick,
+body.theme-dark .shadcn-scatter-x-tick,
+body[arco-theme='dark'] .shadcn-percent-track-y-tick,
+body.theme-dark .shadcn-percent-track-y-tick,
+body[arco-theme='dark'] .shadcn-percent-track-x-tick,
+body.theme-dark .shadcn-percent-track-x-tick {
+  fill: var(--vis-dark-axis-tick-label-color, var(--color-text-3));
+}
+
+.shadcn-percent-track-domain {
+  stroke: var(--color-border-2, #e5e6eb);
+  stroke-width: 1px;
+  stroke-opacity: 0.9;
+}
+
+body[arco-theme='dark'] .shadcn-percent-track-domain,
+body.theme-dark .shadcn-percent-track-domain {
+  stroke: var(--pro-line-chart, rgba(255, 255, 255, 0.12));
+  stroke-opacity: 0.9;
+}
+
+.shadcn-svg-chart-tooltip {
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-sizing: border-box;
+  min-width: 148px;
+  padding: 10px 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--color-border-2, #e5e6eb) !important;
+  background: var(--color-bg-popup, var(--color-bg-2, #fff)) !important;
+  box-shadow: 0 6px 20px rgba(29, 33, 41, 0.14) !important;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-1, #1d2129);
+  -webkit-font-smoothing: antialiased;
+}
+
+.shadcn-svg-chart-tooltip.is-open {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+.shadcn-svg-chart-tooltip .shadcn-chart-tooltip-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border-2, #e5e6eb);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.shadcn-svg-chart-tooltip .shadcn-chart-tooltip-row,
+.shadcn-svg-chart-tooltip .shadcn-chart-tooltip-left,
+.shadcn-svg-chart-tooltip .shadcn-chart-tooltip-value {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.cce-scatter-tip-flag {
+  flex: none;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.12);
+}
+
+.cce-scatter-tip-flag.is-warn {
+  color: rgb(var(--warning-6));
+  background: rgba(var(--warning-6), 0.14);
+}
+
+/* SVG 业务图入场（K 线 / 散点 / 百分比柱） */
+.shadcn-chart-host.is-svg-chart-enter .shadcn-candlestick-body,
+.shadcn-chart-host.is-svg-chart-enter .shadcn-candlestick-wick {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: cce-svg-candle-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shadcn-chart-host.is-svg-chart-enter .shadcn-scatter-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cce-svg-dot-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shadcn-chart-host.is-svg-chart-enter .shadcn-percent-track-bg,
+.shadcn-chart-host.is-svg-chart-enter .shadcn-percent-track-bar {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: cce-svg-bar-in 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cce-svg-candle-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.15);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cce-svg-dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cce-svg-bar-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.08);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadcn-chart-host.is-svg-chart-enter .shadcn-candlestick-body,
+  .shadcn-chart-host.is-svg-chart-enter .shadcn-candlestick-wick,
+  .shadcn-chart-host.is-svg-chart-enter .shadcn-scatter-dot,
+  .shadcn-chart-host.is-svg-chart-enter .shadcn-percent-track-bg,
+  .shadcn-chart-host.is-svg-chart-enter .shadcn-percent-track-bar {
+    animation: none;
+  }
+}
+
+.shadcn-chart-host--rose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: visible;
+}
+
+.shadcn-chart-host--rose-nightingale {
+  width: 220px;
+  height: 220px;
+  min-height: 220px;
+  flex-shrink: 0;
+}
+
+.shadcn-chart-host--rose-semi {
+  min-height: 280px;
+}
+
+.shadcn-rose-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.shadcn-rose-sector {
+  cursor: pointer;
+  transition: opacity 0.16s ease, filter 0.16s ease;
+}
+
+.shadcn-chart-host--rose.is-hovering .shadcn-rose-sector {
+  opacity: 0.42;
+}
+
+.shadcn-chart-host--rose.is-hovering .shadcn-rose-sector.is-active {
+  opacity: 1;
+  filter: brightness(1.06);
+}
+
+.shadcn-chart-host--rose-semi.is-hovering .shadcn-rose-sector.is-active {
+  stroke: var(--chart-1);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+
+.shadcn-chart-host--rose.is-rose-enter-fade .shadcn-rose-plot {
+  animation: pro-donut-in 0.45s ease both;
+}
+
+.shadcn-rose-axis-label,
+.shadcn-rose-cat-label {
+  font-family: var(--font-global);
+  font-size: 11px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.shadcn-rose-axis-label {
+  font-variant-numeric: tabular-nums;
+}
+
+.shadcn-rose-host {
+  width: 220px;
+  height: 220px;
+  min-height: 220px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.shadcn-rose-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.shadcn-donut-legend--inline .shadcn-rose-legend-swatch {
+  margin-top: 0;
+}
+
+@container shadcn-donut (min-width: 520px) {
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-item {
+    min-height: 32px;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-name-row {
+    display: flex;
+    justify-content: flex-start;
+    flex: 0 0 7em;
+    width: 7em;
+    min-width: 7em;
+    gap: 8px;
+  }
+
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-label {
+    flex: 0 0 auto;
+    text-align: left;
+  }
+
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-meta {
+    margin-left: 12px;
+    gap: 12px;
+  }
+
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-value {
+    min-width: 36px;
+  }
+
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-pct {
+    min-width: 52px;
+  }
+}
+
+.shadcn-rose-legend-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.shadcn-rose-legend-label {
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--color-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shadcn-rose-legend-pct {
+  font-size: 13px;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadcn-chart-host--rose.is-rose-enter-fade .shadcn-rose-plot {
+    animation: none;
+  }
+}

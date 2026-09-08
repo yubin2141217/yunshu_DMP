@@ -1,0 +1,616 @@
+/* 日历 / 时间线 */
+
+/* 仅日历视图占满窗口；列表视图随内容增高、页面滚动 */
+.pro-content-wrapper:has(.list-calendar-page.is-calendar-view) {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--shell-navbar-height, 60px));
+  max-height: calc(100dvh - var(--shell-navbar-height, 60px));
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.pro-content-wrapper:has(.list-calendar-page.is-calendar-view) > .pro-breadcrumb {
+  flex-shrink: 0;
+}
+
+.pro-content-wrapper:has(.list-calendar-page.is-calendar-view) > .pro-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-bottom: 12px;
+  padding-top: 12px;
+}
+
+.list-calendar-page {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 0;
+}
+
+.list-calendar-page.is-calendar-view {
+  flex: 1;
+  min-height: 0;
+}
+
+.list-calendar-page.is-calendar-view > .arco-card.general-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.list-calendar-page.is-calendar-view > .arco-card.general-card > .arco-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.list-calendar-page.is-list-view > .arco-card.general-card {
+  margin-bottom: 0;
+}
+
+.list-calendar-page.is-list-view > .arco-card.general-card > .arco-card-body {
+  overflow: visible;
+}
+
+.list-calendar-page .list-cal-toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.list-calendar-page .list-cal-toolbar-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  justify-self: start;
+  min-width: 0;
+}
+
+.list-calendar-page .list-cal-toolbar-right {
+  justify-self: end;
+}
+
+.list-calendar-page .list-cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  justify-self: center;
+}
+
+.list-calendar-page .list-cal-month {
+  min-width: 120px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-1);
+}
+
+.list-calendar-page .list-cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+@media (max-width: 992px) {
+  .list-calendar-page .list-cal-toolbar {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+
+  .list-calendar-page .list-cal-toolbar-left,
+  .list-calendar-page .list-cal-nav,
+  .list-calendar-page .list-cal-toolbar-right {
+    justify-self: stretch;
+  }
+
+  .list-calendar-page .list-cal-toolbar-right {
+    justify-content: flex-start;
+  }
+}
+
+.list-calendar-page .list-cal-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.list-calendar-page .list-cal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.list-calendar-page .list-cal-dot.is-schedule {
+  background: rgb(var(--primary-6));
+}
+
+.list-calendar-page .list-cal-dot.is-activity {
+  background: rgb(var(--success-6));
+}
+
+.list-calendar-page .list-cal-dot.is-meeting {
+  background: rgb(var(--warning-6));
+}
+
+.list-calendar-page .list-cal-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: auto;
+  grid-auto-rows: minmax(0, 1fr);
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-bg-2);
+}
+
+.list-calendar-page .list-cal-weekday,
+.list-calendar-page .list-cal-cell {
+  min-height: 0;
+  border-right: 1px solid var(--color-border-2);
+  border-bottom: 1px solid var(--color-border-2);
+  box-sizing: border-box;
+}
+
+.list-calendar-page .list-cal-weekday:nth-child(7n),
+.list-calendar-page .list-cal-cell:nth-child(7n) {
+  border-right: none;
+}
+
+.list-calendar-page .list-cal-cell:nth-last-child(-n + 7) {
+  border-bottom: none;
+}
+
+.list-calendar-page .list-cal-weekday {
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-2);
+  background: var(--color-fill-1);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.list-calendar-page .list-cal-weekday:first-child,
+.list-calendar-page .list-cal-weekday:nth-child(7) {
+  color: var(--color-text-1);
+}
+
+.list-calendar-page .list-cal-cell {
+  min-height: 0;
+  height: 100%;
+  padding: 8px 8px 6px;
+  overflow: hidden;
+  vertical-align: top;
+  background: var(--color-bg-2);
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.list-calendar-page .list-cal-cell:hover {
+  background: var(--color-fill-1);
+}
+
+.list-calendar-page .list-cal-cell.is-muted {
+  background: var(--color-bg-2);
+}
+
+.list-calendar-page .list-cal-cell.is-muted:hover {
+  background: var(--color-fill-1);
+}
+
+.list-calendar-page .list-cal-cell.is-today .list-cal-day {
+  color: #fff;
+  background: rgb(var(--primary-6));
+  font-weight: 600;
+}
+
+.list-calendar-page .list-cal-cell.is-selected {
+  background: rgba(var(--primary-1), 0.55);
+}
+
+.list-calendar-page .list-cal-cell.is-selected:hover {
+  background: rgba(var(--primary-1), 0.7);
+}
+
+.list-calendar-page .list-cal-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-1);
+}
+
+.list-calendar-page .list-cal-cell.is-muted .list-cal-day {
+  color: var(--color-text-4);
+}
+
+.list-calendar-page .list-cal-events {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.list-calendar-page .list-cal-event {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 2px 8px;
+  border: none;
+  border-radius: 4px;
+  text-align: left;
+  font: inherit;
+  font-size: 11px;
+  line-height: 18px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-text-1);
+  background: var(--color-fill-2);
+  appearance: none;
+  -webkit-appearance: none;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.list-calendar-page .list-cal-event:hover {
+  filter: brightness(0.97);
+}
+
+.list-calendar-page .list-cal-event.is-schedule {
+  background: rgba(var(--primary-1), 1);
+  color: rgb(var(--primary-6));
+}
+
+.list-calendar-page .list-cal-event.is-activity {
+  background: rgba(var(--success-1), 1);
+  color: rgb(var(--success-6));
+}
+
+.list-calendar-page .list-cal-event.is-meeting {
+  background: rgba(var(--warning-1), 1);
+  color: rgb(var(--warning-6));
+}
+
+.list-calendar-page .list-cal-more {
+  font-size: 11px;
+  color: var(--color-text-3);
+  line-height: 16px;
+  padding-left: 4px;
+  margin-top: 2px;
+}
+
+.list-calendar-page .list-cal-side {
+  margin-top: 16px;
+}
+
+.list-calendar-page .list-cal-side-title {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+/* 抽屉 / 弹窗挂载到 body，不用 .list-calendar-page 限定 */
+.list-cal-day-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.list-cal-day-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 10px;
+  background: var(--color-bg-2, #fff);
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.list-cal-day-item:hover {
+  border-color: rgb(var(--primary-3));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.list-cal-day-item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-cal-day-item-title {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-text-1);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list-cal-day-item-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.list-cal-day-item-meta .arco-icon {
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+.list-cal-day-item-dot {
+  opacity: 0.7;
+}
+
+.list-cal-day-item .arco-tag {
+  flex-shrink: 0;
+}
+
+.list-cal-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 0 8px;
+}
+
+.list-cal-detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.list-cal-detail-label {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-3);
+}
+
+.list-cal-detail-value {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-1);
+  word-break: break-word;
+}
+
+.list-cal-detail-value--desc {
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+body[arco-theme='dark'] .list-cal-detail-label,
+body.theme-dark .list-cal-detail-label {
+  color: var(--color-text-3);
+}
+
+body[arco-theme='dark'] .list-cal-detail-value,
+body.theme-dark .list-cal-detail-value {
+  color: var(--color-text-1);
+}
+
+.list-calendar-page .list-cal-event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list-calendar-page .list-cal-event-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 12px;
+  background: var(--color-bg-2);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.list-calendar-page .list-cal-event-card:hover {
+  border-color: rgb(var(--primary-3));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.list-calendar-page .list-cal-event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 56px;
+  min-height: 56px;
+  padding: 6px 4px;
+  border-radius: 10px;
+  background: var(--color-fill-2);
+  box-sizing: border-box;
+}
+
+.list-calendar-page .list-cal-event-day {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text-1);
+}
+
+.list-calendar-page .list-cal-event-month {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.list-calendar-page .list-cal-event-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-calendar-page .list-cal-event-title {
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-text-1);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.list-calendar-page .list-cal-event-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.list-calendar-page .list-cal-event-time .arco-icon {
+  font-size: 14px;
+}
+
+/* 暗色模式：事项条 / 选中态 / 列表卡片层次与对比度 */
+body[arco-theme='dark'] .list-calendar-page .list-cal-grid,
+body.theme-dark .list-calendar-page .list-cal-grid {
+  border-color: var(--color-border-2);
+  background: var(--color-bg-2);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-weekday,
+body.theme-dark .list-calendar-page .list-cal-weekday {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-2);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-cell:hover,
+body.theme-dark .list-calendar-page .list-cal-cell:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-cell.is-selected,
+body.theme-dark .list-calendar-page .list-cal-cell.is-selected {
+  background: rgba(var(--primary-6), 0.16);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-cell.is-selected:hover,
+body.theme-dark .list-calendar-page .list-cal-cell.is-selected:hover {
+  background: rgba(var(--primary-6), 0.22);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event:hover,
+body.theme-dark .list-calendar-page .list-cal-event:hover {
+  filter: brightness(1.12);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event.is-schedule,
+body.theme-dark .list-calendar-page .list-cal-event.is-schedule {
+  background: rgba(var(--primary-6), 0.18);
+  color: rgb(var(--primary-5));
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event.is-activity,
+body.theme-dark .list-calendar-page .list-cal-event.is-activity {
+  background: rgba(var(--success-6), 0.18);
+  color: rgb(var(--success-5));
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event.is-meeting,
+body.theme-dark .list-calendar-page .list-cal-event.is-meeting {
+  background: rgba(var(--warning-6), 0.18);
+  color: rgb(var(--warning-5));
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event-card,
+body.theme-dark .list-calendar-page .list-cal-event-card,
+body[arco-theme='dark'] .list-cal-day-item,
+body.theme-dark .list-cal-day-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event-card:hover,
+body.theme-dark .list-calendar-page .list-cal-event-card:hover,
+body[arco-theme='dark'] .list-cal-day-item:hover,
+body.theme-dark .list-cal-day-item:hover {
+  border-color: rgba(var(--primary-6), 0.55);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body[arco-theme='dark'] .list-calendar-page .list-cal-event-date,
+body.theme-dark .list-calendar-page .list-cal-event-date {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 992px) {
+  .pro-content-wrapper:has(.list-calendar-page.is-calendar-view) {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .list-calendar-page.is-calendar-view > .arco-card.general-card > .arco-card-body {
+    overflow: visible;
+  }
+
+  .list-calendar-page .list-cal-grid {
+    flex: none;
+    min-height: 420px;
+  }
+
+  .list-calendar-page .list-cal-cell {
+    min-height: 72px;
+  }
+
+  .list-calendar-page .list-cal-event {
+    font-size: 10px;
+    line-height: 16px;
+    padding: 0 4px 0 4px;
+  }
+
+  .list-calendar-page .list-cal-event-card {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+}

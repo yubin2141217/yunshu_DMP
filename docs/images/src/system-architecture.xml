@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io">
+  <diagram name="云数中台MVP功能架构" id="yszt-mvp-arch">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="spacer" parent="1" style="fillColor=none;strokeColor=none;opacity=0;" value="" vertex="1">
+          <mxGeometry x="0" y="0" width="1200" height="700" as="geometry"/>
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1a237e;" value="云数中台 MVP 功能架构" vertex="1">
+          <mxGeometry x="10" y="20" width="1180" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="L1_label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565c0;strokeColor=none;fontSize=11;fontStyle=1;fontColor=#ffffff;arcSize=50;" value="用户角色" vertex="1">
+          <mxGeometry x="30" y="84" width="80" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="L1_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#90caf9;arcSize=3;" value="" vertex="1">
+          <mxGeometry x="125" y="68" width="1045" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="L1_r1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#90caf9;fontSize=11;align=center;verticalAlign=middle;" value="机构管理员 使用 V8 应用端" vertex="1">
+          <mxGeometry x="140" y="80" width="500" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="L1_r2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#90caf9;fontSize=11;align=center;verticalAlign=middle;" value="平台运营 使用 MT 管理端" vertex="1">
+          <mxGeometry x="655" y="80" width="500" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_bg" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#ffe082;arcSize=3;" value="" vertex="1">
+          <mxGeometry x="125" y="143" width="1045" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_v8_title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fb8c00;strokeColor=none;fontSize=11;fontStyle=1;fontColor=#ffffff;" value="V8应用端（机构）" vertex="1">
+          <mxGeometry x="140" y="155" width="500" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_v8_a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="数据概览" vertex="1">
+          <mxGeometry x="140" y="191" width="245" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_v8_b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="供数统计" vertex="1">
+          <mxGeometry x="395" y="191" width="245" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_v8_c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="供数方查看" vertex="1">
+          <mxGeometry x="140" y="301" width="245" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_v8_d" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="接入规范" vertex="1">
+          <mxGeometry x="395" y="301" width="245" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_mt_title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fb8c00;strokeColor=none;fontSize=11;fontStyle=1;fontColor=#ffffff;" value="MT管理端（运营）" vertex="1">
+          <mxGeometry x="655" y="155" width="500" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_mt_a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="供数方管理" vertex="1">
+          <mxGeometry x="655" y="191" width="245" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_mt_b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="机构供数配置" vertex="1">
+          <mxGeometry x="910" y="191" width="245" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L2_mt_c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffe082;fontSize=11;align=center;" value="接入标准管理" vertex="1">
+          <mxGeometry x="655" y="301" width="500" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="L3_m1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#66bb6a;fontSize=11;align=center;" value="按标准接入入库（原文与区域等元数据）" vertex="1">
+          <mxGeometry x="140" y="450" width="1015" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="L4_m1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e53935;fontSize=11;align=center;" value="康奈" vertex="1">
+          <mxGeometry x="140" y="537" width="500" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="L4_m2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e53935;fontSize=11;align=center;" value="外部厂商" vertex="1">
+          <mxGeometry x="655" y="537" width="500" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,39 @@
+/* 数据列表：横向滚动时操作列固定 */
+
+.list-search-table-page {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.list-search-table-page > .arco-card {
+  max-width: 100%;
+}
+
+/*
+ * 对齐母版：Arco medium 卡片 body 为 padding: 16px。
+ * （若工程另有 general-card「顶 0 / 底 20」规则，无 header 的筛选/表格卡在此覆盖。）
+ */
+.list-search-table-page > .arco-card.general-card > .arco-card-body {
+  padding: 16px;
+}
+
+.list-search-table-page > .arco-card:not(.pro-page-card) {
+  overflow: hidden;
+}
+
+.list-search-table-page > .arco-card:not(.pro-page-card) > .arco-card-body {
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 仅需要横向滚动时，隐藏 Arco 自定义纵向滚动条（scroll.x + fixed 列会触发 both） */
+.list-search-table-page .arco-table-container,
+.list-search-table-page .arco-table-content,
+.list-search-table-page .arco-table-body {
+  overflow-y: hidden !important;
+}
+
+.list-search-table-page .arco-scrollbar-track-direction-vertical {
+  display: none !important;
+}

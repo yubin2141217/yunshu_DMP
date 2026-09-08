@@ -1,0 +1,975 @@
+/* 财务仪表盘（对齐 shadcn /dashboard/finance） */
+
+.fin-page {
+  /* 区块描边：与电商页一致；暗色改弱线见文末 */
+  --fin-border: var(--color-border-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fin-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fin-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-text-1);
+}
+
+.fin-desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-3);
+}
+
+.fin-tabs-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 992px) {
+  .fin-tabs-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* 对齐「标签页（基础）」：选中胶囊 + 悬停无背景色 */
+.fin-tabs {
+  flex: 1;
+  min-width: 0;
+}
+
+.fin-tabs .arco-tabs-nav {
+  margin-bottom: 0;
+}
+
+.fin-tabs .arco-tabs-nav::before {
+  display: none;
+}
+
+.fin-tabs .arco-tabs-nav-tab {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.fin-tabs .arco-tabs-nav-tab-list {
+  padding-left: 0;
+}
+
+.fin-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:first-child {
+  margin-left: 0;
+}
+
+.fin-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab {
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.fin-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:hover {
+  color: rgb(var(--primary-6));
+  background-color: transparent;
+}
+
+.fin-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active,
+.fin-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active:hover {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border-color: rgb(var(--primary-6));
+}
+
+.fin-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active .arco-tabs-tab-title {
+  color: inherit;
+}
+
+.fin-tabs .arco-tabs-nav-ink {
+  display: none;
+}
+
+.fin-tabs .arco-tabs-content {
+  display: none;
+}
+
+.fin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.fin-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.fin-updated:hover:not(:disabled) {
+  color: rgb(var(--primary-6));
+  background: var(--color-fill-2);
+}
+
+.fin-updated:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.fin-updated:focus-visible {
+  outline: 2px solid rgb(var(--primary-6));
+  outline-offset: 1px;
+}
+
+.fin-updated .pro-fa-icon,
+.fin-updated .arco-icon {
+  font-size: 14px;
+}
+
+/* 转圈动画见 pages-common.css .pro-refresh-spinning */
+
+/* 覆盖全局 general-card「无边框」；与 KPI 宫格同一套描边 */
+.fin-page .arco-card.fin-card.general-card,
+.fin-card {
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--fin-border);
+  background: var(--color-bg-2);
+  box-shadow: none;
+}
+
+.fin-card .arco-card-body {
+  padding: 16px 20px;
+}
+
+/* 同行卡片等高（收支概览 / 账户分配） */
+.fin-equal-row.arco-row {
+  align-items: stretch;
+}
+
+.fin-equal-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.fin-equal-row > .arco-col > .fin-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fin-equal-row > .arco-col > .fin-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* 财务账户圆环：叠排图例（名称上 / 金额下 / 占比右），见 charts.md 定制布局 */
+.fin-equal-row .shadcn-donut-layout {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.fin-card--flush .arco-card-body {
+  padding: 0;
+}
+
+.fin-section-title {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  color: var(--color-text-1) !important;
+}
+
+.fin-section-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.fin-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.fin-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 256px;
+  border: 1px dashed var(--color-border-2);
+  border-radius: 12px;
+  color: var(--color-text-3);
+  font-size: 14px;
+  background: var(--color-bg-2);
+}
+
+/* KPI 四宫格 */
+.fin-kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-bg-2);
+  border: 1px solid var(--fin-border);
+}
+
+@media (min-width: 1200px) {
+  .fin-kpi-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+.fin-kpi-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  border-bottom: 1px solid var(--fin-border);
+  min-height: 80px;
+}
+
+@media (min-width: 1200px) {
+  .fin-kpi-cell {
+    border-bottom: none;
+  }
+
+  .fin-kpi-cell:nth-child(1),
+  .fin-kpi-cell:nth-child(2) {
+    border-bottom: 1px solid var(--fin-border);
+  }
+
+  .fin-kpi-cell:nth-child(1),
+  .fin-kpi-cell:nth-child(3) {
+    border-right: 1px solid var(--fin-border);
+  }
+}
+
+.fin-kpi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.fin-kpi-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.fin-kpi-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fin-kpi-value {
+  font-family: var(--font-metric);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.fin-kpi-sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.fin-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.fin-badge--up {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.1);
+}
+
+.fin-badge--down {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+}
+
+/* 收入来源：标题贴顶；数据区在剩余高度内垂直居中 */
+.fin-stack > .fin-card--income {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fin-stack > .fin-card--income > .arco-card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fin-stack > .fin-card--income .fin-section-title {
+  flex-shrink: 0;
+}
+
+.fin-stack > .fin-card--income .fin-income-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  align-content: center;
+}
+
+.fin-income-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+  .fin-income-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.fin-income-item {
+  display: flex;
+  gap: 0;
+  min-height: 0;
+}
+
+.fin-income-rail {
+  width: 0;
+  border-left: 1px dashed rgba(var(--gray-6), 0.45);
+  margin-bottom: 4px;
+  align-self: stretch;
+}
+
+.fin-income-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-left: 4px;
+}
+
+.fin-income-label {
+  margin: 0 0 4px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.fin-income-value {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.fin-income-bar {
+  height: 32px;
+  margin-left: -2px;
+  border-radius: 4px;
+  background: var(--chart-1);
+}
+
+.fin-income-bar--mid {
+  opacity: 0.75;
+}
+
+.fin-income-bar--low {
+  opacity: 0.5;
+}
+
+/* 通知条 */
+.fin-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--fin-border);
+  border-radius: 8px;
+  background: var(--color-bg-2);
+  flex-shrink: 0;
+}
+
+.fin-notice-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-content: center;
+  background: var(--color-fill-2);
+  color: var(--color-text-2);
+  flex-shrink: 0;
+}
+
+.fin-notice-body {
+  flex: 1;
+  min-width: 160px;
+}
+
+.fin-notice-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.fin-notice-desc {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.fin-notice-action {
+  flex-shrink: 0;
+}
+
+.fin-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.fin-line-chart {
+  width: 100%;
+  min-height: 280px;
+}
+
+/* 钱包 */
+.fin-wallet-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 12px;
+}
+
+.fin-wallet-list,
+.fin-crypto-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fin-wallet-main .fin-divider {
+  margin: 12px 0;
+}
+
+.fin-wallet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.fin-wallet-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.fin-wallet-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text-1);
+}
+
+.fin-wallet-sub {
+  font-size: 12px;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.fin-wallet-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-2);
+  background: var(--color-bg-1);
+  display: grid;
+  place-content: center;
+  color: var(--color-text-3);
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.fin-wallet-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--color-fill-2);
+  box-sizing: border-box;
+  line-height: 20px;
+}
+
+.fin-wallet-device {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.fin-wallet-device strong {
+  color: var(--color-text-1);
+  font-weight: 500;
+}
+
+.fin-wallet-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: rgb(var(--success-6));
+  white-space: nowrap;
+}
+
+.fin-wallet-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  background: rgb(var(--success-6));
+  box-shadow: 0 0 8px rgba(var(--success-6), 0.5);
+}
+
+.fin-card--tall {
+  display: flex;
+  flex-direction: column;
+}
+
+.fin-page .fin-bottom-row > .arco-col > .arco-card.fin-card.general-card {
+  height: auto;
+}
+
+.fin-card--tall .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+}
+
+.fin-bills-main {
+  margin-top: 12px;
+}
+
+/* 底栏三列：按内容高度，不再强行拉齐留白 */
+.fin-bottom-row.arco-row {
+  align-items: flex-start !important;
+}
+
+.fin-bottom-row > .arco-col {
+  align-self: flex-start;
+}
+
+/* 待付账单 */
+.fin-bill-total {
+  display: flex;
+  align-items: baseline;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.fin-bill-total span {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-text-3);
+}
+
+.fin-bill-meta {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--color-text-3);
+}
+
+.fin-bill-meta strong {
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.fin-bill-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-2);
+  background: var(--color-fill-1);
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.fin-bill-alert .pro-fa-icon {
+  color: rgb(var(--primary-6));
+  flex-shrink: 0;
+}
+
+.fin-bill-alert strong {
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.fin-bill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.fin-bill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.fin-bill-item:hover {
+  background: var(--color-fill-1);
+}
+
+.fin-bill-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-2);
+  background: var(--color-bg-1);
+  display: grid;
+  place-content: center;
+  color: var(--color-text-2);
+  flex-shrink: 0;
+}
+
+.fin-bill-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.fin-bill-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.fin-bill-date {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.fin-bill-chevron {
+  color: var(--color-text-3);
+  font-size: 12px;
+}
+
+/* 快捷操作 */
+.fin-quick-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: auto;
+  min-height: 0;
+}
+
+/* 覆盖 .fin-page .arco-card.fin-card { height:100% }，避免转账卡被撑高 */
+.fin-page .fin-quick-col > .arco-card.fin-card.general-card {
+  height: auto;
+}
+
+.fin-page .fin-quick-col > .arco-card.fin-card--transfer {
+  flex: 0 0 auto;
+}
+
+.fin-page .fin-quick-col > .arco-card.fin-card--shortcuts {
+  flex: 0 0 auto;
+}
+
+.fin-card--transfer .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.fin-transfer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+.fin-transfer-head .fin-section-title {
+  margin: 0 !important;
+}
+
+.fin-avatars {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-3);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.fin-avatars:hover {
+  color: var(--color-text-2);
+}
+
+.fin-avatars-stack {
+  display: flex;
+  align-items: center;
+}
+
+.fin-avatars-stack .arco-avatar {
+  margin-left: -8px;
+  border: 2px solid var(--color-bg-2);
+  box-sizing: content-box;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fin-avatars-stack .arco-avatar:first-child {
+  margin-left: 0;
+}
+
+.fin-avatars-more {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.fin-transfer-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.fin-amount-box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  border: 1px solid var(--fin-border);
+  border-radius: 8px;
+  background: var(--color-fill-2);
+  overflow: hidden;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.fin-amount-box:focus-within {
+  border-color: rgb(var(--primary-6));
+  background: var(--color-bg-2);
+}
+
+.fin-amount-box .fin-amount-prefix,
+.fin-amount-box .fin-amount-suffix {
+  padding: 0 10px;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--color-text-3);
+  flex-shrink: 0;
+}
+
+.fin-amount-box .fin-amount-prefix {
+  font-weight: 600;
+  color: var(--color-text-2);
+}
+
+.fin-amount-box .arco-input-wrapper {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.fin-amount-box .arco-input-wrapper:hover,
+.fin-amount-box .arco-input-wrapper.arco-input-focus {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.fin-amount-box .arco-input {
+  height: 100%;
+  padding: 0 2px 0 0 !important;
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 36px;
+}
+
+.fin-transfer-send.arco-btn {
+  height: 36px;
+  padding: 0 16px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.fin-card--shortcuts {
+  display: flex;
+  flex-direction: column;
+}
+
+.fin-card--shortcuts .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.fin-card--shortcuts .fin-shortcuts {
+  margin-top: 16px;
+  row-gap: 20px;
+}
+
+.fin-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 12px;
+  margin-top: 8px;
+}
+
+.fin-shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.fin-shortcut-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px !important;
+  padding: 0 !important;
+}
+
+.fin-shortcut-btn .pro-fa-icon,
+.fin-shortcut-btn .fa-sharp {
+  font-size: 18px;
+}
+
+.fin-shortcut-label {
+  font-size: 12px;
+  color: var(--color-text-3);
+  text-align: center;
+}
+
+.fin-divider {
+  height: 1px;
+  background: var(--fin-border);
+  margin: 16px 0;
+  border: none;
+}
+
+/* 暗色：区块外框与内部分割统一弱线（对齐电商页） */
+body[arco-theme='dark'] .fin-page,
+body.theme-dark .fin-page {
+  --fin-border: var(--pro-line-muted);
+}
+
+body[arco-theme='dark'] .fin-page .arco-card.fin-card.general-card,
+body[arco-theme='dark'] .fin-page .fin-card,
+body[arco-theme='dark'] .fin-page .fin-kpi-grid,
+body[arco-theme='dark'] .fin-page .fin-notice,
+body.theme-dark .fin-page .arco-card.fin-card.general-card,
+body.theme-dark .fin-page .fin-card,
+body.theme-dark .fin-page .fin-kpi-grid,
+body.theme-dark .fin-page .fin-notice {
+  border: 1px solid var(--fin-border) !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .fin-title {
+    font-size: 20px;
+  }
+
+  .fin-transfer-row {
+    flex-wrap: wrap;
+  }
+
+  .fin-transfer-row .arco-btn {
+    width: 100%;
+  }
+}

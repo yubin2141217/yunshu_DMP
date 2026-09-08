@@ -1,0 +1,1050 @@
+/* CRM 仪表盘（对齐 shadcn /dashboard/crm） */
+
+.crm-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.crm-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.crm-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.crm-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-text-1);
+}
+
+.crm-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-3);
+}
+
+.crm-filters {
+  --crm-filter-h: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.crm-filters .arco-select,
+.crm-filters .arco-picker,
+.crm-filters .arco-btn {
+  height: var(--crm-filter-h) !important;
+  min-height: var(--crm-filter-h) !important;
+  max-height: var(--crm-filter-h) !important;
+  box-sizing: border-box !important;
+}
+
+.crm-filters .arco-select-view-single,
+.crm-filters .arco-picker {
+  height: 100% !important;
+  min-height: var(--crm-filter-h) !important;
+  max-height: var(--crm-filter-h) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.crm-filters .arco-select-view-size-medium .arco-select-view-value,
+.crm-filters .arco-select-view-size-medium .arco-select-view-input {
+  min-height: 0 !important;
+  height: 100% !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.5715 !important;
+}
+
+.crm-filters .arco-btn {
+  padding: 0 15px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--border-radius-small) !important;
+}
+
+.crm-filters .arco-btn .arco-btn-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-right: 6px !important;
+  line-height: 1 !important;
+}
+
+.crm-filters .arco-btn .arco-btn-icon .arco-icon,
+.crm-filters .arco-btn .arco-icon {
+  width: 14px !important;
+  height: 14px !important;
+  font-size: 14px !important;
+}
+
+.crm-filters .crm-refresh-btn {
+  width: var(--crm-filter-h) !important;
+  padding: 0 !important;
+}
+
+.crm-filters .crm-refresh-btn .arco-btn-icon {
+  margin-right: 0 !important;
+}
+
+.crm-card {
+  border-radius: 8px;
+  height: 100%;
+}
+
+.crm-card .arco-card-body {
+  padding: 16px 20px;
+}
+
+/* 同行左右卡片等高 */
+.crm-equal-row.arco-row {
+  align-items: stretch;
+}
+
+.crm-equal-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.crm-equal-row > .arco-col > .crm-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
+}
+
+.crm-card--fill {
+  display: flex;
+  flex-direction: column;
+}
+
+.crm-card--fill > .arco-card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.crm-card--fill .crm-project-list,
+.crm-card--fill .crm-region-list,
+.crm-card--fill .shadcn-donut-layout,
+.crm-card--fill .crm-meeting-body,
+.crm-card--fill .crm-proposal-body {
+  flex: 1 1 auto;
+}
+
+.crm-card--fill .crm-project-list,
+.crm-card--fill .crm-region-list {
+  justify-content: space-between;
+}
+
+.crm-card--fill .crm-card-actions {
+  margin-top: auto;
+}
+
+.crm-meeting-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 0;
+}
+
+.crm-proposal-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.crm-proposal-body .crm-proposal-note {
+  margin-top: auto;
+}
+
+/* KPI */
+.crm-kpi-card .arco-card-body {
+  padding: 16px 20px;
+}
+
+.crm-kpi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.crm-kpi-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.crm-kpi-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 14px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.crm-kpi-icon,
+.crm-kpi-icon.pro-fa-icon {
+  font-size: 14px;
+  color: var(--color-text-3) !important;
+  --fa-primary-color: var(--color-text-3);
+  --fa-secondary-color: var(--color-text-3);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.crm-kpi-icon.pro-fa-icon::before {
+  color: var(--color-text-3);
+}
+
+.crm-kpi-value-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.crm-kpi-value {
+  font-family: var(--font-metric);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.crm-kpi-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.crm-kpi-delta {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-3);
+  text-align: left;
+  min-width: 0;
+}
+
+.crm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.crm-badge .pro-fa-icon {
+  font-size: 11px;
+}
+
+.crm-badge--up {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.1);
+  border-color: rgba(var(--success-6), 0.22);
+}
+
+.crm-badge--down {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+  border-color: rgba(var(--danger-6), 0.22);
+}
+
+.crm-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.crm-section-head--stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.crm-section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.crm-section-link-icon,
+.crm-section-link-icon.pro-fa-icon {
+  font-size: 14px;
+  color: var(--color-text-3);
+  flex-shrink: 0;
+}
+
+.crm-section-title {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  color: var(--color-text-1) !important;
+}
+
+.crm-section-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.crm-section-desc {
+  display: block;
+  margin-top: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-3);
+}
+
+.crm-section-metric {
+  display: block;
+  margin-top: 2px;
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.crm-pipeline-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+@media (min-width: 992px) {
+  .crm-pipeline-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+    align-items: stretch;
+  }
+}
+
+.crm-pipeline-chart {
+  min-height: 288px;
+  width: 100%;
+}
+
+.crm-pipeline-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 288px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.crm-pipeline-side-summary {
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.crm-pipeline-total {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.crm-pipeline-total span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-3);
+}
+
+.crm-pipeline-note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-2);
+}
+
+.crm-discovery-box {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 0;
+  padding: 16px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 8px;
+  background: var(--color-fill-1);
+  box-sizing: border-box;
+}
+
+.crm-discovery-box .crm-pipeline-total {
+  font-size: 22px;
+}
+
+.crm-discovery-box > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.crm-discovery-box > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.crm-discovery-box > div:first-child .crm-pipeline-note {
+  margin: 0;
+}
+
+.crm-discovery-track {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-fill-3);
+}
+
+.crm-discovery-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(var(--success-6));
+  transition: width 0.35s ease;
+}
+
+.crm-discovery-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-2);
+}
+
+.crm-discovery-meta .muted {
+  color: var(--color-text-3);
+}
+
+.crm-card-footer {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.crm-section-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.crm-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.crm-card-actions .arco-btn {
+  flex: 1 1 120px;
+}
+
+/* 项目收入横向堆叠条 */
+.crm-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.crm-project-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.crm-project-track {
+  position: relative;
+  display: flex;
+  height: 28px;
+  border-radius: 0 6px 6px 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.crm-project-actual,
+.crm-project-remain {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.crm-project-actual {
+  background: var(--chart-1);
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.crm-project-remain {
+  background: var(--chart-2);
+  justify-content: flex-end;
+}
+
+.crm-project-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 区域销售 */
+.crm-region-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.crm-region-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.crm-region-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.crm-region-nums {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.crm-region-sales {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.crm-region-growth {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.crm-region-growth.is-up {
+  color: rgb(var(--success-6));
+}
+
+.crm-region-growth.is-down {
+  color: rgb(var(--danger-6));
+}
+
+.crm-region-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.crm-region-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-fill-2);
+  overflow: hidden;
+}
+
+.crm-region-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--chart-1);
+}
+
+.crm-region-pct {
+  width: 36px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 销售漏斗：梯形分段 */
+.crm-funnel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  min-height: 200px;
+  justify-content: center;
+  position: relative;
+}
+
+.crm-funnel--trap {
+  gap: 2px;
+}
+
+.crm-funnel-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 38px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  transform: scaleX(0.55);
+  transform-origin: center;
+  animation: crm-funnel-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: filter 0.18s ease;
+}
+
+.crm-funnel-step:hover,
+.crm-funnel-step.is-active {
+  filter: brightness(1.08);
+  z-index: 1;
+}
+
+.crm-funnel-step.is-light {
+  color: var(--color-text-1);
+}
+
+.crm-funnel-step-pct {
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+}
+
+.crm-funnel-step.is-light .crm-funnel-step-pct {
+  text-shadow: none;
+}
+
+@keyframes crm-funnel-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crm-funnel-step {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+.crm-funnel-tip {
+  min-width: 140px;
+  color: var(--color-text-1);
+}
+
+.crm-funnel-tip--float {
+  position: absolute;
+  z-index: 20;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border-2);
+  background: var(--color-bg-2);
+  box-shadow: 0 4px 10px rgba(29, 33, 41, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.crm-funnel-tip-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-2);
+}
+
+.crm-funnel-tip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.crm-funnel-tip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.crm-funnel-tip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.crm-funnel-tip-label {
+  color: var(--color-text-3);
+}
+
+.crm-funnel-tip-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+/* 漏斗图宽度：对齐常用图表基础漏斗；布局走全局 .shadcn-donut-* */
+.crm-chart-card .shadcn-donut-chart:has(.crm-funnel) {
+  min-width: 320px;
+}
+
+/* 会议时间线 */
+.crm-meeting-times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+
+.crm-meeting-times span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.crm-meeting-times i {
+  width: 1px;
+  height: 8px;
+  background: var(--color-border-2);
+}
+
+.crm-meeting-rail {
+  position: relative;
+  height: 56px;
+}
+
+.crm-meeting-rail::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 50%;
+  height: 1px;
+  background: var(--color-border-2);
+  transform: translateY(-50%);
+}
+
+.crm-meeting-block {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 22%;
+  width: 44%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: rgb(var(--primary-6));
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.crm-meeting-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #fff;
+  color: rgb(var(--primary-6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.crm-meeting-name {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crm-meeting-company {
+  font-size: 10px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crm-meeting-now {
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 64%;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--color-bg-2);
+  box-shadow: 0 0 0 1px var(--color-border-2);
+}
+
+/* 月度方案目标条 */
+.crm-proposal-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.crm-proposal-value {
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.crm-proposal-value span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-3);
+}
+
+.crm-proposal-goal {
+  font-size: 13px;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.crm-proposal-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.crm-proposal-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.crm-proposal-bar i {
+  display: block;
+  width: 6px;
+  height: 40px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--chart-1) 15%, transparent);
+}
+
+.crm-proposal-bar.is-active i {
+  background: var(--chart-1);
+}
+
+.crm-proposal-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+/* 商机表格 */
+.crm-opp-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.crm-opp-search {
+  width: 208px;
+  max-width: 100%;
+}
+
+.crm-health-strips {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  width: 136px;
+}
+
+.crm-health-strips i {
+  display: block;
+  width: 4px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(var(--success-6), 0.15);
+}
+
+.crm-health-strips i.is-on {
+  background: rgba(var(--success-6), 0.85);
+}
+
+.crm-opp-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.crm-opp-count {
+  font-size: 13px;
+  color: var(--color-text-3);
+}
+
+.crm-stage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 0 10px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--color-fill-2);
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.crm-stage-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-3);
+}
+
+.crm-stage-label {
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.crm-stage-tag.is-discovery .crm-stage-dot {
+  background: var(--chart-1);
+}
+
+.crm-stage-tag.is-qualified .crm-stage-dot {
+  background: var(--chart-2);
+}
+
+.crm-stage-tag.is-proposal .crm-stage-dot {
+  background: var(--chart-3);
+}
+
+.crm-stage-tag.is-negotiation .crm-stage-dot {
+  background: var(--chart-4);
+}
+
+/* 勾选列锁宽见 pages-common.css；列宽由 JS width / minWidth 控制 */
+
+@media (max-width: 768px) {
+  .crm-title {
+    font-size: 20px;
+  }
+
+  .crm-header {
+    align-items: stretch;
+  }
+
+  .crm-filters {
+    width: 100%;
+  }
+
+  .crm-filters .arco-picker {
+    flex: 1;
+  }
+
+  .crm-opp-search {
+    width: 100%;
+  }
+
+  .crm-opp-toolbar {
+    width: 100%;
+  }
+}

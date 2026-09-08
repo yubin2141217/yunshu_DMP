@@ -1,0 +1,644 @@
+/* 教育仪表盘（对齐 shadcn /dashboard/academy） */
+
+.acad-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.acad-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 992px) {
+  .acad-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.acad-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.acad-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-text-1);
+}
+
+.acad-desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-3);
+}
+
+.acad-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.acad-card {
+  border-radius: 8px;
+  height: 100%;
+}
+
+.acad-card .arco-card-body {
+  padding: 16px 20px;
+}
+
+/* 同行左右卡片：等宽列内拉齐高度 */
+.acad-equal-row.arco-row {
+  align-items: stretch;
+}
+
+.acad-equal-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.acad-equal-row > .arco-col > .acad-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.acad-equal-row > .arco-col > .acad-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.acad-equal-row .acad-schedule-list,
+.acad-equal-row .acad-perf,
+.acad-equal-row .acad-events {
+  flex: 1 1 auto;
+}
+
+/* KPI */
+.acad-kpi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.acad-kpi-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.acad-kpi-icon,
+.acad-kpi-icon.pro-fa-icon {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.acad-kpi-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+}
+
+.acad-kpi-value-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.acad-kpi-value {
+  font-family: var(--font-metric);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.acad-kpi-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: left;
+  color: var(--color-text-3);
+}
+
+.acad-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.acad-badge .pro-fa-icon {
+  font-size: 11px;
+}
+
+.acad-badge--up {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.1);
+  border-color: rgba(var(--success-6), 0.35);
+}
+
+/* Section heads */
+.acad-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.acad-section-title {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  color: var(--color-text-1) !important;
+}
+
+.acad-section-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.acad-section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-3);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.acad-section-link:hover {
+  color: var(--color-text-2);
+}
+
+.acad-section-link .pro-fa-icon,
+.acad-section-link .arco-icon {
+  font-size: 12px;
+}
+
+/* Class schedule */
+.acad-schedule-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.acad-schedule-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-2);
+  transition: background 0.15s ease;
+}
+
+.acad-schedule-row:last-child {
+  border-bottom: none;
+}
+
+.acad-schedule-row:hover {
+  background: var(--color-fill-1);
+}
+
+@media (min-width: 576px) {
+  .acad-schedule-row {
+    display: grid;
+    grid-template-columns: 10rem 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+.acad-schedule-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+@media (min-width: 576px) {
+  .acad-schedule-top {
+    display: contents;
+  }
+}
+
+.acad-schedule-time-wrap {
+  display: flex;
+  min-width: 0;
+  gap: 8px;
+}
+
+.acad-schedule-bar {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  align-self: stretch;
+  min-height: 28px;
+}
+
+.acad-schedule-bar--active {
+  background: rgb(var(--success-6));
+}
+
+.acad-schedule-bar--upcoming {
+  background: rgb(var(--warning-6));
+}
+
+.acad-schedule-bar--cancelled {
+  background: rgb(var(--danger-6));
+}
+
+.acad-schedule-time {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.acad-schedule-date {
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.acad-schedule-body {
+  min-width: 0;
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (min-width: 576px) {
+  .acad-schedule-body {
+    padding-left: 0;
+  }
+}
+
+.acad-schedule-subject {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acad-schedule-location {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acad-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (min-width: 576px) {
+  .acad-status {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+.acad-status--active {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.08);
+  border-color: rgba(var(--success-6), 0.35);
+}
+
+.acad-status--upcoming {
+  color: rgb(var(--warning-6));
+  background: rgba(var(--warning-6), 0.08);
+  border-color: rgba(var(--warning-6), 0.35);
+}
+
+.acad-status--cancelled {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.1);
+  border-color: rgba(var(--danger-6), 0.35);
+}
+
+/* Assignment chart — 底部图例间距见全局 .shadcn-chart-legend */
+.acad-assign-chart {
+  height: 280px;
+  min-height: 280px;
+  flex: 0 0 auto;
+}
+
+.acad-card .shadcn-chart-legend {
+  flex: 0 0 auto;
+}
+
+/* Performance highlights — 对齐参考：更高胶囊条、更疏行距、底轴 + 虚线竖格 */
+.acad-perf {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  padding-top: 8px;
+}
+
+.acad-perf-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0;
+  min-height: 0;
+  flex: 0 0 auto;
+}
+
+.acad-perf-grid {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 66px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.acad-perf-grid-slot {
+  position: relative;
+  width: 2em;
+  flex: 0 0 auto;
+  height: 100%;
+}
+
+.acad-perf-grid-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed var(--color-border-2);
+  opacity: 0.9;
+  transform: translateX(-50%);
+}
+
+.acad-perf-days {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 8px;
+  padding-left: 0;
+}
+
+.acad-perf-days-spacer {
+  width: 58px;
+}
+
+.acad-perf-days-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+.acad-perf-days-row > span {
+  width: 2em;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.acad-perf-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.acad-perf-class {
+  font-size: 12px;
+  color: var(--color-text-2);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.acad-perf-track {
+  position: relative;
+  height: 36px;
+}
+
+.acad-perf-bar {
+  position: absolute;
+  top: 0;
+  height: 36px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--chart-1) 16%, transparent);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-width: 96px;
+}
+
+.acad-perf-fill {
+  height: 100%;
+  border-radius: 18px;
+  background: var(--chart-1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  min-width: 96px;
+  box-sizing: border-box;
+}
+
+.acad-perf-avatars {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.acad-perf-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--chart-1);
+  background: rgb(var(--primary-5));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -10px;
+  flex-shrink: 0;
+}
+
+.acad-perf-avatar:first-child {
+  margin-left: 0;
+}
+
+.acad-perf-avatar:nth-child(2) {
+  background: rgb(var(--primary-4));
+}
+
+.acad-perf-avatar:nth-child(3) {
+  background: rgb(var(--primary-3));
+  color: var(--color-text-1);
+}
+
+.acad-perf-subject {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-bg-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acad-perf-score {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+  pointer-events: none;
+}
+
+/* Upcoming events */
+.acad-events {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.acad-event {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.acad-event-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.acad-event-date {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid var(--color-border-2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.acad-event-month {
+  flex: 0 0 33%;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid var(--color-border-2);
+  background: var(--color-fill-2);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-2);
+}
+
+.acad-event-day {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.acad-event-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.acad-event-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acad-event-time {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.acad-event-type {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-2);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-2);
+  white-space: nowrap;
+}

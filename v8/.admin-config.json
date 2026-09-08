@@ -1,0 +1,15 @@
+{
+  "end": "admin",
+  "theme": "arco",
+  "frameworkId": "admin",
+  "templateId": "admin",
+  "templateVersion": "1.1.0",
+  "scaffoldMode": "lean",
+  "outputDir": "v8",
+  "createdAt": "2026-09-03",
+  "brandOverride": {
+    "themeColorPreset": "v8blue",
+    "layoutMode": "top",
+    "note": "对齐机构端截图：白顶栏 + 蓝横导航 + 面包屑「我的工作台」+ 页头在卡片外"
+  }
+}

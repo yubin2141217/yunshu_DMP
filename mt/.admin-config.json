@@ -1,0 +1,15 @@
+{
+  "end": "admin",
+  "theme": "arco",
+  "frameworkId": "admin",
+  "templateId": "admin",
+  "templateVersion": "1.1.0",
+  "scaffoldMode": "lean",
+  "outputDir": "mt",
+  "createdAt": "2026-09-03",
+  "brandOverride": {
+    "themeColorPreset": "mtblue",
+    "layoutMode": "side",
+    "note": "对齐第2张截图：侧栏通顶 + 浅蓝菜单"
+  }
+}

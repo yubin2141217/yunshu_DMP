@@ -1,0 +1,214 @@
+/* 扩展图表：卡片气质对齐常用图表；图例放标题行右上角（对齐电商看板） */
+
+.component-chart-extended {
+  --ecom-border: var(--color-border-2);
+}
+
+.component-chart-extended > .shadcn-chart-card {
+  margin-bottom: 0;
+}
+
+.component-chart-extended > .shadcn-chart-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.component-chart-extended .cce-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.component-chart-extended .cce-card-head .component-showcase-group-title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.component-chart-extended .cce-card-head .ecom-chart-legend {
+  flex-shrink: 0;
+}
+
+/* 分组柱图例色块：直角，对齐柱顶直角 */
+.component-chart-extended .ecom-chart-legend-bar {
+  border-radius: 0;
+}
+
+/* 交互式柱状图：标题左侧 + 桌面/移动切换右侧（对齐 shadcn bar-interactive） */
+.component-chart-extended .cce-interactive-card > .arco-card-body {
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.component-chart-extended .cce-interactive-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border-2) 45%, transparent);
+}
+
+.component-chart-extended .cce-interactive-head-main {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 16px 20px 12px;
+}
+
+.component-chart-extended .cce-interactive-head-main .component-showcase-group-title {
+  margin-bottom: 4px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.component-chart-extended .cce-interactive-head-main .component-chart-card-desc {
+  margin-bottom: 0;
+}
+
+.component-chart-extended .cce-metric-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.component-chart-extended .cce-metric-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 120px;
+  margin: 0;
+  padding: 14px 24px;
+  border: 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-border-2) 45%, transparent);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.component-chart-extended .cce-metric-tab:hover {
+  background: var(--color-fill-1);
+}
+
+.component-chart-extended .cce-metric-tab.is-active {
+  background: var(--color-fill-2);
+}
+
+.component-chart-extended .cce-metric-tab-label {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-text-3);
+}
+
+.component-chart-extended .cce-metric-tab-value {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-1);
+}
+
+.component-chart-extended .cce-interactive-chart-wrap {
+  margin-top: 20px;
+  padding: 0 12px 12px;
+  box-sizing: border-box;
+}
+
+.component-chart-extended .cce-interactive-chart-stage {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+
+/* 交互柱图宿主尺寸；悬停灰带见 shadcn-chart.css 的 --tooltip-cursor（对齐 Recharts fill-muted） */
+.component-chart-extended .cce-interactive-chart {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  min-height: 250px;
+  max-height: 250px;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 交互柱图 tooltip 必须不透明（盖过柱色） */
+.component-chart-extended .cce-interactive-chart .shadcn-chart-tooltip-root,
+.component-chart-extended .cce-interactive-chart .unovis-tooltip.shadcn-chart-tooltip-root {
+  background: var(--color-bg-popup, var(--color-bg-2, #fff)) !important;
+  border: 1px solid var(--color-border-2, #e5e6eb) !important;
+  box-shadow: 0 4px 16px rgba(29, 33, 41, 0.12) !important;
+}
+
+.component-chart-extended .cce-spark-area,
+.component-chart-extended .cce-candle-chart,
+.component-chart-extended .cce-scatter-chart,
+.component-chart-extended .cce-percent-track-chart {
+  width: 100%;
+  height: 280px;
+  min-height: 280px;
+  max-height: 280px;
+  flex: 0 0 280px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media (max-width: 720px) {
+  .component-chart-extended .cce-candle-chart,
+  .component-chart-extended .cce-scatter-chart,
+  .component-chart-extended .cce-percent-track-chart,
+  .component-chart-extended .cce-spark-area {
+    height: 240px;
+    min-height: 240px;
+    max-height: 240px;
+    flex-basis: 240px;
+  }
+}
+
+/* 覆盖电商看板宿主，对齐常用图表 min-height 280 */
+.component-chart-extended .ecom-sales-chart,
+.component-chart-extended .ecom-traffic-chart,
+.component-chart-extended .anl-quality-chart {
+  width: 100%;
+  height: 280px;
+  min-height: 280px;
+  flex: 0 0 280px;
+  overflow: visible;
+}
+
+.component-chart-extended .anl-quality-chart svg {
+  overflow: visible;
+}
+
+.component-chart-extended .ecom-sales-summary,
+.component-chart-extended .ecom-card-foot-stats {
+  margin-top: 12px;
+}
+
+@media (max-width: 640px) {
+  .component-chart-extended .cce-metric-tabs {
+    width: 100%;
+    border-top: 1px solid var(--color-border-2);
+  }
+
+  .component-chart-extended .cce-metric-tab {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
+
+  .component-chart-extended .cce-metric-tab:first-child {
+    border-left: 0;
+  }
+}

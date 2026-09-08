@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E8F3FF"/>
+      <stop offset="45%" stop-color="#F2F7FF"/>
+      <stop offset="100%" stop-color="#EEF6F3"/>
+    </linearGradient>
+    <linearGradient id="waveA" x1="0" y1="80" x2="1200" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#94BFFF" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#6AA1FF" stop-opacity="0.28"/>
+    </linearGradient>
+    <linearGradient id="waveB" x1="0" y1="100" x2="1200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#BEDAFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#9FCEFF" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="waveC" x1="0" y1="120" x2="1200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D6E8FF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#C9E4F8" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(980 48) rotate(90) scale(140 220)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="200" fill="url(#sky)"/>
+  <circle cx="980" cy="48" r="140" fill="url(#glow)"/>
+  <path d="M0 128C140 104 260 96 420 112C620 134 760 158 920 148C1040 140 1120 120 1200 108V200H0V128Z" fill="url(#waveA)"/>
+  <path d="M0 148C180 128 320 136 480 152C680 172 820 176 980 160C1080 150 1140 142 1200 138V200H0V148Z" fill="url(#waveB)"/>
+  <path d="M0 168C200 156 360 170 540 178C740 188 900 182 1060 170C1130 164 1170 162 1200 160V200H0V168Z" fill="url(#waveC)"/>
+  <circle cx="160" cy="56" r="3" fill="#7AAFFF" fill-opacity="0.55"/>
+  <circle cx="220" cy="40" r="2" fill="#7AAFFF" fill-opacity="0.4"/>
+  <circle cx="300" cy="62" r="2.5" fill="#7AAFFF" fill-opacity="0.35"/>
+  <circle cx="740" cy="36" r="2" fill="#7AAFFF" fill-opacity="0.35"/>
+  <circle cx="820" cy="54" r="3" fill="#7AAFFF" fill-opacity="0.45"/>
+</svg>

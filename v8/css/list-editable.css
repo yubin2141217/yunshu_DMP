@@ -1,0 +1,66 @@
+/* 可编辑表格 */
+
+.list-editable-page {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* 覆盖通用 .pro-page-card 的 16px，避免与 gap 叠加 */
+.list-editable-page > .list-editable-intro-card.pro-page-card {
+  margin-bottom: 0;
+}
+
+.list-editable-page > .arco-card:not(.pro-page-card) {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.list-editable-page > .arco-card:not(.pro-page-card) > .arco-card-body {
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* 仅需要横向滚动时，隐藏 Arco 自定义纵向滚动条（scroll.x + fixed 列会触发 both） */
+.list-editable-page .arco-table-container,
+.list-editable-page .arco-table-content,
+.list-editable-page .arco-table-body {
+  overflow-y: hidden !important;
+}
+
+.list-editable-page .arco-scrollbar-track-direction-vertical {
+  display: none !important;
+}
+
+.list-editable-page .list-editable-cell {
+  min-width: 0;
+}
+
+.list-editable-page .list-editable-cell .arco-input,
+.list-editable-page .list-editable-cell .arco-select,
+.list-editable-page .list-editable-cell .arco-input-wrapper {
+  width: 100%;
+}
+
+.list-editable-page .list-editable-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.list-editable-page .list-editable-dirty-tag {
+  margin-left: 0;
+}
+
+.list-editable-page .pro-toolbar {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.list-editable-page .pro-toolbar-right {
+  flex-wrap: wrap;
+}

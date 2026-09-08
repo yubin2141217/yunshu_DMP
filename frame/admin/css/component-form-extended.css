@@ -1,0 +1,335 @@
+/* 动态增减：表头 + 数据行 + 底栏统一栅格对齐 */
+.component-form-extended-dynamic-head,
+.component-form-extended-dynamic-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 72px;
+  gap: 12px;
+  align-items: center;
+}
+
+.component-form-extended-dynamic-head {
+  margin-bottom: 8px;
+  color: var(--color-text-1);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.component-form-extended-dynamic-row {
+  margin-bottom: 12px;
+}
+
+.component-form-extended-dynamic-col .arco-input-wrapper,
+.component-form-extended-dynamic-col .arco-input-number,
+.component-form-extended-dynamic-col .pro-field-block {
+  width: 100%;
+}
+
+.component-form-extended-dynamic-col-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.component-form-extended-dynamic-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.component-form-extended-dynamic-footer .arco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  line-height: 1;
+}
+
+.component-form-extended-dynamic-footer .arco-btn .arco-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+}
+
+@media (max-width: 900px) {
+  .component-form-extended-dynamic-head,
+  .component-form-extended-dynamic-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 64px;
+  }
+}
+
+/* 可编辑成员列表 */
+.component-form-extended-member-table {
+  overflow: hidden;
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--border-radius-medium, 4px);
+  background: var(--color-bg-2);
+}
+
+.component-form-extended-member-table-head,
+.component-form-extended-member-table-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.2fr) 72px 160px;
+  gap: 12px;
+  align-items: center;
+  padding: 0 16px;
+  min-height: 48px;
+}
+
+.component-form-extended-member-table-head {
+  background: var(--color-fill-2);
+  color: var(--color-text-2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.component-form-extended-member-table-row {
+  border-top: 1px solid var(--color-border-2);
+  color: var(--color-text-1);
+  font-size: 14px;
+  line-height: 22px;
+  transition: background-color 0.15s ease;
+}
+
+.component-form-extended-member-table-row.is-editing {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.component-form-extended-member-table-row.is-dragging {
+  opacity: 0.45;
+}
+
+.component-form-extended-member-table-row.is-drag-over {
+  background: var(--color-fill-1);
+  box-shadow: inset 0 2px 0 0 rgb(var(--primary-6));
+}
+
+.component-form-extended-member-table-col .arco-input-wrapper {
+  width: 100%;
+}
+
+.component-form-extended-member-table-sort {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  padding: 4px;
+  margin: -4px;
+  color: var(--color-text-3);
+  cursor: grab;
+  user-select: none;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.component-form-extended-member-table-sort:hover {
+  color: rgb(var(--primary-6));
+  background: var(--color-fill-2);
+}
+
+.component-form-extended-member-table-sort:active {
+  cursor: grabbing;
+}
+
+.component-form-extended-member-table-sort .pro-fa-icon {
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.component-form-extended-member-table-ops {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.component-form-extended-member-table-ops .arco-btn {
+  padding: 0;
+  height: auto;
+  color: rgb(var(--primary-6));
+}
+
+.component-form-extended-member-table-ops .arco-btn:hover {
+  color: rgb(var(--primary-5));
+}
+
+.component-form-extended-member-table-ops .arco-btn .arco-btn-icon {
+  margin-right: 4px;
+}
+
+.component-form-extended-member-table-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 14px 16px;
+  border: 0;
+  border-top: 1px solid var(--color-border-2);
+  background: transparent;
+  color: rgb(var(--primary-6));
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.component-form-extended-member-table-add:hover {
+  background: var(--color-fill-1);
+  color: rgb(var(--primary-5));
+}
+
+.component-form-extended-member-table-add .pro-fa-icon {
+  font-size: 16px;
+}
+
+/* 成员信息卡片网格 */
+.component-form-extended-member-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.component-form-extended-member-card {
+  position: relative;
+  padding: 20px 16px 16px;
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--border-radius-medium, 4px);
+  background: var(--color-bg-2);
+}
+
+.component-form-extended-member-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-3);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.component-form-extended-member-card-close:hover {
+  color: var(--color-text-1);
+  background: var(--color-fill-2);
+}
+
+.component-form-extended-member-card .arco-form-item {
+  margin-bottom: 12px;
+}
+
+.component-form-extended-member-card .arco-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.component-form-extended-member-card .arco-form-item-label-col > label {
+  color: var(--color-text-1);
+}
+
+.component-form-extended-member-card-add.arco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+  padding: 0;
+  background-color: transparent;
+}
+
+.component-form-extended-member-card-add.arco-btn:hover,
+.component-form-extended-member-card-add.arco-btn:focus {
+  background-color: transparent;
+}
+
+.component-form-extended-member-card-add .arco-btn-icon {
+  margin-right: 0;
+}
+
+.component-form-extended-member-card-add .pro-fa-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+@media (max-width: 1100px) {
+  .component-form-extended-member-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .component-form-extended-member-table-head,
+  .component-form-extended-member-table-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1fr) 56px 140px;
+    gap: 8px;
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 720px) {
+  .component-form-extended-member-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .component-form-extended-member-table-head {
+    display: none;
+  }
+
+  .component-form-extended-member-table-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .component-form-extended-member-table-sort {
+    display: none;
+  }
+}
+
+/* 穿梭框 */
+.component-form-extended-transfer {
+  width: 100%;
+  max-width: 720px;
+  align-items: stretch;
+}
+
+.component-form-extended-transfer .arco-transfer-view {
+  width: calc(50% - 36px);
+  min-width: 200px;
+  height: 360px;
+}
+
+.component-form-extended-transfer .arco-transfer-operations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+/* 覆盖 Arco `.arco-transfer-operations .arco-btn { display:block }`，恢复圆形按钮内图标居中 */
+.component-form-extended-transfer .arco-transfer-operations .arco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.component-form-extended-transfer .arco-transfer-operations .arco-btn:last-child {
+  margin-top: 12px;
+}
+
+.component-form-extended-transfer .arco-transfer-operations .arco-btn .arco-icon {
+  display: block;
+  vertical-align: 0;
+}

@@ -1,0 +1,1267 @@
+/* 各业务页通用 */
+.pro-page-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+/* 刷新按钮图标转一圈（工作台 / 财务 / 电商 / CRM 等） */
+.pro-refresh-spinning .arco-icon,
+.pro-refresh-spinning .arco-btn-icon .arco-icon,
+.pro-refresh-spinning .pro-fa-icon {
+  animation: pro-refresh-spin 0.6s linear;
+}
+
+@keyframes pro-refresh-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pro-refresh-spinning .arco-icon,
+  .pro-refresh-spinning .arco-btn-icon .arco-icon,
+  .pro-refresh-spinning .pro-fa-icon {
+    animation: none;
+  }
+}
+
+/* 全局区块标题：左侧主色竖条（对齐 form-basic-title / profile 卡片标题；不含 KPI 指标卡） */
+.pro-block-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.pro-block-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.pro-page-card {
+  margin-bottom: 16px;
+}
+
+.profile-toolbar {
+  margin-bottom: 16px;
+}
+
+.profile-block {
+  margin-bottom: 24px;
+}
+
+.pro-content-wrapper .arco-card.general-card {
+  border: none;
+  background: var(--color-bg-2);
+  box-shadow: none;
+}
+
+.pro-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.pro-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pro-toolbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pro-toolbar-icon-btn.arco-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.pro-toolbar-icon-btn .pro-fa-icon {
+  font-size: 12px;
+}
+
+.pro-column-setting {
+  display: flex;
+  flex-direction: column;
+  min-width: 168px;
+  padding: 0;
+}
+
+.arco-popover-content.pro-column-popover,
+.pro-column-popover.arco-popover-content {
+  padding: 8px 12px;
+}
+
+.pro-column-setting-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 240px;
+  overflow: auto;
+  padding: 4px 0;
+}
+
+.pro-column-setting-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 4px;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.pro-column-setting-item.is-dragging {
+  opacity: 0.45;
+}
+
+.pro-column-setting-item.is-drag-over {
+  background: var(--color-fill-2);
+}
+
+.pro-column-drag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-3);
+  cursor: move;
+  flex-shrink: 0;
+}
+
+.pro-column-drag .pro-fa-icon {
+  font-size: 12px;
+}
+
+.pro-column-setting-item .arco-checkbox {
+  margin-right: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.pro-column-setting-footer {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-2);
+  text-align: center;
+}
+
+.pro-column-setting-footer .arco-btn {
+  padding: 0 8px;
+  height: 28px;
+}
+
+.pro-search-panel {
+  --pro-search-row-gap: 16px;
+  align-items: stretch;
+  container-type: inline-size;
+  container-name: pro-search;
+}
+
+.pro-search-panel > .arco-col {
+  min-width: 0;
+}
+
+.pro-search-form .arco-form-item {
+  margin-bottom: var(--pro-search-row-gap);
+}
+
+.pro-field-block,
+.pro-search-form .arco-picker,
+.pro-search-form .arco-picker-range,
+.pro-search-form .arco-select,
+.pro-search-form .arco-input-wrapper {
+  width: 100%;
+}
+
+/* 横向搜索：标签固定宽度（约 6 个汉字），超出省略号 */
+.pro-search-form.arco-form-layout-horizontal .arco-form-item-label-col {
+  flex: 0 0 6em !important;
+  width: 6em !important;
+  max-width: 6em !important;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.pro-search-form.arco-form-layout-horizontal .arco-form-item-wrapper-col {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+.pro-search-form.arco-form-layout-horizontal .arco-form-item-label {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+  word-break: keep-all;
+}
+
+/* 搜索区变窄时隐藏标签文字，输入框靠 placeholder 提示 */
+@container pro-search (max-width: 980px) {
+  .pro-search-form.arco-form-layout-horizontal .arco-form-item-label-col {
+    display: none !important;
+  }
+
+  .pro-search-form.arco-form-layout-horizontal .arco-form-item-wrapper-col {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pro-search-form.arco-form-layout-horizontal .arco-form-item-label-col {
+    display: none !important;
+  }
+
+  .pro-search-form.arco-form-layout-horizontal .arco-form-item-wrapper-col {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+.pro-search-form.is-collapsed .arco-form-item {
+  margin-bottom: 0;
+}
+
+.pro-search-form:not(.is-collapsed) .arco-row > .arco-col:nth-child(-n + 6) .arco-form-item {
+  margin-bottom: var(--pro-search-row-gap);
+}
+
+.pro-search-form:not(.is-collapsed) .arco-row > .arco-col:nth-child(n + 7) .arco-form-item {
+  margin-bottom: 0;
+}
+
+/* 仅两行（无第 7 项）时去掉末行底边距，避免卡片底部多余空白 */
+.pro-search-form:not(.is-collapsed):not(:has(.arco-row > .arco-col:nth-child(7)))
+  .arco-row
+  > .arco-col:nth-child(n + 4)
+  .arco-form-item {
+  margin-bottom: 0;
+}
+
+.pro-search-divider {
+  height: auto;
+  min-height: 100%;
+  margin: 0 16px;
+  align-self: stretch;
+}
+
+/*
+ * 竖排操作按钮与表单行对齐：
+ * 控件高度同为 32px，行距与 .arco-form-item 的 margin-bottom 共用 --pro-search-row-gap，
+ * 用 flex-start + 等距 gap，不依赖 space-between / 列高拉伸，复用时不易错位。
+ */
+.pro-search-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-self: flex-start;
+  text-align: right;
+  gap: var(--pro-search-row-gap);
+}
+
+.pro-search-actions.is-collapsed {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: center;
+  gap: 8px;
+}
+
+/* 折叠态按内容定宽，避免固定 200px 让按钮向左溢出、贴住末项控件 */
+.pro-search-actions.is-collapsed:not(.is-mobile) {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+/* 固定单行：无竖向分隔线，按钮紧贴末项，间距与表单 gutter 一致 */
+.pro-search-panel--single {
+  gap: 16px;
+  align-items: center;
+}
+
+.pro-search-panel--single .pro-search-actions.is-collapsed:not(.is-mobile) {
+  flex: 0 0 auto;
+  justify-content: flex-start;
+}
+
+.pro-search-actions:not(.is-collapsed) .pro-search-toggle {
+  align-self: flex-end;
+}
+
+.pro-search-actions .arco-btn {
+  margin: 0;
+}
+
+.pro-search-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 0 4px;
+  height: 32px;
+  color: rgb(var(--primary-6));
+}
+
+.pro-search-toggle-text {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pro-search-toggle-dot {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--danger-6));
+}
+
+.pro-search-toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+.pro-search-toggle-icon.is-up {
+  transform: rotate(180deg);
+}
+
+.content-type-cell,
+.ticket-type-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.content-type-dot,
+.ticket-type-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.content-type-dot--0,
+.ticket-type-dot--0 { background: rgb(var(--primary-6)); }
+.content-type-dot--1,
+.ticket-type-dot--1 { background: rgb(var(--orange-6)); }
+.content-type-dot--2,
+.ticket-type-dot--2 { background: rgb(var(--purple-6)); }
+.ticket-type-dot--3 { background: rgb(var(--green-6)); }
+
+.pro-detail {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pro-detail-section {
+  padding: 16px 20px 20px;
+  border: 1px solid var(--color-border-2);
+  border-radius: 6px;
+  background: var(--color-bg-2);
+}
+
+.pro-detail-section-title {
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-1);
+}
+
+.pro-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+
+.pro-detail-field--full {
+  grid-column: 1 / -1;
+}
+
+.pro-detail-label {
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-3);
+}
+
+.pro-detail-value {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-1);
+  word-break: break-word;
+}
+
+.pro-detail-value--strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pro-detail-value--multiline {
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .pro-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.pro-table-ops .arco-btn-size-small {
+  padding: 0 6px;
+}
+
+.pro-table-ops .arco-btn-size-mini {
+  padding: 0 4px;
+}
+
+/* 表头加高 */
+.pro-content-wrapper .arco-table-th {
+  height: 48px;
+}
+
+.pro-content-wrapper .arco-table-th .arco-table-cell {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* 全局勾选列：固定 48px（与列表页 row-selection.width 一致），不参与余宽分配 */
+.pro-content-wrapper .arco-table col.arco-table-selection-checkbox-col {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+}
+
+.pro-content-wrapper .arco-table-th.arco-table-operation.arco-table-checkbox,
+.pro-content-wrapper .arco-table-td.arco-table-operation.arco-table-checkbox {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  box-sizing: border-box;
+  /* 勿设 overflow:hidden，否则会裁掉固定列横向滚动阴影 ::after */
+}
+
+.pro-content-wrapper .arco-table-th.arco-table-operation.arco-table-checkbox .arco-table-cell,
+.pro-content-wrapper .arco-table-td.arco-table-operation.arco-table-checkbox .arco-table-cell {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* 展开行按钮：灰边框 + 灰图标；外框 16px，内图标 10px（FA webfont） */
+.pro-content-wrapper .arco-table .arco-table-expand-btn {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-3);
+  font-size: 10px;
+  line-height: 1;
+  background-color: transparent;
+  border-color: var(--color-neutral-4);
+  transition: color 0.1s cubic-bezier(0, 0, 1, 1), border-color 0.1s cubic-bezier(0, 0, 1, 1);
+}
+
+.pro-content-wrapper .arco-table .arco-table-expand-btn .arco-icon,
+.pro-content-wrapper .arco-table .arco-table-expand-btn .pro-fa-icon {
+  width: 10px;
+  height: 10px;
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.pro-content-wrapper .arco-table .arco-table-expand-btn:hover {
+  color: var(--color-text-2);
+  background-color: transparent;
+  border-color: var(--color-neutral-5);
+}
+
+/* 表头排序/筛选 FA 图标（由 js/fa-icons.js 注入） */
+.arco-table-sorter-icon > .arco-icon[data-fa-patched='1'],
+.arco-table-filters > .arco-icon[data-fa-patched='1'],
+.arco-table-filters .arco-icon[data-fa-patched='1'] {
+  display: none !important;
+}
+
+.arco-table-sorter-icon > .pro-fa-icon[data-fa-table-icon='1'] {
+  display: inline-flex;
+  font-size: 10px;
+  line-height: 1;
+  color: inherit;
+}
+
+.arco-table-sorter-icon {
+  overflow: visible;
+  color: var(--color-neutral-5);
+}
+
+.arco-table-sorter-icon-active {
+  color: rgb(var(--primary-6));
+}
+
+/* 可排序表头：去掉悬停灰底 */
+.pro-content-wrapper .arco-table-cell-with-sorter:hover {
+  background-color: transparent;
+}
+
+/* 筛选按钮：去掉悬停/展开灰底 */
+.pro-content-wrapper .arco-table-filters:hover,
+.pro-content-wrapper .arco-table-filters-open {
+  background-color: transparent;
+}
+
+.arco-table-cell-next-ascend .arco-table-sorter > .arco-table-sorter-icon:first-child,
+.arco-table-cell-next-descend .arco-table-sorter > .arco-table-sorter-icon:last-child {
+  color: var(--color-neutral-6);
+}
+
+.arco-table-filters > .pro-fa-icon[data-fa-table-icon='1'] {
+  display: inline-flex;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--color-text-2);
+}
+
+.arco-table-filters-active > .pro-fa-icon[data-fa-table-icon='1'],
+.arco-table-filters-open > .pro-fa-icon[data-fa-table-icon='1'],
+.arco-table-filters:hover > .pro-fa-icon[data-fa-table-icon='1'] {
+  color: var(--color-text-1);
+}
+
+/* 操作列：固定宽；保持可见溢出以便固定列边缘阴影 */
+.pro-content-wrapper .arco-table-th.pro-table-ops-col,
+.pro-content-wrapper .arco-table-td.pro-table-ops-col {
+  box-sizing: border-box;
+}
+
+.pro-content-wrapper .arco-table-th.arco-table-col-fixed-left,
+.pro-content-wrapper .arco-table-td.arco-table-col-fixed-left,
+.pro-content-wrapper .arco-table-th.arco-table-col-fixed-right,
+.pro-content-wrapper .arco-table-td.arco-table-col-fixed-right {
+  overflow: visible;
+}
+
+/* 密度：三种行高略增高（相对 Arco 默认 7 / 5 / 2） */
+.pro-content-wrapper .arco-table-size-medium .arco-table-td .arco-table-cell {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.pro-content-wrapper .arco-table-size-small .arco-table-td .arco-table-cell {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.pro-content-wrapper .arco-table-size-mini .arco-table-td .arco-table-cell {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* 状态 Badge 文案：跟随表格单元格字号（Arco 默认 12px，与 14px 正文不一致） */
+.pro-content-wrapper .arco-table-td .arco-badge-status-text {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* 表格无数据：扩大空状态区域高度，垂直居中 */
+.pro-content-wrapper .arco-table-tr-empty .arco-table-td {
+  height: 280px;
+  vertical-align: middle;
+}
+
+.pro-content-wrapper .arco-table-tr-empty .arco-empty {
+  padding: 40px 0;
+}
+
+.pro-table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 日期面板（含范围选择） */
+.arco-picker-container,
+.arco-picker-range-container {
+  font-size: 12px;
+}
+
+.arco-picker-header,
+.arco-picker-header-label,
+.arco-picker-header-title,
+.arco-picker-header-icon,
+.arco-picker-week-list-item,
+.arco-picker-cell,
+.arco-picker-date-value,
+.arco-picker-footer,
+.arco-picker-shortcuts {
+  font-size: 12px;
+}
+
+/* 时间选择面板（标题 + 时分秒列） */
+.arco-timepicker-container,
+.arco-panel-date-timepicker-title,
+.arco-timepicker-cell,
+.arco-timepicker-cell-inner,
+.arco-timepicker-footer-btn-wrapper {
+  font-size: 12px;
+}
+
+/* DateTime 面板：日期头与「选择时间」标题高度一致 */
+.arco-panel-date .arco-picker-header,
+.arco-panel-date-timepicker-title {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 16px;
+  line-height: 40px;
+}
+
+.arco-panel-date-timepicker-title {
+  justify-content: center;
+}
+
+/* 日期时间范围面板底部：日期/时间 Tab 行 12px，向中间分隔线靠拢 */
+.arco-picker-range-container .arco-panel-date-view-tabs {
+  min-height: 40px;
+}
+
+.arco-picker-range-container .arco-panel-date-view-tab-pane {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 40px;
+  border-right: none;
+}
+
+.arco-picker-range-container .arco-panel-date-footer {
+  border-right: none;
+}
+
+.arco-picker-range-container .arco-panel-date-view-tab-pane .arco-icon {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+}
+
+.arco-picker-range-container .arco-panel-date-view-tab-pane-text {
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+/* 弹窗标题：左对齐 + 全站统一 14px */
+.arco-modal-title,
+.arco-modal-title-align-center {
+  justify-content: flex-start !important;
+  font-size: 14px !important;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+/* 操作确认弹窗（删除 / 批量操作） */
+.arco-modal.pro-confirm-modal {
+  width: 360px !important;
+  padding: 24px 24px 20px;
+  border-radius: 8px;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-header {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-title {
+  flex: 0 1 auto !important;
+  width: auto !important;
+  display: inline-flex !important;
+  justify-content: flex-start !important;
+  align-items: center;
+  gap: 0 !important;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-title-icon {
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-title .arco-icon {
+  font-size: 20px;
+  margin: 0 !important;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-body {
+  padding: 0 0 0 28px;
+  color: var(--color-text-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-footer {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.arco-modal.pro-confirm-modal .arco-modal-footer .arco-btn + .arco-btn {
+  margin-left: 12px;
+}
+
+.pro-modal-footer-actions {
+  /* 分隔线左右顶满弹窗（闭合），抵消 modal-body 内边距 24px 20px */
+  margin: 16px -20px -24px;
+  padding: 16px 20px;
+  text-align: right;
+  border-top: 1px solid var(--pro-divider, var(--color-border-1, #f2f3f5));
+}
+
+/* 导入拖拽区 / 导入导出弹窗 */
+.arco-modal.pro-io-modal {
+  border-radius: 8px;
+}
+
+.pro-io-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pro-io-tip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background: var(--color-primary-light-1);
+  border-radius: 6px;
+  color: var(--color-text-1);
+}
+
+.pro-io-tip-icon.pro-fa-icon,
+.pro-io-tip-icon {
+  flex: 0 0 14px;
+  box-sizing: border-box;
+  width: 14px !important;
+  height: 14px !important;
+  margin: 0;
+  padding: 0;
+  color: rgb(var(--primary-6));
+  font-size: 14px !important;
+  line-height: 1;
+  transform: none;
+  vertical-align: unset;
+}
+
+.pro-io-tip-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 14px;
+}
+
+.pro-io-upload {
+  width: 100%;
+}
+
+.pro-io-upload .arco-upload-wrapper,
+.pro-io-upload .arco-upload,
+.pro-io-upload .arco-upload-drag {
+  width: 100%;
+  display: block;
+}
+
+/* 去掉 Arco 外层默认边框，改由 .pro-upload-drag 绘制虚线框 */
+.pro-io-upload .arco-upload-drag {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.pro-upload-drag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 48px 16px;
+  min-height: 180px;
+  text-align: center;
+  background: #f7f8fa;
+  border: 1px dashed #c9cdd4;
+  border-radius: 6px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+body[arco-theme='dark'] .pro-upload-drag {
+  background: var(--color-fill-2, #2a2a2b);
+  border-color: var(--color-neutral-4, #484849);
+}
+
+.pro-io-upload .arco-upload-drag:hover .pro-upload-drag,
+.pro-upload-drag:hover {
+  border-color: rgb(var(--primary-6));
+  background: rgb(var(--primary-1, 232, 243, 255));
+}
+
+body[arco-theme='dark'] .pro-io-upload .arco-upload-drag:hover .pro-upload-drag,
+body[arco-theme='dark'] .pro-upload-drag:hover {
+  background: rgba(var(--primary-6), 0.12);
+}
+
+.pro-upload-drag-icon {
+  margin-bottom: 10px;
+  color: rgb(var(--primary-6));
+  font-size: 32px;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.pro-upload-drag-text {
+  color: var(--color-text-1);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.pro-upload-drag-hint {
+  margin-top: 4px;
+  color: var(--color-text-3);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* 已选文件列表 */
+.pro-io-upload .arco-upload-list {
+  margin: 0;
+  padding: 0;
+}
+
+.pro-io-upload .arco-upload-list-item,
+.pro-io-upload .arco-upload-list.arco-upload-list-type-text .arco-upload-list-item:first-of-type {
+  position: relative;
+  margin-top: 12px;
+  padding: 0 36px 0 0;
+  background: #f7f8fa;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+body[arco-theme='dark'] .pro-io-upload .arco-upload-list-item,
+body[arco-theme='dark'] .pro-io-upload .arco-upload-list.arco-upload-list-type-text .arco-upload-list-item:first-of-type {
+  background: var(--color-fill-2, #2a2a2b);
+  border: none;
+}
+
+.pro-io-upload .arco-upload-list-item-content {
+  width: auto;
+  min-height: 40px;
+  padding: 10px 12px;
+  padding-right: 8px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.pro-io-upload .arco-upload-list-item-file-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.pro-io-upload .arco-upload-list-item-name,
+.pro-io-upload .arco-upload-list-item-name-link,
+.pro-io-upload a.arco-upload-list-item-name,
+.pro-io-upload .arco-upload-list-item-name a {
+  margin-right: 0;
+  color: var(--color-text-1);
+  font-size: 13px;
+  line-height: 20px;
+  cursor: default;
+}
+
+.pro-io-upload .arco-upload-list-item-name:hover,
+.pro-io-upload .arco-upload-list-item-name-link:hover,
+.pro-io-upload a.arco-upload-list-item-name:hover,
+.pro-io-upload .arco-upload-list-item-name a:hover {
+  color: var(--color-text-1);
+}
+
+.pro-io-upload .arco-upload-list-item-operation {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.pro-io-upload .arco-upload-icon-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-3);
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.pro-io-upload .arco-upload-icon-remove:hover {
+  color: rgb(var(--danger-6));
+  background-color: transparent;
+}
+
+/* 原型由底部「开始导入」提交，隐藏列表内的上传/重试按钮 */
+.pro-io-upload .arco-upload-icon-start,
+.pro-io-upload .arco-upload-progress,
+.pro-io-upload .arco-upload-list-status {
+  display: none !important;
+}
+
+.pro-io-footer .pro-io-template,
+a.pro-io-template.arco-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.pro-export-form .arco-form-item {
+  margin-bottom: 16px;
+}
+
+.pro-export-form .arco-radio-group-direction-vertical .arco-radio {
+  margin-right: 0;
+  line-height: 32px;
+}
+
+.pro-export-hint {
+  margin: 0;
+  margin-right: auto;
+  padding: 0;
+  color: var(--color-text-3);
+  font-size: 13px;
+  line-height: 32px;
+  background: transparent;
+  border: none;
+}
+
+.pro-io-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  /* 分隔线左右顶满弹窗（闭合），抵消 modal-body 内边距 24px 20px */
+  margin: 4px -20px -24px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--pro-divider, var(--color-border-1, #f2f3f5));
+}
+
+.pro-io-footer .pro-io-template {
+  margin-right: auto;
+}
+
+/* ── 移动端适配（≤768） ── */
+@media (max-width: 768px) {
+  .pro-search-panel {
+    --pro-search-row-gap: 12px;
+    flex-direction: column;
+  }
+
+  .pro-search-form.arco-form-layout-vertical .arco-form-item {
+    margin-bottom: var(--pro-search-row-gap);
+  }
+
+  .pro-search-form.is-collapsed .arco-form-item {
+    margin-bottom: var(--pro-search-row-gap);
+  }
+
+  .pro-search-form.is-collapsed .arco-row > .arco-col:last-child .arco-form-item {
+    margin-bottom: 0;
+  }
+
+  .pro-search-form:not(.is-collapsed) .arco-row > .arco-col:nth-child(-n + 6) .arco-form-item,
+  .pro-search-form:not(.is-collapsed) .arco-row > .arco-col:nth-child(n + 7) .arco-form-item {
+    margin-bottom: var(--pro-search-row-gap);
+  }
+
+  .pro-search-form:not(.is-collapsed) .arco-row > .arco-col:last-child .arco-form-item {
+    margin-bottom: 0;
+  }
+
+  .pro-search-actions.is-mobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: stretch;
+    margin-top: var(--pro-search-row-gap);
+    gap: 8px;
+  }
+
+  .pro-search-actions.is-mobile .arco-btn:not(.pro-search-toggle) {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+
+  .pro-search-actions.is-mobile .pro-search-toggle {
+    margin-left: auto;
+  }
+
+  .pro-search-form .arco-row {
+    row-gap: 0;
+  }
+
+  .pro-search-form .arco-col {
+    margin-bottom: 0;
+  }
+
+  .pro-toolbar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .pro-table-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pro-table-footer .arco-pagination {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .arco-modal {
+    max-width: calc(100vw - 32px);
+  }
+}
+
+/* ── 自定义横向进度条 / 堆叠条：统一载入动画（改一处全局生效） ── */
+@keyframes pro-meter-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pro-spark-bar-in {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes pro-spark-ring-in {
+  from {
+    stroke-dashoffset: var(--spark-c, 200);
+  }
+}
+
+@keyframes pro-spark-chart-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+
+.pro-meter-fill,
+.crm-region-fill,
+.crm-discovery-fill,
+.crm-project-track,
+.workplace-sales-fill,
+.workplace-bar-fill,
+.ecom-source-fill,
+.ecom-rating-fill,
+.anl-source-fill,
+.acad-perf-fill,
+.list-card-metric-type-bar-fill,
+.list-card-metric-status-bar-fill,
+.list-card-metric-trend-bar-fill,
+.list-card-metric-icon-bar-fill,
+.fin-income-bar,
+.bank-spend-bar,
+.list-card-metric-progress-bar .arco-progress-line-bar,
+.prod-project-progress .arco-progress-line-bar,
+.prod-card .arco-progress-line-bar {
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: pro-meter-grow 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 指标卡 spark 柱：自下向上生长 */
+.list-card-metric-spark-bar {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transform: scaleY(0);
+  animation: pro-spark-bar-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(1) { animation-delay: 0.02s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(2) { animation-delay: 0.05s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(3) { animation-delay: 0.08s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(4) { animation-delay: 0.11s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(5) { animation-delay: 0.14s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(6) { animation-delay: 0.17s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(7) { animation-delay: 0.2s; }
+.list-card-metric-spark-chart--bar .list-card-metric-spark-bar:nth-child(8) { animation-delay: 0.23s; }
+
+/* 指标卡 spark / 圆环数字：描边从空画到目标值（需 --spark-c） */
+.list-card-metric-spark-ring-progress {
+  animation: pro-spark-ring-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 折线+面积一体自左向右显现，避免 dash 描边与 non-scaling-stroke 错位 */
+.list-card-metric-spark-chart:not(.list-card-metric-spark-chart--bar):not(.list-card-metric-spark-chart--ring),
+.list-card-metric-spark-kpi-chart {
+  clip-path: inset(0 100% 0 0);
+  animation: pro-spark-chart-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
+.list-card-metric-progress-ring-wrap,
+.list-card-metric-spark-ring-wrap {
+  animation: pro-donut-in 0.55s ease both;
+}
+
+@keyframes pro-donut-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.crm-region-list > li:nth-child(1) .crm-region-fill,
+.workplace-sales-list > li:nth-child(1) .workplace-sales-fill,
+.workplace-bar-list > li:nth-child(1) .workplace-bar-fill,
+.crm-project-list > li:nth-child(1) .crm-project-track,
+.fin-income-grid > .fin-income-item:nth-child(1) .fin-income-bar {
+  animation-delay: 0.04s;
+}
+.crm-region-list > li:nth-child(2) .crm-region-fill,
+.workplace-sales-list > li:nth-child(2) .workplace-sales-fill,
+.workplace-bar-list > li:nth-child(2) .workplace-bar-fill,
+.crm-project-list > li:nth-child(2) .crm-project-track,
+.fin-income-grid > .fin-income-item:nth-child(2) .fin-income-bar {
+  animation-delay: 0.08s;
+}
+.crm-region-list > li:nth-child(3) .crm-region-fill,
+.workplace-sales-list > li:nth-child(3) .workplace-sales-fill,
+.workplace-bar-list > li:nth-child(3) .workplace-bar-fill,
+.crm-project-list > li:nth-child(3) .crm-project-track,
+.fin-income-grid > .fin-income-item:nth-child(3) .fin-income-bar {
+  animation-delay: 0.12s;
+}
+.crm-region-list > li:nth-child(4) .crm-region-fill,
+.workplace-sales-list > li:nth-child(4) .workplace-sales-fill,
+.workplace-bar-list > li:nth-child(4) .workplace-bar-fill,
+.crm-project-list > li:nth-child(4) .crm-project-track {
+  animation-delay: 0.16s;
+}
+.crm-region-list > li:nth-child(5) .crm-region-fill,
+.workplace-sales-list > li:nth-child(5) .workplace-sales-fill,
+.workplace-bar-list > li:nth-child(5) .workplace-bar-fill,
+.crm-project-list > li:nth-child(5) .crm-project-track {
+  animation-delay: 0.2s;
+}
+.crm-region-list > li:nth-child(6) .crm-region-fill,
+.workplace-sales-list > li:nth-child(6) .workplace-sales-fill,
+.workplace-bar-list > li:nth-child(6) .workplace-bar-fill,
+.crm-project-list > li:nth-child(6) .crm-project-track {
+  animation-delay: 0.24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pro-meter-fill,
+  .crm-region-fill,
+  .crm-discovery-fill,
+  .crm-project-track,
+  .workplace-sales-fill,
+  .workplace-bar-fill,
+  .ecom-source-fill,
+  .ecom-rating-fill,
+  .anl-source-fill,
+  .acad-perf-fill,
+  .list-card-metric-type-bar-fill,
+  .list-card-metric-status-bar-fill,
+  .list-card-metric-trend-bar-fill,
+  .list-card-metric-icon-bar-fill,
+  .fin-income-bar,
+  .bank-spend-bar,
+  .list-card-metric-progress-bar .arco-progress-line-bar,
+  .prod-project-progress .arco-progress-line-bar,
+  .prod-card .arco-progress-line-bar,
+  .list-card-metric-spark-bar,
+  .list-card-metric-spark-ring-progress,
+  .list-card-metric-spark-chart:not(.list-card-metric-spark-chart--bar):not(.list-card-metric-spark-chart--ring),
+  .list-card-metric-spark-kpi-chart,
+  .list-card-metric-progress-ring-wrap,
+  .list-card-metric-spark-ring-wrap {
+    transform: none;
+    animation: none;
+    clip-path: none;
+  }
+}

@@ -1,0 +1,464 @@
+html,
+body,
+#app {
+  margin: 0;
+  min-height: 100%;
+  background: var(--v8-page-bg, #f0f2f5);
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  color: #1d2129;
+}
+
+.v8-layout {
+  min-height: 100vh;
+  background: var(--v8-page-bg, #f0f2f5);
+  --v8-content-max: 1440px;
+  --v8-content-pad-x: 24px;
+}
+
+/* 顶栏 / 导航 / 内容共用同一内容宽度，左右对齐 */
+.chrome-inner {
+  width: 100%;
+  max-width: var(--v8-content-max);
+  margin: 0 auto;
+  padding: 0 var(--v8-content-pad-x);
+  box-sizing: border-box;
+}
+
+/* ── 白顶栏（背景通栏，内容居中对齐）── */
+.chrome-top {
+  height: var(--v8-chrome-top, 56px);
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+
+.chrome-top .chrome-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.chrome-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.chrome-brand .pro-logo-mark {
+  width: 32px;
+  height: 32px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+.chrome-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d2129;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.chrome-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chrome-tags .arco-tag {
+  border: none;
+  font-weight: 500;
+}
+
+.chrome-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 6px 4px 4px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.chrome-user:hover {
+  background: #f5f6f8;
+}
+
+.chrome-user-name {
+  font-size: 14px;
+  color: #1d2129;
+  max-width: 96px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chrome-user-caret {
+  color: #86909c;
+  font-size: 12px;
+}
+
+/* ── 深蓝横导航（背景通栏，菜单与内容对齐）── */
+.chrome-nav {
+  height: var(--v8-nav-bar, 48px);
+  background: linear-gradient(90deg, var(--v8-nav-blue, #1677ff) 0%, #3c8cff 86%, #5aa3ff 100%);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.chrome-nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  padding-left: var(--v8-content-pad-x);
+  padding-right: var(--v8-content-pad-x);
+}
+
+.chrome-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 22px;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.chrome-nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.chrome-nav a.router-link-active {
+  color: #fff;
+  font-weight: 500;
+  background: var(--v8-nav-selected, rgba(0, 0, 0, 0.16));
+}
+
+/* ── 内容区 ── */
+.chrome-main {
+  width: 100%;
+  max-width: var(--v8-content-max);
+  margin: 0 auto;
+  padding: 16px var(--v8-content-pad-x) 32px;
+  box-sizing: border-box;
+}
+
+.crumb {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 22px;
+  color: #86909c;
+}
+
+.crumb-sep {
+  margin: 0 8px;
+  color: #c9cdd4;
+}
+
+.crumb-current {
+  color: #4e5969;
+}
+
+.workplace-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.workplace-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.workplace-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1d2129;
+  line-height: 1.35;
+}
+
+.workplace-desc {
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #86909c;
+  max-width: 640px;
+}
+
+.v8-summary-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 4px;
+  font-size: 13px;
+  color: #86909c;
+}
+
+.v8-summary-stats strong {
+  margin-left: 6px;
+  font-weight: 600;
+  color: #1d2129;
+}
+
+/* ── 卡片：软阴影白底 ── */
+.kpi-card,
+.content-card {
+  border: none !important;
+  border-radius: var(--v8-card-radius, 8px) !important;
+  background: #fff;
+  box-shadow: var(--v8-card-shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.kpi-card:hover {
+  box-shadow: 0 4px 12px rgba(22, 119, 255, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.kpi-card .arco-card-body,
+.content-card .arco-card-body {
+  padding: 20px;
+}
+
+.kpi-body {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.kpi-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.kpi-title {
+  color: #86909c;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d2129;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.kpi-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #a9aeb8;
+}
+
+.section-title {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d2129;
+}
+
+/* ── 筛选条 ── */
+.page-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 4px 0 12px;
+  border-bottom: 1px solid #f2f3f5;
+}
+
+.page-search .arco-input-wrapper,
+.page-search .arco-select-view-single {
+  border-radius: 6px;
+}
+
+.page-search .arco-btn {
+  border-radius: 6px;
+}
+
+.table-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.table-footer-right {
+  margin-left: auto;
+}
+
+/* ── 表格 ── */
+.v8-layout .arco-table-th {
+  background: #fafafa !important;
+  font-weight: 600;
+  color: #1d2129;
+  font-size: 13px;
+}
+
+.v8-layout .arco-table-tr:hover .arco-table-td {
+  background: #f5f8ff !important;
+}
+
+.v8-layout .arco-table-td {
+  font-size: 13px;
+  color: #4e5969;
+}
+
+.v8-layout .arco-table-container,
+.v8-layout .arco-table-content,
+.v8-layout .arco-table-content-inner,
+.v8-layout .arco-table-content-scroll,
+.v8-layout .arco-scrollbar,
+.v8-layout .arco-scrollbar-container {
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+
+.v8-layout .arco-table-element {
+  table-layout: fixed !important;
+  width: 100% !important;
+}
+
+.v8-layout .arco-table-th,
+.v8-layout .arco-table-th .arco-table-cell,
+.v8-layout .arco-table-td .arco-table-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+  word-break: keep-all;
+}
+
+.v8-layout .arco-table-th .arco-table-cell {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.v8-layout .arco-table-td .arco-table-cell .arco-space,
+.v8-layout .arco-table-td .arco-table-cell .arco-btn,
+.v8-layout .arco-table-ops {
+  white-space: nowrap !important;
+}
+
+.v8-layout .arco-table-ops.arco-space {
+  flex-wrap: nowrap !important;
+}
+
+.v8-layout .arco-table-td .arco-table-cell .arco-btn-size-small {
+  padding: 0 4px;
+}
+
+.v8-layout .arco-pagination {
+  font-size: 13px;
+}
+
+.v8-layout .arco-btn-primary {
+  border-radius: 6px;
+}
+
+.v8-layout .arco-radio-group-button .arco-radio-button {
+  border-radius: 0;
+}
+
+.v8-layout .arco-radio-group-button .arco-radio-button:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.v8-layout .arco-radio-group-button .arco-radio-button:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+@media (max-width: 768px) {
+  .v8-layout {
+    --v8-content-pad-x: 16px;
+  }
+
+  .chrome-tags,
+  .chrome-user-name {
+    display: none;
+  }
+
+  .chrome-nav-inner {
+    overflow-x: auto;
+  }
+
+  .chrome-nav a {
+    padding: 0 14px;
+    white-space: nowrap;
+  }
+
+  .chrome-main {
+    padding-top: 12px;
+    padding-bottom: 24px;
+  }
+
+  .page-search .arco-input-wrapper,
+  .page-search .arco-select {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* 表单字段说明：统一放在字段名（label）下方 */
+.form-field-label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.form-field-label__title {
+  font-weight: inherit;
+  color: inherit;
+}
+
+.form-field-label__desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-text-3, #86909c);
+  white-space: normal;
+}
+
+.arco-form-item-label-col .form-field-label {
+  vertical-align: top;
+}

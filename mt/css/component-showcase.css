@@ -1,0 +1,1569 @@
+/* 常用组件展示页通用布局 */
+.component-showcase-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 展示表无纵向滚动需求：避免勾选悬停伪元素撑出纵向滚动条 */
+.component-showcase-page .arco-table-container,
+.component-showcase-page .arco-table-content,
+.component-showcase-page .arco-table-body {
+  overflow-y: hidden !important;
+}
+
+.component-showcase-page .arco-scrollbar-track-direction-vertical {
+  display: none !important;
+}
+
+.component-showcase-page .arco-table-td.arco-table-operation.arco-table-checkbox,
+.component-showcase-page .arco-table-th.arco-table-operation.arco-table-checkbox {
+  overflow: hidden;
+}
+
+.component-showcase-tip {
+  margin-bottom: 0;
+}
+
+.component-showcase-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding-bottom: 0;
+  border-bottom: none;
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.component-showcase-group-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.component-showcase-card {
+  margin-bottom: 0;
+}
+
+.component-showcase-card .arco-card-body {
+  padding: 20px 28px;
+}
+
+.component-showcase-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.component-basic-breadcrumb {
+  gap: 8px;
+}
+
+.component-showcase-demo--follow {
+  margin-top: 12px;
+}
+
+/* 虚线按钮：去底色，仅保留虚线描边 */
+.component-basic-btn-dashed.arco-btn-dashed {
+  background-color: transparent;
+}
+
+.component-basic-btn-dashed.arco-btn-dashed:hover,
+.component-basic-btn-dashed.arco-btn-dashed:focus {
+  background-color: transparent;
+}
+
+/* 仅文字+图标组合（如下拉按钮）给图标左侧留白；纯图标按钮保持居中 */
+.component-basic-dropdown-trigger.arco-btn .pro-fa-icon {
+  margin-left: 4px;
+}
+
+.component-showcase-demo .arco-btn-shape-circle .pro-fa-icon,
+.component-showcase-demo .arco-btn-only-icon .pro-fa-icon {
+  margin-left: 0;
+}
+
+/* 下拉菜单宽度与触发按钮对齐 */
+.component-basic-dropdown-menu.arco-dropdown,
+.component-basic-dropdown-menu .arco-dropdown {
+  box-sizing: border-box;
+}
+
+.component-basic-dropdown-menu .arco-dropdown-option {
+  justify-content: center;
+}
+
+/* 圆角方形图标按钮（非正圆；居中对齐全局 only-icon 规则） */
+.component-basic-btn-icon-square.arco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: var(--border-radius-medium, 4px);
+}
+
+.component-basic-btn-icon-square.arco-btn .arco-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.component-basic-btn-icon-square.arco-btn .pro-fa-icon {
+  margin: 0;
+}
+
+.component-showcase-demo--stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+/* 加载 / 空状态：同高居中展示区 */
+.component-basic-status-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  padding: 16px 0;
+}
+
+.component-basic-status-demo .arco-spin-tip {
+  color: rgb(var(--primary-6));
+}
+
+.component-basic-status-demo .arco-empty {
+  margin: 0;
+  padding: 0;
+}
+
+/* 线形进度条：限制展示宽度，轨道长度统一（右侧文案/图标占固定宽） */
+.component-basic-progress-line {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.component-basic-progress-line .arco-progress-line-wrapper {
+  width: 100%;
+}
+
+.component-basic-progress-line .arco-progress-line {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+}
+
+.component-basic-progress-line .arco-progress-line-text {
+  flex: 0 0 52px;
+  flex-grow: 0;
+  width: 52px;
+  min-width: 52px;
+  margin-left: 12px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* 环形：轨道与进度环同宽；进度环圆角胶囊端点 */
+.component-basic-progress-circle .arco-progress-circle-bg,
+.component-basic-progress-circle .arco-progress-circle-bar {
+  stroke-linecap: round;
+}
+
+/* 环形状态图标：加大加粗 */
+.component-basic-progress-circle .arco-progress-circle-text .arco-icon {
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.component-basic-progress-circle .arco-progress-circle-text .arco-icon svg {
+  stroke-width: 5;
+}
+
+/* 步骤条展示：铺满容器；布局交还 Arco 默认，避免点状错位 */
+.component-basic-steps-stack,
+.component-basic-steps-vertical-row {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.component-basic-steps-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.component-basic-steps-stack .arco-steps {
+  width: 100%;
+}
+
+.component-basic-steps-stack .arco-steps-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5715;
+  margin-top: 8px;
+}
+
+.component-basic-steps-stack .arco-steps-item-description {
+  font-size: 12px;
+}
+
+/* 点状步骤条：连接线高度统一（不改定位） */
+.component-basic-steps-stack .arco-steps-mode-dot .arco-steps-item:not(:last-child) .arco-steps-item-tail {
+  height: 2px;
+}
+
+/* 步骤圆环：图标垂直居中；数字 12px，圆环尺寸不变 */
+.component-basic-steps-stack .arco-steps-icon,
+.component-basic-steps-vertical-row .arco-steps-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 12px;
+}
+
+.component-basic-steps-stack .arco-steps-icon .arco-icon,
+.component-basic-steps-stack .arco-steps-icon .pro-fa-icon,
+.component-basic-steps-vertical-row .arco-steps-icon .arco-icon,
+.component-basic-steps-vertical-row .arco-steps-icon .pro-fa-icon {
+  display: block;
+  line-height: 1;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+/* 已完成圆环：浅底 + 主色描边（对齐边框标签气质） */
+.component-basic-steps-stack .arco-steps-item-finish .arco-steps-icon,
+.component-basic-steps-vertical-row .arco-steps-item-finish .arco-steps-icon {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border: 1px solid rgb(var(--primary-6));
+}
+
+.component-basic-steps-vertical-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.component-basic-steps-vertical-row .arco-steps {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.component-basic-steps-vertical-row .arco-steps-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.component-basic-steps-vertical-row .arco-steps-item-description {
+  font-size: 12px;
+  line-height: 1.667;
+}
+
+/* 时间轴展示 */
+.component-basic-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 48px;
+  margin-bottom: 20px;
+}
+
+.component-basic-timeline-grid .component-showcase-row {
+  margin-bottom: 0;
+}
+
+.component-basic-timeline-grid .arco-timeline-item-label {
+  white-space: pre-line;
+}
+
+.component-basic-timeline-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-3);
+  font-size: 12px;
+  line-height: 1.667;
+}
+
+.component-basic-timeline-date .pro-fa-icon,
+.component-basic-timeline-date .arco-icon {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--color-text-3);
+}
+
+/* 横向时间轴：等宽列 + 圆点按 i/(n-1) 均分；文案绝对定位锚在圆点下 */
+.component-basic-timeline-horizontal.arco-timeline {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* 整轨连线（首尾圆点中心之间） */
+.component-basic-timeline-horizontal.arco-timeline::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  left: 3px;
+  z-index: 0;
+  height: 1px;
+  pointer-events: none;
+  background: var(--color-neutral-3);
+}
+
+.component-basic-timeline-horizontal .arco-timeline-item,
+.component-basic-timeline-horizontal .arco-timeline-item:last-child {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 72px;
+  overflow: visible;
+  --tl-p: 0;
+}
+
+/* 节点轨位：2 */
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(1):nth-last-child(2) { --tl-p: 0; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(2):nth-last-child(1) { --tl-p: 1; }
+
+/* 节点轨位：3 */
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(1):nth-last-child(3) { --tl-p: 0; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(2):nth-last-child(2) { --tl-p: 0.5; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(3):nth-last-child(1) { --tl-p: 1; }
+
+/* 节点轨位：4 → 0 / 1/3 / 2/3 / 1 */
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(1):nth-last-child(4) { --tl-p: 0; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(2):nth-last-child(3) { --tl-p: 0.333333; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(3):nth-last-child(2) { --tl-p: 0.666667; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(4):nth-last-child(1) { --tl-p: 1; }
+
+/* 节点轨位：5 */
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(1):nth-last-child(5) { --tl-p: 0; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(2):nth-last-child(4) { --tl-p: 0.25; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(3):nth-last-child(3) { --tl-p: 0.5; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(4):nth-last-child(2) { --tl-p: 0.75; }
+.component-basic-timeline-horizontal .arco-timeline-item:nth-child(5):nth-last-child(1) { --tl-p: 1; }
+
+.component-basic-timeline-horizontal .arco-timeline-item-dot-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  overflow: visible;
+  z-index: 1;
+}
+
+.component-basic-timeline-horizontal .arco-timeline-item-last .arco-timeline-item-dot-wrapper {
+  justify-content: flex-end;
+}
+
+/* 中间圆点：用 margin 落到 --tl-p（减半个点宽 3px），不用 transform，避免裁切 */
+.component-basic-timeline-horizontal .arco-timeline-item:not(:first-child):not(.arco-timeline-item-last) .arco-timeline-item-dot-content {
+  margin-left: calc(var(--tl-p) * 100% - 3px);
+}
+
+.component-basic-timeline-horizontal .arco-timeline-item-dot-line {
+  display: none;
+}
+
+/* 文案绝对定位锚在圆点下：首左 / 中居中 / 尾右（末项用 right:0，勿用 relative+right） */
+.component-basic-timeline-horizontal .arco-timeline-item-content-wrapper {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0;
+  margin-left: 0;
+  text-align: left;
+}
+
+.component-basic-timeline-horizontal .arco-timeline-item:not(:first-child):not(.arco-timeline-item-last) .arco-timeline-item-content-wrapper {
+  left: calc(var(--tl-p) * 100%);
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.component-basic-timeline-horizontal .arco-timeline-item-last .arco-timeline-item-content-wrapper {
+  right: 0;
+  left: auto;
+  text-align: right;
+  transform: none;
+}
+
+.component-basic-timeline-horizontal .arco-timeline-item-label {
+  text-align: inherit;
+}
+
+/* 图标时间轴：大节点，日期靠右；纵向节奏对齐「常用」 */
+.component-basic-timeline-icon .arco-timeline-item {
+  min-height: 78px;
+  padding-bottom: 0;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-last {
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-dot-wrapper {
+  width: 32px;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-dot-wrapper .arco-timeline-item-dot-content {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-dot-line {
+  top: 36px;
+  bottom: -4px;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-last .arco-timeline-item-dot-line {
+  display: none;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-content-wrapper {
+  /* 32px 节点 + 6px 间距 */
+  margin-left: 38px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.component-basic-timeline-icon .arco-timeline-item-content {
+  margin-bottom: 0;
+}
+
+.component-basic-timeline-icon .component-basic-timeline-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.component-basic-timeline-icon .component-basic-timeline-main {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.component-basic-timeline-icon .component-basic-timeline-title {
+  line-height: 1.4;
+}
+
+.component-basic-timeline-icon .component-basic-timeline-desc {
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.component-basic-timeline-icon .component-basic-timeline-date {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.component-basic-timeline-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pro-theme-color-soft);
+  border: 1px solid var(--pro-theme-color);
+  color: var(--pro-theme-color);
+  box-shadow: 0 0 0 3px var(--color-bg-2);
+}
+
+.component-basic-timeline-dot--danger {
+  background: rgba(var(--danger-6), 0.12);
+  border-color: rgb(var(--danger-6));
+  color: rgb(var(--danger-6));
+}
+
+.component-basic-timeline-dot .pro-fa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+}
+
+.component-basic-timeline-title {
+  color: var(--color-text-1);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5715;
+}
+
+.component-basic-timeline-desc {
+  margin-top: 4px;
+  color: var(--color-text-3);
+  font-size: 12px;
+  line-height: 1.667;
+}
+
+@media (max-width: 900px) {
+  .component-basic-timeline-grid,
+  .component-basic-tree-grid,
+  .component-basic-collapse-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.component-showcase-demo--block {
+  display: block;
+}
+
+.component-showcase-label {
+  margin-bottom: 8px;
+  color: var(--color-text-3);
+  font-size: 13px;
+}
+
+.component-showcase-row {
+  margin-bottom: 20px;
+}
+
+.component-showcase-row:last-child {
+  margin-bottom: 0;
+}
+
+/* 基础组件：头像 */
+.component-basic-avatar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.component-basic-avatar-row .arco-avatar {
+  flex-shrink: 0;
+}
+
+/* 字号约为头像直径的 35%（Arco 默认为 50%） */
+.component-basic-avatar-row .arco-avatar[style*='width: 64px'],
+.component-basic-avatar-row .arco-avatar[style*='width:64px'] {
+  font-size: 22px !important;
+}
+
+.component-basic-avatar-row .arco-avatar[style*='width: 40px'],
+.component-basic-avatar-row .arco-avatar[style*='width:40px'] {
+  font-size: 14px !important;
+}
+
+.component-basic-avatar-row .arco-avatar[style*='width: 36px'],
+.component-basic-avatar-row .arco-avatar[style*='width:36px'] {
+  font-size: 13px !important;
+}
+
+.component-basic-avatar-row .arco-avatar[style*='width: 32px'],
+.component-basic-avatar-row .arco-avatar[style*='width:32px'] {
+  font-size: 12px !important;
+}
+
+.component-basic-avatar-row .arco-avatar[style*='width: 24px'],
+.component-basic-avatar-row .arco-avatar[style*='width:24px'] {
+  font-size: 10px !important;
+}
+
+/* 文字头像：预留内边距，避免长文案贴边 */
+.component-basic-avatar-row .arco-avatar-text {
+  padding: 0 4px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.component-basic-avatar-row .arco-avatar .pro-fa-icon {
+  font-size: 1em;
+}
+
+.component-basic-avatar-row .arco-avatar .pro-avatar-user-icon {
+  width: 1.25em;
+  height: 1.25em;
+  color: inherit;
+}
+
+.component-basic-avatar-row .arco-avatar .pro-avatar-user-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 图标头像：按尺寸放大，避免线描图偏小 */
+/* 图标头像：按尺寸放大，避免偏小 */
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width: 64px'],
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width:64px'] {
+  font-size: 32px !important;
+}
+
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width: 40px'],
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width:40px'] {
+  font-size: 20px !important;
+}
+
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width: 32px'],
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width:32px'] {
+  font-size: 16px !important;
+}
+
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width: 24px'],
+.component-basic-avatar-row .arco-avatar:has(.pro-avatar-user-icon, .fa-user)[style*='width:24px'] {
+  font-size: 12px !important;
+}
+
+/* 头像组：画布色描边做叠放分隔（避免双层描边） */
+.component-basic-avatar-stack.arco-avatar-group .arco-avatar {
+  border: 1px solid var(--color-bg-2);
+  box-shadow: none;
+  font-size: 13px !important;
+}
+
+.component-basic-avatar-stack.arco-avatar-group .arco-avatar:not(:first-child) {
+  margin-left: -8px;
+}
+
+/* 更多 +N：浅底深字，字号与权重更克制 */
+.component-basic-avatar-stack.arco-avatar-group .arco-avatar-group-max-count-avatar.arco-avatar {
+  background-color: var(--color-fill-3) !important;
+  color: var(--color-text-2) !important;
+  font-size: 13px !important;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.component-basic-avatar-stack.arco-avatar-group .arco-avatar-group-max-count-avatar .arco-avatar-text {
+  padding: 0;
+}
+
+/* 气泡内溢出头像：描边、叠放、字号与组内一致 */
+.component-basic-avatar-group-popover,
+.arco-popover-content > div:has(> .arco-avatar) {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.component-basic-avatar-group-popover .arco-avatar,
+.arco-popover-content > div:has(> .arco-avatar) > .arco-avatar {
+  border: 1px solid var(--color-bg-popup, var(--color-bg-5)) !important;
+  box-shadow: none;
+  font-size: 13px !important;
+}
+
+.component-basic-avatar-group-popover .arco-avatar:not(:first-child),
+.arco-popover-content > div:has(> .arco-avatar) > .arco-avatar:not(:first-child) {
+  margin-left: -8px !important;
+}
+
+.component-basic-avatar-row .pro-avatar-trigger {
+  cursor: pointer;
+}
+
+/* 图表组件：标题区复用 .component-showcase-group-title，与基础/表单组件页一致 */
+.component-chart-grid .viz-row {
+  margin-top: 0;
+}
+
+.component-chart-host {
+  min-height: 280px;
+  width: 100%;
+}
+
+/* 圆环展柜：对齐 charts.md（200×200），居中与左右留白一致 */
+.component-chart-host.shadcn-chart-host--donut {
+  display: block;
+  width: 200px;
+  min-height: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.component-chart-grid .shadcn-chart-card .component-showcase-group-title {
+  margin-bottom: 4px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* 同行左右卡片等高（漏斗柱 / 环形图等高度差场景） */
+.component-chart-grid > .arco-row {
+  align-items: stretch;
+}
+
+.component-chart-grid > .arco-row > .arco-col {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+/* 环形图：中间槽位垂直居中放环；图例贴卡片底 */
+.component-chart-grid .shadcn-chart-card .component-chart-donut-slot {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  width: 100%;
+}
+
+.component-chart-grid .shadcn-chart-card .component-chart-donut-slot .component-chart-host.shadcn-chart-host--donut {
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.component-chart-grid .shadcn-chart-card .component-chart-donut-slot + .shadcn-chart-legend {
+  flex: 0 0 auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+/* 销售漏斗 / 内容渠道：与基础径向图同一套 shadcn-donut（≥520px 左图右例）
+   内边距对齐 index 工作台圆环（20px，不用展示页默认 28px） */
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card.component-chart-funnel-card,
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card.component-chart-channel-card {
+  min-height: 384px;
+  height: auto;
+}
+
+.component-chart-grid .component-chart-funnel-card > .arco-card-body,
+.component-chart-grid .component-chart-channel-card > .arco-card-body,
+.component-chart-grid .component-chart-radial-card.shadcn-donut-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.component-chart-grid .component-chart-funnel-card .shadcn-donut-layout,
+.component-chart-grid .component-chart-channel-card .shadcn-donut-layout,
+.component-chart-grid .component-chart-radial-card .shadcn-donut-layout {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  margin-top: 0;
+}
+
+.component-chart-grid .component-chart-channel-card .shadcn-donut-host {
+  width: 200px;
+  height: 200px;
+  min-height: 200px;
+}
+
+/* 图例贴右：wrap 随内容收缩；右间距 = 卡片 20px + wrap 10px = 30px（charts.md） */
+@container shadcn-donut (min-width: 520px) {
+  .component-chart-funnel-card .shadcn-donut-layout,
+  .component-chart-channel-card .shadcn-donut-layout,
+  .component-chart-radial-card .shadcn-donut-layout,
+  .component-chart-rose-card .shadcn-donut-layout,
+  .component-chart-rose-card .shadcn-rose-layout {
+    gap: 16px;
+    padding-right: 0;
+  }
+
+  .component-chart-funnel-card .shadcn-donut-legend-wrap,
+  .component-chart-channel-card .shadcn-donut-legend-wrap,
+  .component-chart-radial-card .shadcn-donut-legend-wrap,
+  .component-chart-rose-card .shadcn-donut-legend-wrap {
+    width: auto;
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 10px;
+  }
+
+  .component-chart-funnel-card .shadcn-donut-legend--inline .shadcn-donut-legend-meta,
+  .component-chart-channel-card .shadcn-donut-legend--inline .shadcn-donut-legend-meta,
+  .component-chart-radial-card .shadcn-donut-legend--inline .shadcn-donut-legend-meta,
+  .component-chart-rose-card .shadcn-donut-legend--inline .shadcn-donut-legend-meta {
+    margin-left: 0;
+  }
+}
+
+/* 常用图表页漏斗略窄；不改 CRM 页 320 */
+.component-chart-grid .component-chart-funnel-card .crm-funnel {
+  max-width: 180px;
+  min-height: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+/* 径向图：保底高度对齐雷达/漏斗；图例变多时卡片随内容增高，不再裁切。
+   选择器需压过上方 .shadcn-chart-card { height:100% } / .arco-card-body { min-height:0 } */
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card.component-chart-radial-card {
+  min-height: 384px;
+  height: auto;
+  overflow: visible;
+}
+
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card.component-chart-radial-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.component-chart-grid .component-chart-radial-card .component-chart-radial-chart {
+  height: 250px;
+}
+
+.component-chart-grid .component-chart-radial-card .shadcn-radial-host,
+.component-chart-grid .component-chart-radial-card > .arco-card-body > .shadcn-chart-host--radial {
+  width: min(250px, 100%);
+  max-width: 100%;
+  height: 250px;
+  min-height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 0 0 auto;
+}
+
+/* 宽卡横排时：径向图在剩余空白区居中，图形本身仍 250 */
+@container shadcn-donut (min-width: 520px) {
+  .shadcn-donut-chart.component-chart-radial-chart {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 250px;
+    height: 250px;
+    justify-content: center;
+  }
+
+  .component-chart-radial-chart .shadcn-radial-host {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .crm-funnel {
+    margin: 0 auto;
+  }
+}
+
+.component-chart-grid .component-chart-funnel-card .shadcn-donut-legend-wrap,
+.component-chart-grid .component-chart-channel-card .shadcn-donut-legend-wrap,
+.component-chart-grid .component-chart-radial-card .shadcn-donut-legend-wrap {
+  flex: 0 0 auto;
+  min-height: min-content;
+}
+
+.component-chart-grid .component-chart-radial-card > .arco-card-body > .shadcn-chart-legend {
+  margin-top: 16px;
+  margin-bottom: 0;
+  flex: 0 0 auto;
+  min-height: min-content;
+}
+
+.component-chart-grid .component-chart-gauge-block,
+.component-chart-grid .component-chart-gauge-score-block,
+.component-chart-grid .component-chart-radial-fill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.component-chart-grid .component-chart-gauge-block > .shadcn-chart-host--gauge,
+.component-chart-grid .component-chart-gauge-block > .shadcn-chart-host--liquid,
+.component-chart-grid .component-chart-gauge-score-block > .shadcn-chart-host--gauge {
+  margin-bottom: 0;
+}
+
+.component-chart-grid .component-chart-gauge-footer {
+  margin-top: -44px;
+  padding-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-3, #86909c);
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.component-chart-grid > .arco-row > .arco-col > .shadcn-chart-card.component-chart-rose-card {
+  min-height: 384px;
+  height: auto;
+  flex: 1 0 auto;
+  overflow: visible;
+}
+
+.component-chart-grid .component-chart-rose-card > .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: min-content;
+  overflow: visible;
+  padding: 20px;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-donut-layout,
+.component-chart-grid .component-chart-rose-card .shadcn-rose-layout {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: min-content;
+  margin-top: 0;
+  padding-bottom: 0;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-rose-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  height: 220px;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-donut-legend-wrap {
+  flex: 0 0 auto;
+  min-height: min-content;
+  width: 100%;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-rose-legend {
+  gap: 0;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-rose-legend .shadcn-donut-legend-item {
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 40px;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-rose-legend .shadcn-donut-legend-name-row {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-rose-host {
+  width: 220px;
+  height: 220px;
+  min-height: 220px;
+  margin: 0 auto;
+}
+
+.component-chart-grid .component-chart-rose-card .shadcn-chart-host--rose-semi {
+  width: calc(100% - 20px);
+  height: 280px;
+  min-height: 280px;
+  margin: 0 auto;
+}
+
+@container shadcn-donut (min-width: 520px) {
+  .component-chart-rose-card .shadcn-rose-layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+
+  .component-chart-rose-card .shadcn-rose-chart {
+    flex: 1 1 auto;
+    align-self: center;
+    width: auto;
+    min-width: 220px;
+    height: 220px;
+    justify-content: center;
+  }
+
+  .component-chart-grid .component-chart-rose-card .shadcn-donut-legend-wrap {
+    align-self: center;
+    width: auto;
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding-right: 10px;
+  }
+
+  .component-chart-rose-card .shadcn-rose-legend {
+    gap: 0;
+  }
+
+  .component-chart-grid .component-chart-rose-card .shadcn-rose-legend .shadcn-donut-legend-item {
+    min-height: 32px;
+    justify-content: flex-start;
+    gap: 16px;
+    width: auto;
+  }
+
+  .component-chart-grid .component-chart-rose-card .shadcn-rose-legend .shadcn-donut-legend-name-row {
+    flex: 0 0 7em;
+    width: 7em;
+    min-width: 7em;
+    justify-content: flex-start;
+  }
+}
+
+/* 富文本 */
+.component-editor {
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--border-radius-small, 2px);
+  background: var(--color-bg-2);
+  overflow: hidden;
+}
+
+.component-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border-2);
+  background: var(--color-fill-1);
+}
+
+.component-editor-toolbar .arco-select {
+  flex-shrink: 0;
+}
+
+.component-editor-toolbar .arco-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+}
+
+/* 工具栏图标按钮：方形、无边框、悬停/按下有反馈 */
+.component-editor-toolbar .arco-btn-group .arco-btn,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-2);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-small, 2px);
+  box-shadow: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.component-editor-toolbar .arco-btn-group .arco-btn:not(:first-child),
+.component-editor-toolbar .arco-btn-group .arco-btn:not(:last-child) {
+  border-radius: var(--border-radius-small, 2px);
+}
+
+.component-editor-toolbar .arco-btn-group .arco-btn .arco-btn-icon,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn .arco-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.component-editor-toolbar .arco-btn-group .arco-btn .pro-fa-icon,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn .pro-fa-icon {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.component-editor-toolbar .arco-btn-group .arco-btn:hover,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn:hover {
+  color: var(--color-text-1);
+  background: var(--color-fill-3);
+}
+
+.component-editor-toolbar .arco-btn-group .arco-btn:active,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn:active,
+.component-editor-toolbar .arco-btn-group .arco-btn.arco-btn-active,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn.arco-btn-active {
+  color: rgb(var(--primary-6));
+  background: var(--pro-theme-color-soft);
+}
+
+.component-editor-toolbar .arco-btn-group .arco-btn:focus-visible,
+.component-editor-toolbar .component-editor-tool-btn.arco-btn:focus-visible {
+  color: rgb(var(--primary-6));
+  background: var(--color-fill-3);
+  outline: 2px solid rgba(var(--primary-6), 0.35);
+  outline-offset: 1px;
+}
+
+.component-editor-divider {
+  width: 1px;
+  height: 16px;
+  margin: 0 2px;
+  background: var(--color-border-2);
+  flex-shrink: 0;
+}
+
+.component-editor-body {
+  min-height: 280px;
+  padding: 16px 20px;
+  color: var(--color-text-1);
+  font-size: 14px;
+  line-height: 1.75;
+  outline: none;
+}
+
+.component-editor-body:empty::before {
+  content: attr(data-placeholder);
+  color: var(--color-text-3);
+  pointer-events: none;
+}
+
+.component-editor-body h1,
+.component-editor-body h2,
+.component-editor-body h3 {
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.component-editor-body p {
+  margin: 0 0 12px;
+}
+
+.component-editor-body ul,
+.component-editor-body ol {
+  margin: 0 0 12px;
+  padding-left: 24px;
+}
+
+.component-editor-preview {
+  min-height: 120px;
+  padding: 16px 20px;
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--border-radius-small, 2px);
+  background: var(--color-fill-1);
+  color: var(--color-text-1);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.component-editor-actions {
+  margin-top: 12px;
+}
+
+body[arco-theme='dark'] .component-editor-toolbar {
+  background: var(--color-fill-2);
+}
+
+body[arco-theme='dark'] .component-editor-toolbar .arco-btn-group .arco-btn:hover,
+body[arco-theme='dark'] .component-editor-toolbar .component-editor-tool-btn.arco-btn:hover {
+  background: var(--color-fill-3);
+}
+
+body[arco-theme='dark'] .component-editor-toolbar .arco-btn-group .arco-btn:active,
+body[arco-theme='dark'] .component-editor-toolbar .component-editor-tool-btn.arco-btn:active,
+body[arco-theme='dark'] .component-editor-toolbar .arco-btn-group .arco-btn.arco-btn-active,
+body[arco-theme='dark'] .component-editor-toolbar .component-editor-tool-btn.arco-btn.arco-btn-active {
+  color: rgb(var(--primary-6));
+  background: var(--pro-theme-color-soft);
+}
+
+body[arco-theme='dark'] .component-editor-preview {
+  background: var(--color-fill-2);
+}
+
+/* 扩展组件：树型（框体/间距对齐穿梭框） */
+.component-basic-tree-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 720px;
+}
+
+.component-basic-tree-grid .component-showcase-row {
+  width: calc(50% - 36px);
+  min-width: 200px;
+  margin-bottom: 0;
+}
+
+.component-extended-tree-panel {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border: 1px solid var(--color-neutral-3, var(--color-border-2));
+  border-radius: var(--border-radius-small, 2px);
+  background: var(--color-bg-2);
+}
+
+.component-extended-tree-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  color: var(--color-text-1);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 40px;
+  background-color: var(--color-fill-1);
+}
+
+.component-extended-tree-header-title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.component-extended-tree-header-count {
+  margin-left: 8px;
+  color: var(--color-text-3);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.component-extended-tree-body {
+  padding: 8px;
+  overflow: visible;
+}
+
+.component-extended-tree {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* 悬停/选中通栏：圆角；背景均弱化 */
+.component-extended-tree .arco-tree-node {
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: var(--border-radius-medium, 4px);
+}
+
+.component-extended-tree .arco-tree-node:hover {
+  background-color: var(--color-fill-1);
+}
+
+.component-extended-tree .arco-tree-node-selected,
+.component-extended-tree .arco-tree-node-selected:hover {
+  background-color: rgba(var(--primary-6), 0.06);
+}
+
+/* 展开箭头右移，与背景左缘留出间距；间距统一交给文字 margin-left；箭头颜色略淡 */
+.component-extended-tree .arco-tree-node-switcher {
+  margin-left: 4px;
+  margin-right: 0;
+  color: var(--color-text-3);
+}
+
+/* 下级缩进收紧（默认 12px + 10px） */
+.component-extended-tree .arco-tree-node-indent-block {
+  width: 10px;
+  margin-right: 4px;
+}
+
+.component-extended-tree .arco-checkbox {
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+.component-extended-tree .arco-tree-node-title {
+  /* 统一加在文字左边：对齐左侧复选框 ml，有/无复选框共用 */
+  margin-left: 6px;
+  padding-left: 0;
+  border-radius: 0;
+}
+
+.component-extended-tree .arco-tree-node-title:hover,
+.component-extended-tree .arco-tree-node:hover .arco-tree-node-title,
+.component-extended-tree .arco-tree-node-selected .arco-tree-node-title {
+  background-color: transparent;
+}
+
+.component-extended-tree .arco-tree-node-title-block {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* 扩展组件：折叠面板 */
+.component-basic-collapse-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 48px;
+}
+
+.component-basic-collapse-grid .component-showcase-row {
+  margin-bottom: 0;
+}
+
+/* 箭头颜色、尺寸与树型一致 */
+.component-basic-collapse-grid .arco-collapse-item-expand-icon {
+  color: var(--color-text-3);
+  font-size: 12px;
+}
+
+/* 标签页：对齐高级详情页分段式 Tabs（灰底轨道 + 白底选中） */
+.component-basic-tabs .arco-tabs-nav {
+  margin-bottom: 0;
+}
+
+.component-basic-tabs .arco-tabs-nav::before {
+  display: none;
+}
+
+.component-basic-tabs .arco-tabs-nav-tab {
+  margin-bottom: 0;
+}
+
+.component-basic-tabs .arco-tabs-nav-tab-list {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--color-fill-2);
+  border-radius: 8px;
+}
+
+.component-basic-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab {
+  margin: 0;
+  padding: 6px 20px;
+  line-height: 22px;
+  font-size: 14px;
+  color: var(--color-text-2);
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.component-basic-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:hover {
+  color: rgb(var(--primary-6));
+}
+
+.component-basic-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active,
+.component-basic-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active:hover {
+  color: rgb(var(--primary-6));
+  font-weight: 500;
+  background: var(--color-bg-2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.component-basic-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active .arco-tabs-tab-title {
+  color: inherit;
+}
+
+.component-basic-tabs .arco-tabs-nav-ink {
+  display: none !important;
+}
+
+.component-basic-tabs .arco-tabs-content {
+  padding-top: 16px;
+}
+
+/* 基础标签页：取消默认左内边距，与标签/正文左对齐；选中态用主色半透明底 */
+.component-basic-tabs-plain .arco-tabs-nav {
+  margin-bottom: 0;
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-tab {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-tab-list {
+  padding-left: 0;
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-type-rounded .arco-tabs-tab:first-child {
+  margin-left: 0;
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-type-rounded .arco-tabs-tab {
+  border: 1px solid transparent;
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-type-rounded .arco-tabs-tab:hover {
+  color: rgb(var(--primary-6));
+  background-color: transparent;
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-type-rounded .arco-tabs-tab-active,
+.component-basic-tabs-plain .arco-tabs-nav-type-rounded .arco-tabs-tab-active:hover {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border-color: rgb(var(--primary-6));
+}
+
+.component-basic-tabs-plain .arco-tabs-nav-type-rounded .arco-tabs-tab-active .arco-tabs-tab-title {
+  color: inherit;
+}
+
+.component-basic-tabs-plain .arco-tabs-content {
+  padding-top: 16px;
+  padding-left: 0;
+}
+
+/* 列表组件演示 */
+.component-list-tag {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.component-list-tag-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border-2);
+}
+
+.component-list-tag-item:first-child {
+  padding-top: 2px;
+}
+
+.component-list-tag-item:last-child {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.component-list-tag-badge {
+  flex-shrink: 0;
+  min-width: 40px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  box-sizing: border-box;
+  background: var(--color-fill-2);
+  color: var(--color-text-3);
+}
+
+.component-list-tag-badge.is-danger {
+  background: rgba(var(--danger-6), 0.12);
+  color: rgb(var(--danger-6));
+}
+
+.component-list-tag-badge.is-warning {
+  background: rgba(var(--warning-6), 0.14);
+  color: rgb(var(--warning-6));
+}
+
+.component-list-tag-badge.is-primary {
+  background: rgba(var(--primary-6), 0.12);
+  color: rgb(var(--primary-6));
+}
+
+.component-list-tag-badge.is-success {
+  background: rgba(var(--success-6), 0.12);
+  color: rgb(var(--success-6));
+}
+
+.component-list-tag-badge.is-cyan {
+  background: rgba(14, 180, 180, 0.12);
+  color: #0eb4b4;
+}
+
+.component-list-tag-badge.is-gray {
+  background: var(--color-fill-2);
+  color: var(--color-text-3);
+}
+
+.component-list-tag-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.component-list-tag-time {
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 22px;
+  color: var(--color-text-3);
+  white-space: nowrap;
+}
+
+.component-list-meta .arco-list-item-meta,
+.component-list-split .arco-list-item-meta {
+  align-items: flex-start;
+}
+
+/* 树形数据表格：展开控件对齐扩展组件 a-tree 箭头样式 */
+.component-table-tree .arco-table-expand-btn {
+  width: auto;
+  height: auto;
+  color: var(--color-text-3);
+  font-size: 12px;
+  line-height: 1;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.component-table-tree .arco-table-expand-btn:hover {
+  color: var(--color-text-2);
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.component-table-tree .arco-table-expand-btn .arco-icon,
+.component-table-tree .component-table-tree-switcher-icon {
+  width: 12px;
+  height: 12px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+}
+
+.component-table-tree .component-table-tree-switcher-icon.is-expanded {
+  transform: rotate(0deg);
+}

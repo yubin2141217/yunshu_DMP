@@ -1,0 +1,178 @@
+.result-page-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  padding: 24px 16px;
+}
+
+.result-page-wrap .arco-result {
+  padding: 0;
+}
+
+.result-extra-btn {
+  margin-left: 12px;
+}
+
+/* ── 结果页（对齐分步表单成功反馈） ── */
+.result-page-card {
+  padding: 24px 16px 32px;
+}
+
+.result-page-card .arco-card-body {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.result-page-body {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.result-page-body .arco-result {
+  padding: 0;
+}
+
+.result-page-body .arco-result-icon {
+  margin-bottom: 16px;
+}
+
+.result-page-body .arco-result-icon-tip {
+  width: auto;
+  height: auto;
+  background: transparent !important;
+  border-radius: 0;
+  color: inherit;
+}
+
+.result-page-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.result-page-icon.is-success {
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.12);
+}
+
+.result-page-icon.is-waiting {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.12);
+}
+
+.result-page-icon.is-warning {
+  color: rgb(var(--warning-6));
+  background: rgba(var(--warning-6), 0.12);
+}
+
+.result-page-icon.is-error {
+  color: rgb(var(--danger-6));
+  background: rgba(var(--danger-6), 0.12);
+}
+
+.result-page-icon-svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.result-page-body .arco-result-title {
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.result-page-body .arco-result-subtitle {
+  margin-top: 8px;
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.result-page-body .arco-result-extra {
+  margin-top: 24px;
+}
+
+/* ── 异常页：自定义插画 + 文案层级 ── */
+.exception-page .arco-result {
+  max-width: 520px;
+}
+
+.exception-page .arco-result-icon {
+  margin-bottom: 0;
+}
+
+.exception-page .arco-result-icon-tip {
+  width: auto;
+  height: auto;
+  background: transparent !important;
+  border-radius: 0;
+  line-height: 0;
+}
+
+.exception-page-illust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(320px, 72vw);
+  margin: 0 auto -36px;
+  overflow: hidden;
+}
+
+.exception-page-illust-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 404/500 插画主体偏上，额外收紧底部留白 */
+.exception-page--404 .exception-page-illust,
+.exception-page--500 .exception-page-illust {
+  margin-bottom: -64px;
+}
+
+.exception-page .arco-result-title {
+  color: var(--color-text-1);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.exception-page .arco-result-subtitle {
+  margin-top: 8px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.exception-page .arco-result-extra {
+  margin-top: 28px;
+}
+
+@media (max-width: 576px) {
+  .exception-page-illust {
+    width: min(260px, 78vw);
+  }
+
+  .exception-page .arco-result-title {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}

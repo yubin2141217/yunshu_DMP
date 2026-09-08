@@ -1,0 +1,840 @@
+/* 个人主页 — 对齐 Arco Design Pro /user/info */
+.user-home-header {
+  height: 204px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: var(--color-bg-2) url('../images/user-home-banner.svg?v=2') no-repeat center / cover;
+  overflow: hidden;
+}
+
+body[arco-theme='dark'] .user-home-header {
+  background: var(--color-bg-2) url('../images/user-home-banner-dark.svg?v=1') no-repeat center / cover;
+}
+
+.user-home-name {
+  margin: 0 !important;
+}
+
+.user-home-msg {
+  color: var(--color-text-2);
+}
+
+.user-home-msg-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.user-home-msg-item .arco-icon,
+.user-home-msg-item i {
+  color: var(--color-text-3);
+  font-size: 14px;
+}
+
+.user-home-content {
+  margin-top: 12px;
+}
+
+.user-home-block {
+  margin-top: 16px;
+}
+
+.user-home-project-item {
+  margin-bottom: 16px;
+}
+
+.user-home-project-card {
+  height: 100%;
+}
+
+.user-home-project-card .arco-card-body {
+  padding: 16px;
+}
+
+.user-home-activity-list .arco-list-content,
+.user-home-team-list .arco-list-content {
+  padding: 0;
+}
+
+.user-home-activity-item,
+.user-home-team-item {
+  padding: 16px 0 !important;
+  border-bottom: 1px solid var(--color-border-1) !important;
+}
+
+.user-home-activity-item:first-child,
+.user-home-team-item:first-child {
+  padding-top: 4px !important;
+}
+
+.user-home-activity-item:last-child,
+.user-home-team-item:last-child {
+  padding-bottom: 4px !important;
+  border-bottom: none !important;
+}
+
+.user-home-activity-item .arco-list-item-meta,
+.user-home-team-item .arco-list-item-meta {
+  align-items: flex-start;
+  padding: 0;
+}
+
+.user-home-activity-item .arco-list-item-meta-avatar,
+.user-home-team-item .arco-list-item-meta-avatar {
+  margin-right: 14px;
+}
+
+.user-home-activity-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.user-home-activity-desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.user-home-activity-item .arco-list-item-action {
+  margin-left: 16px;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+.user-home-activity-time {
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+  color: var(--color-text-3);
+}
+
+.user-home-notice-list .arco-list-content {
+  padding: 0;
+}
+
+.user-home-notice-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid var(--color-border-1) !important;
+}
+
+.user-home-notice-item:first-child {
+  padding-top: 4px !important;
+}
+
+.user-home-notice-item:last-child {
+  padding-bottom: 4px !important;
+  border-bottom: none !important;
+}
+
+.user-home-notice-item .arco-list-item-meta {
+  align-items: center;
+  padding: 0;
+  min-width: 0;
+  flex: 1;
+}
+
+.user-home-notice-item .arco-list-item-meta-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-home-notice-item .arco-list-item-action {
+  margin: 0 0 0 12px !important;
+  padding: 0 !important;
+  align-self: center;
+}
+
+.user-home-notice-item .arco-list-item-action > li {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 22px;
+}
+
+.user-home-notice-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.user-home-notice-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+}
+
+.user-home-notice-tag {
+  flex-shrink: 0;
+  margin: 0;
+  line-height: 20px;
+}
+
+.user-home-notice-time {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 22px;
+  white-space: nowrap;
+  color: var(--color-text-3);
+}
+
+/* 用户设置（共用） */
+.user-section-title {
+  margin-top: 0;
+}
+
+.user-form {
+  max-width: 560px;
+}
+
+/* 个人主页卡片标题：对齐全局 form / profile 标题规范 */
+.user-home-page .general-card > .arco-card-header {
+  height: auto;
+  min-height: 0;
+  padding: 18px 24px 14px;
+  border-bottom: none;
+}
+
+.user-home-page .general-card > .arco-card-header .arco-card-header-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.user-home-page .general-card > .arco-card-header .arco-card-header-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.user-home-page .general-card > .arco-card-body {
+  padding: 8px 24px 24px;
+}
+
+/* —— 用户设置：上下布局 —— */
+
+.user-setting-page .user-setting-header-card {
+  margin-bottom: 16px;
+}
+
+.user-setting-page .user-setting-header-card .arco-card-body {
+  padding: 28px 32px;
+}
+
+.user-setting-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-setting-identity {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-setting-identity-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.user-setting-identity-name {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--color-text-1);
+}
+
+.user-setting-identity-account {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.user-setting-avatar-wrap,
+.user-home-avatar-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  overflow: visible;
+  cursor: pointer;
+  outline: none;
+}
+
+.user-setting-avatar-wrap {
+  width: 72px;
+  height: 72px;
+}
+
+.user-home-avatar-wrap {
+  width: 64px;
+  height: 64px;
+}
+
+.user-setting-avatar-input,
+.user-home-avatar-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.user-setting-avatar-shell,
+.user-home-avatar-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--pro-theme-color);
+}
+
+.user-setting-avatar-img,
+.user-home-avatar-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-setting-avatar-fallback.arco-avatar,
+.user-home-avatar-fallback.arco-avatar {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.user-setting-avatar-camera,
+.user-home-avatar-camera {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: rgb(var(--primary-6));
+  background-color: var(--color-bg-2);
+  border: 2px solid var(--color-bg-2);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: color 0.15s ease, background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  pointer-events: none;
+}
+
+.user-setting-avatar-camera {
+  right: -2px;
+  bottom: -2px;
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+.user-home-avatar-camera {
+  right: -2px;
+  bottom: -2px;
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+.user-setting-avatar-camera .pro-fa-icon,
+.user-home-avatar-camera .pro-fa-icon,
+.user-setting-avatar-camera i,
+.user-home-avatar-camera i {
+  display: block;
+  line-height: 1;
+}
+
+.user-setting-avatar-wrap:hover .user-setting-avatar-camera,
+.user-home-avatar-wrap:hover .user-home-avatar-camera,
+.user-setting-avatar-wrap:focus-visible .user-setting-avatar-camera,
+.user-home-avatar-wrap:focus-visible .user-home-avatar-camera {
+  color: #fff;
+  background-color: rgb(var(--primary-6));
+  transform: scale(1.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+.user-setting-header-content {
+  flex: 1;
+  width: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+  padding-left: 40px;
+  border-left: 1px solid var(--color-border-2);
+  align-self: stretch;
+}
+
+.user-setting-field-grid {
+  display: grid;
+  width: 100%;
+  max-width: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: clamp(24px, 3vw, 48px);
+  row-gap: 18px;
+  align-items: start;
+}
+
+.user-setting-field-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-setting-field-label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.user-setting-field-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 22px;
+}
+
+.user-setting-field-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+  word-break: break-all;
+}
+
+.user-setting-verified-tag {
+  vertical-align: middle;
+}
+
+.user-setting-field-edit.arco-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: rgb(var(--primary-6));
+}
+
+.user-setting-field-edit.arco-btn:hover {
+  color: rgb(var(--primary-5));
+  background: transparent;
+}
+
+@media (max-width: 1400px) {
+  .user-setting-field-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .user-setting-header-content {
+    margin-left: 28px;
+    padding-left: 28px;
+  }
+
+  .user-setting-field-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-setting-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-setting-header-content {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .user-setting-field-grid {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+}
+
+.user-setting-tabs-card .arco-card-body {
+  padding: 20px 32px 28px;
+}
+
+/* 对齐「标签页（基础）」：选中胶囊 + 悬停无背景色 */
+.user-setting-tabs .arco-tabs-nav {
+  margin-bottom: 0;
+}
+
+.user-setting-tabs .arco-tabs-nav::before {
+  display: none;
+}
+
+.user-setting-tabs .arco-tabs-nav-tab {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.user-setting-tabs .arco-tabs-nav-tab-list {
+  padding-left: 0;
+}
+
+.user-setting-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:first-child {
+  margin-left: 0;
+}
+
+.user-setting-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab {
+  border: 1px solid transparent;
+  background-color: transparent;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.user-setting-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab:hover {
+  color: rgb(var(--primary-6));
+  background-color: transparent;
+}
+
+.user-setting-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active,
+.user-setting-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active:hover {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border-color: rgb(var(--primary-6));
+}
+
+.user-setting-tabs .arco-tabs-nav-type-rounded .arco-tabs-tab-active .arco-tabs-tab-title {
+  color: inherit;
+}
+
+.user-setting-tabs .arco-tabs-nav-ink {
+  display: none;
+}
+
+.user-setting-tabs .arco-tabs-content {
+  padding-top: 28px;
+  padding-left: 0;
+}
+
+.user-setting-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.user-setting-form .arco-form-item {
+  margin-bottom: 20px;
+}
+
+.user-setting-form .arco-form-item:last-child {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.user-setting-security {
+  padding: 4px 0 0;
+}
+
+.user-setting-security-item {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.user-setting-security-item:hover {
+  background-color: transparent;
+}
+
+.user-setting-security-item:focus-visible {
+  outline: 2px solid rgb(var(--primary-6));
+  outline-offset: 2px;
+}
+
+.user-setting-security-title {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  width: 132px;
+  margin-right: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-weight: 500;
+  color: var(--color-text-1);
+}
+
+.user-setting-security-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: rgb(var(--primary-6));
+  background: rgb(var(--primary-1));
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.user-setting-security-content {
+  display: flex;
+  flex: 1;
+  width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border-2);
+}
+
+.user-setting-security-item:last-child .user-setting-security-content {
+  border-bottom: none;
+}
+
+.user-setting-security-item:first-child .user-setting-security-title,
+.user-setting-security-item:first-child .user-setting-security-content {
+  padding-top: 12px;
+}
+
+.user-setting-security-text {
+  flex: 1;
+  color: var(--color-text-1);
+  line-height: 22px;
+}
+
+.user-setting-security-text.is-placeholder {
+  color: var(--color-text-3);
+}
+
+.user-setting-security-action.arco-btn {
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.user-setting-security-code-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.user-setting-security-code-row .arco-input-wrapper {
+  flex: 1;
+}
+
+.user-setting-verified {
+  padding: 0 4px 8px;
+}
+
+.user-setting-verified-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.user-setting-verified-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-text-1);
+}
+
+.user-setting-verified-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.user-setting-verified-enterprise {
+  margin-top: 16px;
+  padding: 24px 28px;
+  background-color: var(--color-fill-1);
+  border: 1px solid var(--color-border-1);
+  border-radius: var(--border-radius-medium);
+}
+
+.user-setting-verified-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: 20px;
+}
+
+.user-setting-verified-item {
+  min-width: 0;
+}
+
+.user-setting-verified-label {
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.user-setting-verified-value {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--color-text-1);
+  word-break: break-all;
+}
+
+@media (max-width: 992px) {
+  .user-setting-verified-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .user-setting-verified-enterprise {
+    padding: 20px;
+  }
+
+  .user-setting-verified-grid {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+}
+
+.user-setting-verified-records-title {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.user-setting-verified-action.arco-btn,
+.user-setting-verified-op.arco-btn {
+  padding: 0 4px;
+}
+
+.user-setting-verified-action.arco-btn:hover,
+.user-setting-verified-op.arco-btn:hover {
+  background: transparent;
+}
+
+.user-setting-verified-detail .arco-descriptions-item-label {
+  width: 96px;
+  color: var(--color-text-3);
+}
+
+@media (max-width: 768px) {
+  .user-setting-security-item {
+    flex-direction: column;
+  }
+
+  .user-setting-security-title {
+    width: auto;
+    margin-right: 0;
+    padding-bottom: 8px;
+  }
+
+  .user-setting-security-content {
+    padding-top: 0;
+    align-items: flex-start;
+  }
+}
+
+/* —— 头像裁切弹窗 —— */
+
+.avatar-crop {
+  padding: 0;
+}
+
+.avatar-crop-stage {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  border-radius: 8px;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #e5e6eb 25%, transparent 25%),
+    linear-gradient(-45deg, #e5e6eb 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e5e6eb 75%),
+    linear-gradient(-45deg, transparent 75%, #e5e6eb 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+.avatar-crop-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.avatar-crop-image {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.avatar-crop-mask {
+  position: absolute;
+  inset: 28px;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.42);
+}
+
+.avatar-crop-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 420px;
+  margin: 16px auto 0;
+}
+
+.avatar-crop-toolbar-label {
+  flex-shrink: 0;
+  color: var(--color-text-2);
+  font-size: 14px;
+}
+
+.avatar-crop-toolbar .arco-slider {
+  flex: 1;
+}
+
+.avatar-crop-modal .arco-modal-body {
+  padding: 12px 16px 8px;
+}
+
+.avatar-crop-modal .arco-modal-footer {
+  padding-top: 12px;
+}

@@ -1,0 +1,834 @@
+.component-form-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.component-form-tip {
+  margin-bottom: 0;
+}
+
+.component-form-card .arco-input-prefix .pro-avatar-user-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-2);
+}
+
+.component-form-card .arco-input-prefix .pro-avatar-user-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.component-form-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--pro-divider);
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.component-form-group-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.component-form-card {
+  margin-bottom: 0;
+}
+
+.component-form-card .arco-card-body {
+  padding: 20px 28px;
+}
+
+.component-form-hint {
+  color: var(--color-text-2);
+  font-size: 13px;
+}
+
+.component-form-card .arco-form-item-content-wrapper,
+.component-form-card .arco-form-item-content {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* 横向 Radio / Checkbox：用 gap 换行，避免末项 margin 挤行、行距贴死 */
+.component-form-card .arco-radio-group:not(.arco-radio-group-button):not(.arco-radio-group-direction-vertical),
+.component-form-card .arco-checkbox-group:not(.arco-checkbox-group-direction-vertical) {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 100%;
+  row-gap: 12px;
+}
+
+.component-form-card .arco-radio-group:not(.arco-radio-group-button):not(.arco-radio-group-direction-vertical) {
+  column-gap: 20px;
+}
+
+.component-form-card .arco-checkbox-group:not(.arco-checkbox-group-direction-vertical) {
+  column-gap: 16px;
+}
+
+.component-form-card .arco-radio-group:not(.arco-radio-group-button):not(.arco-radio-group-direction-vertical) > .arco-radio,
+.component-form-card .arco-checkbox-group:not(.arco-checkbox-group-direction-vertical) > .arco-checkbox {
+  margin-right: 0;
+}
+
+.component-form-validate {
+  margin-top: 16px;
+}
+
+.component-form-validate .arco-form-item-message {
+  min-height: 20px;
+}
+
+.component-form-actions {
+  margin-top: 4px;
+}
+
+.component-form-range {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.component-form-range .arco-input-wrapper {
+  flex: 1;
+}
+
+.component-form-range-sep {
+  flex-shrink: 0;
+  padding: 0 8px;
+  color: var(--color-text-3);
+  line-height: 32px;
+}
+
+.component-form-phone {
+  display: flex !important;
+  gap: 12px;
+  width: 100%;
+}
+
+.component-form-phone .arco-input-wrapper {
+  flex: none;
+  border-radius: var(--border-radius-small, 2px) !important;
+}
+
+.component-form-phone-code {
+  width: calc(30% - 6px) !important;
+}
+
+.component-form-phone-number {
+  width: calc(70% - 6px) !important;
+}
+
+/* 胶囊选择 */
+.component-form-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.component-form-pill {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  height: 28px;
+  padding: 0 12px;
+  color: var(--color-text-2);
+  font-size: 13px;
+  line-height: 26px;
+  text-align: center;
+  white-space: nowrap;
+  background: var(--color-bg-2, #fff);
+  border: 1px solid #eaebef;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+.component-form-pill:hover {
+  color: rgb(var(--primary-6));
+  border-color: rgba(var(--primary-6), 0.45);
+}
+
+.component-form-pill.is-active {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.12);
+  border-color: rgb(var(--primary-6));
+}
+
+/* 分段选择 */
+.component-form-segment {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg-2, #fff);
+  border: 1px solid #eaebef;
+  border-radius: 4px;
+}
+
+.component-form-segment-item {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 28px;
+  padding: 0 8px;
+  color: var(--color-text-2);
+  font-size: 13px;
+  line-height: 26px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  border: none;
+  border-right: 1px solid #eaebef;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.component-form-segment-item:last-child {
+  border-right: none;
+}
+
+.component-form-segment-item:hover:not(.is-active) {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.06);
+}
+
+.component-form-segment-item.is-active {
+  color: #fff;
+  background: rgb(var(--primary-6));
+  border-right-color: rgb(var(--primary-6));
+}
+
+.component-form-segment-item.is-active + .component-form-segment-item {
+  border-left-color: transparent;
+}
+
+body[arco-theme='dark'] .component-form-pill {
+  background: var(--color-fill-1, #2a2a2b);
+  border-color: var(--color-neutral-3, #484849);
+}
+
+body[arco-theme='dark'] .component-form-pill.is-active {
+  background: rgba(var(--primary-6), 0.2);
+  border-color: rgb(var(--primary-6));
+}
+
+body[arco-theme='dark'] .component-form-segment {
+  background: var(--color-fill-1, #2a2a2b);
+  border-color: var(--color-neutral-3, #484849);
+}
+
+body[arco-theme='dark'] .component-form-segment-item {
+  border-right-color: var(--color-neutral-3, #484849);
+}
+
+/* 自定义选择触发器 */
+.component-form-picker {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 12px;
+  color: var(--color-text-1);
+  font-size: 14px;
+  line-height: 30px;
+  background: var(--color-fill-1, #f7f8fa);
+  border: 1px solid #eaebef;
+  border-radius: var(--border-radius-small, 2px);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.component-form-picker:hover {
+  border-color: var(--color-neutral-4, #c9cdd4);
+}
+
+.component-form-picker.is-open {
+  background: var(--color-bg-2, #fff);
+  border-color: rgb(var(--primary-6));
+}
+
+.component-form-picker-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.component-form-picker-value.is-placeholder {
+  color: var(--color-text-3);
+}
+
+.component-form-picker-arrow {
+  flex-shrink: 0;
+  margin-left: 8px;
+  color: var(--color-text-3);
+  font-size: 12px;
+  transition: transform 0.15s;
+}
+
+.component-form-picker-arrow.is-up {
+  transform: rotate(180deg);
+}
+
+.component-form-picker-clear {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  color: var(--color-text-2, #4e5969);
+  font-size: 10px;
+  line-height: 10px;
+  cursor: pointer;
+}
+
+.component-form-picker-clear .pro-fa-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.component-form-picker.has-value:hover .component-form-picker-clear,
+.component-form-picker.is-open.has-value .component-form-picker-clear {
+  display: inline-flex;
+}
+
+.component-form-picker.has-value:hover .component-form-picker-arrow,
+.component-form-picker.is-open.has-value .component-form-picker-arrow {
+  display: none;
+}
+
+.component-form-picker-empty {
+  grid-column: 1 / -1;
+  padding: 24px 0;
+  color: var(--color-text-3);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* 品牌选择器 */
+.component-form-brand-panel {
+  width: min(620px, 90vw);
+  overflow: hidden;
+  background: var(--color-bg-popup, #fff);
+  border: 1px solid var(--color-neutral-3, #e5e6eb);
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.component-form-brand-letters {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding: 6px 12px 0;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-neutral-3, #e5e6eb);
+}
+
+.component-form-brand-letter {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 28px;
+  padding: 0;
+  color: var(--color-text-2);
+  font-size: 14px;
+  line-height: 26px;
+  text-align: center;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.component-form-brand-letter:first-child {
+  flex: 0 0 auto;
+  padding: 0 4px;
+}
+
+.component-form-brand-letter:hover {
+  color: rgb(var(--primary-6));
+}
+
+.component-form-brand-letter.is-active {
+  color: rgb(var(--primary-6));
+  border-bottom-color: rgb(var(--primary-6));
+}
+
+.component-form-brand-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  max-height: 240px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.component-form-brand-item {
+  height: 28px;
+  padding: 0 8px;
+  overflow: hidden;
+  color: var(--color-text-1);
+  font-size: 13px;
+  line-height: 28px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.component-form-brand-item:hover {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.06);
+}
+
+.component-form-brand-item.is-active {
+  color: #fff;
+  background: rgb(var(--primary-6));
+}
+
+/* 分类选择器 */
+.component-form-category-panel {
+  display: flex;
+  width: min(540px, 90vw);
+  max-height: 320px;
+  overflow: hidden;
+  background: var(--color-bg-popup, #fff);
+  border: 1px solid var(--color-neutral-3, #e5e6eb);
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.component-form-category-side {
+  flex: 0 0 108px;
+  padding: 8px 0;
+  overflow: auto;
+  background: var(--color-fill-1, #f7f8fa);
+  border-right: 1px solid var(--color-neutral-3, #e5e6eb);
+}
+
+.component-form-category-l1 {
+  display: block;
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  color: var(--color-text-1);
+  font-size: 13px;
+  line-height: 36px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.component-form-category-l1:hover {
+  color: rgb(var(--primary-6));
+}
+
+.component-form-category-l1.is-active {
+  color: rgb(var(--primary-6));
+  font-weight: 500;
+  background: var(--color-bg-2, #fff);
+}
+
+.component-form-category-main {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  overflow: auto;
+}
+
+.component-form-category-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.component-form-category-row:last-child {
+  margin-bottom: 0;
+}
+
+.component-form-category-l2 {
+  flex: 0 0 48px;
+  color: var(--color-text-3, #86909c);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.component-form-category-items {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  min-width: 0;
+}
+
+.component-form-category-item {
+  box-sizing: border-box;
+  width: 104px;
+  height: 28px;
+  padding: 0 8px;
+  overflow: hidden;
+  color: var(--color-text-1);
+  font-size: 13px;
+  line-height: 28px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.component-form-category-item:hover {
+  color: rgb(var(--primary-6));
+  background: rgba(var(--primary-6), 0.06);
+}
+
+.component-form-category-item.is-active {
+  color: #fff;
+  background: rgb(var(--primary-6));
+}
+
+body[arco-theme='dark'] .component-form-picker {
+  background: var(--color-fill-1, #2a2a2b);
+  border-color: var(--color-neutral-3, #484849);
+}
+
+body[arco-theme='dark'] .component-form-picker.is-open {
+  background: var(--color-bg-2, #232324);
+}
+
+body[arco-theme='dark'] .component-form-brand-panel,
+body[arco-theme='dark'] .component-form-category-panel {
+  background: var(--color-bg-popup, #232324);
+  border-color: var(--color-neutral-3, #484849);
+}
+
+body[arco-theme='dark'] .component-form-category-side {
+  background: var(--color-fill-1, #2a2a2b);
+  border-right-color: var(--color-neutral-3, #484849);
+}
+
+body[arco-theme='dark'] .component-form-category-l1.is-active {
+  background: var(--color-bg-2, #232324);
+}
+
+body[arco-theme='dark'] .component-form-brand-letters {
+  border-bottom-color: var(--color-neutral-3, #484849);
+}
+
+/* 标记选择器 */
+.component-form-markers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+}
+
+.component-form-marker {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  color: #fff;
+  background: #ccc;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.component-form-marker:hover {
+  transform: scale(1.08);
+}
+
+.component-form-marker.is-active {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.component-form-marker-check {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.component-form-card .arco-color-picker {
+  vertical-align: middle;
+}
+
+/* 评分缩小 + 带文字 */
+.component-form-rate.arco-rate {
+  min-height: 22px;
+  font-size: 18px;
+}
+
+.component-form-rate .arco-rate-character:not(:last-child) {
+  margin-right: 4px;
+}
+
+.component-form-rate-with-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.component-form-rate-label {
+  color: var(--color-text-3, #86909c);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+/* 按钮上传：文本列表，无缩略图 */
+.component-form-btn-upload {
+  width: 100%;
+  max-width: none;
+}
+
+.component-form-btn-upload-trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.component-form-btn-upload .arco-upload-list.arco-upload-list-type-text .arco-upload-list-item:first-of-type {
+  margin-top: 12px;
+}
+
+.component-form-btn-upload .arco-upload-list-item {
+  position: relative;
+  margin-top: 8px;
+  padding: 0 36px 0 0;
+  background: var(--color-fill-1, #f7f8fa);
+  border: none !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: background-color 0.15s;
+}
+
+.component-form-btn-upload .arco-upload-list-item:hover {
+  background: var(--color-fill-2, #f2f3f5);
+}
+
+.component-form-btn-upload .arco-upload-list-item-content {
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 8px 12px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+
+.component-form-btn-upload .arco-upload-list-item-thumbnail {
+  display: none !important;
+}
+
+.component-form-btn-upload .arco-upload-list-item-file-icon {
+  margin-right: 8px;
+  color: rgb(var(--primary-6)) !important;
+  font-size: 16px;
+}
+
+.component-form-btn-upload .arco-upload-list-item-name,
+.component-form-btn-upload .arco-upload-list-item-name-link,
+.component-form-btn-upload a.arco-upload-list-item-name {
+  color: var(--color-text-1) !important;
+  font-size: 14px;
+}
+
+.component-form-btn-upload .arco-upload-list-item-name:hover {
+  color: rgb(var(--primary-6)) !important;
+}
+
+.component-form-btn-upload .arco-upload-icon-start,
+.component-form-btn-upload .arco-upload-progress,
+.component-form-btn-upload .arco-upload-list-status {
+  display: none !important;
+}
+
+.component-form-btn-upload .arco-upload-list-item-operation {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  margin-left: 0;
+  transform: translateY(-50%);
+}
+
+.component-form-btn-upload .arco-upload-icon-remove {
+  color: var(--color-text-3);
+}
+
+.component-form-btn-upload .arco-upload-icon-remove:hover {
+  color: rgb(var(--danger-6));
+}
+
+.component-form-upload-tip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-3);
+  font-size: 12px;
+  line-height: 18px;
+  cursor: default;
+}
+
+.component-form-upload-tip span {
+  flex: 1;
+  min-width: 0;
+  line-height: 18px;
+}
+
+.component-form-upload-tip .arco-icon,
+.component-form-upload-tip > i,
+.component-form-upload-tip > svg {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-top: 0;
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* 表单组件页：拖拽上传已选文件去边框 */
+.component-form-page .pro-io-upload .arco-upload-list-item,
+.component-form-page .pro-io-upload .arco-upload-list.arco-upload-list-type-text .arco-upload-list-item:first-of-type {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* TreeSelect：悬停/选中通栏 + 复选框树 */
+.arco-tree-select-popup.component-form-tree-select .arco-tree-select-tree-wrapper {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node {
+  box-sizing: border-box;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node:hover {
+  background-color: var(--color-fill-1);
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-selected,
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-selected:hover {
+  background-color: rgba(var(--primary-6), 0.06);
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-title {
+  /* 统一加在文字左边：对齐左侧复选框 ml，有/无复选框共用 */
+  margin-left: 6px;
+  padding-left: 0;
+  border-radius: 0;
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-title:hover,
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node:hover .arco-tree-node-title,
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-selected .arco-tree-node-title {
+  background-color: transparent;
+}
+
+/* 与扩展树型一致：箭头/复选框/文字间距、缩进、箭头色 */
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-switcher {
+  margin-left: 4px;
+  margin-right: 0;
+  color: var(--color-text-3);
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-tree-node-indent-block {
+  width: 10px;
+  margin-right: 4px;
+}
+
+.arco-tree-select-popup.component-form-tree-select .arco-checkbox {
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+/* 表单布局 */
+.component-form-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 48px;
+  margin-bottom: 20px;
+}
+
+.component-form-layout-grid .component-form-layout-block {
+  min-width: 0;
+}
+
+.component-form-layout-label {
+  margin-bottom: 8px;
+  color: var(--color-text-3);
+  font-size: 13px;
+}
+
+.component-form-inline-form .arco-form-item {
+  margin-right: 16px;
+  margin-bottom: 0;
+}
+
+/* 末项操作按钮：去掉空 label 占位，避免与「状态」间距被撑大 */
+.component-form-inline-form .arco-form-item:last-child {
+  margin-right: 0;
+}
+
+.component-form-inline-form .arco-form-item:last-child > .arco-form-item-label-col {
+  display: none !important;
+  width: 0 !important;
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.component-form-inline-form .component-form-inline-actions .arco-form-item-label-col {
+  display: none !important;
+  width: 0 !important;
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .component-form-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,252 @@
+/* 导入向导 — 步骤 / 上传 / 结果对齐已优化样板 */
+
+.list-import-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.list-import-page > .arco-card.general-card > .arco-card-body {
+  padding: 30px 28px;
+}
+
+.list-import-page > .arco-card.general-card > .arco-card-body:has(.list-import-result) {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* 步骤条：与 form-step / component-extended 同步 */
+.list-import-page .list-import-steps {
+  max-width: 720px;
+  margin: 0 auto 32px;
+}
+
+.list-import-page .list-import-steps .arco-steps-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 12px;
+}
+
+.list-import-page .list-import-steps .arco-steps-icon .arco-icon,
+.list-import-page .list-import-steps .arco-steps-icon .pro-fa-icon {
+  display: block;
+  line-height: 1;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.list-import-page .list-import-steps .arco-steps-item-finish .arco-steps-icon {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border: 1px solid rgb(var(--primary-6));
+}
+
+.list-import-page .list-import-steps .arco-steps-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5715;
+  margin-top: 8px;
+}
+
+.list-import-page .list-import-panel {
+  min-height: 0;
+}
+
+.list-import-page .list-import-panel:has(.list-import-validate) {
+  min-height: 320px;
+}
+
+/* 上传区：复用 pages-common 的 pro-io-* */
+.list-import-page .list-import-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.list-import-page .list-import-upload .pro-upload-drag {
+  min-height: 240px;
+  padding: 64px 16px;
+}
+
+.list-import-page .list-import-upload-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* 校验步布局 */
+.list-import-page .list-import-validate {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* 校验摘要：四格指标卡（底/边框统一，数值保留语义色） */
+.list-import-page .list-import-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.list-import-page .list-import-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: var(--color-fill-1);
+  border: 1px solid var(--color-border-1);
+}
+
+.list-import-page .list-import-summary-label {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-3);
+}
+
+.list-import-page .list-import-summary-value {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--color-text-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.list-import-page .list-import-summary-item.is-ok .list-import-summary-value {
+  color: rgb(var(--success-6));
+}
+
+.list-import-page .list-import-summary-item.is-warn .list-import-summary-value {
+  color: rgb(var(--warning-6));
+}
+
+.list-import-page .list-import-summary-item.is-err .list-import-summary-value {
+  color: rgb(var(--danger-6));
+}
+
+.list-import-page .list-import-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 24px;
+}
+
+.list-import-page .list-import-toolbar-meta {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.list-import-page .list-import-table-wrap {
+  min-width: 0;
+}
+
+.list-import-page .list-import-table .arco-table-td .is-empty {
+  color: var(--color-text-4);
+}
+
+/* 结果区：与 form-step-success 视觉对齐（本页自包含，不依赖 form.css） */
+.list-import-page .list-import-result {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.list-import-page .list-import-result .arco-result {
+  padding: 8px 0;
+}
+
+.list-import-page .list-import-result .arco-result-icon {
+  margin-bottom: 16px;
+}
+
+.list-import-page .list-import-result .arco-result-icon-tip {
+  width: auto;
+  height: auto;
+  background: transparent !important;
+  border-radius: 0;
+  color: inherit;
+}
+
+.list-import-page .form-step-success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.12);
+}
+
+.list-import-page .form-step-success-check {
+  display: block;
+  flex-shrink: 0;
+}
+
+.list-import-page .list-import-result .arco-result-title {
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.list-import-page .list-import-result .arco-result-subtitle {
+  margin-top: 8px;
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.list-import-page .list-import-result .arco-result-extra {
+  margin-top: 24px;
+}
+
+.list-import-page .list-import-footer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.list-import-page .list-import-footer.is-upload {
+  margin-top: 20px;
+}
+
+.list-import-page .list-import-footer.is-validate {
+  justify-content: flex-end;
+  max-width: 960px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .list-import-page .list-import-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .list-import-page .list-import-footer.is-validate {
+    justify-content: stretch;
+  }
+
+  .list-import-page .list-import-footer.is-validate .arco-btn {
+    flex: 1;
+  }
+}

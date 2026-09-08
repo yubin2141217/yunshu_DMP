@@ -1,0 +1,167 @@
+/* 封面登录页：全屏背景图 + 主题色调色 + 居中登录卡片（基于 login.css） */
+
+.login-container--cover {
+  --login-bg-hue: 0deg;
+  --login-bg-sat: 1.08;
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 10%, #eef1f8);
+}
+
+/* 原图层：按主题色相偏移重新着色 */
+.login-container--cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../images/login-bg-01.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: hue-rotate(var(--login-bg-hue)) saturate(var(--login-bg-sat));
+  pointer-events: none;
+  transition: filter 0.35s ease;
+}
+
+/* 主题色光晕：让浅色区域也能看出主题倾向 */
+.login-container--cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 100% 72% at 8% 0%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 34%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 100% 100%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 26%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 82% 16%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 18%, transparent),
+      transparent 60%
+    ),
+    linear-gradient(
+      155deg,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 12%, transparent) 0%,
+      transparent 48%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 10%, transparent) 100%
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  transition: background 0.35s ease, opacity 0.35s ease;
+}
+
+.login-container--cover .login-content {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 24px 72px;
+  box-sizing: border-box;
+}
+
+.login-container--cover .login-form-card {
+  width: 400px;
+  max-width: 100%;
+  padding: 36px 32px 28px;
+  border: none;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 16px 48px color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 16%, rgba(15, 23, 42, 0.1)),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
+}
+
+.login-container--cover .login-logo {
+  position: static;
+  top: auto;
+  left: auto;
+  margin-bottom: 20px;
+  z-index: auto;
+}
+
+.login-container--cover .login-logo-text {
+  color: var(--color-text-1);
+}
+
+.login-container--cover .login-footer.pro-footer {
+  color: var(--color-text-3);
+}
+
+/* 暗色：白底图 invert + hue-rotate(180) 翻成深色画布，装饰形色相保留 */
+body[arco-theme='dark'] .login-container--cover,
+body.theme-dark .login-container--cover {
+  background-color: color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 10%, #06070c);
+}
+
+body[arco-theme='dark'] .login-container--cover::before,
+body.theme-dark .login-container--cover::before {
+  filter:
+    invert(1)
+    hue-rotate(calc(180deg + var(--login-bg-hue)))
+    saturate(0.76)
+    brightness(0.62)
+    contrast(1.1);
+  opacity: 0.9;
+}
+
+body[arco-theme='dark'] .login-container--cover::after,
+body.theme-dark .login-container--cover::after {
+  mix-blend-mode: normal;
+  opacity: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 5, 10, 0.12) 0%,
+      rgba(3, 4, 9, 0.42) 55%,
+      rgba(2, 2, 6, 0.78) 100%
+    ),
+    radial-gradient(
+      ellipse 100% 72% at 8% 0%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 28%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 100% 100%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 20%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 82% 16%,
+      color-mix(in srgb, var(--pro-theme-color, #6c5ce7) 14%, transparent),
+      transparent 62%
+    );
+}
+
+body[arco-theme='dark'] .login-container--cover .login-form-card,
+body.theme-dark .login-container--cover .login-form-card {
+  background: color-mix(in srgb, var(--color-bg-2) 92%, transparent);
+  border: none;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
+body[arco-theme='dark'] .login-container--cover .login-footer.pro-footer,
+body.theme-dark .login-container--cover .login-footer.pro-footer {
+  color: var(--color-text-3);
+}
+
+@media (max-width: 960px) {
+  .login-container--cover .login-logo-text {
+    color: var(--color-text-1);
+  }
+
+  .login-container--cover .login-form-card {
+    padding: 28px 24px 24px;
+  }
+}

@@ -1,0 +1,588 @@
+.form-group-page {
+  /* 表单内容与版权 footer 之间保持常规间距，底部避让交给 wrapper */
+  padding-bottom: 0;
+  overflow: visible;
+}
+
+.form-group-page .pro-page-card {
+  margin-bottom: 16px;
+}
+
+.form-group-page .pro-page-card .arco-card-body {
+  padding: 20px 28px;
+}
+
+.form-group-actions {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 低于侧栏（.pro-sider z-index: 99），避免盖住左侧导航 */
+  z-index: 90;
+  height: 60px;
+  padding: 14px 20px 14px 0;
+  background: var(--color-bg-2);
+  text-align: right;
+  box-sizing: border-box;
+}
+
+/* 固定提交栏占位，保证 Shell 版权 footer 滚到底时不被挡住 */
+.pro-content-wrapper:has(.form-group-actions) {
+  padding-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .form-group-actions {
+    padding: 14px 12px;
+  }
+
+  .form-group-page .arco-card-body {
+    padding: 16px 16px;
+  }
+}
+
+.form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--pro-divider);
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.form-section-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.form-group-card .arco-divider {
+  margin: 8px 0 24px;
+  border-bottom-color: var(--pro-divider);
+}
+
+.form-group-section {
+  margin-bottom: 4px;
+}
+
+.form-switch-label {
+  color: var(--color-text-2);
+  font-size: 13px;
+}
+
+.form-actions {
+  margin-top: 16px;
+}
+
+.form-step-card {
+  padding: 0;
+}
+
+.form-step-card .arco-card-body {
+  padding: 30px 28px;
+}
+
+.form-step-page .form-step-card .arco-card-body:has(.form-step-success) {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.form-step-steps {
+  max-width: 720px;
+  margin: 0 auto 32px;
+}
+
+.form-step-body {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.form-step-summary .arco-typography {
+  margin-bottom: 12px;
+}
+
+.form-step-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.form-step-success {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.form-step-success .arco-result {
+  padding: 8px 0 8px;
+}
+
+.form-step-success .arco-result-icon {
+  margin-bottom: 16px;
+}
+
+.form-step-success .arco-result-icon-tip {
+  width: auto;
+  height: auto;
+  background: transparent !important;
+  border-radius: 0;
+  color: inherit;
+}
+
+.form-step-success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: rgb(var(--success-6));
+  background: rgba(var(--success-6), 0.12);
+}
+
+.form-step-success-check {
+  display: block;
+  flex-shrink: 0;
+}
+
+.form-step-success .arco-result-title {
+  color: var(--color-text-1);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.form-step-success .arco-result-subtitle {
+  margin-top: 8px;
+  color: var(--color-text-3);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.form-step-success .arco-result-extra {
+  margin-top: 24px;
+}
+
+.form-step-success-panel {
+  margin: 0 auto;
+  padding: 20px 24px;
+  background: var(--color-fill-1);
+  border: 1px solid var(--pro-divider);
+  border-radius: 4px;
+  text-align: left;
+}
+
+.form-step-success-panel-title {
+  margin-bottom: 16px;
+  color: var(--color-text-1);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.form-step-success-desc .arco-descriptions-item-label,
+.form-step-success-desc .arco-descriptions-item-value {
+  padding: 8px 0;
+}
+
+.form-step-success-desc .arco-descriptions-item-label {
+  width: 96px;
+  color: var(--color-text-3);
+}
+
+.form-step-success-tip {
+  margin: 16px 0 0;
+  color: var(--color-text-3);
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.form-step-success .form-step-actions {
+  margin-top: 28px;
+}
+
+/* 步骤条视觉：与 component-extended 步骤条同步 */
+.form-step-steps .arco-steps-icon,
+.form-step-vertical-steps .arco-steps-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 12px;
+}
+
+.form-step-steps .arco-steps-icon .arco-icon,
+.form-step-steps .arco-steps-icon .pro-fa-icon,
+.form-step-vertical-steps .arco-steps-icon .arco-icon,
+.form-step-vertical-steps .arco-steps-icon .pro-fa-icon {
+  display: block;
+  line-height: 1;
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.form-step-steps .arco-steps-item-finish .arco-steps-icon,
+.form-step-vertical-steps .arco-steps-item-finish .arco-steps-icon {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border: 1px solid rgb(var(--primary-6));
+}
+
+.form-step-steps .arco-steps-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5715;
+  margin-top: 8px;
+}
+
+.form-step-vertical-steps .arco-steps-item-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.form-step-vertical-steps .arco-steps-item-description {
+  font-size: 12px;
+  line-height: 1.667;
+  max-width: 140px;
+  white-space: normal;
+}
+
+/* ── 纵向分步表单 ── */
+.form-step-vertical-card .arco-card-body {
+  padding: 30px 28px;
+}
+
+.form-step-vertical-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.form-step-vertical-block {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-step-vertical-block-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 28px;
+  width: 28px;
+}
+
+.form-step-vertical-node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--color-neutral-3, #c9cdd4);
+  background: var(--color-bg-2, #fff);
+  color: var(--color-text-2);
+  font-size: 12px;
+  line-height: 1;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.form-step-vertical-node .arco-icon,
+.form-step-vertical-node .pro-fa-icon,
+.form-step-vertical-node svg {
+  display: block;
+  width: 12px !important;
+  height: 12px !important;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.form-step-vertical-block.is-process .form-step-vertical-node {
+  border-color: rgb(var(--primary-6));
+  background: rgb(var(--primary-6));
+  color: #fff;
+}
+
+.form-step-vertical-block.is-finish .form-step-vertical-node {
+  color: rgb(var(--primary-6));
+  background-color: var(--pro-theme-color-soft);
+  border-color: rgb(var(--primary-6));
+}
+
+.form-step-vertical-block.is-wait .form-step-vertical-node {
+  color: var(--color-text-3);
+}
+
+.form-step-vertical-tail {
+  flex: 1 1 auto;
+  width: 1px;
+  min-height: 16px;
+  margin: 4px 0;
+  background: var(--color-neutral-3, #e5e6eb);
+}
+
+.form-step-vertical-block.is-finish .form-step-vertical-tail {
+  background: rgb(var(--primary-6));
+}
+
+.form-step-vertical-block-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-bottom: 24px;
+}
+
+.form-step-vertical-block:last-child .form-step-vertical-block-main {
+  padding-bottom: 0;
+}
+
+.form-step-vertical-block-head {
+  min-height: 24px;
+}
+
+.form-step-vertical-block-title {
+  color: var(--color-text-1);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.form-step-vertical-block.is-process .form-step-vertical-block-title {
+  color: rgb(var(--primary-6));
+}
+
+.form-step-vertical-block.is-wait .form-step-vertical-block-title {
+  color: var(--color-text-2);
+}
+
+.form-step-vertical-block-desc {
+  margin-top: 2px;
+  color: var(--color-text-3);
+  font-size: 12px;
+  line-height: 20px;
+  max-width: 280px;
+}
+
+.form-step-vertical-panel {
+  margin-top: 22px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.form-step-vertical-form {
+  width: 100%;
+  max-width: none;
+}
+
+.form-step-vertical-form .arco-form-item {
+  margin-bottom: 20px;
+}
+
+/* 错误文案流式撑开，文案本身保持紧凑 */
+.form-step-vertical-form .arco-form-item-message,
+.form-step-vertical-form .arco-form-item-message-help {
+  display: block !important;
+  position: static;
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  font-size: 12px;
+  line-height: 18px;
+  min-height: 18px;
+}
+
+.form-step-vertical-form .arco-form-item-status-error {
+  margin-bottom: 16px;
+}
+
+/* 获取焦点时隐藏错误提示（与全局表单交互一致） */
+.form-step-vertical-form .arco-form-item-status-error:focus-within .arco-form-item-message,
+.form-step-vertical-form .arco-form-item-status-error:focus-within .arco-form-item-message-help {
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
+.form-step-vertical-page .form-step-vertical-card .arco-card-body:has(.form-step-vertical-success) {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.form-step-vertical-success {
+  margin: 0 auto;
+}
+
+.form-step-vertical-tip-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-3);
+  cursor: help;
+  outline: none;
+}
+
+.form-step-vertical-actions {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.form-step-vertical-actions .arco-form-item-content-wrapper,
+.form-step-vertical-actions .arco-form-item-content {
+  justify-content: flex-start;
+}
+
+@media (max-width: 992px) {
+  .form-step-vertical-panel {
+    max-width: none;
+  }
+
+  .form-step-vertical-form {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-step-vertical-card .arco-card-body {
+    padding: 30px 12px;
+  }
+}
+
+/* ── 基础表单 ── */
+.form-basic-card .arco-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 30px 28px;
+}
+
+.form-basic-header {
+  /* 不闭合：分隔线与内容左右对齐，不顶满卡片 */
+  width: auto;
+  margin: 0 0 24px;
+  padding: 0 0 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--pro-divider);
+}
+
+/* 独立介绍卡片：标题区即为卡片内容，去掉底部分隔 */
+.form-basic-header--flush {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.form-group-intro-card .arco-card-body {
+  padding: 20px 28px;
+}
+
+.form-basic-page .arco-divider,
+.form-group-page .arco-divider,
+.form-step-card .arco-divider {
+  border-color: var(--pro-divider);
+}
+
+.form-basic-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-text-1);
+}
+
+.form-basic-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+/* 分组 / 分步 / 纵向分布：若使用卡片头标题，同样不闭合 */
+.form-group-page .arco-card-header,
+.form-step-page .arco-card-header,
+.form-step-vertical-page .arco-card-header {
+  border-bottom: none;
+}
+
+.form-group-page .arco-card-header-title,
+.form-step-page .arco-card-header-title,
+.form-step-vertical-page .arco-card-header-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.form-group-page .arco-card-header-title::before,
+.form-step-page .arco-card-header-title::before,
+.form-step-vertical-page .arco-card-header-title::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: rgb(var(--primary-6));
+}
+
+.form-basic-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-3);
+}
+
+.form-basic-body {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.form-basic-form {
+  width: 100%;
+}
+
+.form-basic-actions-item {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .form-basic-body {
+    max-width: none;
+  }
+
+  .form-basic-card .arco-card-body {
+    padding: 30px 12px;
+  }
+}

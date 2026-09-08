@@ -1,0 +1,137 @@
+/**
+ * 云数中台 MT · 对齐「左侧浅蓝菜单 + 通顶侧栏」参考稿
+ * 仅覆盖交付目录，不改 frame/admin
+ */
+html.yunshu-mt {
+  --shell-navbar-height: 56px;
+  --shell-menu-width: 232px;
+}
+
+html.yunshu-mt body {
+  background: #f4f7fb;
+}
+
+html.yunshu-mt .pro-layout--side .pro-sider {
+  background: #e8f2ff;
+  box-shadow: none;
+  border-right: 1px solid #d6e4ff;
+}
+
+html.yunshu-mt .pro-sider-brand {
+  background: #e8f2ff;
+  border-bottom: 1px solid #d6e4ff;
+}
+
+html.yunshu-mt .pro-logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+html.yunshu-mt .pro-sider-menu.arco-menu-light,
+html.yunshu-mt .pro-sider .arco-menu-light {
+  background: transparent;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-item,
+html.yunshu-mt .pro-sider .arco-menu-inline-header {
+  color: #1d2129;
+  margin: 4px 10px;
+  border-radius: 8px;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-item:hover,
+html.yunshu-mt .pro-sider .arco-menu-inline-header:hover {
+  background: rgba(22, 119, 255, 0.12);
+  color: #1677ff;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-item.arco-menu-selected,
+html.yunshu-mt .pro-sider .arco-menu-item.arco-menu-selected:hover {
+  background: #1677ff !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-item.arco-menu-selected .pro-menu-item-icon,
+html.yunshu-mt .pro-sider .arco-menu-item.arco-menu-selected .pro-fa-icon {
+  color: #fff;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-inline-header.arco-menu-selected,
+html.yunshu-mt .pro-sider .arco-menu-pop-header.arco-menu-selected {
+  background: transparent !important;
+  color: #1677ff !important;
+  font-weight: 600;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-inline-header.arco-menu-selected:hover,
+html.yunshu-mt .pro-sider .arco-menu-pop-header.arco-menu-selected:hover {
+  background: rgba(22, 119, 255, 0.12) !important;
+  color: #1677ff !important;
+}
+
+html.yunshu-mt .pro-sider .arco-menu-inline-header.arco-menu-selected .pro-menu-item-icon,
+html.yunshu-mt .pro-sider .arco-menu-inline-header.arco-menu-selected .pro-fa-icon,
+html.yunshu-mt .pro-sider .arco-menu-inline-header.arco-menu-selected .arco-icon,
+html.yunshu-mt .pro-sider .arco-menu-inline-header.arco-menu-selected .pro-menu-arrow-icon,
+html.yunshu-mt .pro-sider .arco-menu-pop-header.arco-menu-selected .pro-menu-item-icon,
+html.yunshu-mt .pro-sider .arco-menu-pop-header.arco-menu-selected .pro-fa-icon {
+  color: #1677ff !important;
+}
+
+html.yunshu-mt .pro-layout--side .pro-navbar--embedded {
+  height: 56px;
+  padding: 0 16px 0 8px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+html.yunshu-mt .mt-navbar-lead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  margin-right: auto;
+}
+
+html.yunshu-mt .mt-navbar-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1d2129;
+  white-space: nowrap;
+}
+
+html.yunshu-mt .pro-nav-layout-toggle {
+  display: none;
+}
+
+html.yunshu-mt .pro-content {
+  background: #f4f7fb;
+}
+
+html.yunshu-mt .pro-content-wrapper {
+  padding: 16px 20px 24px;
+}
+
+html.yunshu-mt .list-search-table-page > .arco-card.general-card,
+html.yunshu-mt .profile-page .pro-page-card {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 6px 16px rgba(29, 78, 216, 0.05);
+}
+
+html.yunshu-mt .arco-table-th {
+  background: #f7faff !important;
+  font-weight: 600;
+}
+
+html.yunshu-mt .pro-search-actions .arco-btn-primary {
+  background: #1677ff;
+}
+
+html.yunshu-mt .login-container--cover {
+  --login-bg-hue: -28deg;
+  background-color: #e8f2ff;
+}

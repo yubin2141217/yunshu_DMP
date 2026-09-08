@@ -1,0 +1,10 @@
+{
+  "id": "web",
+  "end": "web",
+  "label": "WEB 静态站资源包",
+  "version": "1.0.0",
+  "capability": "vendor-and-conventions",
+  "runtimeDir": "..",
+  "status": "ready",
+  "includes": ["fonts", "vendor", "images"]
+}

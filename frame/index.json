@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "description": "共享原型框架注册表。模板目录直接挂在 frame/ 根下（admin、web、app）；端别与默认库由 ends 映射。技能 prototype-demo 按 end 选型后复制到交付目录 web/、admin/ 或 app/。",
+  "ends": {
+    "admin": {
+      "outputDir": "admin",
+      "defaultFramework": "admin",
+      "frameworks": {
+        "admin": {
+          "path": "admin",
+          "theme": "arco",
+          "capability": "full-runtime",
+          "label": "管理后台 · Vibe Design Pro",
+          "configFile": ".admin-config.json",
+          "status": "ready"
+        }
+      }
+    },
+    "web": {
+      "outputDir": "web",
+      "defaultFramework": "web",
+      "frameworks": {
+        "web": {
+          "path": "web",
+          "capability": "vendor-and-conventions",
+          "label": "WEB 静态站资源包",
+          "status": "ready"
+        }
+      }
+    },
+    "app": {
+      "outputDir": "app",
+      "defaultFramework": "app",
+      "frameworks": {
+        "app": {
+          "path": "app",
+          "capability": "shells-and-vendor",
+          "label": "APP 设备壳资源包",
+          "status": "ready"
+        }
+      }
+    }
+  }
+}
